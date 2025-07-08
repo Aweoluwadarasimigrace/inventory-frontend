@@ -5,7 +5,6 @@ const HomePage = () => {
   return (
     <div>
         <Link to={"/auth"}>register page</Link>
-
     </div>
   )
 }
