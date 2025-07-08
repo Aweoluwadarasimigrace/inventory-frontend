@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { useRegister } from "../hooks/useRegister";
 
 const RegisterUser = () => {
   const [showPassword, setshowPassword] = useState(false);
+  const {changeFormDetails, submitForm, isLoading} = useRegister()
 
   const togglePassword = () => {
     setshowPassword(!showPassword);
@@ -34,7 +36,7 @@ const RegisterUser = () => {
             Create an Account
           </h1>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={submitForm}>
             {/* Firstname */}
             <div>
               <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
@@ -43,6 +45,7 @@ const RegisterUser = () => {
               <input
                 type="text"
                 id="firstname"
+                onChange={changeFormDetails}
                 className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
@@ -54,6 +57,7 @@ const RegisterUser = () => {
               </label>
               <input
                 type="text"
+                onChange={changeFormDetails}
                 id="lastname"
                 className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
@@ -66,6 +70,7 @@ const RegisterUser = () => {
               </label>
               <input
                 type="email"
+                onChange={changeFormDetails}
                 id="email"
                 className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
@@ -80,6 +85,7 @@ const RegisterUser = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
+                onChange={changeFormDetails}
                   className="w-full px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400 pr-10"
                 />
                 <button
@@ -98,7 +104,7 @@ const RegisterUser = () => {
               type="submit"
               className="mt-4 bg-blue-600 text-white py-2 rounded-[30px] hover:bg-blue-700 transition duration-300 w-50"
             >
-              Sign Up
+             {isLoading ? "loading...": "Register"}
             </button>
           </div>
           
