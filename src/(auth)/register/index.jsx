@@ -15,7 +15,7 @@ const RegisterUser = () => {
         {/* Illustration */}
         <div className="w-full lg:w-1/2 flex justify-center">
           <img
-            src="./src/images/undraw_report_k55w.svg"
+            src="https://i.pinimg.com/736x/03/95/1f/03951f147a539df10e2fd35bc062403a.jpg"
             alt="Illustration"
             className="w-[300px] md:w-[400px] lg:w-[450px]"
           />
