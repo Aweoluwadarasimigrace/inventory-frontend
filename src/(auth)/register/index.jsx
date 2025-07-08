@@ -27,7 +27,7 @@ const RegisterUser = () => {
         <div className="w-full lg:w-1/2">
           <div className="mb-4 flex justify-center">
             <img
-              src="./frontend-removebg-preview(1).png"
+              src="/frontend-removebg-preview(1).png"
               className="w-[150px]"
             />
           </div>
