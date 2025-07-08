@@ -21,7 +21,7 @@ export const useRegister = () => {
     setisLoading(true);
     e.preventDefault();
     try {
-      const res = await apiClient.post("/auth/register", formData,{
+      const res = await apiClient.post("api/v1/auth/register", formData,{
         withCredentials:true
       });
       console.log(res);
