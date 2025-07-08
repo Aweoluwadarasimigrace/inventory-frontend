@@ -44,7 +44,7 @@ const RegisterUser = () => {
               </label>
               <input
                 type="text"
-                id="firstname"
+              name="firstname"
                 onChange={changeFormDetails}
                 className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
@@ -58,7 +58,7 @@ const RegisterUser = () => {
               <input
                 type="text"
                 onChange={changeFormDetails}
-                id="lastname"
+              name="lastname"
                 className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
@@ -71,7 +71,7 @@ const RegisterUser = () => {
               <input
                 type="email"
                 onChange={changeFormDetails}
-                id="email"
+               name="email"
                 className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
@@ -84,7 +84,7 @@ const RegisterUser = () => {
               <div className="relative mt-1">
                 <input
                   type={showPassword ? "text" : "password"}
-                  id="password"
+               name="password"
                 onChange={changeFormDetails}
                   className="w-full px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400 pr-10"
                 />

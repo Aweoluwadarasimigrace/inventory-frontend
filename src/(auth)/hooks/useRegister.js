@@ -21,13 +21,15 @@ export const useRegister = () => {
     setisLoading(true);
     e.preventDefault();
     try {
-      const res = await apiClient.post("/auth/register", formData);
+      const res = await apiClient.post("/auth/register", formData, {
+        withCredentials:true
+      });
       console.log(res);
       if (res.data) {
         toast.success("registration successful");
       }
     } catch (error) {
-      toast.success(error);
+      toast.success("not successful");
     } finally {
       setisLoading(false);
     }
