@@ -6,7 +6,7 @@ export const useVerifyEmail = () => {
 const [status, setstatus] = useState("loading")
   const verifyEmail = async () => {
     try {
-        const res = await apiClient.get(`auth/verify-email/${token}`)
+        const res = await apiClient.get(`auth/verify/${token}`)
         setstatus("success")
     } catch (error) {
         setstatus("error")
