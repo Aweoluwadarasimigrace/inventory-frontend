@@ -1,8 +1,10 @@
+import { useSearchParams } from "react-router";
 import { apiClient } from "../../lib/client"; // ✅ your axios instance
 import { useEffect, useState } from "react";
 
 export const useVerifyEmail = () => {
-  const queryParams = URLSearchParams(window.location.search)
+//   const queryParams = URLSearchParams(window.location.search)
+const [queryParams] = useSearchParams()
   const token = queryParams.get("token")
   console.log(token)
   const [status, setStatus] = useState("loading");
