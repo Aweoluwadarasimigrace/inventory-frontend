@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"; // ✅ from react-router-dom
+import { useParams } from "react-router"; // ✅ from react-router-dom
 import { apiClient } from "../../lib/client"; // ✅ your axios instance
 import { useEffect, useState } from "react";
 
