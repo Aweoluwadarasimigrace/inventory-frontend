@@ -1,10 +1,9 @@
-// import { useParams } from "react-router"; // ✅ from react-router-dom
-import { useParams } from "react-router-dom";
 import { apiClient } from "../../lib/client"; // ✅ your axios instance
 import { useEffect, useState } from "react";
 
 export const useVerifyEmail = () => {
-  const { token } = useParams(); // ✅ gets token from URL
+  const queryParams = URLSearchParams(window.location.search)
+  const token = queryParams.get("token")
   console.log(token)
   const [status, setStatus] = useState("loading");
 
@@ -12,7 +11,7 @@ export const useVerifyEmail = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        await apiClient.get(`/auth/verify/${token}`);
+        await apiClient.get(`/auth/verify/?token=${token}`);
         setStatus("success");
       } catch (error) {
         setStatus("error");
