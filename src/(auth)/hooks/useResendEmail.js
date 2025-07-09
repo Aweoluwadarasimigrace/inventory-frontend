@@ -23,6 +23,8 @@ export const useResendEmail = () => {
       navigate("/auth/verify-message", { state: { email: email } });
     } catch (error) {
       toast.success("error occured");
+    }finally{
+      setisLoading(false)
     }
   };
 
