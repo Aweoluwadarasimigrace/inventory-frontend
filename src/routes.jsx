@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       { index: true, Component: RegisterUser },
       { path: "login", Component: Login },
       { path: "verify-message", Component: VerficationMessage },
-      { path: "verify-email/:token", Component: VerifyEmail },
+    //   { path: "verify-email/:token", Component: VerifyEmail },
       { path: "resend-email", Component: ResendEmailForm },
     ],
   },
