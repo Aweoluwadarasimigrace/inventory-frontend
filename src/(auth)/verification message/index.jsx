@@ -1,8 +1,10 @@
 import React from 'react'
 import { useRegister } from '../hooks/useRegister'
+import { Link, useLocation } from 'react-router'
 
 const VerficationMessage = () => {
-  const {resendEmail, formData, Message,isloading} = useRegister()
+  const location = useLocation()
+const email = location.state?.email
   return (
     <div>
         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
@@ -12,24 +14,16 @@ const VerficationMessage = () => {
         </h2>
         <p className="text-gray-600 mb-4">
           A verification email has been sent to{" "}
-          <span className="font-medium text-blue-700">{formData.email}</span>. <br />
+          <span className="font-medium text-blue-700">{email}</span>. <br />
           Didn’t receive it? You can resend the email below.
         </p>
 
-        {Message && (
-          <div
-            className={"mb-4 p-3 rounded text-sm bg-red-100 text-red-700"}
-          >
-            {Message.message}
-          </div>
-        )}
 
         <button
-          onClick={resendEmail}
-          disabled={isloading}
+          
           className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition disabled:opacity-50"
         >
-          {isloading ? "Resending..." : "Resend Verification Email"}
+          <Link to={"/auth/resend-email"}>resend</Link>
         </button>
       </div>
     </div>
