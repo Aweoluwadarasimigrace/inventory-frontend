@@ -1,27 +1,25 @@
-import { useParams } from "react-router";
-import { apiClient } from "../../lib/client";
-import { useState } from "react";
+import { useParams } from "react-router-dom"; // ✅ from react-router-dom
+import { useEffect, useState } from "react";
+import { apiClient } from "../../lib/client"; // ✅ your axios instance
 
 export const useVerifyEmail = () => {
-       const { token } = useParams();
-const [status, setstatus] = useState("loading")
-  const verifyEmail = async () => {
-    try {
-        const res = await apiClient.get(`auth/verify/${token}`)
-        setstatus("success")
-    } catch (error) {
-        setstatus("error")
-    }
-  };
+  const { token } = useParams(); // ✅ gets token from URL
+  const [status, setStatus] = useState("loading");
 
- useEffect(() => {
-   if(token){
-    verifyEmail()
-   }
- 
- }, [token])
- 
-  return {
-status
-  };
+  useEffect(() => {
+    const verifyEmail = async () => {
+      try {
+        await apiClient.get(`/auth/verify/${token}`);
+        setStatus("success");
+      } catch (error) {
+        setStatus("error");
+      }
+    };
+
+    if (token) {
+      verifyEmail();
+    }
+  }, [token]);
+
+  return { status };
 };
