@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export const useVerifyEmail = () => {
   const { token } = useParams(); // ✅ gets token from URL
+  console.log(token)
   const [status, setStatus] = useState("loading");
 
 
