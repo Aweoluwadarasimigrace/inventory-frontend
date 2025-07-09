@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { apiClient } from "../../lib/client";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
+const navigate = useNavigate()
 
 export const useRegister = () => {
   const [formData, setformData] = useState({
@@ -10,7 +12,8 @@ export const useRegister = () => {
     password: "",
     email: "",
   });
-
+ const [isloading, setisloading] = useState(false)
+ const [Message, setMessage] = useState(second)
   const [isLoading, setisLoading] = useState(false);
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
@@ -27,6 +30,7 @@ export const useRegister = () => {
       console.log(res);
       if (res.data) {
         toast.success("registration successful");
+        navigate("/verify-message")
       }
     } catch (error) {
       toast.success("not successful");
@@ -34,9 +38,29 @@ export const useRegister = () => {
       setisLoading(false);
     }
   };
+
+
+  const resendEmail = async()=>{
+   setisloading(true)
+         const email = formData.email
+         try {
+          const res = await apiClient.post("/auth//resend-verification", {email:email}, {
+            withCredentials:true
+          })
+            setMessage({message:res.message})
+         } catch (error) {
+            setMessage({message: res.error})
+         }finally{
+            setisloading(false)
+         }
+  }
   return {
     changeFormDetails,
     submitForm,
     isLoading,
+    formData,
+    Message,
+    resendEmail,
+    isloading
   };
 };
