@@ -5,6 +5,7 @@ const HomePage = () => {
   return (
     <div>
         <Link to={"/auth"}>register page</Link>
+        <Link to={"/auth/verify-email/4556"}></Link>
     </div>
   )
 }
