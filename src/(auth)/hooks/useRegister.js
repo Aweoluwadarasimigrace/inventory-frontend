@@ -3,9 +3,10 @@ import { useState } from "react";
 import { apiClient } from "../../lib/client";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
-const navigate = useNavigate()
+
 
 export const useRegister = () => {
+    const navigate = useNavigate()
   const [formData, setformData] = useState({
     firstname: "",
     lastname: "",
