@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { apiClient } from "../../lib/client";
+import { useState } from "react";
 
 export const useVerifyEmail = () => {
        const { token } = useParams();
