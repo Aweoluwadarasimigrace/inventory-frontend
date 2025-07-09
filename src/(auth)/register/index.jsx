@@ -104,7 +104,7 @@ const RegisterUser = () => {
           <div className="flex justify-center items-center">
               <button
               type="submit"
-              className="mt-4 bg-blue-600 text-white py-2 rounded-[30px] hover:bg-blue-700 transition duration-300 w-50"
+              className="mt-4 bg-[#017CFF] text-white py-2 rounded-[30px] hover:bg-blue-700 transition duration-300 w-50"
             >
              {isLoading ? "loading...": "Register"}
             </button>
