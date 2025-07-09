@@ -12,7 +12,7 @@ const [queryParams] = useSearchParams()
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-      const res=  await apiClient.get(`/auth/verify/?token=${token}`);
+      const res=  await apiClient.get(`/auth/verify-email/?token=${token}`);
       console.log(res)
         setStatus("success");
       } catch (error) {
