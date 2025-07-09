@@ -19,15 +19,16 @@ export const useResendEmail = () => {
         { email: email },
         { withCredentials: true }
       );
-      if (res.status === 404) {
-        toast.success("email doesn't exist trying signing up again");
-        navigate("/auth");
-        return;
-      }
       toast.success("email sent successfully");
       navigate("/auth/verify-message", { state: { email: email } });
     } catch (error) {
-      toast.success("error occured");
+      const status = error.response?.status;
+      if (status === 404) {
+        toast.error("email doesn't exist trying signing up again");
+        navigate("/auth");
+      } else {
+        toast.error("error occured");
+      }
     } finally {
       setisLoading(false);
     }
