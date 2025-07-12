@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { apiClient } from "../../lib/client";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
@@ -7,17 +7,28 @@ import { useNavigate } from "react-router";
 
 export const useRegister = () => {
     const navigate = useNavigate()
+    const [countryValue, setcountryValue] = useState([])
   const [formData, setformData] = useState({
-    firstname: "",
-    lastname: "",
+    countryName: "",
+    contact: "",
+    country:"",
     password: "",
     email: "",
+    number:"",
+    countryCode:""
   });
  
   const [isLoading, setisLoading] = useState(false);
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
-    setformData({ ...formData, [name]: value });
+    setformData((prev)=>{
+    const updated = {...prev, [name]:value}
+
+    if(updated.number && updated.countryCode){
+      updated.contact = updated.countryCode + updated.number 
+    }
+    return updated
+    });
   };
 
   const submitForm = async (e) => {
@@ -40,10 +51,36 @@ export const useRegister = () => {
   };
 
 
+useEffect(() => {
+  
+const fetchCountries = async()=>{
+ try {
+   const res = await axios.get("https://restcountries.com/v3.1/all?fields=name,idd")
+  const sorted = res.data.map((country)=> {
+    const name = country.name?.common;
+      const root = country.idd?.root;
+      const suffix = country.idd?.suffixes?.[0] || "";
+      const phoneCode = root ? `${root}${suffix}` : null;
+       return { name, phoneCode }
+  }).sort((a,b)=>a.name.localeCompare(b.name))
+  console.log(res.data)
+  setcountryValue(sorted)
+ } catch (error) {
+  console.log(error)
+ }
+}
+ 
+
+fetchCountries()
+}, [])
+
+
   
   return {
     changeFormDetails,
     submitForm,
     isLoading,
+    countryValue,
+    formData
   };
 };

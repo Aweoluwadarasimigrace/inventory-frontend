@@ -5,7 +5,8 @@ import { Link } from "react-router";
 
 const RegisterUser = () => {
   const [showPassword, setshowPassword] = useState(false);
-  const { changeFormDetails, submitForm, isLoading } = useRegister();
+  const { changeFormDetails, submitForm, isLoading, countryValue } =
+    useRegister();
 
   const togglePassword = () => {
     setshowPassword(!showPassword);
@@ -38,34 +39,18 @@ const RegisterUser = () => {
             </h1>
 
             <form className="space-y-4" onSubmit={submitForm}>
-              {/* Firstname */}
+              {/* companyName */}
               <div>
                 <label
-                  htmlFor="firstname"
+                  htmlFor="companyName"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Firstname
+                  Company Name
                 </label>
                 <input
                   type="text"
-                  name="firstname"
+                  name="companyName"
                   onChange={changeFormDetails}
-                  className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              </div>
-
-              {/* Lastname */}
-              <div>
-                <label
-                  htmlFor="lastname"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Lastname
-                </label>
-                <input
-                  type="text"
-                  onChange={changeFormDetails}
-                  name="lastname"
                   className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
               </div>
@@ -85,6 +70,41 @@ const RegisterUser = () => {
                   className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
               </div>
+
+              {/* contact */}
+             <div>
+  <label
+    htmlFor="contact"
+    className="block text-sm font-medium text-gray-700 mb-1"
+  >
+    Phone Number
+  </label>
+
+  <div className="flex gap-2">
+    {/* Country Code Dropdown */}
+    <select
+      name="countryCode"
+      onChange={changeFormDetails}
+      className="w-[100px] px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+    >
+      <option value="">+Code</option>
+      {countryValue.map((country, i) => (
+        <option key={i} value={country.phoneCode}>
+          {country.phoneCode}
+        </option>
+      ))}
+    </select>
+
+    {/* Phone Number Input */}
+    <input
+      type="text"
+      name="number"
+      onChange={changeFormDetails}
+      className="flex-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+      placeholder="Phone number"
+    />
+  </div>
+</div>
 
               {/* Password */}
               <div>
@@ -111,6 +131,29 @@ const RegisterUser = () => {
                 </div>
               </div>
 
+              {/* country */}
+             <div>
+  <label
+    htmlFor="country"
+    className="block text-sm font-medium text-gray-700"
+  >
+    Select your country
+  </label>
+  <select
+    name="country"
+    className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+    onChange={changeFormDetails}
+  >
+    <option value="">-- Select a country --</option>
+    {countryValue.map((country, i) => (
+      <option value={country.name} key={i}>
+        {country.name}
+      </option>
+    ))}
+  </select>
+</div>
+
+
               {/* Submit */}
               <div className="flex justify-center items-center">
                 <button
@@ -122,9 +165,10 @@ const RegisterUser = () => {
               </div>
               <div className="flex items-center justify-center underline gap-2">
                 <p>Aleady have an Account?</p>
-                <Link to={"/auth/login"} className="text-red-400">Login</Link>
+                <Link to={"/auth/login"} className="text-red-400">
+                  Login
+                </Link>
               </div>
-
             </form>
           </div>
         </div>
