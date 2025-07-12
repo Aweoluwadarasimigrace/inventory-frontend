@@ -10,12 +10,12 @@ export const useRegister = () => {
     const [countryValue, setcountryValue] = useState([])
   const [formData, setformData] = useState({
     companyName: "",
+     email: "",
     contact: "",
-    country:"",
+      number:"",
+    countryCode:"",
     password: "",
-    email: "",
-    number:"",
-    countryCode:""
+     country:"",
   });
  
   const [isLoading, setisLoading] = useState(false);
