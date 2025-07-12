@@ -45,6 +45,7 @@ export const useRegister = () => {
       }
     } catch (error) {
       toast.success("not successful");
+      console.log(error)
     } finally {
       setisLoading(false);
     }
