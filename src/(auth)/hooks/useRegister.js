@@ -29,6 +29,7 @@ export const useRegister = () => {
     }
     return updated
     });
+    console.log(formData)
   };
 
   const submitForm = async (e) => {
