@@ -9,7 +9,7 @@ export const useRegister = () => {
     const navigate = useNavigate()
     const [countryValue, setcountryValue] = useState([])
   const [formData, setformData] = useState({
-    countryName: "",
+    companyName: "",
     contact: "",
     country:"",
     password: "",
