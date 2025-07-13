@@ -24,8 +24,8 @@ export const useRegister = () => {
     setformData((prev)=>{
     const updated = {...prev, [name]:value}
 
-    if(updated.number && updated.countryCode){
-      updated.contact = updated.countryCode + updated.number 
+    if(updated.number && updated.countrycode){
+      updated.contact = updated.countrycode + updated.number 
     }
     return updated
     });

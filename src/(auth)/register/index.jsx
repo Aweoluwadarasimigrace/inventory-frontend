@@ -83,7 +83,7 @@ const RegisterUser = () => {
   <div className="flex gap-2">
     {/* Country Code Dropdown */}
     <select
-      name="countryCode"
+      name="countrycode"
       onChange={changeFormDetails}
       className="w-[100px] px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
     >
