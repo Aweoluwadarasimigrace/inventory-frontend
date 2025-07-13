@@ -13,7 +13,7 @@ export const useRegister = () => {
      email: "",
     contact: "",
       number:"",
-    countryCode:"",
+    countrycode:"",
     password: "",
      country:"",
   });
