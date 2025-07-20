@@ -1,0 +1,5 @@
+@media (max-width: 1169px) {
+  .hide-below-1170 {
+    display: none !important;
+  }
+}
