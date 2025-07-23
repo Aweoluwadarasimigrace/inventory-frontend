@@ -28,8 +28,9 @@ export const useLoginUser = () => {
     }
 
 
-     setisLoading(true);
-
+   seterrors({}); // clear previous errors
+    setisLoading(true);
+    console.log("is loading is laoding")
     try {
       const res = await apiClient.post("/auth/login", formData, {
         withCredentials: true,
