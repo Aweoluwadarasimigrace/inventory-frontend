@@ -34,7 +34,6 @@ export const useLoginUser = () => {
       const res = await apiClient.post("/auth/login", formData, {
         withCredentials: true,
       });
-      console.log(res)
       if (res.data) {
         toast.success("login successful, welcome back");
         navigate("/dashboard");
