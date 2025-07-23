@@ -16,7 +16,7 @@ fetchUser: async()=>{
         set({user:res.user, loading:false})
     } catch (error) {
            set({
-        error: err.response?.data?.message || 'Failed to fetch user',
+        error: error.response?.data?.message || 'Failed to fetch user',
         loading: false,
       })
     }

@@ -38,6 +38,8 @@ export const useLoginUser = () => {
       if (res.data) {
         toast.success("login successful, welcome back");
         navigate("/dashboard");
+      }else{
+        console.log("cannot be ")
       }
     } catch (error) {
       toast.success("an error occured");
