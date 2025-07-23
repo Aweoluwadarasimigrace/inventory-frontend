@@ -4,94 +4,102 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router";
 
 const Login = () => {
-  const { handleChangeForm, handleLogin, isLoading } = useLoginUser();
+  const { handleChangeForm, handleLogin, isLoading, errors } = useLoginUser();
   const [showPassword, setshowPassword] = useState(false);
   const togglePassword = () => {
     setshowPassword(!showPassword);
   };
 
   return (
-   <div className="bg-gray-100 min-h-screen py-10 px-4">
-  <div className="h-auto md:h-[80vh] md:flex md:items-center md:justify-center">
-    <div className="w-full my-auto  max-w-[1100px] bg-white rounded-[20px] shadow-2xl flex flex-col lg:flex-row items-center justify-evenly p-6 gap-6">
+   <div className='bg-[#7a43a446] min-h-screen flex flex-col'>
+              {/* HEADER: Contains logo and login button */}
+              <header className="flex justify-between items-center p-4 md:px-8">
+                <Link to="/">
+                  <img
+                    src="/frontend-removebg-preview (1).png"
+                    alt="Logo"
+                    className="w-[140px] md:w-[160px] object-contain"
+                  />
+                </Link>
+                <Link to="/auth">
+                  <button className="bg-purple-500 text-white font-semibold text-sm px-5 py-2 rounded-lg shadow-md hover:bg-purple-600 transition-colors">
+                    Register
+                  </button>
+                </Link>
+              </header>
       
-      {/* Illustration */}
-      <div className="flex md:w-1/2 justify-center">
-        <img
-          src="https://i.pinimg.com/736x/03/95/1f/03951f147a539df10e2fd35bc062403a.jpg"
-          alt="Illustration"
-          className="w-[300px] md:w-[400px] lg:w-[450px]"
-        />
-      </div>
-
-      {/* Form Section */}
-      <div className="w-full lg:w-1/2">
-        <div className="mb-4 flex justify-center md:justify-start">
-          <img
-            src="/frontend-removebg-preview (1).png"
-            className="w-[150px]"
-            alt="Logo"
-          />
-        </div>
-
-        <h1 className="text-xl md:text-3xl font-[700] mb-6 text-center md:text-left">
-          Login
-        </h1>
-
-        <form className="space-y-4" onSubmit={handleLogin}>
-          {/* Email */}
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              onChange={handleChangeForm}
-              name="email"
-              className="w-full mt-1 px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-
-          {/* Password */}
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <div className="relative mt-1">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                onChange={handleChangeForm}
-                className="w-full px-4 py-2 bg-gray-200 rounded-[30px] focus:outline-none focus:ring-2 focus:ring-blue-400 pr-10"
-              />
-              <button
-                type="button"
-                onClick={togglePassword}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
-              >
-                {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-              </button>
-            </div>
-          </div>
-
-          {/* Submit */}
-          <div className="flex justify-center items-center">
-            <button
-              type="submit"
-              className="mt-4 bg-[#017CFF] text-white py-1 px-10 rounded-[20px] hover:bg-blue-700 transition duration-300"
-            >
-              {isLoading ? "Loading..." : "Sign In"}
-            </button>
-          </div>
-           <div className="flex items-center justify-center underline gap-2">
-                          <p>Don't have an Account?</p>
-                          <Link to={"/auth"} className="text-red-500">Register</Link>
+              {/* MAIN CONTENT: Centers the form both vertically and horizontally */}
+              <main className="flex flex-grow items-center justify-center p-4">
+                <div className="relative w-full max-w-xl bg-white shadow-2xl rounded-2xl">
+      
+                  <div className="flex flex-col justify-center p-8 md:p-12">
+                    <span className="mb-3 text-3xl md:text-4xl font-bold text-slate-800">welcome Back!</span>
+                    <span className="font-light text-slate-500 mb-8">
+                      Track. Manage. Grow.
+                    </span>
+      
+                    {/* FORM: All original functions and names are preserved */}
+                    <form onSubmit={handleLogin}>
+      
+                      
+      
+                      {/* Email */}
+                      <div className="md:col-span-2">
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-slate-700">Email</label>
+                        <input
+                          type="email"
+                          id="email"
+                          name='email'
+                          onChange={handleChangeForm}
+                          placeholder="your.email@example.com"
+                          className="w-full mb-2 p-3 border border-slate-300 rounded-lg placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        />
+                        {errors.email && <small className="text-red-500">{errors.email}</small>}
+                      </div>
+      
+                     
+                         
+      
+                      {/* Password */}
+                      <div>
+                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-slate-700">Password</label>
+                        <div className='relative'>
+                          <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            onChange={handleChangeForm}
+                            placeholder="Create a strong password"
+                            className="w-full mb-2 p-3 border border-slate-300 rounded-lg placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                          />
+                          <button type="button" onClick={togglePassword} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                          </button>
                         </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+                        {errors.password && <small className="text-red-500">{errors.password}</small>}
+                      </div>
+      
+      
+                    
+                      {/* Submit Button */}
+                      <button
+                        type="submit"
+                        className="w-full bg-purple-600 text-white p-3 rounded-lg mt-8 font-semibold text-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
+                      >
+                       {isLoading ? "loading.." : "sign up"}
+                      </button>
+                    </form>
+      
+                    {/* Footer Links */}
+                    <div className="text-center text-slate-500 mt-6">
+                     Don't have an account?
+                      <Link to="/auth/login" className="font-medium text-indigo-600 hover:underline">
+                        Register
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
 
   );
 };

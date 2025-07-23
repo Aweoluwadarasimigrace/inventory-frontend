@@ -9,6 +9,7 @@ export const useLoginUser = () => {
     password: "",
   });
   const [isLoading, setisLoading] = useState(false);
+  const [errors, seterrors] = useState({});
   const navigate = useNavigate();
 
   const handleChangeForm = (e) => {
@@ -17,8 +18,18 @@ export const useLoginUser = () => {
   };
 
   const handleLogin = async (e) => {
-    setisLoading(true);
     e.preventDefault();
+
+    if(!formData.email || !formData.password){
+      seterrors({
+        email: !formData.email ? "please enter a valid email address" : "",
+         password: !formData.password ? "password cannot be fewer than 8 characters" : "",
+      })
+    }
+
+
+     setisLoading(true);
+
     try {
       const res = await apiClient.post("/auth/login", formData, {
         withCredentials: true,
@@ -37,5 +48,6 @@ export const useLoginUser = () => {
     isLoading,
     handleLogin,
     handleChangeForm,
+    errors
   };
 };

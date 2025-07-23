@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { useRegister } from "../hooks/useRegister";
 import { Link } from "react-router";
+import { useRegister } from "../hooks/useRegister";
 
 const RegisterUser = () => {
   const [showPassword, setshowPassword] = useState(false);
@@ -13,202 +13,169 @@ const RegisterUser = () => {
     setshowPassword(!showPassword);
   };
 
-  // url https://www.zoho.com/inventory/signup/images/signup-slide-one@1x.png
   return (
     <>
-      <div className="bg-white xl:h-full py-2 px-4 min-h-screen flex items-center justify-center">
-        <div className="flex flex-col lg:flex-row items-center justify-center xl:justify-between p-6 lg:p-4 gap-6 w-full">
-          {/* Illustration */}
-          <div className="hide-below-1170 bg-[#f9c63f] h-[100vh] w-[400px] rounded-[13px] bg-[url('https://www.zoho.com/inventory/signup/images/signup-slide-one@1x.png')] bg-cover bg-no-repeat p-6 text-white font-semibold leading-tight">
-            With Zoho Inventory, you can actually organize your business.
-          </div>
-
-          {/* Form Section */}
-          <div className=" w-full max-w-[700px] xl:w-2/5 ">
-            <div className="mb-4 flex justify-start">
-              <img
-                src="/frontend-removebg-preview (1).png"
-                className="w-[200px]"
-              />
-            </div>
-
-            <h1 className="text-xl md:text-3xl font-[700] mb-6">
-              Create an Account
-            </h1>
-
-            <form className="space-y-4" onSubmit={submitForm}>
-              {/* companyName */}
-              <div>
-                <label
-                  htmlFor="companyName"
-                  className="block text-[15px] mb-2 font-medium text-gray-700"
-                >
-                  Company Name:
-                </label>
-                <input
-                  type="text"
-                  placeholder="Company Name"
-                  name="companyName"
-                  onChange={changeFormDetails}
-                  className="w-full mt-1 px-4 py-2 border border-gray-400 rounded focus:outline-none focus:ring-1 focus:ring-gray-400"
+     <div className='bg-[#7a43a446] min-h-screen flex flex-col'>
+            {/* HEADER: Contains logo and login button */}
+            <header className="flex justify-between items-center p-4 md:px-8">
+              <Link to="/">
+                <img
+                  src="/frontend-removebg-preview (1).png"
+                  alt="Logo"
+                  className="w-[140px] md:w-[160px] object-contain"
                 />
-                {errors.name && (
-                  <small style={{ color: "red" }}>{errors.name}</small>
-                )}
-              </div>
-
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-[15px] mb-2 font-medium text-gray-700"
-                >
-                  Email:
-                </label>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  onChange={changeFormDetails}
-                  name="email"
-                  className="w-full mt-1 px-4 py-2 border border-gray-400 rounded focus:outline-none focus:ring-1 focus:ring-gray-400"
-                />
-                {errors.email && (
-                  <small style={{ color: "red" }}>{errors.email}</small>
-                )}
-              </div>
-
-              {/* contact */}
-              <div>
-                <label
-                  htmlFor="contact"
-                  className="block text-[15px] mb-2 font-medium text-gray-700 mb-1"
-                >
-                  Phone Number:
-                </label>
-
-               <div className="flex gap-2 relative">
-  {/* Country Code Dropdown */}
-  <div className="relative w-[100px]">
-    <div
-      className="px-4 py-2 border border-gray-400 rounded cursor-pointer bg-white"
-      onClick={() => setisOpen(!isOpen)}
-    >
-      {selectedcode || "Code"}
-    </div>
-
-    {isOpen && (
-      <div className="absolute z-10 mt-1 w-100 border border-gray-300 bg-white rounded shadow-md">
-        {countryValue.map((country, i) => (
-          <div
-            key={i}
-            onClick={() => {
-              setselectedcode(country.phoneCode);
-              setisOpen(false); // close dropdown
-               changeFormDetails({
-    target: {
-      name: "countrycode",
-      value: country.phoneCode,
-    },
-  })
-            }}
-            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-          >
-            {country.name} ({country.phoneCode})
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-
-  {/* Phone Number Input */}
-  <input
-    type="text"
-    name="number"
-    onChange={changeFormDetails}
-    className="flex-1 px-4 py-2 border border-gray-400 rounded focus:outline-none focus:ring-1 focus:ring-gray-400"
-    placeholder="Phone number"
-  />
-</div>
-
-                {/* error handler */}
-                {errors.number && (
-                  <small style={{ color: "red" }}>{errors.number}</small>
-                )}
-              </div>
-
-              {/* Password */}
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-[15px] mb-2 font-medium text-gray-700"
-                >
-                  Password
-                </label>
-                <div className="relative mt-1">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    onChange={changeFormDetails}
-                    className="w-full px-4 py-2 border-gray-400 border focus:outline-none focus:ring-2 focus:ring-gray-400 pr-10"
-                  />
-                  <button
-                    type="button"
-                    onClick={togglePassword}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
-                  >
-                    {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-                  </button>
-                  {errors.password && (
-                    <small style={{ color: "red" }}>{errors.password}</small>
-                  )}
+              </Link>
+              <Link to="/auth/login">
+                <button className="bg-purple-500 text-white font-semibold text-sm px-5 py-2 rounded-lg shadow-md hover:bg-purple-600 transition-colors">
+                  Login
+                </button>
+              </Link>
+            </header>
+    
+            {/* MAIN CONTENT: Centers the form both vertically and horizontally */}
+            <main className="flex flex-grow items-center justify-center p-4">
+              <div className="relative w-full max-w-xl bg-white shadow-2xl rounded-2xl">
+    
+                <div className="flex flex-col justify-center p-8 md:p-12">
+                  <span className="mb-3 text-3xl md:text-4xl font-bold text-slate-800">Create Account</span>
+                  <span className="font-light text-slate-500 mb-8">
+                    Track. Manage. Grow.
+                  </span>
+    
+                  {/* FORM: All original functions and names are preserved */}
+                  <form onSubmit={submitForm}>
+    
+                    {/* Company Name */}
+                    <div className="md:col-span-2">
+                      <label htmlFor="companyName" className="block mb-2 text-sm font-medium text-slate-700">Company Name</label>
+                      <input
+                        type="text"
+                        id="companyName"
+                        name='companyName'
+                        onChange={changeFormDetails}
+                        placeholder="Your Company Inc."
+                        className="w-full mb-2 p-3 border border-slate-300 rounded-lg placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      />
+                      {errors.name && <small className="text-red-500">{errors.name}</small>}
+                    </div>
+    
+                    {/* Email */}
+                    <div className="md:col-span-2">
+                      <label htmlFor="email" className="block mb-2 text-sm font-medium text-slate-700">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name='email'
+                        onChange={changeFormDetails}
+                        placeholder="your.email@example.com"
+                        className="w-full mb-2 p-3 border border-slate-300 rounded-lg placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      />
+                      {errors.email && <small className="text-red-500">{errors.email}</small>}
+                    </div>
+    
+                    {/* Phone Number with Country Code */}
+                    <div className="md:col-span-2">
+    
+                      <label className="block mb-2 text-sm font-medium text-slate-700">Phone Number</label>
+    
+                      <div className="flex gap-2">
+                        {/* Country Code Dropdown */}
+                        <div className="relative w-[130px]">
+                          <div className="w-full p-3 border border-slate-300 rounded-lg bg-white text-slate-700 cursor-pointer flex items-center justify-between" onClick={() => setisOpen(!isOpen)}>
+                            {selectedcode || "Code"}
+                          </div>
+                          {isOpen && (
+                            <div className="absolute z-10 mt-1 w-100 max-h-48 overflow-y-auto border border-gray-300 bg-white rounded-lg shadow-lg">
+                              {countryValue.map((country, i) => (
+                                <div
+                                  key={i}
+                                  onClick={() => {
+                                    setselectedcode(country.phoneCode);
+                                    setisOpen(false);
+                                    changeFormDetails({ target: { name: "countrycode", value: country.phoneCode } });
+                                  }}
+                                  className="px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 cursor-pointer"
+                                >
+                                  {country.name} ({country.phoneCode})
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+    
+                        {/* Phone Number Input - STYLING UNIFIED */}
+                        <input
+                          type="tel"
+                          name="number"
+                          placeholder="Phone number"
+                          onChange={changeFormDetails}
+                          className="w-full mb-2 p-3 border border-slate-300 rounded-lg placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        />
+                      </div>
+                      {errors.number && <small className="text-red-500 mt-1 block">{errors.number}</small>}
+                    </div>
+    
+                    {/* Password */}
+                    <div>
+                      <label htmlFor="password" className="block mb-2 text-sm font-medium text-slate-700">Password</label>
+                      <div className='relative'>
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          name="password"
+                          onChange={changeFormDetails}
+                          placeholder="Create a strong password"
+                          className="w-full mb-2 p-3 border border-slate-300 rounded-lg placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        />
+                        <button type="button" onClick={togglePassword} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                          {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                        </button>
+                      </div>
+                      {errors.password && <small className="text-red-500">{errors.password}</small>}
+                    </div>
+    
+    
+                    {/* Country Select */}
+                    <div>
+                      <label className="block mb-2 text-sm font-medium text-slate-700">Select your country</label>
+                      <select
+                        name="country"
+                        onChange={changeFormDetails}
+                        className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-gray-400"
+                      >
+                        {countryValue.map((country, i) => (
+                          <option key={i} value={country.name}>
+                            {country.name}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.country && <small className="text-red-500">{errors.country}</small>}
+                    </div>
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      className="w-full bg-purple-600 text-white p-3 rounded-lg mt-8 font-semibold text-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
+                    >
+                     {isLoading ? "loading.." : "sign up"}
+                    </button>
+                  </form>
+    
+                  {/* Footer Links */}
+                  <div className="text-center text-slate-500 mt-6">
+                    Already have an account?
+                    <Link to="/auth/login" className="font-medium text-indigo-600 hover:underline">
+                      login
+                    </Link>
+                  </div>
                 </div>
               </div>
-
-              {/* country */}
-              <div>
-                <label
-                  htmlFor="country"
-                  className="block text-[15px] mb-2 font-medium text-gray-700"
-                >
-                  Select your country
-                </label>
-                <select
-                  name="country"
-                  className="w-full mt-1 px-4 py-2 border-gray-400 border focus:outline-none focus:ring-2 focus:ring-gray-400"
-                  onChange={changeFormDetails}
-                >
-                  {countryValue.map((country, i) => (
-                    <option value={country.name} key={i}>
-                      {country.name}
-                    </option>
-                  ))}
-                </select>
-                {errors.country && (
-                  <small style={{ color: "red" }}>{errors.country}</small>
-                )}
-              </div>
-
-              {/* Submit */}
-              <div className="flex justify-center items-center">
-                <button
-                  type="submit"
-                  className="mt-4 bg-[#696969] text-white py-2 rounded hover:bg-blue-700 transition duration-300 w-50"
-                >
-                  {isLoading ? "loading..." : "Register"}
-                </button>
-              </div>
-              <div className="flex items-center justify-center underline gap-2">
-                <p>Aleady have an Account?</p>
-                <Link to={"/auth/login"} className="text-red-400">
-                  Login
-                </Link>
-              </div>
-            </form>
+            </main>
           </div>
-        </div>
-      </div>
+
     </>
   );
 };
 
 export default RegisterUser;
+
+
+
