@@ -12,7 +12,7 @@ fetchUser: async()=>{
 
     try {
         const res = await apiClient.get("/user/getsingleuser", {withCredentials:true})
-        console.log(res.data)
+        console.log(res.data.user)
         set({user:res.data.user, loading:false})
     } catch (error) {
            set({
