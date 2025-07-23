@@ -12,8 +12,8 @@ fetchUser: async()=>{
 
     try {
         const res = await apiClient.get("/user/getsingleuser", {withCredentials:true})
-        console.log(res)
-        set({user:res.user, loading:false})
+        console.log(res.data)
+        set({user:res.data, loading:false})
     } catch (error) {
            set({
         error: error.response?.data?.message || 'Failed to fetch user',
