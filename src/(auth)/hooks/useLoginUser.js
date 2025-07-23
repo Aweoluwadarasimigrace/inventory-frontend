@@ -42,7 +42,7 @@ export const useLoginUser = () => {
         console.log("cannot be ")
       }
     } catch (error) {
-      toast.success("an error occured");
+      toast.error("an error occured");
     } finally {
       setisLoading(false);
     }
