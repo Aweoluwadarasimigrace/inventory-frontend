@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { apiClient } from "../../lib/client";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
+import { apiClient } from "@/lib/client";
 
 export const useLoginUser = () => {
   const [formData, setformData] = useState({
@@ -27,8 +27,6 @@ export const useLoginUser = () => {
       })
       return
     }
-
-
    seterrors({}); // clear previous errors
     setisLoading(true);
     console.log("is loading is laoding")

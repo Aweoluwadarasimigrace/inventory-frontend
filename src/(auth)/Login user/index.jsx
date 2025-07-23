@@ -22,7 +22,7 @@ const Login = () => {
                   />
                 </Link>
                 <Link to="/auth">
-                  <button className="bg-purple-500 text-white font-semibold text-sm px-5 py-2 rounded-lg shadow-md hover:bg-purple-600 transition-colors">
+                  <button className="bg-purple-500 text-white font-semibold text-sm px-5 py-2 rounded-lg shadow-md hover:bg-purple-600 transition-colors" type="button"> 
                     Register
                   </button>
                 </Link>
@@ -40,10 +40,7 @@ const Login = () => {
       
                     {/* FORM: All original functions and names are preserved */}
                     <form onSubmit={handleLogin}>
-      
-                      
-      
-                      {/* Email */}
+                          {/* Email */}
                       <div className="md:col-span-2">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-slate-700">Email</label>
                         <input

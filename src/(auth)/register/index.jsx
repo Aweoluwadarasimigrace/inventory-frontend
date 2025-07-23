@@ -85,7 +85,7 @@ const RegisterUser = () => {
                             {selectedcode || "Code"}
                           </div>
                           {isOpen && (
-                            <div className="absolute z-10 mt-1 w-100 max-h-48 overflow-y-auto border border-gray-300 bg-white rounded-lg shadow-lg">
+                            <div className="absolute z-10 mt-1 w-60 max-h-48 overflow-y-auto border border-gray-300 bg-white rounded-lg shadow-lg">
                               {countryValue.map((country, i) => (
                                 <div
                                   key={i}
@@ -94,7 +94,7 @@ const RegisterUser = () => {
                                     setisOpen(false);
                                     changeFormDetails({ target: { name: "countrycode", value: country.phoneCode } });
                                   }}
-                                  className="px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 cursor-pointer"
+                                  className="px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 cursor-pointer "
                                 >
                                   {country.name} ({country.phoneCode})
                                 </div>
