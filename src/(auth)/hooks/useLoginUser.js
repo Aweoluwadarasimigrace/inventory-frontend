@@ -25,6 +25,7 @@ export const useLoginUser = () => {
         email: !formData.email ? "please enter a valid email address" : "",
          password: !formData.password ? "password cannot be fewer than 8 characters" : "",
       })
+      return
     }
 
 
@@ -35,6 +36,7 @@ export const useLoginUser = () => {
       const res = await apiClient.post("/auth/login", formData, {
         withCredentials: true,
       });
+      console.log(res)
       if (res.data) {
         toast.success("login successful, welcome back");
         navigate("/dashboard");
