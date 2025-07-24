@@ -26,6 +26,7 @@ const AdminProfile = () => {
             await updateuser(formData)
             toast.success("profile image updated usccessfully")
         } catch (error) {
+            console.log(error)
             toast.error("couldn't update try again")
         }
     }
