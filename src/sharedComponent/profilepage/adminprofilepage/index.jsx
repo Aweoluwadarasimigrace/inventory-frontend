@@ -39,23 +39,25 @@ const AdminProfile = () => {
                 <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full max-w-[1300px] mx-auto">
                     {/* Profile Picture Section */}
                     <div className="flex flex-col items-center gap-6 w-full lg:w-[30%]">
-                        <div className="w-44 h-44 rounded-full bg-purple-200 overflow-hidden">
+                        {/* Image with overlay camera icon */}
+                        <div className="relative w-44 h-44 rounded-full bg-purple-200 overflow-hidden">
                             <img
                                 src={profileImage}
                                 alt="Profile"
                                 className="w-full h-full object-cover"
                             />
+
+                            {/* Camera Icon Overlay */}
+                            <label className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow cursor-pointer">
+                                <FaCamera size={16} className="text-gray-700" />
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={handleprofileimage}
+                                />
+                            </label>
                         </div>
-                       <label  className="absolute bottom-1 right-1 bg-white p-1 rounded-full shadow cursor-pointer">
-                         <FaCamera size={14} className="text-gray-700" />
-                         <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={handleprofileimage}
-                        />
-                      
-                       </label>
                     </div>
 
                     {/* Form Section */}
