@@ -5,7 +5,7 @@ import { toast } from 'sonner'
 
 const AdminProfile = () => {
   const { updateUser, user } = useUserStore()
-  const [profileImage, setprofileImage] = useState("")
+  const [profileImage, setprofileImage] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEVmZmb////u7u7t7e35+fn19fX29vbx8fH8/PxhYWFkZGRZWVleXl5aWlpWVlZoaGhRUVGGhoZ5eXmwsLCnp6fX19fe3t6RkZG")
 
   const handleprofileimage = (e) => {
     const file = e.target.files[0]
@@ -112,7 +112,7 @@ const AdminProfile = () => {
                         type="tel"
                         disabled
                         placeholder="+1 234 567 890"
-                        value={user?.phoneNumber || ''}
+                        value={user?.contact || ''}
                         className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
                       />
                     </div>

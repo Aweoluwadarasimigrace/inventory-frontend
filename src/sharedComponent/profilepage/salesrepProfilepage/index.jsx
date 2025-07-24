@@ -4,7 +4,7 @@ import { FaCamera } from 'react-icons/fa6'
 
 const SalesProfile = () => {
   const { updateUser, user } = useUserStore()
-  const [profileImage, setprofileImage] = useState("")
+  const [profileImage, setprofileImage] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEVmZmb////u7u7t7e35+fn19fX29vbx8fH8/PxhYWFkZGRZWVleXl5aWlpWVlZoaGhRUVGGhoZ5eXmwsLCnp6fX19fe3t6RkZG")
   const [username, setusername] = useState('')
 
   const handleprofileimage = (e) => {
@@ -164,10 +164,9 @@ const SalesProfile = () => {
                     </div>
                   </div>
                 </div>
-
+<p className='text-red-600'>*N.B: you can only edit your username and image</p>
                 {/* Save Button */}
                 <div className="px-6 py-4 rounded-b-xl flex justify-end">
-                  <p className='text-red-600'>*N.B: you can only edit your username and image</p>
                   <button
                     type="submit"
                     className="px-6 py-2.5 bg-violet-700 hover:bg-violet-800 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-all"
