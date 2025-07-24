@@ -34,7 +34,7 @@ const AdminProfile = () => {
     return (
         <>
         <div className="min-h-screen w-full bg-purple-50">
-  <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+  <div className="max-w-7xl mx-auto p-4 sm:p-3 lg:p-3">
 
     {/* HEADER */}
     <div className="mb-10 text-left">
@@ -52,7 +52,7 @@ const AdminProfile = () => {
         <img
           src={profileImage || user?.profilepicture}
           alt="Profile"
-          className="w-full h-full object-cover rounded-full border-4 border-white"
+          className="w-full h-full object-cover rounded border-4 border-white"
         />
         <label className="absolute bottom-1 right-1 bg-violet-600 p-2 rounded-full cursor-pointer hover:bg-violet-700 transition-colors">
           <FaCamera size={14} className="text-white" />
