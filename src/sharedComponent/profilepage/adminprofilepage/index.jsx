@@ -33,99 +33,105 @@ const AdminProfile = () => {
 
     return (
         <>
-            <div className="min-h-screen w-full bg-purple-100 px-8 py-12">
-                <h2 className="text-4xl font-bold text-purple-800 mb-12 text-center">
-                    My Profile
-                </h2>
+          <div className="min-h-screen w-full bg-gradient-to-b from-purple-50 to-white px-6 py-12">
+  <h2 className="text-4xl font-bold text-purple-900 mb-10 text-center tracking-tight">
+    My Profile
+  </h2>
 
-                <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full max-w-[1300px] mx-auto">
-                    {/* Profile Picture Section */}
-                    <div className="flex flex-col items-center gap-6 w-full lg:w-[30%]">
-                        {/* Image with overlay camera icon */}
-                        <div className="relative w-44 h-44 rounded-full bg-purple-200 overflow-hidden">
-                            <img
-                                src={ profileImage ||user?.profilepicture}
-                                alt="Profile"
-                                className="w-full h-full object-cover"
-                            />
+  <div className="flex flex-col lg:flex-row gap-10 items-start justify-center w-full max-w-[1200px] mx-auto">
+    {/* Profile Picture Section */}
+    <div className="w-full lg:w-[30%] flex justify-center">
+      <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-sm flex flex-col items-center">
+        <div className="relative w-40 h-40 rounded-full bg-gray-100 overflow-hidden shadow">
+          <img
+            src={profileImage || user?.profilepicture}
+            alt="Profile"
+            className="w-full h-full object-cover"
+          />
 
-                            {/* Camera Icon Overlay */}
-                            <label className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow cursor-pointer">
-                                <FaCamera size={16} className="text-gray-700" />
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    onChange={handleprofileimage}
-                                />
-                            </label>
-                        </div>
-                    </div>
+          {/* Camera Icon Overlay */}
+          <label className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow cursor-pointer hover:scale-105 transition">
+            <FaCamera size={16} className="text-purple-700" />
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleprofileimage}
+            />
+          </label>
+        </div>
+        <p className="mt-4 text-lg font-medium text-gray-700">{user?.username}</p>
+        <p className="text-sm text-gray-400">{user?.email}</p>
+      </div>
+    </div>
 
-                    {/* Form Section */}
-                    <form className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8 w-full lg:w-[70%]" onSubmit={submitform}>
-                        <div>
-                            <label className="block text-gray-700 mb-2">Company Name</label>
-                            <input
-                                type="text"
-                                disabled
-                                value={user?.companyName}
-                                placeholder="John Doe"
-                                className="w-full px-4 py-3 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
-                            />
-                        </div>
+    {/* Form Section */}
+    <form
+      className="bg-white p-8 rounded-2xl shadow-md w-full lg:w-[70%] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6"
+      onSubmit={submitform}
+    >
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">Company Name</label>
+        <input
+          type="text"
+          disabled
+          value={user?.companyName}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 focus:outline-purple-400"
+        />
+      </div>
 
-                        <div>
-                            <label className="block text-gray-700 mb-2">Email</label>
-                            <input
-                                type="email"
-                                value={user?.email}
-                                disabled
-                                placeholder="john@example.com"
-                                className="w-full px-4 py-3 bg-white rounded-md"
-                            />
-                        </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
+        <input
+          type="email"
+          disabled
+          value={user?.email}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 focus:outline-purple-400"
+        />
+      </div>
 
-                        <div>
-                            <label className="block text-gray-700 mb-2">Phone Number</label>
-                            <input
-                                type="tel"
-                                disabled
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">Phone Number</label>
+        <input
+          type="tel"
+          disabled
+          placeholder="+1234567890"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700"
+        />
+      </div>
 
-                                placeholder="+1234567890"
-                                className="w-full px-4 py-3 bg-white  rounded-md"
-                            />
-                        </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">Role</label>
+        <input
+          type="text"
+          disabled
+          value={user?.role}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-500"
+        />
+      </div>
 
-                        <div>
-                            <label className="block text-gray-700 mb-2">Role</label>
-                            <input
-                                type="text"
-                                placeholder="Admin"
-                                disabled
-                                value={user?.role}
-                                className="w-full px-4 py-3 bg-gray-100 text-gray-500 border rounded-md"
-                            />
-                        </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">Country</label>
+        <input
+          type="text"
+          disabled
+          value={user?.country}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700"
+        />
+      </div>
 
-                        <div>
-                            <label className="block text-gray-700 mb-2">country</label>
-                            <input
-                                type="text"
-                                disabled
-                                value={user?.country}
-                                placeholder="123 Business St"
-                                className="w-full px-4 py-3 bg-white rounded-md"
-                            />
-                        </div>
-                        <div className="flex justify-center mt-14 gap-6">
-                            <button className="px-6 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-800 transition" type='submit'>
-                                Save Changes
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+      <div className="sm:col-span-2 flex justify-end mt-6">
+        <button
+          type="submit"
+          className="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg shadow transition-all"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
         </>
     )
 }

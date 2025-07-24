@@ -4,8 +4,7 @@ export const fetchUser = async () => {
   const res = await apiClient.get("/user/getsingleuser", {
     withCredentials: true,
   });
-  console.log(res.data.user);
-
+  
   return res.data.user
 };
 
