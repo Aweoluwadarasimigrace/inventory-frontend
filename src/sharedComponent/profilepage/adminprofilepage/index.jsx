@@ -39,7 +39,7 @@ const AdminProfile = () => {
           {/* HEADER */}
           <div className="mb-10 text-left">
             <h1 className="text-3xl font-bold text-slate-800 tracking-tight">
-              My Profile
+             user's profile
             </h1>
             <p className="text-slate-500 mt-1">
               Manage your personal and company information.
@@ -47,14 +47,14 @@ const AdminProfile = () => {
           </div>
 
           {/* PROFILE IMAGE ON TOP */}
-          <div className="w-full flex justify-start mb-10">
+          <div className="w-full flex justify-start mb-10 items-center">
             <div className="relative w-36 h-36 rounded-full">
               <img
                 src={profileImage || user?.profilepicture}
                 alt="Profile"
                 className="w-full h-full object-cover rounded border-4 border-white"
               />
-              <label className="absolute bottom-1 right-1 bg-violet-600 p-2 rounded-full cursor-pointer hover:bg-violet-700 transition-colors">
+              <label className="absolute bottom-1 right-1 bg-violet-300 p-2 rounded-full cursor-pointer hover:bg-violet-700 transition-colors">
                 <FaCamera size={14} className="text-white" />
                 <input
                   type="file"
