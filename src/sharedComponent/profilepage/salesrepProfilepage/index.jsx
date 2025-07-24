@@ -1,5 +1,6 @@
 import useUserStore from '@/store/getCurrentUser'
 import React, { useState } from 'react'
+import { FaCamera } from 'react-icons/fa6'
 
 const SalesProfile = () => {
   const { updateUser, user } = useUserStore()
