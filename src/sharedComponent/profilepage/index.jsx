@@ -11,6 +11,8 @@ const ProfilePage = () => {
         return <AdminProfile/>
     }else if(user.role === "sales"){
         return <SalesProfile/>
+    }else{
+        return <div className="text-red-500">Unknown user role</div>
     }
 }
 
