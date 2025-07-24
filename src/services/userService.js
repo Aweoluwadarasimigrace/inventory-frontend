@@ -11,6 +11,6 @@ export const fetchUser = async () => {
 
 
 export const updateUser = async(formdata)=>{
-    const response = await apiClient.patch("/user/updateUser", formdata, {withCredentials:true})
+    const response = await apiClient.patch("/user/updateUser", {profilepicture: formdata.profilepicture}, {withCredentials:true})
 return response.data.user
 }
