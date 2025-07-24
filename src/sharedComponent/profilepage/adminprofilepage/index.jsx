@@ -45,16 +45,16 @@ const AdminProfile = () => {
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <input
+                       <label  className="absolute bottom-1 right-1 bg-white p-1 rounded-full shadow cursor-pointer">
+                         <FaCamera size={14} className="text-gray-700" />
+                         <input
                             type="file"
-
                             accept="image/*"
                             className="hidden"
                             onChange={handleprofileimage}
                         />
-                        <button className="px-5 py-2 rounded-md bg-purple-600 text-white hover:bg-purple-700">
-                            Change Photo
-                        </button>
+                      
+                       </label>
                     </div>
 
                     {/* Form Section */}
