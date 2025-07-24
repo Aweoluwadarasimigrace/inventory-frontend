@@ -1,5 +1,5 @@
 import useUserStore from '@/store/getCurrentUser'
-import React from 'react'
+import React, { useEffect } from 'react'
 import AdminProfile from './adminprofilepage'
 import SalesProfile from './salesrepProfilepage'
 
