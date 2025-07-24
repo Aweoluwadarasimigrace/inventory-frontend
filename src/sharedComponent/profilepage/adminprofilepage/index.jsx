@@ -4,7 +4,7 @@ import { FaCamera } from 'react-icons/fa6'
 import { toast } from 'sonner'
 
 const AdminProfile = () => {
-    const { updateuser, user } = useUserStore()
+    const { updateUser, user } = useUserStore()
     const [profileImage, setprofileImage] = useState("")
 
     const handleprofileimage = (e) => {
@@ -23,7 +23,7 @@ const AdminProfile = () => {
         const formData = { profileImage }
         console.log(formData)
         try {
-            await updateuser(formData)
+            await updateUser(formData)
             toast.success("profile image updated usccessfully")
         } catch (error) {
             console.log(error)
