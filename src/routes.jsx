@@ -9,6 +9,7 @@ import Login from "./(auth)/Login user";
 import VerifyEmail from "./(auth)/verify email";
 import ProfilePage from "./sharedComponent/profilepage";
 import AdminProfile from "./sharedComponent/profilepage/adminprofilepage";
+import SalesProfile from "./sharedComponent/profilepage/salesrepProfilepage";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,8 @@ export const router = createBrowserRouter([
     path: "/profile",
     children: [
       { index: true, Component: ProfilePage },
-      {path: "admin", Component: AdminProfile}
+      {path: "admin", Component: AdminProfile},
+      {path: "sales", Component: SalesProfile}
     ]
   },
   {
