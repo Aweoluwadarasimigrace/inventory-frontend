@@ -79,10 +79,11 @@ const SalesProfile = () => {
                   <h3 className="text-lg font-semibold text-slate-800">
                     Profile Settings
                   </h3>
+                  <p className='text-red-600'>*N.B: you can only edit your username and image</p>
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
                     <div>
                       <label className="block text-sm font-medium text-slate-600 mb-3">
-                      lastname
+                      firstname
                       </label>
                       <input
                         type="text"
@@ -164,7 +165,6 @@ const SalesProfile = () => {
                     </div>
                   </div>
                 </div>
-<p className='text-red-600'>*N.B: you can only edit your username and image</p>
                 {/* Save Button */}
                 <div className="px-6 py-4 rounded-b-xl flex justify-end">
                   <button
