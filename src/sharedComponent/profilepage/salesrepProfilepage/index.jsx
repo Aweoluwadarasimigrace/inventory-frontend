@@ -4,7 +4,7 @@ import { FaCamera } from 'react-icons/fa6'
 
 const SalesProfile = () => {
   const { updateUser, user } = useUserStore()
-  const [profileImage, setprofileImage] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEVmZmb////u7u7t7e35+fn19fX29vbx8fH8/PxhYWFkZGRZWVleXl5aWlpWVlZoaGhRUVGGhoZ5eXmwsLCnp6fX19fe3t6RkZG")
+  const [profileImage, setprofileImage] = useState("https://gravatar.com/avatar/ad5cd6f80b980eb13876aeddb05590ae?s=400&d=identicon&r=x")
   const [username, setusername] = useState('')
 
   const handleprofileimage = (e) => {
