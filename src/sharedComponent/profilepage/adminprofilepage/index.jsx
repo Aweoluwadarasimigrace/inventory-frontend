@@ -64,6 +64,7 @@ const AdminProfile = () => {
           />
         </label>
       </div>
+      <p>Upload an image below 2 MB, Accepted File format JPG, PNG</p>
     </div>
 
     <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -80,7 +81,7 @@ const AdminProfile = () => {
             </h3>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-1">
+                <label className="block text-sm font-medium text-slate-600 mb-3">
                   Company Name
                 </label>
                 <input
@@ -92,19 +93,19 @@ const AdminProfile = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-1">
+                <label className="block text-sm font-medium text-slate-600 mb-3">
                   Email
                 </label>
                 <input
                   type="email"
                   disabled
                   value={user?.email || ''}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-1">
+                <label className="block text-sm font-medium text-slate-600 mb-3">
                   Phone Number
                 </label>
                 <input
@@ -112,31 +113,31 @@ const AdminProfile = () => {
                   disabled
                   placeholder="+1 234 567 890"
                   value={user?.phoneNumber || ''}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-1">
+                <label className="block text-sm font-medium text-slate-600 mb-3">
                   Role
                 </label>
                 <input
                   type="text"
                   disabled
                   value={user?.role || ''}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-500 cursor-not-allowed focus:outline-none"
+                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg  text-slate-500 cursor-not-allowed focus:outline-none"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium text-slate-600 mb-1">
+                <label className="block text-sm font-medium text-slate-600 mb-3">
                   Country
                 </label>
                 <input
                   type="text"
                   disabled
                   value={user?.country || ''}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
                 />
               </div>
             </div>
