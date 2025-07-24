@@ -7,6 +7,8 @@ import ResendEmailForm from "./(auth)/resend email";
 import Dashboard from "./dashboard";
 import Login from "./(auth)/Login user";
 import VerifyEmail from "./(auth)/verify email";
+import ProfilePage from "./sharedComponent/profilepage";
+import AdminProfile from "./sharedComponent/profilepage/adminprofilepage";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +28,17 @@ export const router = createBrowserRouter([
     ],
   },
   {
+    path: "/profile",
+    children: [
+      { index: true, Component: ProfilePage },
+      {path: "admin", Component: AdminProfile}
+    ]
+  },
+  {
     path: "/dashboard",
-    children: [{ index: true, Component: Dashboard }],
+    children: [
+      {index: true, Component: Dashboard },
+],
+
   },
 ]);
