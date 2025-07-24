@@ -67,6 +67,7 @@ const AdminProfile = () => {
                             <label className="block text-gray-700 mb-2">Company Name</label>
                             <input
                                 type="text"
+                                disabled
                                 value={user?.companyName}
                                 placeholder="John Doe"
                                 className="w-full px-4 py-3 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
