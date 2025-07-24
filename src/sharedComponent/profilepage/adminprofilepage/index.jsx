@@ -47,7 +47,7 @@ const AdminProfile = () => {
     </div>
 
     {/* PROFILE IMAGE ON TOP */}
-    <div className="w-full flex justify-center mb-10">
+    <div className="w-full flex justify-start mb-10">
       <div className="relative w-36 h-36 rounded-full">
         <img
           src={profileImage || user?.profilepicture}
@@ -87,7 +87,7 @@ const AdminProfile = () => {
                   type="text"
                   disabled
                   value={user?.companyName || ''}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
                 />
               </div>
 
