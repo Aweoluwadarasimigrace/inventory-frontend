@@ -33,105 +33,126 @@ const AdminProfile = () => {
 
     return (
         <>
-          <div className="min-h-screen w-full bg-gradient-to-b from-purple-50 to-white px-6 py-12">
-  <h2 className="text-4xl font-bold text-purple-900 mb-10 text-center tracking-tight">
-    My Profile
-  </h2>
+           <div className="min-h-screen w-full bg-slate-50">
+        <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
 
-  <div className="flex flex-col lg:flex-row gap-10 items-start justify-center w-full max-w-[1200px] mx-auto">
-    {/* Profile Picture Section */}
-    <div className="w-full lg:w-[30%] flex justify-center">
-      <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-sm flex flex-col items-center">
-        <div className="relative w-40 h-40 rounded-full bg-gray-100 overflow-hidden shadow">
-          <img
-            src={profileImage || user?.profilepicture}
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
+          {/* HEADER */}
+          <div className="mb-10">
+            <h1 className="text-3xl font-bold text-slate-800 tracking-tight">
+              My Profile
+            </h1>
+            <p className="text-slate-500 mt-1">Manage your personal and company information.</p>
+          </div>
 
-          {/* Camera Icon Overlay */}
-          <label className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow cursor-pointer hover:scale-105 transition">
-            <FaCamera size={16} className="text-purple-700" />
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleprofileimage}
-            />
-          </label>
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+
+            {/* LEFT SIDE: Profile card */}
+            <div className="w-full lg:w-[350px] lg:flex-shrink-0">
+              <div className="border border-slate-200 bg-white rounded-xl p-6 flex flex-col items-center text-center">
+                
+                {/* Profile Picture with Upload */}
+                <div className="relative w-32 h-32 rounded-full">
+                  <img
+                    src={profileImage || user?.profilepicture}
+                    alt="Profile"
+                    className="w-full h-full object-cover rounded-full ring-4 ring-slate-100"
+                  />
+                  <label className="absolute bottom-1 right-1 bg-violet-600 p-2 rounded-full cursor-pointer hover:bg-violet-700 transition-colors">
+                    <FaCamera size={14} className="text-white" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleprofileimage}
+                    />
+                  </label>
+                </div>
+
+                <h2 className="mt-4 text-xl font-semibold text-slate-800">{user?.username}</h2>
+                <p className="text-sm text-slate-500">{user?.email}</p>
+              </div>
+            </div>
+
+            {/* RIGHT SIDE: Form for editing profile details */}
+            <div className="w-full">
+              <form
+                className="border border-slate-200 bg-white rounded-xl"
+                onSubmit={submitform}
+              >
+                <div className="p-6 md:p-8">
+                  <h3 className="text-lg font-semibold text-slate-800">Profile Settings</h3>
+                  <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
+                    
+                    {/* Form Fields */}
+                    <div>
+                      <label className="block text-sm font-medium text-slate-600 mb-1">Company Name</label>
+                      <input
+                        type="text"
+                        disabled
+                        value={user?.companyName || ''}
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-600 mb-1">Email</label>
+                      <input
+                        type="email"
+                        disabled
+                        value={user?.email || ''}
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-600 mb-1">Phone Number</label>
+                      <input
+                        type="tel"
+                        disabled
+                        placeholder="+1 234 567 890"
+                        value={user?.phoneNumber || ''}
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-600 mb-1">Role</label>
+                      <input
+                        type="text"
+                        disabled
+                        value={user?.role || ''}
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-500 cursor-not-allowed focus:outline-none"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm font-medium text-slate-600 mb-1">Country</label>
+                      <input
+                        type="text"
+                        disabled
+                        value={user?.country || ''}
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-700 cursor-not-allowed focus:outline-none"
+                      />
+                    </div>
+
+                  </div>
+                </div>
+                
+                {/* Form Footer with Save Button */}
+                <div className="bg-slate-50 px-6 py-4 rounded-b-xl flex justify-end">
+                  <button
+                    type="submit"
+                    className="px-6 py-2.5 bg-violet-700 hover:bg-violet-800 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-all"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+
+          </div>
         </div>
-        <p className="mt-4 text-lg font-medium text-gray-700">{user?.username}</p>
-        <p className="text-sm text-gray-400">{user?.email}</p>
       </div>
-    </div>
-
-    {/* Form Section */}
-    <form
-      className="bg-white p-8 rounded-2xl shadow-md w-full lg:w-[70%] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6"
-      onSubmit={submitform}
-    >
-      <div>
-        <label className="block text-sm font-medium text-gray-600 mb-1">Company Name</label>
-        <input
-          type="text"
-          disabled
-          value={user?.companyName}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 focus:outline-purple-400"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
-        <input
-          type="email"
-          disabled
-          value={user?.email}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 focus:outline-purple-400"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-600 mb-1">Phone Number</label>
-        <input
-          type="tel"
-          disabled
-          placeholder="+1234567890"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-600 mb-1">Role</label>
-        <input
-          type="text"
-          disabled
-          value={user?.role}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-500"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-600 mb-1">Country</label>
-        <input
-          type="text"
-          disabled
-          value={user?.country}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700"
-        />
-      </div>
-
-      <div className="sm:col-span-2 flex justify-end mt-6">
-        <button
-          type="submit"
-          className="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg shadow transition-all"
-        >
-          Save Changes
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-
         </>
     )
 }
