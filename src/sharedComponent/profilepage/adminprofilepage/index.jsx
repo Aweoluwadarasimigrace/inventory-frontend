@@ -44,7 +44,7 @@ const AdminProfile = () => {
                         {/* Image with overlay camera icon */}
                         <div className="relative w-44 h-44 rounded-full bg-purple-200 overflow-hidden">
                             <img
-                                src={profileImage}
+                                src={user?.profilepicture}
                                 alt="Profile"
                                 className="w-full h-full object-cover"
                             />
