@@ -21,6 +21,7 @@ const AdminProfile = () => {
     const submitform = async (e) => {
         e.preventDefault()
         const formData = { profileImage }
+        console.log(formData)
         try {
             await updateuser(formData)
             toast.success("profile image updated usccessfully")
@@ -66,8 +67,7 @@ const AdminProfile = () => {
                             <label className="block text-gray-700 mb-2">Company Name</label>
                             <input
                                 type="text"
-                                disabled
-                                value={user?.companyName1}
+                                value={user?.companyName}
                                 placeholder="John Doe"
                                 className="w-full px-4 py-3 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
                             />
@@ -116,14 +116,12 @@ const AdminProfile = () => {
                                 className="w-full px-4 py-3 bg-white rounded-md"
                             />
                         </div>
+                        <div className="flex justify-center mt-14 gap-6">
+                            <button className="px-6 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-800 transition" type='submit'>
+                                Save Changes
+                            </button>
+                        </div>
                     </form>
-                </div>
-
-                {/* Save / Cancel Buttons */}
-                <div className="flex justify-center mt-14 gap-6">
-                    <button className="px-6 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-800 transition" type='submit'>
-                        Save Changes
-                    </button>
                 </div>
             </div>
         </>
