@@ -10,6 +10,8 @@ import VerifyEmail from "./(auth)/verify email";
 import ProfilePage from "./sharedComponent/profilepage";
 import AdminProfile from "./sharedComponent/profilepage/adminprofilepage";
 import SalesProfile from "./sharedComponent/profilepage/salesrepProfilepage";
+import CreateuserForm from "./admin/users/createusers";
+import CreateUserButton from "./admin/users";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +21,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/auth",
-    // Component:
     children: [
       { index: true, Component: RegisterUser },
       { path: "login", Component: Login },
@@ -40,6 +41,7 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     children: [
       {index: true, Component: Dashboard },
+      {path: "createuser", Component: CreateUserButton}
 ],
 
   },

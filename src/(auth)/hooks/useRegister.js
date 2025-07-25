@@ -29,7 +29,6 @@ export const useRegister = () => {
       }
       return updated;
     });
-    console.log(formData, "form data");
   };
 
   const submitForm = async (e) => {
@@ -60,19 +59,16 @@ export const useRegister = () => {
     }
     seterrors({}); // clear previous errors
     setisLoading(true);
-    console.log("is loading is laoding")
     try {
       const res = await apiClient.post("/auth/register", formData, {
         withCredentials: true,
       });
-      console.log(res);
       if (res.data) {
         toast.success("registration successful");
         navigate("/auth/verify-message", { state: { email: formData.email } });
       }
     } catch (error) {
       toast.success("not successful");
-      console.log(error);
     } finally {
       setisLoading(false);
     }

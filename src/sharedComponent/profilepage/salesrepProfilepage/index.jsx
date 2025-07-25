@@ -111,7 +111,7 @@ const SalesProfile = () => {
                         type="text"
                         onChange={(e)=>setusername(e.target.value)}
                         value={user?.username || ''}
-                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 focus:outline-none"
                       />
                     </div>
 
@@ -123,7 +123,7 @@ const SalesProfile = () => {
                         type="email"
                         disabled
                         value={user?.email || ''}
-                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 focus:outline-none"
                       />
                     </div>
 
@@ -136,7 +136,7 @@ const SalesProfile = () => {
                         disabled
                         placeholder="+1 234 567 890"
                         value={user?.contact || ''}
-                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700  focus:outline-none"
                       />
                     </div>
 
@@ -148,7 +148,7 @@ const SalesProfile = () => {
                         type="text"
                         disabled
                         value={user?.role || ''}
-                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg  text-slate-500 cursor-not-allowed focus:outline-none"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg  text-slate-500  focus:outline-none"
                       />
                     </div>
 
@@ -160,7 +160,7 @@ const SalesProfile = () => {
                         type="text"
                         disabled
                         value={user?.country || ''}
-                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700 cursor-not-allowed focus:outline-none"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-slate-700  focus:outline-none"
                       />
                     </div>
                   </div>
