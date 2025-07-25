@@ -43,7 +43,7 @@ export const useCreateUser = () => {
       !formData.number ||
       !formData.password ||
       !formData.role ||
-      !profileImage.profilepicture
+      !profileImage
     ) {
       seterrors({
         firstname: !formData.firstname ? "field is required" : "",
