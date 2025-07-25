@@ -62,7 +62,9 @@ export const useCreateUser = () => {
     seterrors({});
     setisloading(true);
     const payload = { ...formData, profilepicture: profileImage };
+    console.log(payload)
     try {
+      console.log("is loading ")
       const res = await apiClient.post("/user/createuser", payload, {
         withCredentials: true,
       });
