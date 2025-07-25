@@ -70,6 +70,11 @@ export const useCreateUser = () => {
       });
       if (res.data) {
         toast.success("user created successfully");
+        setdialog(false);
+
+    // ✅ Clear form
+    setformData({});
+    setProfileImage("");
       }
     } catch (error) {
       toast.success("not successful");
@@ -86,6 +91,7 @@ export const useCreateUser = () => {
     handleProfileimage,
     createUser,
     isloading,
-    setdialog
+    setdialog,
+    formData
   };
 };

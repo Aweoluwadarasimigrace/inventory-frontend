@@ -5,7 +5,7 @@ import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6'
 
 const CreateuserForm = () => {
    const [showPassword, setshowPassword] = useState(false);
-  const { errors, changeFormDetails, handleProfileimage, createUser, isloading, setdialog } = useCreateUser()
+  const { errors, changeFormDetails, handleProfileimage, createUser, isloading, setdialog, formData } = useCreateUser()
   const { countryValue } = useRegister()
   const [selectedcode, setselectedcode] = useState();
   const [isOpen, setisOpen] = useState(false);
@@ -26,6 +26,7 @@ const CreateuserForm = () => {
             <input
               type="text"
               name='firstname'
+               value={formData.firstname || ""}
               placeholder="Enter your firstname"
               onChange={changeFormDetails}
               className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -40,6 +41,7 @@ const CreateuserForm = () => {
               type="text"
               name='lastname'
               onChange={changeFormDetails}
+               value={formData.lastname || ""}
               placeholder="Enter your lastname"
               className="w-full border border-slate-300 rounded-md px-4 py-2"
             />
@@ -52,6 +54,7 @@ const CreateuserForm = () => {
               type="text"
               name='username'
               onChange={changeFormDetails}
+               value={formData.username || ""}
               placeholder="Enter username"
               className="w-full border border-slate-300 rounded-md px-4 py-2"
             />
@@ -65,6 +68,7 @@ const CreateuserForm = () => {
               type="email"
               name='email'
               onChange={changeFormDetails}
+               value={formData.email || ""}
               placeholder="Enter email"
               className="w-full border border-slate-300 rounded-md px-4 py-2"
             />
@@ -103,6 +107,7 @@ const CreateuserForm = () => {
                 type="tel"
                 placeholder="Enter phone"
                 name='number'
+                 value={formData.number || ""}
                 onChange={changeFormDetails}
                 className="flex-1 border border-slate-300 rounded-md px-4 py-2"
               />
@@ -118,7 +123,7 @@ const CreateuserForm = () => {
               type={showPassword? "text" : "password"}
               name='password'
               onChange={changeFormDetails}
-
+ value={formData.password || ""}
               placeholder="Enter password"
               className="w-full border border-slate-300 rounded-md px-4 py-2"
             />
@@ -131,7 +136,7 @@ const CreateuserForm = () => {
           {/* 8. gender */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Gender</label>
-            <select name='gender' onChange={changeFormDetails} className="w-full border border-slate-300 rounded-md px-4 py-2">
+            <select name='gender' onChange={changeFormDetails}  value={formData.gender || ""} className="w-full border border-slate-300 rounded-md px-4 py-2">
               <option value="">Select role</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -143,7 +148,7 @@ const CreateuserForm = () => {
           {/* 9. Role */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Role</label>
-            <select name='role' onChange={changeFormDetails} className="w-full border border-slate-300 rounded-md px-4 py-2">
+            <select name='role' onChange={changeFormDetails}  value={formData.role || ""} className="w-full border border-slate-300 rounded-md px-4 py-2">
               <option value="">Select role</option>
               <option value="product manager">product manager</option>
               <option value="sales representative">sales reprsentative</option>
