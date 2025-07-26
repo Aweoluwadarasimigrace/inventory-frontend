@@ -21,7 +21,7 @@ const DisplayUserTable = () => {
           </tr>
         </thead>
         <tbody>
-          {users?.map((user) => (
+          {users.map((user) => (
             <tr key={user._id} className="border-t hover:bg-slate-50">
               <td className="p-3">
                 <img
