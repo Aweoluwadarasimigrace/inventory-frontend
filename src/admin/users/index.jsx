@@ -12,13 +12,12 @@ const AdminUsersPage = () => {
             </div>
         )
     }
-
     if (users.length === 0) {
         return (
-            <div className="text-center flex items-center justify-center mt-10 text-white bg-purple-500">
+            <div className="text-center flex items-center justify-center mt-10 text-white bg-purple-500 h-full w-full">
                 <p className="text-lg">No users created yet.</p>
             </div>
-        )
+        ) 
     }
     return (
         <div>
