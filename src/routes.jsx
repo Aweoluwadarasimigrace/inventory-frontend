@@ -11,7 +11,8 @@ import ProfilePage from "./sharedComponent/profilepage";
 import AdminProfile from "./sharedComponent/profilepage/adminprofilepage";
 import SalesProfile from "./sharedComponent/profilepage/salesrepProfilepage";
 import CreateuserForm from "./admin/users/createusers";
-import CreateUserButton from "./admin/users";
+import CreateUserButton from "./admin/users/createusers/createuserbutton";
+import AdminUsersPage from "./admin/users";
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +42,8 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     children: [
       {index: true, Component: Dashboard },
-      {path: "createuser", Component: CreateUserButton}
+      {path: "createuser", Component: AdminUsersPage}
+      
 ],
 
   },
