@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFetchusers } from '../hooks/useFetchusers'
-
+import { FaTrash, FaEdit } from "react-icons/fa";
 const DisplayUserTable = () => {
     const {users} = useFetchusers()
   return (
@@ -39,14 +39,12 @@ const DisplayUserTable = () => {
               <td className="p-3">{user.contact}</td>
               <td className="p-3 flex items-center gap-4 justify-center">
                 <button
-                  onClick={() => onUpdate(user)}
                   className="text-blue-600 hover:text-blue-800"
                   title="Edit"
                 >
                   <FaEdit />
                 </button>
                 <button
-                  onClick={() => onDelete(user._id)}
                   className="text-red-600 hover:text-red-800"
                   title="Delete"
                 >
