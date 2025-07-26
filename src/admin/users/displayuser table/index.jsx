@@ -3,6 +3,7 @@ import { useFetchusers } from '../hooks/useFetchusers'
 import { FaTrash, FaEdit } from "react-icons/fa";
 const DisplayUserTable = () => {
     const {users} = useFetchusers()
+    console.log(users)
   return (
     <div>
         <div className="overflow-x-auto">
