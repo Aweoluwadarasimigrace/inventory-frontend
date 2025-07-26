@@ -13,9 +13,9 @@ export const useFetchusers = () => {
         withCredentials: true,
       });
       if (res.data) {
-        setUsers(res.data);
+        setUsers(res.data.salesusers);
       }
-      console.log(res.data);
+      console.log(res.data.salesusers);
     } catch (error) {
       toast.error("error fetching user");
     } finally {
