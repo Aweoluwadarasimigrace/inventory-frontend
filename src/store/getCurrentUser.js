@@ -1,4 +1,3 @@
-import { apiClient } from "@/lib/client";
 import { fetchUser, updateUser } from "@/services/userService";
 import { create } from "zustand";
 

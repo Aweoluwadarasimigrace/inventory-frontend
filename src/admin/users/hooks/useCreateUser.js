@@ -1,13 +1,15 @@
 import { apiClient } from "@/lib/client";
+import useAdminUserStore from "@/store/getUserCreatedByAdmin";
 import { useState } from "react";
 import { toast } from "sonner";
+
 
 export const useCreateUser = () => {
   const [formData, setformData] = useState({});
   const [errors, seterrors] = useState({});
   const [profileImage, setProfileImage] = useState("");
-  const [dialog, setdialog] = useState(false);
   const [isloading, setisloading] = useState(false);
+  const {fetchAdminUser}= useAdminUserStore()
 
   const handleProfileimage = (e) => {
     const file = e.target.files[0];
@@ -54,7 +56,7 @@ export const useCreateUser = () => {
         password: !formData.password ? "field is required" : "",
         profilepicture: !profileImage ? "field is required" : "",
         gender: !formData.gender ? "field is required" : "",
-         role: !formData.role ? "field is required" : "",
+        role: !formData.role ? "field is required" : "",
       });
       return;
     }
@@ -62,36 +64,31 @@ export const useCreateUser = () => {
     seterrors({});
     setisloading(true);
     const payload = { ...formData, profilepicture: profileImage };
-    console.log(payload)
+    console.log(payload);
     try {
-      console.log("is loading ")
+      console.log("is loading ");
       const res = await apiClient.post("/user/createuser", payload, {
         withCredentials: true,
       });
       if (res.data) {
         toast.success("user created successfully");
-        setdialog(false);
-
-    // ✅ Clear form
-    setformData({});
-    setProfileImage("");
+        setformData({});
+        setProfileImage("");
+       await fetchAdminUser()
       }
     } catch (error) {
       toast.success("not successful");
       console.log(error);
     } finally {
       setisloading(false);
-      setdialog(false);
     }
   };
   return {
-    dialog,
     errors,
     changeFormDetails,
     handleProfileimage,
     createUser,
     isloading,
-    setdialog,
-    formData
+    formData,
   };
 };
