@@ -34,7 +34,7 @@ export const useCreateUser = () => {
     });
   };
 
-  const createUser = async (e) => {
+  const createUser = async (e, closeDialog) => {
     e.preventDefault();
 
     if (
@@ -74,7 +74,7 @@ export const useCreateUser = () => {
         toast.success("user created successfully");
         setformData({});
         setProfileImage("");
-       await fetchAdminUser()
+       await fetchAdminUser();
       }
     } catch (error) {
       toast.success("not successful");

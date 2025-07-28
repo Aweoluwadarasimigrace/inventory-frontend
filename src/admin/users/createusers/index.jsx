@@ -14,7 +14,7 @@ const CreateuserForm = ({ closeDialog }) => {
   };
   return (
     <div>
-      <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={() => createUser(closeDialog)}>
+      <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={(e) => createUser(e, closeDialog)}>
 
         <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create New User</h2>
 

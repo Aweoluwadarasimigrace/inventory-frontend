@@ -1,4 +1,4 @@
-import { fetchUser, updateUser } from "@/services/userService";
+import {fetchUserData, updateUser } from "@/services/userService";
 import { create } from "zustand";
 
 const useUserStore = create((set) => ({
@@ -9,7 +9,8 @@ const useUserStore = create((set) => ({
   fetchUser: async () => {
     set({ loading: true, error: null });
     try {
-      const userData = await fetchUser();
+      const userData = await fetchUserData();
+      console.log(userData)
       set({ user: userData, loading: false });
     } catch (error) {
       set({

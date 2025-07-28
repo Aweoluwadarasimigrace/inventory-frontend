@@ -13,6 +13,7 @@ import SalesProfile from "./sharedComponent/profilepage/salesrepProfilepage";
 import CreateuserForm from "./admin/users/createusers";
 import CreateUserButton from "./admin/users/createusers/createuserbutton";
 import AdminUsersPage from "./admin/users";
+import Sidebar from "./dashboard/component";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,8 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     children: [
       {index: true, Component: Dashboard },
-      {path: "createuser", Component: AdminUsersPage}
+      {path: "createuser", Component: AdminUsersPage},
+      {path: "side", Component: Sidebar}
       
 ],
 
