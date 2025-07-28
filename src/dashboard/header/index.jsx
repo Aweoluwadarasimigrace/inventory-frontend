@@ -36,7 +36,7 @@ const Header = ({ user }) => {
                                 className="w-10 h-10 rounded-full object-cover border-b-2 border-purple-500"
                             />
                             <div className='flex flex-col'>
-                                <span className="mt-1 text-sm text-gray-800 underline decoration-purple-500">
+                                <span className="mt-1 text-[14px] font-bold text-gray-800 ">
                                     {user.companyName}
                                 </span>
                                  <span className="text-sm font-medium text-gray-500">
