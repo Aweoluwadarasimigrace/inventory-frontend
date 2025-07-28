@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-
+import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 const Header = ({user}) => { 
      const [open, setopen] = useState(false)
   return (
