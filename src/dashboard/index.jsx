@@ -2,7 +2,7 @@ import useUserStore from '@/store/getCurrentUser'
 import React, { useEffect } from 'react'
 import Header from './header'
 import Sidebar from './component'
-import Loader from '@/sharedComponent/loading'
+import Loader from '@/sharedComponent/loader'
 
 const Dashboard = () => {
   const {fetchUser,user}= useUserStore()

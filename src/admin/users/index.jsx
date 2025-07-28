@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import DisplayUserTable from './displayuser table'
 import CreateUserButton from './createusers/createuserbutton'
 import useAdminUserStore from '@/store/getUserCreatedByAdmin'
-import Loader from '@/sharedComponent/loading'
+import Loader from '@/sharedComponent/loader'
 
 const AdminUsersPage = () => {
     const {adminUser, loading, fetchAdminUser}= useAdminUserStore()

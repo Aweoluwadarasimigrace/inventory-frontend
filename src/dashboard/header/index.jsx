@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
+import NotificationBell from '../component/notification bell';
 const Header = ({ user }) => {
     const [open, setopen] = useState(false)
     return (
@@ -10,6 +11,9 @@ const Header = ({ user }) => {
                 <img src="/frontend-removebg-preview (1).png" alt="Logo" className="h-8 w-auto object-contain" />
             </div>
 
+            <div>
+                <NotificationBell />
+            </div>
             <div className="relative">
                 <div
                     onClick={() => setopen(!open)}
@@ -24,11 +28,11 @@ const Header = ({ user }) => {
 
                 {/* Animated Dropdown */}
                 <div
-                    className={`absolute right-0 mt-2 w-52 bg-white border rounded-lg shadow-md z-50 transition-all duration-200 ease-out transform ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+                    className={`absolute right-0 mt-2 w-52 bg-white rounded-lg shadow-md z-50 transition-all duration-200 ease-out transform ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
                         }`}
                 >
                     {/* User Info */}
-                    <div className="px-4 py-3 border-b">
+                    <div className="px-4 py-3 border-b border-purple-400">
                         <div className="flex items-center gap-3">
                             <img
                                 src={user.profilepicture}
@@ -39,7 +43,7 @@ const Header = ({ user }) => {
                                 <span className="mt-1 text-[14px] font-bold text-gray-800 ">
                                     {user.companyName}
                                 </span>
-                                 <span className="text-sm font-medium text-gray-500">
+                                <span className="text-sm font-medium text-gray-500">
                                     {user.role}
                                 </span>
                             </div>
