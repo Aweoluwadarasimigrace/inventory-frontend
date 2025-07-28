@@ -2,6 +2,7 @@
 import React from 'react'
 
 const Header = ({user}) => { 
+    console.log(user, "lol")
   return (
      <header className="w-full bg-white shadow-md px-4 py-3 flex items-center justify-between">
       {/* Logo */}

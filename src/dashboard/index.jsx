@@ -6,8 +6,6 @@ import Sidebar from './component'
 const Dashboard = () => {
   const {fetchUser,user}= useUserStore()
 
-  
-
     useEffect(() => {
     fetchUser()
   }, [])
