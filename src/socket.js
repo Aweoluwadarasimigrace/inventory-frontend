@@ -1,6 +1,6 @@
 import { io } from "socket.io-client"
+const baseURL = import.meta.env.VITE_PUBLIC_BASE_URL
 
-
-const socket = io(VITE_PUBLIC_BASE_URL, {withCredentials:true})
+const socket = io(baseURL, {withCredentials:true})
 
 export default socket
