@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 import NotificationBell from '../component/notification bell';
+import { FaBars } from 'react-icons/fa6';
 const Header = ({ user }) => {
     const [open, setopen] = useState(false)
     return (
