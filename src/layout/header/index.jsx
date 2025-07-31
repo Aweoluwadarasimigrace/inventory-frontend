@@ -2,25 +2,24 @@
 import React, { useState } from 'react'
 import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 import NotificationBell from '../component/notification bell';
-import { FaBars } from 'react-icons/fa6';
 const Header = ({ user }) => {
     const [open, setopen] = useState(false)
     return (
-      <header className="w-full bg-white shadow-md px-4 py-3 flex items-center justify-between">
-      {/* Menu Button */}
-      <button className="md:hidden text-xl text-gray-700">
-        <FaBars />
-      </button>
+     <header className="w-full bg-white shadow-md px-4 py-3 flex items-center justify-between">
+      {/* Left Side - Header Title or nothing */}
+      <h1 className="text-lg font-semibold text-gray-700"></h1>
 
-      {/* Add Sales Button - shown on medium and above */}
-      <button className="hidden md:inline-flex bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
-        Add Sales
-      </button>
-
-      {/* Right side: Notification + Profile */}
+      {/* Right Side: Add Sales + Notification + Profile */}
       <div className="flex items-center gap-4 relative">
+        {/* Add Sales Button */}
+        <button className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition text-sm">
+          Add Sales
+        </button>
+
+        {/* Notification Bell */}
         <NotificationBell />
 
+        {/* Profile Section */}
         <div
           onClick={() => setopen(!open)}
           className="flex items-center gap-2 cursor-pointer"

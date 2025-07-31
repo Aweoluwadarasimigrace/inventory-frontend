@@ -3,8 +3,10 @@ import React, { useEffect } from 'react'
 import Header from './header'
 import Sidebar from './component'
 import Loader from '@/sharedComponent/loader'
+import SideBarComponent from './sidebar'
+import { Outlet } from 'react-router'
 
-const Dashboard = () => {
+const DashboardLayout = () => {
   const {fetchUser,user}= useUserStore()
     useEffect(() => {
     fetchUser()
@@ -14,11 +16,25 @@ const Dashboard = () => {
     return(<Loader/>)
   }
   return (
-  <div>
-     <Header user={user}/>
-   <Sidebar/>
+ <div className="flex h-screen w-full">
+  {/* Sidebar fixed on the left */}
+  <div className="h-full">
+    <SideBarComponent />
   </div>
+
+  {/* Right side: Header + content */}
+  <div className="flex flex-col flex-1">
+    {/* Header at the top */}
+    <Header user={user} />
+
+    {/* Main Content (you can remove this if not needed now) */}
+    <div className="flex-1 bg-gray-100 p-4 overflow-y-auto">
+      <Outlet />
+    </div>
+  </div>
+</div>
+
   )
 }
 
-export default Dashboard
+export default DashboardLayout

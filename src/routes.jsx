@@ -4,16 +4,15 @@ import LandingPage from "./landingpage";
 import HomePage from "./landingpage/home-page";
 import VerficationMessage from "./(auth)/verification message";
 import ResendEmailForm from "./(auth)/resend email";
-import Dashboard from "./layout";
 import Login from "./(auth)/Login user";
 import VerifyEmail from "./(auth)/verify email";
 import ProfilePage from "./sharedComponent/profilepage";
 import AdminProfile from "./sharedComponent/profilepage/adminprofilepage";
 import SalesProfile from "./sharedComponent/profilepage/salesrepProfilepage";
-import CreateuserForm from "./admin/users/createusers";
-import CreateUserButton from "./admin/users/createusers/createuserbutton";
 import AdminUsersPage from "./admin/users";
-import Sidebar from "./layout/component";
+import DashboardLayout from "./layout";
+import Dashboard from "./layout/dashboard";
+import ProductPage from "./layout/product";
 
 export const router = createBrowserRouter([
   {
@@ -41,11 +40,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
+    Component: DashboardLayout,
     children: [
-      {index: true, Component: Dashboard },
-      {path: "createuser", Component: AdminUsersPage},
-      {path: "side", Component: Sidebar}
-      
+      {index: true, Component: Dashboard},
+      {path: "products", Component: ProductPage}
 ],
 
   },
