@@ -4,3 +4,11 @@ export const apiClient = axios.create({
     baseURL,
     withCredentials:true
 })
+
+// 🔹 apiClient.interceptors.response.use(...)
+// This sets up an interceptor to watch all responses coming from the server.
+apiClient.interceptors.request.use((Response)=>Response, (error) => {
+    if(error?.response?.status === 401 || error?.response?.status === 403) {
+        window.location.href = "auth/login"
+    }
+})
