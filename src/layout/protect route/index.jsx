@@ -11,7 +11,7 @@ const ProtectedRouteLayout = () => {
             toast.error("your session has expired, please login again to continue")
             navigate("/auth/login")
         }
-    }, [navigate])
+    }, [])
 
     return (
         <div>

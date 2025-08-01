@@ -80,7 +80,7 @@ const Login = () => {
                       {/* Submit Button */}
                       <button
                         type="submit"
-                        className="w-full bg-purple-600 text-white p-3 rounded-lg mt-8 font-semibold text-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
+                        className="w-full bg-purple-600 text-white p-3 rounded-lg mt-8 font-semibold text-lg transition-all duration-300"
                       >
                        {isLoading ? "loading.." : "sign up"}
                       </button>
