@@ -13,6 +13,7 @@ import AdminUsersPage from "./admin/users";
 import DashboardLayout from "./layout";
 import Dashboard from "./layout/dashboard";
 import ProductPage from "./layout/product";
+import ProtectedRouteLayout from "./layout/protect route";
 
 export const router = createBrowserRouter([
   {
@@ -34,17 +35,22 @@ export const router = createBrowserRouter([
     path: "/profile",
     children: [
       { index: true, Component: ProfilePage },
-      {path: "admin", Component: AdminProfile},
-      {path: "sales", Component: SalesProfile}
+      { path: "admin", Component: AdminProfile },
+      { path: "sales", Component: SalesProfile }
     ]
   },
   {
     path: "/dashboard",
-    Component: DashboardLayout,
+    Component: ProtectedRouteLayout,
     children: [
-      {index: true, Component: Dashboard},
-      {path: "products", Component: ProductPage}
-],
+      {
+       Component: DashboardLayout,
+        children: [
+          { index: true, Component: Dashboard },
+          { path: "products", Component: ProductPage }
+        ]
+      },
+    ],
 
   },
 ]);

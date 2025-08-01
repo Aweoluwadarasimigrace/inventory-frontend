@@ -7,8 +7,12 @@ export const apiClient = axios.create({
 
 // 🔹 apiClient.interceptors.response.use(...)
 // This sets up an interceptor to watch all responses coming from the server.
-apiClient.interceptors.request.use((Response)=>Response, (error) => {
-    if(error?.response?.status === 401 || error?.response?.status === 403) {
-        window.location.href = "auth/login"
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      window.location.href = "/auth/login";
     }
-})
+    return Promise.reject(error); // make sure to re-throw the error
+  }
+);

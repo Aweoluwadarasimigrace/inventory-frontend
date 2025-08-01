@@ -1,11 +1,15 @@
 import { apiClient } from "@/lib/client";
 
 export const fetchUserData = async () => {
-  const res = await apiClient.get("/user/getsingleuser", {
+ try {
+   const res = await apiClient.get("/user/getsingleuser", {
     withCredentials: true,
   });
   
   return res.data.user
+ } catch (error) {
+   console.error("Error fetching user data:", error);
+ }
 };
 
 
