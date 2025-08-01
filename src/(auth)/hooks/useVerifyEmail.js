@@ -6,7 +6,6 @@ export const useVerifyEmail = () => {
   const [queryParams] = useSearchParams();
   const token = queryParams.get("token");
   const navigate = useNavigate();
-  console.log(token);
   const [status, setStatus] = useState("loading");
 
   useEffect(() => {
@@ -15,7 +14,6 @@ export const useVerifyEmail = () => {
         const res = await apiClient.get(`/auth/verify-email/?token=${token}`, {
           withCredentials: true,
         });
-        console.log(res);
         setStatus("success");
         setTimeout(() => {
           navigate("/dashboard");

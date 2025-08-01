@@ -12,7 +12,11 @@ export const useResendEmail = () => {
     setisLoading(true);
     e.preventDefault();
     const email = emailRef.current.value;
-    console.log(email);
+    if (!email) {
+      toast.error("please enter your email address");
+      setisLoading(false);
+      return;
+    }
     try {
       const res = await apiClient.post(
         "/auth/resend-verification",

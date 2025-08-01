@@ -10,7 +10,6 @@ const useUserStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const userData = await fetchUserData();
-      console.log(userData)
       set({ user: userData, loading: false });
     } catch (error) {
       set({

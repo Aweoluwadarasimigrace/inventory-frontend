@@ -21,6 +21,5 @@ return response.data.user
 
 export const fetchUserCreatedByadmin = async () => {
      const apiresponse = await apiClient.get("/user/getuser",{withCredentials: true})
-     console.log(apiresponse.data, 'api')
      return apiresponse.data.salesusers
 }

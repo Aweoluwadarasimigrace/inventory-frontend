@@ -89,7 +89,6 @@ export const useRegister = () => {
             return { name, phoneCode };
           })
           .sort((a, b) => a.name.localeCompare(b.name));
-        console.log(res.data);
         setcountryValue(sorted);
       } catch (error) {
         console.log(error);
