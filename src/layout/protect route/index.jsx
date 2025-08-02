@@ -1,18 +1,32 @@
-import React, { useEffect } from 'react'
+import { apiClient } from '@/lib/client'
+import Loader from '@/sharedComponent/loader'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 import { toast } from 'sonner'
 
 const ProtectedRouteLayout = () => {
     const navigate = useNavigate()
-
-    useEffect(() => {
-        const tokenExists = document.cookie.includes("token")
-        if (!tokenExists) {
-            toast.error("your session has expired, please login again to continue")
+    const [isLoading, setisLoading] = useState(true)
+    const verifySessionisstillValid = async () => {
+        try {
+            const res = await apiClient.get('/auth/verify-session', {
+                withCredentials: true,
+            })
+            setisLoading(false)
+        } catch (error) {
+            toast.error("Your session has expired, please log in again.")
             navigate("/auth/login")
         }
+    }
+
+    useEffect(() => {
+        verifySessionisstillValid()
+
     }, [])
 
+    if (isLoading) {
+        return <Loader/>
+    }
     return (
         <div>
             <Outlet />
