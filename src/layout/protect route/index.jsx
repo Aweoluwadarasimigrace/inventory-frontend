@@ -9,7 +9,7 @@ const ProtectedRouteLayout = () => {
     const [isLoading, setisLoading] = useState(true)
     const verifySessionisstillValid = async () => {
         try {
-            const res = await apiClient.get('/auth/verify-session', {
+            const res = await apiClient.get('/auth/verify', {
                 withCredentials: true,
             })
             setisLoading(false)
