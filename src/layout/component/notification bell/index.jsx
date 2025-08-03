@@ -26,7 +26,7 @@ console.log("Cluster:", import.meta.env.VITE_PUSHER_CLUSTER)
 
     return (
         <>
-            <div className="relative inline-block text-center">
+            <div className="relative inline-block">
                 {/* Bell Icon */}
                 <button
                     onClick={() => setisOpen(!isOpen)}
@@ -43,7 +43,7 @@ console.log("Cluster:", import.meta.env.VITE_PUSHER_CLUSTER)
                 {/* Dropdown */}
                 {isOpen && (
                     <div
-                        className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-80 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 transition-all duration-200 animate-fadeIn"
+                        className="absolute -left-9 transform -translate-x-1/2 mt-2 w-70 rounded shadow-lg bg-white border z-50 transition-all duration-200 animate-fadeIn"
                     >
                         <div className="p-3 font-semibold text-sm border-b">Notifications</div>
                         <ul className="max-h-64 overflow-y-auto">

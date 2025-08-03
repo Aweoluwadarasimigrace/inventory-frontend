@@ -1,10 +1,9 @@
 import useUserStore from '@/store/getCurrentUser'
 import React, { useEffect } from 'react'
 import Header from './header'
-import Sidebar from './component'
 import Loader from '@/sharedComponent/loader'
-import SideBarComponent from './sidebar'
 import { Outlet } from 'react-router'
+import SideBarComponent from './sidebar'
 
 const DashboardLayout = () => {
   const {fetchUser,user}= useUserStore()
@@ -37,4 +36,4 @@ const DashboardLayout = () => {
   )
 }
 
-export default DashboardLayout
+export default DashboardLayout;

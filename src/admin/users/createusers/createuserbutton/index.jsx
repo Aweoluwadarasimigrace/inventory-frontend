@@ -5,7 +5,7 @@ const CreateUserButton = () => {
     const [ dialog, setdialog] = useState(false)
     return (
         <div>
-            <button onClick={() => setdialog(true)} className="bg-gray-100 border px-4 py-2 rounded">
+            <button onClick={() => setdialog(true)} className="bg-purple-600 px-4 py-2 rounded text-white">
                 createUser
             </button>
             { dialog && <CreateuserForm closeDialog = {()=>setdialog(false)}  setdialog={setdialog}/>}

@@ -7,7 +7,7 @@ const SideBarComponent = () => {
 
     const menuBar = [
         { name: "Dashboard", icon:<FaHome/>, path: "/dashboard" },
-        { name: "Users", icon: <FaUsers />, path: "/dashboard/createuser" },
+        { name: "Users", icon: <FaUsers />, path: "/dashboard/users" },
         { name: "Products", icon: <FaBox />, path: "products" },
         { name: "Settings", icon: <FaCog />, path: "/dashboard/settings" },
         { name: "Reports", icon: <FaChartBar />, path: "/dashboard/reports" },
@@ -16,64 +16,63 @@ const SideBarComponent = () => {
         { name: "Logout", icon: <FaSignOutAlt />, path: "/auth/login" },
     ]
 
-    const [isOpen, setisOpen] = useState(false)
-
+    const [isOpen, setisOpen] = useState(true)
     const toggleSidebar = () => { setisOpen(!isOpen) }
-    const closeSidebar = () => { setisOpen(false) }
-      return (
+  return (
      <>
-      {/* Backdrop when sidebar is open on mobile */}
+      {/* Hamburger Icon: only visible on md and smaller */}
+      <div className="lg:hidden fixed top-2 left-4 z-50 ">
+        <FaBars
+          onClick={toggleSidebar}
+          className="text-[45px] text-purple-700 p-2 cursor-pointer"
+        />
+      </div>
+
+      {/* Dark overlay on small screen when sidebar is open */}
       {isOpen && (
         <div
-          onClick={closeSidebar}
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={toggleSidebar}
+          className="fixed inset-0  bg-opacity-50 z-40 lg:hidden"
         />
       )}
 
-      {/* Hamburger toggle button */}
-      <button
-        onClick={toggleSidebar}
-        className="fixed top-4 left-4 z-40 p-2 bg-purple-600 text-white rounded md:hidden"
-      >
-        <FaBars />
-      </button>
-
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full bg-purple-700 text-white z-40 flex flex-col transition-all duration-300 ease-in-out
-        ${isOpen ? "w-64" : "w-0 overflow-hidden"}
-        md:w-64 md:overflow-visible`}
+        className={`
+          h-screen bg-purple-700 text-white flex flex-col transition-all duration-300
+          ${isOpen ? "w-64" : "w-16"}
+          ${isOpen ? "left-0" : "-left-full"} 
+          fixed top-0 z-50
+          lg:static lg:left-0 lg:z-0 lg:flex
+        `}
       >
-        {/* Logo and toggle */}
-        <div className="flex items-center justify-between gap-2 px-4 h-16">
+        {/* Logo + toggle (still used in all views) */}
+        <div
+          className="flex items-center justify-between gap-2 px-4 h-16 cursor-pointer"
+          onClick={toggleSidebar}
+        >
           {isOpen && (
             <h1 className="text-xl font-bold text-white">
               TRACKSTACK
             </h1>
           )}
-          <FaBars
-            onClick={toggleSidebar}
-            className="text-2xl md:hidden cursor-pointer"
-          />
+          <FaBars className="text-2xl" />
         </div>
 
-        {/* Menu items */}
+        {/* Menu Items */}
         <nav className="flex flex-col gap-2 mt-4">
           {menuBar.map((item, index) => (
-            <Link
-              to={item.path}
-              key={index}
-              onClick={closeSidebar}
-              className="flex items-center gap-4 px-4 py-2 hover:bg-purple-600 transition-all"
-            >
-              <span className="text-lg">{item.icon}</span>
-              <span
-                className={`text-sm transition-opacity duration-300 ${
-                  isOpen ? "opacity-100" : "opacity-0 md:opacity-100"
-                }`}
-              >
-                {item.name}
-              </span>
+            <Link to={item.path} key={index} onClick={() => setisOpen(true)}>
+              <div className="flex items-center gap-4 px-4 py-2 hover:bg-purple-600 cursor-pointer transition-all">
+                <span className="text-lg">{item.icon}</span>
+                <span
+                  className={`text-sm transition-opacity duration-300 ${
+                    isOpen ? "opacity-100" : "opacity-0 hidden"
+                  }`}
+                >
+                  {item.name}
+                </span>
+              </div>
             </Link>
           ))}
         </nav>
