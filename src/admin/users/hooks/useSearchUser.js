@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useSearchUser = () => {
   const [searchTerm, setSearchTerm] = useState("");

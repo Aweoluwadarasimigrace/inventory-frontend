@@ -16,6 +16,7 @@ const useUserStore = create((set) => ({
         error: error.response?.data?.message || "Failed to fetch user",
         loading: false,
       });
+      console.log(error)
     }
   },
   updateUser: async (formdata) => {
