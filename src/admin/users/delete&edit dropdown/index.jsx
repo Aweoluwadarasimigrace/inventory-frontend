@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { FiMoreVertical } from 'react-icons/fi';
-import { useDeleteUser } from '../hooks/useDeleteUser';
+import useAdminUserStore from '@/store/getUserCreatedByAdmin';
 
 const DeleteEditDropdown = ({userId}) => {
  const [open, setOpen] = useState(false);
- const {deleteUser} = useDeleteUser()
+ const {removeAdminUser} = useAdminUserStore()
      return (
          <div className="relative text-left block">
              {/* Toggle Button */}
@@ -24,7 +24,7 @@ const DeleteEditDropdown = ({userId}) => {
                      <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2">
                        Edit
                      </button>
-                     <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2" onClick={()=>deleteUser(userId)}>
+                     <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2" onClick={() => removeAdminUser(userId)}>
                         Delete
                      </button>
                  </div>
