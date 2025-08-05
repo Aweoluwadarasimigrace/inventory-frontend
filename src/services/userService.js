@@ -23,3 +23,10 @@ export const fetchUserCreatedByadmin = async () => {
      const apiresponse = await apiClient.get("/user/getuser",{withCredentials: true})
      return apiresponse.data.salesusers
 }
+
+
+export const deleteAdminUser = async (userId) => {
+  const apiRes = await apiClient.delete(`/user/deleteuser/${userId}`, {withCredentials: true})
+  console.log(apiRes)
+  return apiRes
+}

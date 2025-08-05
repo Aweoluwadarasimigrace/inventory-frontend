@@ -1,6 +1,9 @@
-import { fetchUserCreatedByadmin } from "@/services/userService";
+import {
+  deleteAdminUser,
+  fetchUserCreatedByadmin,
+} from "@/services/userService";
+import { toast } from "sonner";
 import { create } from "zustand";
-
 
 const useAdminUserStore = create((set) => ({
   adminUser: [],
@@ -12,7 +15,7 @@ const useAdminUserStore = create((set) => ({
 
     try {
       const adminUserData = await fetchUserCreatedByadmin();
-      set({adminUser: adminUserData, loading: false });
+      set({ adminUser: adminUserData, loading: false });
     } catch (error) {
       set({
         error: error.response?.data?.message || "Failed to fetch user",
@@ -20,7 +23,20 @@ const useAdminUserStore = create((set) => ({
       });
     }
   },
+
+  removeAdminUser: async (userId) => {
+    try {
+      await deleteAdminUser(userId);
+      toast.success("User deleted successfully");
+
+      const updateUi = get().adminUser.filter((user) => user._id !== userId);
+      set({ adminUser: updateUi });
+    } catch (error) {
+      set({error: "failed to delete user"});
+      toast.error("Failed to delete user");
+      console.log(error)
+    }
+  },
 }));
 
-
-export default useAdminUserStore
+export default useAdminUserStore;

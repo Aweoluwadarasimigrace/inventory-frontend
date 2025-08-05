@@ -16,7 +16,7 @@ const SideBarComponent = () => {
         { name: "Logout", icon: <FaSignOutAlt />, path: "/auth/login" },
     ]
 
-    const [isOpen, setisOpen] = useState(true)
+    const [isOpen, setisOpen] = useState(false)
     const toggleSidebar = () => { setisOpen(!isOpen) }
   return (
      <>
