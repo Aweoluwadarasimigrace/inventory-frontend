@@ -26,7 +26,7 @@ const SideBarComponent = () => {
       ]
     },
     { name: "Sales", icon: <FaBox />, path: "/dashboard/sales" },
-    { name: "Profile", icon: <FaUser />, path: "profile" },
+    { name: "Profile", icon: <FaUser />, path: "/profile" },
     { name: "Settings", icon: <FaCog />, path: "/dashboard/settings" },
     { name: "Reports", icon: <FaChartBar />, path: "/dashboard/reports" },
   ]
@@ -87,7 +87,7 @@ const SideBarComponent = () => {
 
               {!item.subItems ? (<Link
                 to={item.path}
-                className={`flex items-center gap-4 px-2 py-2 hover:bg-purple-600 cursor-pointer transition-all ${OpenIndex === index ? "bg-purple-600 text-white" : "text-white"
+                className={`flex items-center gap-4 px-4 py-2 hover:bg-purple-600 cursor-pointer transition-all ${OpenIndex === index ? "bg-purple-600 text-white" : "text-white"
                   }`}
               >
                 <span className="text-lg">{item.icon}</span>
