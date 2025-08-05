@@ -1,3 +1,4 @@
+import { apiClient } from "@/lib/client";
 import { useEffect, useState } from "react";
 
 export const useSearchUser = () => {

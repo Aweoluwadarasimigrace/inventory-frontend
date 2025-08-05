@@ -75,6 +75,7 @@ export const useCreateUser = () => {
         setformData({});
         setProfileImage("");
         await fetchAdminUser();
+        
         navigate("/dashboard/users");
       }
     } catch (error) {
