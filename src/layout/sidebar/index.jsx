@@ -26,7 +26,7 @@ const SideBarComponent = () => {
       ]
     },
     { name: "Sales", icon: <FaBox />, path: "/dashboard/sales" },
-    { name: "Profile", icon: <FaUser />, path: "/profile" },
+    { name: "Profile", icon: <FaUser />, path: "profile" },
     { name: "Settings", icon: <FaCog />, path: "/dashboard/settings" },
     { name: "Reports", icon: <FaChartBar />, path: "/dashboard/reports" },
   ]
@@ -84,7 +84,20 @@ const SideBarComponent = () => {
           {menuBar.map((item, index) => (
             <div key={index} >
               {/* Main Item */}
-              <div
+
+              {!item.subItems ? (<Link
+                to={item.path}
+                className={`flex items-center gap-4 px-2 py-2 hover:bg-purple-600 cursor-pointer transition-all ${openIndex === index ? "bg-purple-600 text-white" : "text-white"
+                  }`}
+              >
+                <span className="text-lg">{item.icon}</span>
+                <span
+                  className={`text-sm transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 hidden"
+                    }`}
+                >
+                  {item.name}
+                </span>
+              </Link>) : <div
                 className={`flex items-center gap-4 px-4 py-2 hover:bg-purple-600 cursor-pointer transition-all ${OpenIndex === index ? "bg-purple-600 text-white " : "text-white"}`}
                 onClick={() => toggleSubMenu(index)}
               >
@@ -96,6 +109,7 @@ const SideBarComponent = () => {
                   {item.name}
                 </span>
               </div>
+              }
 
               {/* Sub Items (with safe check + animation) */}
               {item.subItems && (
