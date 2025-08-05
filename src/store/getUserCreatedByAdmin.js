@@ -5,7 +5,7 @@ import {
 import { toast } from "sonner";
 import { create } from "zustand";
 
-const useAdminUserStore = create((set) => ({
+const useAdminUserStore = create((set, get) => ({
   adminUser: [],
   loading: false,
   error: null,
