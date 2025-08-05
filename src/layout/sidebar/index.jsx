@@ -2,24 +2,44 @@ import React, { useState } from 'react'
 import { FaChartBar, FaCog, FaHome, FaSignOutAlt } from 'react-icons/fa'
 import { FaBars, FaBox, FaUser, FaUsers } from 'react-icons/fa6'
 import { Link } from 'react-router'
+import { GoDotFill } from "react-icons/go";
 
 const SideBarComponent = () => {
 
-    const menuBar = [
-        { name: "Dashboard", icon:<FaHome/>, path: "/dashboard" },
-        { name: "Users", icon: <FaUsers />, path: "/dashboard/users" },
-        { name: "Products", icon: <FaBox />, path: "products" },
-        { name: "Settings", icon: <FaCog />, path: "/dashboard/settings" },
-        { name: "Reports", icon: <FaChartBar />, path: "/dashboard/reports" },
-        { name: "Sales", icon: <FaBox />, path: "/dashboard/sales" },
-        { name: "Profile", icon: <FaUser />, path: "/profile" },
-        { name: "Logout", icon: <FaSignOutAlt />, path: "/auth/login" },
-    ]
+  const menuBar = [
+    { name: "Dashboard", icon: <FaHome />, path: "/dashboard" },
+    {
+      name: "People", icon: <FaUsers />, subItems: [
+        { name: "users", path: "/dashboard/users" },
+        { name: "add user", path: "/dashboard/createuser" },
+        { name: "customers", path: "/dashboard/customers" },
+        { name: "add customer", path: "/dashboard/createcustomer" },
+        { name: "suppliers", path: "/dashboard/suppliers" },
+        { name: "add supplier", path: "/dashboard/createsupplier" },
 
-    const [isOpen, setisOpen] = useState(false)
-    const toggleSidebar = () => { setisOpen(!isOpen) }
+      ]
+    },
+    {
+      name: "Products", icon: <FaBox />, subItems: [
+        { name: "List product", path: "/dashboard/products" },
+        { name: "add Product", path: "/dashboard/createProduct" }
+      ]
+    },
+    { name: "Sales", icon: <FaBox />, path: "/dashboard/sales" },
+    { name: "Profile", icon: <FaUser />, path: "/profile" },
+    { name: "Settings", icon: <FaCog />, path: "/dashboard/settings" },
+    { name: "Reports", icon: <FaChartBar />, path: "/dashboard/reports" },
+  ]
+
+  const [isOpen, setisOpen] = useState(false)
+  const [OpenIndex, setOpenIndex] = useState(null)
+  const toggleSidebar = () => { setisOpen(!isOpen) }
+
+  const toggleSubMenu = (index) => {
+    setOpenIndex(OpenIndex === index ? null : index)
+  }
   return (
-     <>
+    <>
       {/* Hamburger Icon: only visible on md and smaller */}
       <div className="lg:hidden fixed top-2 left-4 z-50 ">
         <FaBars
@@ -62,18 +82,39 @@ const SideBarComponent = () => {
         {/* Menu Items */}
         <nav className="flex flex-col gap-2 mt-4">
           {menuBar.map((item, index) => (
-            <Link to={item.path} key={index} onClick={() => setisOpen(true)}>
-              <div className="flex items-center gap-4 px-4 py-2 hover:bg-purple-600 cursor-pointer transition-all">
+            <div key={index} >
+              {/* Main Item */}
+              <div
+                className={`flex items-center gap-4 px-4 py-2 hover:bg-purple-600 cursor-pointer transition-all ${OpenIndex === index ? "bg-purple-600 text-white " : "text-white"}`}
+                onClick={() => toggleSubMenu(index)}
+              >
                 <span className="text-lg">{item.icon}</span>
                 <span
-                  className={`text-sm transition-opacity duration-300 ${
-                    isOpen ? "opacity-100" : "opacity-0 hidden"
-                  }`}
+                  className={`text-sm transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 hidden"
+                    }  `}
                 >
                   {item.name}
                 </span>
               </div>
-            </Link>
+
+              {/* Sub Items (with safe check + animation) */}
+              {item.subItems && (
+                <div
+                  className={`ml-5 transition-all duration-300 ease-in-out overflow-hidden ${OpenIndex === index && isOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                >
+                  {item.subItems.map((subItem, subIdx) => (
+                    <Link
+                      key={subIdx}
+                      to={subItem.path}
+                      className=" py-1 mb-2 text-md text-white hover:text-white hover:bg-purple-600 pl-2 flex items-center gap-1"
+                    >
+                      <GoDotFill size={12} />{subItem.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
       </div>
