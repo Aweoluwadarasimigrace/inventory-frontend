@@ -6,7 +6,8 @@ const SearchInput = () => {
   return (
     <>
        <div className="p-4">
-      <input
+    <div>
+        <input
         type="text"
         placeholder="Search users..."
         value={searchTerm}
@@ -14,6 +15,7 @@ const SearchInput = () => {
         className="border px-4 py-2 w-100 rounded mb-4"
       />
 
+    </div>
       {results.length > 0 ? (
         results.map((user) => (
           <div key={user._id} className="p-3 border rounded mb-2">
