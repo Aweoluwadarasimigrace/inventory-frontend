@@ -26,7 +26,7 @@ const AdminUsersPage = () => {
     );
   }
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-full bg-gray-100">
       {/* HEADER: Left-Aligned */}
       <div className="max-w-7xl mx-auto px-6 py-4">
         <h1 className="text-2xl font-bold text-[#676e8a]">User Management</h1>
