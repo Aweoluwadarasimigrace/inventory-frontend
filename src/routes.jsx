@@ -30,22 +30,16 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/profile",
-    children: [
-      { index: true, Component: ProfilePage },
-
-    ]
-  },
-  {
     path: "/dashboard",
     Component: ProtectedRouteLayout,
     children: [
       {
-       Component: DashboardLayout,
+        Component: DashboardLayout,
         children: [
           { index: true, Component: Dashboard },
           { path: "products", Component: ProductPage },
-          {path: "users", Component: AdminUsersPage },
+          { path: "users", Component: AdminUsersPage },
+          { path: "profile", Component: ProfilePage }
         ]
       },
     ],

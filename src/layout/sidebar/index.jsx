@@ -26,7 +26,7 @@ const SideBarComponent = () => {
       ]
     },
     { name: "Sales", icon: <FaBox />, path: "/dashboard/sales" },
-    { name: "Profile", icon: <FaUser />, path: "/profile" },
+    { name: "Profile", icon: <FaUser />, path: "/dashboard/profile" },
     { name: "Settings", icon: <FaCog />, path: "/dashboard/settings" },
     { name: "Reports", icon: <FaChartBar />, path: "/dashboard/reports" },
   ]
