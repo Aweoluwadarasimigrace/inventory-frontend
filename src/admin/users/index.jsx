@@ -26,9 +26,9 @@ const AdminUsersPage = () => {
     );
   }
   return (
-   <div className="min-h-full bg-gray-100">
-      {/* HEADER + BUTTON: Side by Side */}
-      <div className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center mb-6">
+    <div className="min-h-full bg-gray-100">
+      {/* HEADER + BUTTON: Responsive Side by Side */}
+      <div className="max-w-9xl mx-auto px-4 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-[#676e8a]">User Management</h1>
           <p className='text-gray-600'>Manage Your Users</p>
@@ -41,7 +41,7 @@ const AdminUsersPage = () => {
       </div>
 
       {/* USER TABLE BELOW */}
-      <div className="max-w-9xl mx-auto p-4">
+      <div className="max-w-9xl mx-auto p-2 md:p-4">
         <DisplayUserTable />
       </div>
     </div>
