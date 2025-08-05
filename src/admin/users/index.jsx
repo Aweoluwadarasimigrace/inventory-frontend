@@ -41,7 +41,7 @@ const AdminUsersPage = () => {
       </div>
 
       {/* USER TABLE BELOW */}
-      <div className="max-w-7xl mx-auto p-4">
+      <div className="max-w-9xl mx-auto p-4">
         <DisplayUserTable />
       </div>
     </div>
