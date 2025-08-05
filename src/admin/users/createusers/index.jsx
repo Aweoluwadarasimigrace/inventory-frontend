@@ -3,7 +3,7 @@ import { useCreateUser } from '../hooks/useCreateUser'
 import { useRegister } from '@/(auth)/hooks/useRegister'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6'
 
-const CreateuserForm = ({ closeDialog }) => {
+const CreateuserForm = () => {
   const [showPassword, setshowPassword] = useState(false);
   const { errors, changeFormDetails, handleProfileimage, createUser, isloading, formData } = useCreateUser()
   const { countryValue } = useRegister()
@@ -14,7 +14,7 @@ const CreateuserForm = ({ closeDialog }) => {
   };
   return (
     <div>
-      <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={(e) => createUser(e, closeDialog)}>
+      <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={createUser}>
 
         <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create New User</h2>
 
@@ -171,9 +171,6 @@ const CreateuserForm = ({ closeDialog }) => {
         </div>
         {/* Submit button */}
         <div className="pt-4 flex gap-2 justify-end">
-          <button onClick={closeDialog} type='button' className="w-3xs bg-purple-600 text-white py-3 rounded-md text-lg font-semibold cursor-pointer">
-            close
-          </button>
           <button
             type="submit" className="w-3xs cursor-pointer bg-purple-500 text-white py-3 rounded-md text-lg font-semibold">
             {isloading ? "loading" : "Create User"}

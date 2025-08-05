@@ -1,16 +1,16 @@
 import { apiClient } from "@/lib/client";
 import useAdminUserStore from "@/store/getUserCreatedByAdmin";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
-
 
 export const useCreateUser = () => {
   const [formData, setformData] = useState({});
   const [errors, seterrors] = useState({});
   const [profileImage, setProfileImage] = useState("");
   const [isloading, setisloading] = useState(false);
-  const {fetchAdminUser}= useAdminUserStore()
-
+  const { fetchAdminUser } = useAdminUserStore();
+  const navigate = useNavigate();
   const handleProfileimage = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -34,7 +34,7 @@ export const useCreateUser = () => {
     });
   };
 
-  const createUser = async (e, closeDialog) => {
+  const createUser = async (e) => {
     e.preventDefault();
 
     if (
@@ -74,7 +74,8 @@ export const useCreateUser = () => {
         toast.success("user created successfully");
         setformData({});
         setProfileImage("");
-       await fetchAdminUser();
+        await fetchAdminUser();
+        navigate("/dashboard/users");
       }
     } catch (error) {
       toast.success("not successful");

@@ -50,7 +50,7 @@ const AdminProfile = () => {
           <div className="w-full flex justify-start mb-10 items-center">
             <div className="relative w-36 h-36 rounded-full">
               <img
-                src={profileImage || user?.profilepicture}
+                src={user?.profilepicture}
                 alt="Profile"
                 className="w-full h-full object-cover rounded border-4 border-white"
               />
