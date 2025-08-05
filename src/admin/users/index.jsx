@@ -36,11 +36,14 @@ const AdminUsersPage = () => {
       {/* Controls: Search + Create */}
        <div className="max-w-7xl mx-auto p-6">
         {/* Top Controls: Search + Create User */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-         <SearchInput/>
-          <CreateUserButton />
-        </div>
-
+       <div className="flex flex-col md:flex-row md:justify-between items-center mb-6 gap-4">
+  <div className="w-full md:w-auto md:flex-grow">
+    <SearchInput />
+  </div>
+  <div className="w-full md:w-auto">
+    <CreateUserButton />
+  </div>
+</div>
         {/* USER TABLE */}
         <DisplayUserTable />
       </div>
