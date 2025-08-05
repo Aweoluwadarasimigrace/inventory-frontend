@@ -87,7 +87,7 @@ const SideBarComponent = () => {
 
               {!item.subItems ? (<Link
                 to={item.path}
-                className={`flex items-center gap-4 px-2 py-2 hover:bg-purple-600 cursor-pointer transition-all ${openIndex === index ? "bg-purple-600 text-white" : "text-white"
+                className={`flex items-center gap-4 px-2 py-2 hover:bg-purple-600 cursor-pointer transition-all ${OpenIndex === index ? "bg-purple-600 text-white" : "text-white"
                   }`}
               >
                 <span className="text-lg">{item.icon}</span>
