@@ -12,7 +12,7 @@ const SearchInput = () => {
         placeholder="Search users..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="border px-4 py-2 w-full rounded mb-4"
+        className="border px-4 py-2 w-[100%] rounded mb-4"
       />
 
     </div>
