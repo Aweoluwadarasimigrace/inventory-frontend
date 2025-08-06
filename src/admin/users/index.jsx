@@ -5,6 +5,7 @@ import CreateUserButton from './createusers/createuserbutton'
 import useAdminUserStore from '@/store/getUserCreatedByAdmin'
 import Loader from '@/sharedComponent/loader'
 import SearchInput from './searchInput'
+import PdfDownloadButton from './pdfdownloadbutton'
 
 const AdminUsersPage = () => {
   const { adminUser, loading, fetchAdminUser } = useAdminUserStore()
@@ -37,7 +38,10 @@ const AdminUsersPage = () => {
             functions and controls.
           </p>
         </div>
+       <div>
+         <PdfDownloadButton/>
         <CreateUserButton />
+       </div>
       </div>
 
       {/* USER TABLE BELOW */}
