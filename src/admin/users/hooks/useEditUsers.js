@@ -1,4 +1,3 @@
-
 import useAdminUserStore from "@/store/getUserCreatedByAdmin";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -15,7 +14,7 @@ export const useEditUsers = () => {
   const changeFormDetails = (e) => {
     // Handle form changes
     const { name, value } = e.target;
-   setFormData((prev) => {
+    setFormData((prev) => {
       const updated = { ...prev, [name]: value };
       if (updated.number && updated.countrycode) {
         updated.contact = updated.countrycode + updated.number;
@@ -53,6 +52,6 @@ export const useEditUsers = () => {
   return {
     changeFormDetails,
     submitForm,
-    handleProfileImageChange
+    handleProfileImageChange,
   };
 };
