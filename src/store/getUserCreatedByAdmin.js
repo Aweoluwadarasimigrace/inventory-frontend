@@ -1,6 +1,7 @@
 import {
   deleteAdminUser,
   fetchUserCreatedByadmin,
+  updateAdminUUser,
 } from "@/services/userService";
 import { toast } from "sonner";
 import { create } from "zustand";
@@ -37,6 +38,20 @@ const useAdminUserStore = create((set, get) => ({
       console.log(error)
     }
   },
+
+  updateUserByAdmin: async (formdata, userId) => {
+     set({loading: true, error:null});
+
+     try {
+      const result = await updateAdminUUser(formdata, userId);
+      set({adminUser: get().adminUser.map(user => user._id === userId ? result : user), loading: false });
+      toast.success("User updated successfully");
+     } catch (error) {
+       set({error: "failed to update user", loading: false});
+       toast.error("Failed to update user");
+       console.log(error);
+     }
+  }
 }));
 
 export default useAdminUserStore;

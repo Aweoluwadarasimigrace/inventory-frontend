@@ -19,6 +19,11 @@ return response.data.user
 }
 
 
+export const updateAdminUUser = async(formdata, userId)=>{
+    const response = await apiClient.patch(`/user/updateuserbyadmin/${userId}`, {formdata}, {withCredentials:true})
+    return response.data.user
+}
+
 export const fetchUserCreatedByadmin = async () => {
      const apiresponse = await apiClient.get("/user/getuser",{withCredentials: true})
      return apiresponse.data.salesusers

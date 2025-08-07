@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FiMoreVertical } from 'react-icons/fi';
 import useAdminUserStore from '@/store/getUserCreatedByAdmin';
+import EditAdminUser from '../editusers';
 
 const DeleteEditDropdown = ({userId}) => {
  const [open, setOpen] = useState(false);
@@ -21,9 +22,7 @@ const DeleteEditDropdown = ({userId}) => {
                      }`}
              >
                  <div className="flex flex-col">
-                     <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2">
-                       Edit
-                     </button>
+                     <EditAdminUser/>
                      <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2" onClick={() => removeAdminUser(userId)}>
                         Delete
                      </button>

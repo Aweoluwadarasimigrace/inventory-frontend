@@ -20,7 +20,7 @@ const AdminProfile = () => {
 
   const submitform = async (e) => {
     e.preventDefault()
-    const formData = { profilepicture: profileImage }
+    const formData = { profilepicture: profileImage , }
     console.log(formData)
     try {
       await updateUser(formData)

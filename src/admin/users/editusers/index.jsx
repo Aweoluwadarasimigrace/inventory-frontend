@@ -1,0 +1,27 @@
+import React from 'react'
+import { useEditUsers } from '../hooks/useEditUsers'
+import useAdminUserStore from '@/store/getUserCreatedByAdmin'
+import EditUserForm from './edituserform'
+
+const EditAdminUser = () => {
+  const { changeFormDetails, submitForm, handleProfileImageChange } = useEditUsers()
+
+  const [modal, setmodal] = useState(false)
+  
+  const handleEditClick = ()=>{
+  
+    setmodal(true)
+  }
+  return (
+    <div>
+      <button onClick={handleEditClick} className="bg-blue-600 text-white px-4 py-2 rounded">
+        Edit User
+      </button>
+
+      <EditUserForm open={modal} onClose={() => setmodal(false)} changeFormDetails= {changeFormDetails} submitForm={submitForm} handleProfileImageChange={handleProfileImageChange}
+ />
+    </div>
+  )
+}
+
+export default EditAdminUser

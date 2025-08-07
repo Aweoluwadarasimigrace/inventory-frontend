@@ -4,7 +4,6 @@ import DisplayUserTable from './displayuser table'
 import CreateUserButton from './createusers/createuserbutton'
 import useAdminUserStore from '@/store/getUserCreatedByAdmin'
 import Loader from '@/sharedComponent/loader'
-import SearchInput from './searchInput'
 import PdfDownloadButton from './pdfdownloadbutton'
 
 const AdminUsersPage = () => {
