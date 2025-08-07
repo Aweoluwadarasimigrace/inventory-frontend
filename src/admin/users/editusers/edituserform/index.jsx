@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 import useAdminUserStore from '@/store/getUserCreatedByAdmin';
 import React, { useState } from 'react'
 
-const EditUserForm = ({ open, onClose, changeFormDetails, submitForm, handleProfileImageChange }) => {
+const EditUserForm = ({ open, onClose, changeFormDetails, submitForm, handleProfileImageChange, formData }) => {
 const {loading} =useAdminUserStore()
 
 const [selectedcode, setselectedcode] = useState();

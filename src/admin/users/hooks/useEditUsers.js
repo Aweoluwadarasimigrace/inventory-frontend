@@ -53,5 +53,6 @@ export const useEditUsers = () => {
     changeFormDetails,
     submitForm,
     handleProfileImageChange,
+    formData
   };
 };
