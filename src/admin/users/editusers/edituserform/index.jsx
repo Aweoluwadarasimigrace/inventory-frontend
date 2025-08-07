@@ -5,7 +5,7 @@ import useAdminUserStore from '@/store/getUserCreatedByAdmin';
 import React, { useState } from 'react'
 
 const EditUserForm = ({ open, onClose, changeFormDetails, submitForm, handleProfileImageChange, formData }) => {
-const {loading} =useAdminUserStore()
+const {loading, adminUser} =useAdminUserStore()
 
 const [selectedcode, setselectedcode] = useState();
   const [isOpen, setisOpen] = useState(false);
@@ -13,7 +13,7 @@ const [selectedcode, setselectedcode] = useState();
 const {countryValue} = useRegister()
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
           <DialogTitle>Edit User</DialogTitle>
         </DialogHeader>
@@ -26,7 +26,7 @@ const {countryValue} = useRegister()
               <input
                 type="text"
                 name="firstname"
-                value={formData.firstname || ""}
+                value={adminUser.firstname}
                 disabled
                 placeholder="Enter firstname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -41,7 +41,7 @@ const {countryValue} = useRegister()
                 type="text"
                 name="lastname"
                 disabled
-                value={formData.lastname || ""}
+                value={adminUser.lastname || ""}
                 placeholder="Enter lastname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
@@ -54,7 +54,7 @@ const {countryValue} = useRegister()
               <input
                 type="text"
                 name="username"
-                value={formData.username || ""}
+                value={adminUser.username || ""}
                 onChange={changeFormDetails}
                 placeholder="Enter username"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -69,7 +69,7 @@ const {countryValue} = useRegister()
                 type="email"
                 name="email"
                 disabled
-                value={formData.email || ""}
+                value={adminUser.email || ""}
                 placeholder="Enter email"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
@@ -85,7 +85,7 @@ const {countryValue} = useRegister()
                     onClick={() => setisOpen(!isOpen)}
                     className="w-full p-3 border border-slate-300 rounded-md text-slate-700 cursor-pointer flex items-center justify-between"
                   >
-                    {selectedcode || formData.countrycode}
+                    {selectedcode || adminUser.countrycode}
                   </div>
                   {isOpen && (
                     <div className="absolute z-10 mt-1 w-60 max-h-48 overflow-y-auto border border-slate-300 rounded-md shadow-lg bg-white">
@@ -110,7 +110,7 @@ const {countryValue} = useRegister()
                 <input
                   type="tel"
                   name="number"
-                  value={formData.number || ""}
+                  value={adminUser.number || ""}
                   onChange={changeFormDetails}
                   placeholder="Enter phone number"
                   className="flex-1 border border-slate-300 rounded-md px-4 py-2"
@@ -124,7 +124,7 @@ const {countryValue} = useRegister()
               <label className="block text-sm font-medium text-slate-700 mb-1">Gender</label>
               <select
                 name="gender"
-                value={formData.gender || ""}
+                value={adminUser.gender || ""}
                disabled
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               >
@@ -140,7 +140,7 @@ const {countryValue} = useRegister()
               <label className="block text-sm font-medium text-slate-700 mb-1">Role</label>
               <select
                 name="role"
-                value={formData.role || ""}
+                value={adminUser.role || ""}
                 disabled
               
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
