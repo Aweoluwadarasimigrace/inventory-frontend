@@ -44,7 +44,7 @@ const useAdminUserStore = create((set, get) => ({
 
      try {
       const result = await updateAdminUUser(formdata, userId);
-      set({adminUser: get().adminUser.find(user => user._id === userId ? result : user), loading: false });
+      set({adminUser: get().adminUser.find(user => user._id === userId), loading: false });
       toast.success("User updated successfully");
      } catch (error) {
        set({error: "failed to update user", loading: false});
