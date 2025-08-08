@@ -41,8 +41,8 @@ export const useEditUsers = () => {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    console.log(adminUser._id)
     try {
-      console.log(formData);
       await updateUserByAdmin(formData, adminUser._id);
       toast.success("User updated successfully");
     } catch (error) {

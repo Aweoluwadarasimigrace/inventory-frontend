@@ -3,7 +3,6 @@ import { useEditUsers } from '../hooks/useEditUsers'
 import EditUserForm from './edituserform'
 
 const EditAdminUser = () => {
-  const { changeFormDetails, submitForm, handleProfileImageChange, formData } = useEditUsers()
   const [modal, setmodal] = useState(false)
   
   const handleEditClick = ()=>{
@@ -15,9 +14,7 @@ const EditAdminUser = () => {
         Edit User
       </button>
 
-      <EditUserForm open={modal} onClose={() => setmodal(false)} changeFormDetails= {changeFormDetails} submitForm={submitForm} handleProfileImageChange={handleProfileImageChange}
-      formData={formData}
- />
+      <EditUserForm open={modal} onClose={() => setmodal(false)} />
     </div>
   )
 }

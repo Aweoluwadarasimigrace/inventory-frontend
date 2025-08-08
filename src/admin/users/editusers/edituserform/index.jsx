@@ -3,16 +3,18 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import useAdminUserStore from '@/store/getUserCreatedByAdmin';
 import React, { useState } from 'react'
+import { useEditUsers } from '../../hooks/useEditUsers';
 
-const EditUserForm = ({ open, onClose, changeFormDetails, submitForm, handleProfileImageChange, formData }) => {
-const {loading, adminUser} =useAdminUserStore()
-
-
-console.log(adminUser)
-const [selectedcode, setselectedcode] = useState();
+const EditUserForm = () => {
+  const { loading, adminUser } = useAdminUserStore()
+  const { changeFormDetails, submitForm, handleProfileImageChange } = useEditUsers()
+  console.log(adminUser)
+  const [selectedcode, setselectedcode] = useState();
   const [isOpen, setisOpen] = useState(false);
+  const { countryValue } = useRegister();
+
+
   
-const {countryValue} = useRegister()
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-h-[90vh] overflow-y-auto bg-white">
@@ -33,7 +35,7 @@ const {countryValue} = useRegister()
                 placeholder="Enter firstname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
-             
+
             </div>
 
             {/* Lastname */}
@@ -47,7 +49,7 @@ const {countryValue} = useRegister()
                 placeholder="Enter lastname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
-             
+
             </div>
 
             {/* Username */}
@@ -61,7 +63,7 @@ const {countryValue} = useRegister()
                 placeholder="Enter username"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
-             
+
             </div>
 
             {/* Email */}
@@ -75,7 +77,7 @@ const {countryValue} = useRegister()
                 placeholder="Enter email"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
-             
+
             </div>
 
             {/* Phone with Country Code */}
@@ -118,7 +120,7 @@ const {countryValue} = useRegister()
                   className="flex-1 border border-slate-300 rounded-md px-4 py-2"
                 />
               </div>
-             
+
             </div>
 
             {/* Gender */}
@@ -127,14 +129,14 @@ const {countryValue} = useRegister()
               <select
                 name="gender"
                 value={adminUser.gender || ""}
-               disabled
+                disabled
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               >
                 <option value="">Select gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
-             
+
             </div>
 
             {/* Role */}
@@ -144,14 +146,14 @@ const {countryValue} = useRegister()
                 name="role"
                 value={adminUser.role || ""}
                 disabled
-              
+
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               >
                 <option value="">Select role</option>
                 <option value="product manager">Product Manager</option>
                 <option value="sales representative">Sales Representative</option>
               </select>
-             
+
             </div>
 
             {/* Profile Image */}
@@ -163,7 +165,7 @@ const {countryValue} = useRegister()
                 accept="image/*"
                 className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
               />
-             
+
             </div>
           </div>
 
