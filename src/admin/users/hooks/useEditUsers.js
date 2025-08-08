@@ -4,6 +4,7 @@ import { toast } from "sonner";
 
 export const useEditUsers = () => {
   const { adminUser, updateUserByAdmin } = useAdminUserStore();
+  console.log(adminUser, "user")
   const [formData, setFormData] = useState({
     username: adminUser.username || "",
     contact: adminUser.contact || "",

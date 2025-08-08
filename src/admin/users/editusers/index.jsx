@@ -4,11 +4,9 @@ import EditUserForm from './edituserform'
 
 const EditAdminUser = () => {
   const { changeFormDetails, submitForm, handleProfileImageChange, formData } = useEditUsers()
-
   const [modal, setmodal] = useState(false)
   
   const handleEditClick = ()=>{
-  
     setmodal(true)
   }
   return (
