@@ -56,7 +56,7 @@ const {countryValue} = useRegister()
               <input
                 type="text"
                 name="username"
-                value={adminUser.username || ""}
+                // value={adminUser.username || ""}
                 onChange={changeFormDetails}
                 placeholder="Enter username"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
