@@ -7,6 +7,8 @@ import React, { useState } from 'react'
 const EditUserForm = ({ open, onClose, changeFormDetails, submitForm, handleProfileImageChange, formData }) => {
 const {loading, adminUser} =useAdminUserStore()
 
+
+console.log(adminUser)
 const [selectedcode, setselectedcode] = useState();
   const [isOpen, setisOpen] = useState(false);
   

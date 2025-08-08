@@ -36,6 +36,7 @@ export const useEditUsers = () => {
     };
     reader.readAsDataURL(file);
   };
+  console.log(formData, "lolllk")
 
   const submitForm = async (e) => {
     e.preventDefault();
