@@ -33,28 +33,34 @@ const useAdminUserStore = create((set, get) => ({
       const updateUi = get().adminUser.filter((user) => user._id !== userId);
       set({ adminUser: updateUi });
     } catch (error) {
-      set({error: "failed to delete user"});
+      set({ error: "failed to delete user" });
       toast.error("Failed to delete user");
-      console.log(error)
+      console.log(error);
     }
   },
 
   updateUserByAdmin: async (payload, userId) => {
-     set({loading: true, error:null});
+    set({ loading: true, error: null });
 
-     try {
+    try {
       const result = await updateAdminUser(payload, userId);
-      set({adminUser: get().adminUser.find(user => user._id === userId ? result : user), loading: false });
-      console.log(result, adminUser, "this is admin and result ")
+      // Update adminUser list: replace the user with updated result
+      const updatedList = get().adminUser.map((user) =>
+        user._id === userId ? result : user
+      );
+      set({ adminUser: updatedList, loading: false });
+
+      console.log(result, get().adminUser, "this is admin and result");
+
       toast.success("User updated successfully");
 
       // return result
-     } catch (error) {
-       set({error: "failed to update user", loading: false});
-       toast.error("Failed to update user");
-       console.log(error);
-     }
-  }
+    } catch (error) {
+      set({ error: "failed to update user", loading: false });
+      toast.error("Failed to update user");
+      console.log(error);
+    }
+  },
 }));
 
 export default useAdminUserStore;
