@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { create } from "zustand";
 
 const useAdminUserStore = create((set, get) => ({
-  adminUser: {},
+  adminUser: [],
   loading: false,
   error: null,
 
