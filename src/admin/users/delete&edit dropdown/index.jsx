@@ -22,7 +22,7 @@ const DeleteEditDropdown = ({userId}) => {
                      }`}
              >
                  <div className="flex flex-col">
-                     <EditAdminUser/>
+                     <EditAdminUser userId = {userId}/>
                      <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2" onClick={() => removeAdminUser(userId)}>
                         Delete
                      </button>

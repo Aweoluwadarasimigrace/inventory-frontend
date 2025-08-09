@@ -1,10 +1,8 @@
-import useAdminUserStore from "@/store/getUserCreatedByAdmin";
+
 import { useState } from "react";
 import { toast } from "sonner";
 
 export const useEditUsers = () => {
-  const { adminUser, updateUserByAdmin } = useAdminUserStore();
-  console.log(adminUser, "user")
   const [formData, setFormData] = useState({
     username: adminUser.username || "",
     contact: adminUser.contact || "",
@@ -37,13 +35,13 @@ export const useEditUsers = () => {
     };
     reader.readAsDataURL(file);
   };
-  console.log(formData, "lolllk")
+ 
 
-  const submitForm = async (e) => {
+  const submitForm = async (e, userId) => {
     e.preventDefault();
-    console.log(adminUser._id)
+    console.log(userId, "userid")
     try {
-      await updateUserByAdmin(formData, adminUser._id);
+      await updateUserByAdmin(formData, userId);
       toast.success("User updated successfully");
     } catch (error) {
       console.error("Error updating user:", error);

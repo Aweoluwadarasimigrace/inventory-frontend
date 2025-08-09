@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useEditUsers } from '../hooks/useEditUsers'
 import EditUserForm from './edituserform'
 
-const EditAdminUser = () => {
+const EditAdminUser = ({userId}) => {
   const [modal, setmodal] = useState(false)
-  
+  console.log(userId, "id from the paren t")
   const handleEditClick = ()=>{
     setmodal(true)
   }
@@ -14,7 +14,7 @@ const EditAdminUser = () => {
         Edit User
       </button>
 
-      <EditUserForm open={modal} onClose={() => setmodal(false)} />
+      <EditUserForm open={modal} onClose={() => setmodal(false)} userId = {userId} />
     </div>
   )
 }

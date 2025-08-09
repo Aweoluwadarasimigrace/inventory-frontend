@@ -22,7 +22,7 @@ const EditUserForm = ({onClose, open}) => {
           <DialogTitle>Edit User</DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={submitForm} className="space-y-4 mt-2">
+        <form onSubmit={(e) => submitForm(e, userId)} className="space-y-4 mt-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Firstname */}
             <div>
