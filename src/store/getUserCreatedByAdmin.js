@@ -39,11 +39,11 @@ const useAdminUserStore = create((set, get) => ({
     }
   },
 
-  updateUserByAdmin: async (formdata, userId) => {
+  updateUserByAdmin: async (payload, userId) => {
      set({loading: true, error:null});
 
      try {
-      const result = await updateAdminUser(formdata, userId);
+      const result = await updateAdminUser(payload, userId);
       set({adminUser: get().adminUser.find(user => user._id === userId ? result : user), loading: false });
       console.log(result, adminUser, "this is admin and result ")
       toast.success("User updated successfully");

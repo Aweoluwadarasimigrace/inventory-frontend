@@ -19,7 +19,7 @@ return response.data.user
 }
 
 
-export const updateAdminUser = async(formdata, userId)=>{
+export const updateAdminUser = async(payload, userId)=>{
     const responses = await apiClient.patch(`/user/updateuserbyadmin/${userId}`, {formdata}, {withCredentials:true})
      console.log(responses.data, "new fiel")
     return responses.data.user

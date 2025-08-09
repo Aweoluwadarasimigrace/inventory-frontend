@@ -5,8 +5,7 @@ import { toast } from "sonner";
 
 export const useEditUsers = () => {
   const [formData, setFormData] = useState({});
-
-  const {updateUserByAdmin} = useAdminUserStore()
+  const {updateUserByAdmin}= useAdminUserStore()
   const changeFormDetails = (e) => {
     // Handle form changes
     const { name, value } = e.target;
@@ -37,8 +36,16 @@ export const useEditUsers = () => {
   const submitForm = async (e, userId) => {
     e.preventDefault();
     console.log(userId, "userid")
+
+    const payload = {
+      username: formData.username ,
+    contact: formData.contact,
+    number: formData.number,
+    countrycode: formData.countrycode,
+    profilepicture: formData.profilepicture,
+    }
     try {
-      await updateUserByAdmin(formData, userId);
+      await updateUserByAdmin(payload, userId);
       toast.success("User updated successfully");
     } catch (error) {
       console.error("Error updating user:", error);
