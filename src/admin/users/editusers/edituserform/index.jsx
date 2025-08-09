@@ -5,16 +5,38 @@ import useAdminUserStore from '@/store/getUserCreatedByAdmin';
 import React, { useState } from 'react'
 import { useEditUsers } from '../../hooks/useEditUsers';
 
-const EditUserForm = ({onClose, open}) => {
+const EditUserForm = ({ onClose, open, userId }) => {
   const { loading, adminUser } = useAdminUserStore()
-  const { changeFormDetails, submitForm, handleProfileImageChange } = useEditUsers()
-  console.log(adminUser)
+  const { changeFormDetails, submitForm, handleProfileImageChange, formData, setFormData } = useEditUsers()
   const [selectedcode, setselectedcode] = useState();
   const [isOpen, setisOpen] = useState(false);
   const { countryValue } = useRegister();
+  useEffect(() => {
 
 
-  
+    if (!userId || !adminUser.length) return
+
+
+    const usertoUpdate = adminUser.find((user) => user._id === userId)
+
+    if (usertoUpdate) {
+      setFormData({
+         firstname: userToEdit.firstname || '',
+        lastname: userToEdit.lastname || '',
+        username: userToEdit.username || '',
+        contact: userToEdit.contact || '',
+        number: userToEdit.number || '',
+        countrycode: userToEdit.countrycode || '',
+        profilepicture: userToEdit.profilepicture || '',
+        email: userToEdit.email || '',
+        gender: userToEdit.gender || '',
+        role: userToEdit.role || '',
+
+      })
+    }
+  }, [])
+
+
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-h-[90vh] overflow-y-auto bg-white">
@@ -30,7 +52,7 @@ const EditUserForm = ({onClose, open}) => {
               <input
                 type="text"
                 name="firstname"
-                value={adminUser.firstname}
+                value={formData.firstname}
                 disabled
                 placeholder="Enter firstname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -45,7 +67,7 @@ const EditUserForm = ({onClose, open}) => {
                 type="text"
                 name="lastname"
                 disabled
-                value={adminUser.lastname || ""}
+                value={formData.lastname || ""}
                 placeholder="Enter lastname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
@@ -58,7 +80,7 @@ const EditUserForm = ({onClose, open}) => {
               <input
                 type="text"
                 name="username"
-                // value={adminUser.username || ""}
+                value={formData.username || ""}
                 onChange={changeFormDetails}
                 placeholder="Enter username"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -73,7 +95,7 @@ const EditUserForm = ({onClose, open}) => {
                 type="email"
                 name="email"
                 disabled
-                value={adminUser.email || ""}
+                value={formData.email || ""}
                 placeholder="Enter email"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
@@ -89,7 +111,7 @@ const EditUserForm = ({onClose, open}) => {
                     onClick={() => setisOpen(!isOpen)}
                     className="w-full p-3 border border-slate-300 rounded-md text-slate-700 cursor-pointer flex items-center justify-between"
                   >
-                    {selectedcode || adminUser.countrycode}
+                    {selectedcode || formData.countrycode}
                   </div>
                   {isOpen && (
                     <div className="absolute z-10 mt-1 w-60 max-h-48 overflow-y-auto border border-slate-300 rounded-md shadow-lg bg-white">
@@ -114,7 +136,7 @@ const EditUserForm = ({onClose, open}) => {
                 <input
                   type="tel"
                   name="number"
-                  value={adminUser.number || ""}
+                  value={formData.number || ""}
                   onChange={changeFormDetails}
                   placeholder="Enter phone number"
                   className="flex-1 border border-slate-300 rounded-md px-4 py-2"
@@ -128,7 +150,7 @@ const EditUserForm = ({onClose, open}) => {
               <label className="block text-sm font-medium text-slate-700 mb-1">Gender</label>
               <select
                 name="gender"
-                value={adminUser.gender || ""}
+                value={formData.gender || ""}
                 disabled
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               >
@@ -144,7 +166,7 @@ const EditUserForm = ({onClose, open}) => {
               <label className="block text-sm font-medium text-slate-700 mb-1">Role</label>
               <select
                 name="role"
-                value={adminUser.role || ""}
+                value={formData.role || ""}
                 disabled
 
                 className="w-full border border-slate-300 rounded-md px-4 py-2"

@@ -3,13 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 export const useEditUsers = () => {
-  const [formData, setFormData] = useState({
-    username: adminUser.username || "",
-    contact: adminUser.contact || "",
-    number: adminUser.number || "",
-    countrycode: adminUser.countrycode || "",
-    profilepicture: adminUser.profilepicture || "",
-  });
+  const [formData, setFormData] = useState({});
   const changeFormDetails = (e) => {
     // Handle form changes
     const { name, value } = e.target;
@@ -53,6 +47,7 @@ export const useEditUsers = () => {
     changeFormDetails,
     submitForm,
     handleProfileImageChange,
-    formData
+    formData,
+    setFormData
   };
 };
