@@ -2,7 +2,6 @@ import {
   deleteAdminUser,
   fetchUserCreatedByadmin,
   updateAdminUser,
-  updateAdminUUser,
 } from "@/services/userService";
 import { toast } from "sonner";
 import { create } from "zustand";

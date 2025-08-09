@@ -1,9 +1,12 @@
 
+import useAdminUserStore from "@/store/getUserCreatedByAdmin";
 import { useState } from "react";
 import { toast } from "sonner";
 
 export const useEditUsers = () => {
   const [formData, setFormData] = useState({});
+
+  const {updateUserByAdmin} = useAdminUserStore()
   const changeFormDetails = (e) => {
     // Handle form changes
     const { name, value } = e.target;
