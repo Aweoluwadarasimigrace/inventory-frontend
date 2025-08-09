@@ -2,7 +2,7 @@ import { useRegister } from '@/(auth)/hooks/useRegister';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import useAdminUserStore from '@/store/getUserCreatedByAdmin';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useEditUsers } from '../../hooks/useEditUsers';
 
 const EditUserForm = ({ onClose, open, userId }) => {
