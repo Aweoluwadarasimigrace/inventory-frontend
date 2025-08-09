@@ -5,7 +5,7 @@ import useAdminUserStore from '@/store/getUserCreatedByAdmin';
 import React, { useState } from 'react'
 import { useEditUsers } from '../../hooks/useEditUsers';
 
-const EditUserForm = () => {
+const EditUserForm = ({onClose, open}) => {
   const { loading, adminUser } = useAdminUserStore()
   const { changeFormDetails, submitForm, handleProfileImageChange } = useEditUsers()
   console.log(adminUser)
