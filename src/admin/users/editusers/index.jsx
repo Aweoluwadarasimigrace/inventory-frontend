@@ -5,7 +5,6 @@ import useAdminUserStore from '@/store/getUserCreatedByAdmin'
 
 const EditAdminUser = ({userId}) => {
   const [modal, setmodal] = useState(false)
-  console.log(userId, "id from the paren t")
 
   const handleEditClick = ()=>{
     setmodal(true)

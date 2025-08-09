@@ -13,10 +13,7 @@ const EditUserForm = ({ onClose, open, userId }) => {
   const { countryValue } = useRegister();
   useEffect(() => {
 
-
     if (!userId || !adminUser.length) return
-
-
     const usertoUpdate = adminUser.find((user) => user._id === userId)
 
     if (usertoUpdate) {
@@ -195,7 +192,7 @@ const EditUserForm = ({ onClose, open, userId }) => {
             <Button type="button" variant="outline" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit">{loading ? "Saving..." : "Save Changes"}</Button>
+            <Button type="submit" className= "bg-purple-600">{loading ? "Saving..." : "Save Changes"}</Button>
           </DialogFooter>
         </form>
       </DialogContent>

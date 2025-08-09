@@ -35,8 +35,7 @@ export const useEditUsers = () => {
 
   const submitForm = async (e, userId) => {
     e.preventDefault();
-    console.log(userId, "userid")
-
+    
     const payload = {
       username: formData.username ,
     contact: formData.contact,
