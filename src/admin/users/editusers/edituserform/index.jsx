@@ -21,16 +21,16 @@ const EditUserForm = ({ onClose, open, userId }) => {
 
     if (usertoUpdate) {
       setFormData({
-         firstname: userToEdit.firstname || '',
-        lastname: userToEdit.lastname || '',
-        username: userToEdit.username || '',
-        contact: userToEdit.contact || '',
-        number: userToEdit.number || '',
-        countrycode: userToEdit.countrycode || '',
-        profilepicture: userToEdit.profilepicture || '',
-        email: userToEdit.email || '',
-        gender: userToEdit.gender || '',
-        role: userToEdit.role || '',
+         firstname: usertoUpdate.firstname || '',
+        lastname: usertoUpdate.lastname || '',
+        username: usertoUpdate.username || '',
+        contact: usertoUpdate.contact || '',
+        number: usertoUpdate.number || '',
+        countrycode: usertoUpdate.countrycode || '',
+        profilepicture: usertoUpdate.profilepicture || '',
+        email: usertoUpdate.email || '',
+        gender: usertoUpdate.gender || '',
+        role: usertoUpdate.role || '',
 
       })
     }
