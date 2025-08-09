@@ -48,7 +48,7 @@ const useAdminUserStore = create((set, get) => ({
       console.log(result, adminUser, "this is admin and result ")
       toast.success("User updated successfully");
 
-      return result
+      // return result
      } catch (error) {
        set({error: "failed to update user", loading: false});
        toast.error("Failed to update user");
