@@ -80,7 +80,7 @@ export const useCreateUser = () => {
         navigate("/dashboard/users");
       }
     } catch (error) {
-      toast.success("not successful");
+      toast.error("error creating user, try again later");
       console.log(error);
     } finally {
       setisloading(false);
