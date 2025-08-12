@@ -1,5 +1,6 @@
-const { fetchCustomer } = require("@/services/userService");
-const { create } = require("zustand");
+import { fetchCustomer } from "@/services/userService";
+import { create } from "zustand";
+
 
 const useCustomerStore = create((set) => ({
   customers: [],
