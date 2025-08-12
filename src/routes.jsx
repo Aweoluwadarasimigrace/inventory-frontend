@@ -14,6 +14,7 @@ import ProductPage from "./layout/product";
 import ProtectedRouteLayout from "./layout/protect route";
 import CreateuserForm from "./admin/users/createusers";
 import CustomerPage from "./layout/customers";
+import CreateCustomerForm from "./layout/customers/createcustomerform";
 
 export const router = createBrowserRouter([
   {
@@ -41,9 +42,10 @@ export const router = createBrowserRouter([
           { index: true, Component: Dashboard },
           { path: "products", Component: ProductPage },
           { path: "users", Component: AdminUsersPage },
+           {path: "createuser", Component: CreateuserForm},
           { path: "profile", Component: ProfilePage },
           {path: "customer", Component: CustomerPage},
-          {path: "createuser", Component: CreateuserForm}
+          {path: "createcustomer", Component: CreateCustomerForm}
         ]
       },
     ],

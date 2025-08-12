@@ -6,9 +6,6 @@ import { toast } from 'sonner'
 
 const CreateUserButton = () => {
     const { user} = useUserStore()
-    
-    
-
     if (user.role !== "admin") {
         return toast.error("You are not authorized to create users");
     }
@@ -16,7 +13,7 @@ const CreateUserButton = () => {
         <div>
             <Link to={"dashboard/createuser"} >
                 <button className="bg-purple-600 px-4 py-2 rounded text-white">
-                    createUser
+                    create User
                 </button>
             </Link>
         </div>
