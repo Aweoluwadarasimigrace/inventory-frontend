@@ -36,3 +36,10 @@ export const deleteAdminUser = async (userId) => {
   console.log(apiRes)
   return apiRes
 }
+
+
+export const fetchCustomer = async()=>{
+  const res = await apiClient.get("/customer/getallcustomer", {withCredentials: true})
+  console.log(res)
+  return res.data
+}
