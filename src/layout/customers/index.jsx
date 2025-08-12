@@ -4,6 +4,7 @@ import DisplayCustomerTable from './displaycustomertable'
 const CustomerPage = () => {
   return (
     <div>
+        hello
         <DisplayCustomerTable/>
     </div>
   )
