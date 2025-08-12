@@ -12,7 +12,7 @@ const SideBarComponent = () => {
       name: "People", icon: <FaUsers />, subItems: [
         { name: "users", path: "/dashboard/users" },
         { name: "add user", path: "/dashboard/createuser" },
-        { name: "customers", path: "/dashboard/customers" },
+        { name: "customers", path: "/dashboard/customer" },
         { name: "add customer", path: "/dashboard/createcustomer" },
         { name: "suppliers", path: "/dashboard/suppliers" },
         { name: "add supplier", path: "/dashboard/createsupplier" },

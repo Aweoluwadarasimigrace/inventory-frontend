@@ -13,6 +13,7 @@ import Dashboard from "./layout/dashboard";
 import ProductPage from "./layout/product";
 import ProtectedRouteLayout from "./layout/protect route";
 import CreateuserForm from "./admin/users/createusers";
+import CustomerPage from "./layout/customers";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
           { path: "products", Component: ProductPage },
           { path: "users", Component: AdminUsersPage },
           { path: "profile", Component: ProfilePage },
+          {path: "customer", Component: CustomerPage},
           {path: "createuser", Component: CreateuserForm}
         ]
       },
