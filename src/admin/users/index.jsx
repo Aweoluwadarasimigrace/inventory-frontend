@@ -5,6 +5,7 @@ import CreateUserButton from './createusers/createuserbutton'
 import useAdminUserStore from '@/store/getUserCreatedByAdmin'
 import Loader from '@/sharedComponent/loader'
 import PdfDownloadButton from './pdfdownloadbutton'
+import NotCreatedYet from '@/sharedComponent/notcreatedyet'
 
 const AdminUsersPage = () => {
   const { adminUser, loading, fetchAdminUser } = useAdminUserStore()
@@ -20,9 +21,8 @@ const AdminUsersPage = () => {
   }
   if (adminUser?.length === 0) {
     return (
-      <div className="flex items-center justify-center h-screen w-full bg-purple-500 text-white">
-        <p className="text-lg text-center">No users created yet.</p>
-      </div>
+     
+      <NotCreatedYet name={"users"} />
     );
   }
   return (
