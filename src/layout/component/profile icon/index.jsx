@@ -1,6 +1,9 @@
+import { useLogout } from '@/layout/hooks/useLogout';
 import React from 'react'
 import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 const ProfileIcon = ({user, open, setopen}) => {
+
+  const {handleLogout} = useLogout()
   return (
     <>
      <div
@@ -49,7 +52,7 @@ const ProfileIcon = ({user, open, setopen}) => {
                 <FaCog className="text-purple-500" /> Settings
               </button>
               <button
-                onClick={() => console.log("Logging out...")}
+                onClick={() => handleLogout() }
                 className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 text-red-500 flex items-center gap-2"
               >
                 <FaSignOutAlt className="text-purple-500" /> Logout

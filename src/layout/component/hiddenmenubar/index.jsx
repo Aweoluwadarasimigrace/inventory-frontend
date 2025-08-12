@@ -1,3 +1,4 @@
+import { useLogout } from "@/layout/hooks/useLogout";
 import { useState } from "react";
 import { FaCog, FaSignOutAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
@@ -5,7 +6,7 @@ import { FiMoreVertical } from "react-icons/fi";
 
 export default function SimpleDropdown() {
     const [open, setOpen] = useState(false);
-
+    const {handleLogout} = useLogout()
     return (
         <div className="relative text-left block lg:hidden">
             {/* Toggle Button */}
@@ -29,7 +30,7 @@ export default function SimpleDropdown() {
                         <FaCog className="text-purple-500" /> Settings
                     </button>
                     <button
-                        onClick={() => console.log("Logging out...")}
+                        onClick={() => handleLogout()}
                         className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 text-red-500 flex items-center gap-2"
                     >
                         <FaSignOutAlt className="text-purple-500" /> Logout

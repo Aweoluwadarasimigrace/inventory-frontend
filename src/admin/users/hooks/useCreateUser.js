@@ -69,6 +69,7 @@ export const useCreateUser = () => {
       console.log("is loading ");
       const res = await apiClient.post("/user/createuser", payload, {
         withCredentials: true,
+        
       });
       if (res.data) {
         toast.success("user created successfully");
