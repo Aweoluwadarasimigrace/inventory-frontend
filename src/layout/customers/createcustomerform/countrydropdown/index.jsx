@@ -2,7 +2,7 @@ import React from 'react'
 import { useCreateCustomer } from '../../hooks/useCreateCustomer'
 
 const CountryDropdown = () => {
-    const { countries, setSelectedCountry, selectedCountry, setSelectedState, selectedState, states, changeFormDetails , cities} = useCreateCustomer()
+    const { countries, setSelectedCountry, selectedCountry, setSelectedState, selectedState, states, changeFormDetails , cities, errors} = useCreateCustomer()
     return (
         <>
             <div>
