@@ -4,6 +4,7 @@ import useCustomerStore from '@/store/getCustomers'
 import { Loader } from 'lucide-react'
 import NotCreatedYet from '@/sharedComponent/notcreatedyet'
 import CreateCustomerButton from './createcustomerButton'
+import PdfDownloadButton from '@/admin/users/pdfdownloadbutton'
 
 const CustomerPage = () => {
     const { fetchAllCustomer, customers, loading } = useCustomerStore()
@@ -19,7 +20,26 @@ const CustomerPage = () => {
     }
     if (customers?.length === 0) {
         return (
-            <NotCreatedYet name={"Customers"} />
+            <>
+
+                <div className="max-w-9xl mx-auto px-4 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+                    <div>
+                        <h1 className="text-2xl font-bold text-[#676e8a]">User Management</h1>
+                        <p className="text-gray-600">Manage Your Users</p>
+                        <p className="text-gray-500 text-sm">
+                            A dashboard provides you an overview of user list with access to the most important data,
+                            functions and controls.
+                        </p>
+                    </div>
+
+                    <div className="flex gap-x-2">
+                           <CreateCustomerButton />
+                        <PdfDownloadButton />
+                       
+                    </div>
+                </div>
+                <NotCreatedYet name={"Customers"} />
+            </>
         );
     }
     return (
@@ -37,7 +57,7 @@ const CustomerPage = () => {
                     </div>
 
                     <div className="flex gap-x-2">
-                        <CreateCustomerButton/>
+                        <CreateCustomerButton />
                         {/* <PdfDownloadButton /> */}
                         {/* <CreateUserButton /> */}
                     </div>
