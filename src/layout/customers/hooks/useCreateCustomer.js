@@ -58,8 +58,8 @@ export const useCreateCustomer = () => {
     const payload = {
       ...formData,
       //   city: cities,
-      state: states,
-      country: countries,
+      state: selectedState,
+      country: selectedCountry,
     };
     console.log(payload, "payload");
 
