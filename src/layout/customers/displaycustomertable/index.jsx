@@ -30,7 +30,7 @@ const DisplayCustomerTable = () => {
   </div>
 
   {/* Right Side: Dropdown */}
-  <DeleteEditDropdown userId={customer._id} />
+  {/* <DeleteEditDropdown userId={customer._id} /> */}
 </div>
 
 
