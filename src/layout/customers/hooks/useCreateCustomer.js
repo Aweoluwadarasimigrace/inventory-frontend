@@ -62,7 +62,7 @@ export const useCreateCustomer = () => {
       country: selectedCountry,
     };
     console.log(payload, "payload");
-
+console.log(selectedCountry, selectedState, "lol")
     try {
       console.log("ilsoajdjd");
       const res = await apiClient.post("/customer/createcustomer", payload, {
