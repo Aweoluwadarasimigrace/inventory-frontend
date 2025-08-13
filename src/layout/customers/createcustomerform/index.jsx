@@ -106,7 +106,7 @@ const CreateCustomerForm = () => {
                             <label className="block text-sm font-medium text-slate-700 mb-1">Address</label>
                             <textarea name='address'
                                 onChange={changeFormDetails}
-                                value={formData.email || ""}
+                                value={formData.address || ""}
                                 placeholder="Enter Your Address"
                                 className="w-full border border-slate-300 rounded-md px-4 py-2">
 

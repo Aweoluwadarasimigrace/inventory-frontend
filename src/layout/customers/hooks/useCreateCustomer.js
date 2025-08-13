@@ -57,11 +57,11 @@ export const useCreateCustomer = () => {
     setisLoading(true);
     const payload = {
       ...formData,
-    //   city: cities,
+      //   city: cities,
       state: states,
       country: countries,
     };
-    console.log(payload);
+    console.log(payload, "payload");
 
     try {
       console.log("ilsoajdjd");
@@ -136,10 +136,20 @@ export const useCreateCustomer = () => {
   };
 
   useEffect(() => {
-    fetchCountries();
-    fetchStates();
-    fetchCities();
+    fetchCountries(); // load all countries on mount
   }, []);
+
+  useEffect(() => {
+    if (selectedCountry) {
+      fetchStates(); // load states only when a country is selected
+    }
+  }, [selectedCountry]);
+
+  useEffect(() => {
+    if (selectedState) {
+      fetchCities(); // load cities only when a state is selected
+    }
+  }, [selectedState]);
 
   return {
     errors,
@@ -153,6 +163,6 @@ export const useCreateCustomer = () => {
     countries,
     states,
     selectedCountry,
-    selectedState
+    selectedState,
   };
 };
