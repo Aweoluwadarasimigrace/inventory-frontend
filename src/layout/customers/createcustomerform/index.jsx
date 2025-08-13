@@ -9,7 +9,7 @@ const CreateCustomerForm = () => {
     const [isOpen, setisOpen] = useState(false);
 
 
-    const { changeFormDetails, errors, createCustomer, isLoading } = useCreateCustomer()
+    const { changeFormDetails, errors, createCustomer, isLoading, formData } = useCreateCustomer()
     return (
         <>
             <div>
