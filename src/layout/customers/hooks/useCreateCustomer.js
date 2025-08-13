@@ -58,9 +58,10 @@ export const useCreateCustomer = () => {
     const payload = {
       ...formData,
       //   city: cities,
-      state: selectedState,
+      state: selectedState ,
       country: selectedCountry,
     };
+    console.log(formData.city, "city")
     console.log(payload, "payload");
 console.log(selectedCountry, selectedState, "lol")
     try {
