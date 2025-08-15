@@ -4,7 +4,16 @@ import { useCreateCustomer } from "./useCreateCustomer";
 import { useState } from "react";
 
 export const useEditCustomer = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    contact: "",
+    number: "",
+    countrycode: "",
+    address: "",
+    city: "",
+  });
   const { updateCustomer } = useCustomerStore();
   const { selectedCountry, selectedState } = useCreateCustomer();
   const changeFormDetails = (e) => {

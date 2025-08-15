@@ -8,7 +8,7 @@ import { useCreateCustomer } from '../hooks/useCreateCustomer'
 
 
 const EditCustomerForm = ({ onclose, open, customerId }) => {
-  const {loading, customers } = useCustomerStore()
+  const { loading, customers } = useCustomerStore()
   const { changeFormDetails, submitForm, formData, setFormData } = useEditCustomer()
   const { countryValue } = useRegister()
   const { setSelectedCountry, setSelectedState, cities, countries, states, selectedCountry, selectedState } = useCreateCustomer()
@@ -20,7 +20,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
     if (!customerId || !customers.length) return
 
     const customertoUpdate = customers.find((customer) => customer._id === customerId)
-console.log(customertoUpdate)
+    console.log(customertoUpdate)
 
     if (customertoUpdate) {
       setFormData({
@@ -47,7 +47,7 @@ console.log(customertoUpdate)
         <DialogHeader>
           <DialogTitle>Edit Customer</DialogTitle>
         </DialogHeader>
-        <form className="space-y-4 mt-2" onSubmit={(e)=> submitForm(e, customerId)}>
+        <form className="space-y-4 mt-2" onSubmit={(e) => submitForm(e, customerId)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* 1. firstname */}
