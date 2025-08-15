@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import EditCustomerForm from '..'
 
 const EditCustomerButton = ({customerId}) => {
+  console.log(customerId)
    const [modal, setmodal] = useState(false)
     const handleEditclick = ()=>{
         setmodal(true)
