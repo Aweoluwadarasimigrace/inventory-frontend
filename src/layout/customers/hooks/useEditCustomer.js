@@ -25,8 +25,8 @@ export const useEditCustomer = () => {
       if (updated.number && updated.countrycode) {
         updated.contact = updated.countrycode + updated.number;
       }
+       return updated;
     });
-    return updated;
   };
 
   const submitForm = async (e, customerId) => {
