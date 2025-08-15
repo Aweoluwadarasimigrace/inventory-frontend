@@ -38,7 +38,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
       setSelectedState({ state: customertoUpdate?.state || "" })
     }
 
-  }, [])
+  }, [customerId, customers])
 
 
   return (
