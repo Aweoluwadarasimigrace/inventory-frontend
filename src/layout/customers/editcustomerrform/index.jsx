@@ -8,19 +8,20 @@ import { useCreateCustomer } from '../hooks/useCreateCustomer'
 
 
 const EditCustomerForm = ({ onclose, open, customerId }) => {
-  const { loading, customers } = useCustomerStore()
-  const { changeFormDetails, submitForm, formData, setFormData } = useEditCustomer()
+  const {customers } = useCustomerStore()
+  const { changeFormDetails, submitForm, formData, setFormData, isLoading } = useEditCustomer()
   const { countryValue } = useRegister()
   const { setSelectedCountry, setSelectedState, cities, countries, states, selectedCountry, selectedState } = useCreateCustomer()
   const [selectedcode, setselectedcode] = useState();
   const [isOpen, setisOpen] = useState(false);
 
+  console.log(customers, "customers form usestate")
 
   useEffect(() => {
     if (!customerId || !customers.length) return
 
     const customertoUpdate = customers.find((customer) => customer._id === customerId)
-    console.log(customertoUpdate)
+    console.log(customertoUpdate, "customer to u[pdate")
 
     if (customertoUpdate) {
       setFormData({
@@ -181,7 +182,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
             <Button type="button" variant="outline" onClick={onclose}>
               Cancel
             </Button>
-            <Button type="submit" className="bg-purple-600">{loading ? "Saving..." : "Save Changes"}</Button>
+            <Button type="submit" className="bg-purple-600">{isLoading ? "Saving..." : "Save Changes"}</Button>
           </DialogFooter>
         </form>
 

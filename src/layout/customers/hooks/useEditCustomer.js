@@ -14,6 +14,8 @@ export const useEditCustomer = () => {
     address: "",
     city: "",
   });
+
+  const [isLoading, setisLoading] = useState(false)
   const { updateCustomer } = useCustomerStore();
   const { selectedCountry, selectedState } = useCreateCustomer();
   const changeFormDetails = (e) => {
@@ -41,18 +43,23 @@ export const useEditCustomer = () => {
       country: selectedCountry,
     };
 
+    console.log(payload, "payload")
+setisLoading(true)
     try {
       await updateCustomer(payload, customerId);
       toast.success("customer updated succesfully");
     } catch (error) {
       console.log("error updating customer", error);
       toast.error("failed to update customer, try again later");
+    }finally{
+        setisLoading(false)
     }
   };
   return {
     changeFormDetails,
     submitForm,
     formData,
+    isLoading,
     setFormData,
   };
 };
