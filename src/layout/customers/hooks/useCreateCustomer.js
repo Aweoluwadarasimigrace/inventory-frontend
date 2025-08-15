@@ -10,12 +10,7 @@ export const useCreateCustomer = () => {
   const [errors, seterrors] = useState({});
   const { fetchAllCustomer } = useCustomerStore();
   const [isLoading, setisLoading] = useState(false);
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [cities, setCities] = useState([]);
   const navigate = useNavigate();
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedState, setSelectedState] = useState("");
 
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
@@ -37,9 +32,9 @@ export const useCreateCustomer = () => {
       !formData.email ||
       !formData.address ||
       !formData.number ||
-      !cities ||
-      !countries ||
-      !states
+      !formData.city ||
+      !formData.country ||
+      !formData.state
     ) {
       seterrors({
         firstname: !formData.firstname ? "field is required" : "",
@@ -47,26 +42,17 @@ export const useCreateCustomer = () => {
         email: !formData.email ? "field is required" : "",
         address: !formData.address ? "field is required" : "",
         number: !formData.number ? "field is required" : "",
-        city: !cities ? "field is required" : "",
-        country: !countries ? "field is required" : "",
-        state: !states ? "field is required" : "",
+        city: !formData.city ? "field is required" : "",
+        country: !formData.country ? "field is required" : "",
+        state: !formData.state ? "field is required" : "",
       });
       return;
     }
 
     setisLoading(true);
-    const payload = {
-      ...formData,
-      //   city: cities,
-      state: selectedState ,
-      country: selectedCountry,
-    };
-    console.log(formData.city, "city")
-    console.log(payload, "payload");
-console.log(selectedCountry, selectedState, "lol")
     try {
       console.log("ilsoajdjd");
-      const res = await apiClient.post("/customer/createcustomer", payload, {
+      const res = await apiClient.post("/customer/createcustomer", formData, {
         withCredentials: true,
       });
 
@@ -84,74 +70,7 @@ console.log(selectedCountry, selectedState, "lol")
     }
   };
 
-  const fetchCountries = async () => {
-    try {
-      const res = await axios.get(
-        "https://countriesnow.space/api/v0.1/countries/positions"
-      );
-      console.log(res.data.data);
-      setCountries(res.data.data);
-    } catch (error) {
-      console.log(error);
-      toast.error("cannot seem to load country, check your connection");
-    }
-  };
-
-  const fetchStates = async () => {
-    if (!selectedCountry) {
-      return toast.error("select a country first");
-    }
-
-    try {
-      const response = await axios.post(
-        "https://countriesnow.space/api/v0.1/countries/states",
-        {
-          country: selectedCountry,
-        }
-      );
-      console.log(response.data.data.states);
-      setStates(response.data.data.states);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchCities = async () => {
-    if (!selectedState) {
-      return toast.error("select a state first");
-    }
-
-    try {
-      const respon = await axios.post(
-        "https://countriesnow.space/api/v0.1/countries/state/cities",
-        {
-          country: selectedCountry,
-          state: selectedState,
-        }
-      );
-      console.log(respon.data.data);
-      setCities(respon.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCountries(); // load all countries on mount
-  }, []);
-
-  useEffect(() => {
-    if (selectedCountry) {
-      fetchStates(); // load states only when a country is selected
-    }
-  }, [selectedCountry]);
-
-  useEffect(() => {
-    if (selectedState) {
-      fetchCities(); // load cities only when a state is selected
-    }
-  }, [selectedState]);
-
+  
   return {
     errors,
     formData,
