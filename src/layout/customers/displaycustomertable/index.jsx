@@ -1,5 +1,4 @@
 import useCustomerStore from '@/store/getCustomers'
-import useAdminUserStore from '@/store/getUserCreatedByAdmin'
 import React from 'react'
 import DeleteAndEditDropdown from '../deletandeditdropdown'
 

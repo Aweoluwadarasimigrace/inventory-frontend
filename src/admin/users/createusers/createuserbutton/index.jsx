@@ -11,7 +11,7 @@ const CreateUserButton = () => {
     }
     return (
         <div>
-            <Link to={"dashboard/createuser"} >
+            <Link to={"/dashboard/createuser"} >
                 <button className="bg-purple-600 px-4 py-2 rounded text-white">
                     create User
                 </button>
