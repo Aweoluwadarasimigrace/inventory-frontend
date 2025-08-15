@@ -55,8 +55,8 @@ export const fetchCustomer = async () => {
 };
 
 export const editCustomer = async (customerId, payload) => {
-  const res = await apiClient.patch(
-    `/customer/updatecustomer/${customerId}`,
+  console.log(customerId, "id")
+  const res = await apiClient.patch( `/customer/updatecustomer/${customerId}`,
     payload,
     { withCredentials: true }
   );

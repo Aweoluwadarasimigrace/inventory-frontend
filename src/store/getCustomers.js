@@ -24,7 +24,7 @@ const useCustomerStore = create((set, get) => ({
   },
   updateCustomer: async (payload, customerId) => {
     set({ loading: true, error: null });
-
+console.log(payload, "ki")
     try {
       const updatedUser = await editCustomer(payload, customerId);
 
