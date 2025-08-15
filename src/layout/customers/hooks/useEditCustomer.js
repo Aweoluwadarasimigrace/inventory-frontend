@@ -20,7 +20,7 @@ export const useEditCustomer = () => {
     const { name, value } = e.target;
     setFormData((prev) => {
       const updated = { ...prev, [name]: value };
-
+      
       if (updated.number && updated.countrycode) {
         updated.contact = updated.countrycode + updated.number;
       }

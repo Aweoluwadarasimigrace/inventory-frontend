@@ -57,7 +57,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
                 type="text"
                 name='firstname'
                 disabled
-                value={formData.firstname}
+                value={formData?.firstname}
                 placeholder="Enter your firstname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
@@ -70,7 +70,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
                 type="text"
                 name='lastname'
                 disabled
-                value={formData.lastname || ""}
+                value={formData?.lastname || ""}
                 placeholder="Enter your lastname"
                 className="w-full border border-slate-300 rounded-md px-4 py-2"
               />
@@ -82,7 +82,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
                   type="email"
                   name='email'
                   disabled
-                  value={formData.email || ""}
+                  value={formData?.email || ""}
                   placeholder="Enter email"
                   className="w-full border border-slate-300 rounded-md px-4 py-2"
                 />
@@ -98,7 +98,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
 
                   <div className='relative w-[130px]'>
                     <div onClick={() => setisOpen(!isOpen)} className='w-full p-3 border border-slate-300 rounded-md text-slate-700 cursor-pointer flex items-center justify-between'>
-                      {selectedcode || formData.countrycode}
+                      {selectedcode || formData?.countrycode}
                     </div>
 
                     {
@@ -121,7 +121,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
                     type="tel"
                     placeholder="Enter phone"
                     name='number'
-                    value={formData.number || ""}
+                    value={formData?.number || ""}
                     onChange={changeFormDetails}
                     className="flex-1 border border-slate-300 rounded-md px-4 py-2"
                   />
@@ -132,7 +132,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
                 <label className="block text-sm font-medium text-slate-700 mb-1">Address</label>
                 <textarea name='address'
                   onChange={changeFormDetails}
-                  value={formData.address || ""}
+                  value={formData?.address || ""}
                   placeholder="Enter Your Address"
                   className="w-full border border-slate-300 rounded-md px-4 py-2">
                 </textarea>
@@ -140,7 +140,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
 
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">choose your country</label>
-                <select name='country' onChange={(e) => setSelectedCountry(e.target.value)} value={selectedCountry.country} className="w-full border border-slate-300 rounded-md px-4 py-2">
+                <select name='country' onChange={(e) => setSelectedCountry(e.target.value)} value={selectedCountry?.country} className="w-full border border-slate-300 rounded-md px-4 py-2">
                   <option value="">Select role</option>
                   {
                     countries.map((country, idx) => (
@@ -153,7 +153,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
 
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">choose your State</label>
-                <select name='state' onChange={(e) => setSelectedState(e.target.value)} value={selectedState.state} disabled={!states.length} className="w-full border border-slate-300 rounded-md px-4 py-2">
+                <select name='state' onChange={(e) => setSelectedState(e.target.value)} value={selectedState?.state} disabled={!states.length} className="w-full border border-slate-300 rounded-md px-4 py-2">
                   <option value="">Select Your state</option>
                   {
                     states.map((state, idx) => (
@@ -165,7 +165,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
 
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">choose your City</label>
-                <select name='city' onChange={changeFormDetails} value={formData.city} className="w-full border border-slate-300 rounded-md px-4 py-2">
+                <select name='city' onChange={changeFormDetails} value={formData?.city} className="w-full border border-slate-300 rounded-md px-4 py-2">
                   <option value="">Select Your state</option>
                   {
                     cities.map((city, idx) => (
