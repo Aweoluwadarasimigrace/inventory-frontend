@@ -1,6 +1,5 @@
 import { apiClient } from "@/lib/client";
 import useCustomerStore from "@/store/getCustomers";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
@@ -76,13 +75,7 @@ export const useCreateCustomer = () => {
     formData,
     changeFormDetails,
     createCustomer,
-    setSelectedCountry,
-    setSelectedState,
     isLoading,
-    cities,
-    countries,
-    states,
-    selectedCountry,
-    selectedState,
+
   };
 };
