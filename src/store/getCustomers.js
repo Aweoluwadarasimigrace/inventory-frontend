@@ -1,8 +1,12 @@
-import { fetchCustomer } from "@/services/userService";
+import {
+  deleteCustomer,
+  editCustomer,
+  fetchCustomer,
+} from "@/services/userService";
+import { toast } from "sonner";
 import { create } from "zustand";
 
-
-const useCustomerStore = create((set) => ({
+const useCustomerStore = create((set, get) => ({
   customers: [],
   loading: false,
   error: null,
@@ -18,6 +22,38 @@ const useCustomerStore = create((set) => ({
       });
     }
   },
+  updateCustomer: async (payload, customerId) => {
+    set({ loading: true, error: null });
+
+    try {
+      const updatedUser = await editCustomer(payload, customerId);
+
+      const updatedList = get().customers.map((customer) =>
+        customer._id === customerId ? updatedUser : customer
+      );
+      set({ adminUser: updatedList, loading: false });
+    } catch (error) {
+      set({ error: "failed to update customer", loading: false });
+      toast.error("failed to updated customer");
+      console.log(error);
+    }
+  },
+
+  removeCustomer: async (customerId) => {
+    try {
+      const deletecustomer = await deleteCustomer(customerId);
+      toast.success(`${deletecustomer.message}`);
+
+      const updateUi = get().customers.filter(
+        (customer) => customer._id !== customerId
+      );
+      set({ customers: updateUi });
+    } catch (error) {
+      set({ error: "failed to delete customer" });
+      toast.error("failed to delete customer, try again later");
+      console.log(error);
+    }
+  },
 }));
 
-export default useCustomerStore
+export default useCustomerStore;
