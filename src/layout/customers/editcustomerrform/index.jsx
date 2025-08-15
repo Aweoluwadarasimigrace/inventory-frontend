@@ -45,12 +45,9 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
     <Dialog open={open} onOpenChange={onclose}>
       <DialogContent className="max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
-          <DialogTitle>Edit User</DialogTitle>
+          <DialogTitle>Edit Customer</DialogTitle>
         </DialogHeader>
-        <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={submitForm}>
-
-          <h2 className="text-2xl font-semibold text-slate-800 mb-6">Edit Customer</h2>
-
+        <form className="space-y-4 mt-2" onSubmit={(e)=> submitForm(e, customerId)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* 1. firstname */}
@@ -142,7 +139,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">choose yourcountry</label>
+                <label className="block text-sm font-medium text-slate-700 mb-1">choose your country</label>
                 <select name='country' onChange={(e) => setSelectedCountry(e.target.value)} value={selectedCountry.country} className="w-full border border-slate-300 rounded-md px-4 py-2">
                   <option value="">Select role</option>
                   {
@@ -167,7 +164,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">choose your State</label>
+                <label className="block text-sm font-medium text-slate-700 mb-1">choose your City</label>
                 <select name='city' onChange={changeFormDetails} value={formData.city} className="w-full border border-slate-300 rounded-md px-4 py-2">
                   <option value="">Select Your state</option>
                   {
