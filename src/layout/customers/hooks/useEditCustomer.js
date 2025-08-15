@@ -6,7 +6,7 @@ import { useState } from "react";
 export const useEditCustomer = () => {
   const [formData, setFormData] = useState([]);
   const { updateCustomer } = useCustomerStore();
-const {selectedCountry, selectedState} =useCreateCustomer()
+  const { selectedCountry, selectedState } = useCreateCustomer();
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => {
@@ -32,17 +32,17 @@ const {selectedCountry, selectedState} =useCreateCustomer()
     };
 
     try {
-        await updateCustomer(payload, customerId)
-        toast.success("customer updated succesfully")
+      await updateCustomer(payload, customerId);
+      toast.success("customer updated succesfully");
     } catch (error) {
-        console.log("error updating customer", error);
-        toast.error("failed to update customer, try again later")
+      console.log("error updating customer", error);
+      toast.error("failed to update customer, try again later");
     }
   };
   return {
     changeFormDetails,
     submitForm,
     formData,
-    setFormData
+    setFormData,
   };
 };

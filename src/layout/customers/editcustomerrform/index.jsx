@@ -20,22 +20,22 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
     if (!customerId || !customers.length) return
 
     const customertoUpdate = customers.find((customer) => customer._id === customerId)
-
+console.log(customertoUpdate)
 
     if (customertoUpdate) {
       setFormData({
-        firstname: customertoUpdate.firstname || '',
-        lastname: customertoUpdate.lastname || "",
-        email: customertoUpdate.email || "",
-        address: customertoUpdate.address || "",
-        contact: customertoUpdate.contact || '',
-        number: customertoUpdate.number || '',
-        countrycode: customertoUpdate.countrycode || '',
-        city: customertoUpdate.city || "",
+        firstname: customertoUpdate?.firstname || '',
+        lastname: customertoUpdate?.lastname || "",
+        email: customertoUpdate?.email || "",
+        address: customertoUpdate?.address || "",
+        contact: customertoUpdate?.contact || '',
+        number: customertoUpdate?.number || '',
+        countrycode: customertoUpdate?.countrycode || '',
+        city: customertoUpdate?.city || "",
       })
 
-      setSelectedCountry({ country: customertoUpdate.country || "" })
-      setSelectedState({ state: customertoUpdate.state || "" })
+      setSelectedCountry({ country: customertoUpdate?.country || "" })
+      setSelectedState({ state: customertoUpdate?.state || "" })
     }
 
   }, [])
