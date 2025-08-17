@@ -55,13 +55,13 @@ export const fetchCustomer = async () => {
 };
 
 export const editCustomer = async (customerId, payload) => {
-  console.log(customerId, "id")
-  const res = await apiClient.patch( `/customer/updatecustomer/${customerId}`,
+  console.log(customerId, "id in user service")
+  const ress = await apiClient.patch(`/customer/updatecustomer/${customerId}`,
     payload,
     { withCredentials: true }
   );
-  console.log(res.data)
-  return res.data.customer;
+  console.log(ress.data)
+  return ress.data.customer;
 };
 
 export const deleteCustomer = async (customerId) => {

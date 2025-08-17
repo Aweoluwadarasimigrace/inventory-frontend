@@ -44,9 +44,9 @@ export const useEditCustomer = () => {
     };
 
     console.log(payload, "payload")
-setisLoading(true)
+      setisLoading(true)
     try {
-      await updateCustomer(payload, customerId);
+      await updateCustomer(customerId, payload);
       toast.success("customer updated succesfully");
     } catch (error) {
       console.log("error updating customer", error);
