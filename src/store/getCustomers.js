@@ -22,16 +22,16 @@ const useCustomerStore = create((set, get) => ({
       });
     }
   },
-  updateCustomer: async (payload, customerId) => {
+  updateCustomer: async (customerId, payload) => {
     set({ loading: true, error: null });
-console.log(payload, "ki")
+    console.log(payload, "ki");
     try {
-      const updatedUser = await editCustomer(payload, customerId);
+      const updatedUser = await editCustomer(customerId, payload);
 
       const updatedList = get().customers.map((customer) =>
         customer._id === customerId ? updatedUser : customer
       );
-      set({ adminUser: updatedList, loading: false });
+      set({ customers: updatedList, loading: false });
     } catch (error) {
       set({ error: "failed to update customer", loading: false });
       toast.error("failed to updated customer");

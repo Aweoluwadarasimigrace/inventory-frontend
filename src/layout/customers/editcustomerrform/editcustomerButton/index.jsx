@@ -9,7 +9,6 @@ const EditCustomerButton = ({customerId}) => {
   return (
     <div>
         <button onClick={handleEditclick}>edit</button>
-
         <EditCustomerForm open={modal} onClose={()=> setmodal(false)} customerId={customerId} />
     </div>
   )
