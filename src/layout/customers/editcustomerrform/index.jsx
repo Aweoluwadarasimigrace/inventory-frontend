@@ -173,9 +173,9 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
           </div>
           {/* Submit button */}
           <DialogFooter className="mt-6">
-            <button type="button" variant="outline" onClick={onclose}>
+            {/* <button type="button" variant="outline" onClick={onclose}>
               Cancel
-            </button>
+            </button> */}
             <button type="submit" className="bg-purple-600">{isLoading ? "Saving..." : "Save Changes"}</button>
           </DialogFooter>
         </form>
