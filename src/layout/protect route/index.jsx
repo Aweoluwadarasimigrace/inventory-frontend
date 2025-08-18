@@ -9,9 +9,7 @@ const ProtectedRouteLayout = () => {
     const [isLoading, setisLoading] = useState(true)
     const verifySessionisstillValid = async () => {
         try {
-            const res = await apiClient.get('/auth/verify', {
-                withCredentials: true,
-            })
+            const res = await apiClient.get('/auth/verify')
             setisLoading(false)
         } catch (error) {
             toast.error("Your session has expired, please log in again.")
