@@ -1,4 +1,6 @@
-const { fetchallProduct } = require("@/services/productService");
+
+
+import { fetchallProduct } from "@/services/productService";
 
 const useProductStore = create((set, get)=>({
  products: [],
