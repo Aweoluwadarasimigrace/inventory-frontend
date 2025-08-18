@@ -3,7 +3,7 @@ import { apiClient } from "@/lib/client";
 export const fetchallProduct = async(page)=>{
     console.log(page)
   try {
-    const response = await apiClient(`/product/getallproduct?page=${page}&limit=10`);
+    const response = await apiClient.get(`/product/getallproduct?page=${page}&limit=10`);
     if (!response.ok) { 
        return console.log("Failed to fetch products");
     }
