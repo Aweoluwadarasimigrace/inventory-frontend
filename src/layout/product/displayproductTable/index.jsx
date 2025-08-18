@@ -3,7 +3,7 @@ import useProductStore from '@/store/getproduct'
 import React, { useEffect, useState } from 'react'
 
 const DisplayProductTable = () => {
-    const { products, loading, error, fetchAllProduct, totalProducts } = useProductStore();
+    const { products, loading, error, fetchAllProduct, totalProducts, totalPages } = useProductStore();
     const [page, setpage] = useState(1);
 
     useEffect(() => {
