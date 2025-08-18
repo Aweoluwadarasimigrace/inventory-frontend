@@ -45,7 +45,8 @@ export const router = createBrowserRouter([
            {path: "createuser", Component: CreateuserForm},
           { path: "profile", Component: ProfilePage },
           {path: "customer", Component: CustomerPage},
-          {path: "createcustomer", Component: CreateCustomerForm}
+          {path: "createcustomer", Component: CreateCustomerForm},
+          {path: "product", Component: ProductPage}
         ]
       },
     ],

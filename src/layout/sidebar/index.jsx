@@ -21,7 +21,7 @@ const SideBarComponent = () => {
     },
     {
       name: "Products", icon: <FaBox />, subItems: [
-        { name: "List product", path: "/dashboard/products" },
+        { name: "List product", path: "/dashboard/product" },
         { name: "add Product", path: "/dashboard/createProduct" }
       ]
     },
