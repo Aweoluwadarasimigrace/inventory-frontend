@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useEditCustomer } from '../hooks/useEditCustomer'
 import { useRegister } from '@/(auth)/hooks/useRegister'
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
 
 const EditCustomerForm = ({ onclose, open, customerId }) => {
   const { customers } = useCustomerStore()
@@ -173,10 +174,10 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
           </div>
           {/* Submit button */}
           <DialogFooter className="mt-6">
-            {/* <button type="button" variant="outline" onClick={onclose}>
+            <Button type="button" variant="outline" onClick={onclose}>
               Cancel
-            </button> */}
-            <button type="submit" className="bg-purple-600">{isLoading ? "Saving..." : "Save Changes"}</button>
+            </Button>
+            <Button type="submit" className="bg-purple-600">{isLoading ? "Saving..." : "Save Changes"}</Button>
           </DialogFooter>
         </form>
 

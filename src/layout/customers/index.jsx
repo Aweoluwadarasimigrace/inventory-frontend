@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+ import React, { useEffect } from 'react'
 import DisplayCustomerTable from './displaycustomertable'
 import useCustomerStore from '@/store/getCustomers'
 import { Loader } from 'lucide-react'
