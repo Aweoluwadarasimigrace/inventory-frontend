@@ -12,7 +12,7 @@ export const useVerifyEmail = () => {
     const verifyEmail = async () => {
       try {
         const res = await apiClient.get(`/auth/verify-email/?token=${token}`);
-
+console.log(res)
         if(res.data.token){
           sessionStorage.setItem("token", res.data.token);
         }

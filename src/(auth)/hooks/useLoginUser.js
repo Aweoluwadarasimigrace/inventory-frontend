@@ -32,6 +32,7 @@ export const useLoginUser = () => {
     console.log("is loading is laoding")
     try {
       const res = await apiClient.post("/auth/login", formData);
+      console.log(res)
       if (res.data) {
         sessionStorage.setItem("token", res.data.token);
         toast.success("login successful, welcome back");
