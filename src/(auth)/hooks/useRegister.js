@@ -60,9 +60,7 @@ export const useRegister = () => {
     seterrors({}); // clear previous errors
     setisLoading(true);
     try {
-      const res = await apiClient.post("/auth/register", formData, {
-        withCredentials: true,
-      });
+      const res = await apiClient.post("/auth/register", formData);
       if (res.data) {
         toast.success("registration successful");
         navigate("/auth/verify-message", { state: { email: formData.email } });

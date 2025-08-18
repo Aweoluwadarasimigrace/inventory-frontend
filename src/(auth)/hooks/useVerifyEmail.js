@@ -11,9 +11,11 @@ export const useVerifyEmail = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const res = await apiClient.get(`/auth/verify-email/?token=${token}`, {
-          withCredentials: true,
-        });
+        const res = await apiClient.get(`/auth/verify-email/?token=${token}`);
+
+        if(res.data.token){
+          sessionStorage.setItem("token", res.data.token);
+        }
         setStatus("success");
         setTimeout(() => {
           navigate("/dashboard");

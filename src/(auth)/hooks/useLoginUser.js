@@ -31,14 +31,13 @@ export const useLoginUser = () => {
     setisLoading(true);
     console.log("is loading is laoding")
     try {
-      const res = await apiClient.post("/auth/login", formData, {
-        withCredentials: true,
-      });
+      const res = await apiClient.post("/auth/login", formData);
       if (res.data) {
+        sessionStorage.setItem("token", res.data.token);
         toast.success("login successful, welcome back");
         navigate("/dashboard");
       }else{
-        console.log("cannot be ")
+        console.log("login failed, try again later")
       }
     } catch (error) {
       toast.error("an error occured");

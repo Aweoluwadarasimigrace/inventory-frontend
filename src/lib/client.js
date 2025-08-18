@@ -2,7 +2,6 @@ import axios from "axios"
 const baseURL = import.meta.env.VITE_PUBLIC_BASE_URL
 export const apiClient = axios.create({
     baseURL,
-    withCredentials:true
 })
 
 // 🔹 apiClient.interceptors.response.use(...)
@@ -16,3 +15,10 @@ apiClient.interceptors.response.use(
     return Promise.reject(error); // make sure to re-throw the error
   }
 );
+ apiClient.interceptors.request.use((config) => {
+  const token = sessionStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});

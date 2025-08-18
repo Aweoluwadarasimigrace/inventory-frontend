@@ -21,7 +21,6 @@ export const useResendEmail = () => {
       const res = await apiClient.post(
         "/auth/resend-verification",
         { email: email },
-        { withCredentials: true }
       );
       toast.success("email sent successfully");
       navigate("/auth/verify-message", { state: { email: email } });

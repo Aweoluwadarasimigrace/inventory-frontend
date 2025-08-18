@@ -89,7 +89,7 @@ const Login = () => {
                     {/* Footer Links */}
                     <div className="text-center text-slate-500 mt-6">
                      Don't have an account?
-                      <Link to="/auth/login" className="font-medium text-indigo-600 hover:underline">
+                      <Link to="/auth" className="font-medium text-indigo-600 hover:underline">
                         Register
                       </Link>
                     </div>

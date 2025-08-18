@@ -2,32 +2,9 @@ import Loader from '@/sharedComponent/loader';
 import useProductStore from '@/store/getproduct'
 import React, { useEffect, useState } from 'react'
 
-const DisplayProductTable = () => {
-    const { products, loading, error, fetchAllProduct, totalProducts, totalPages } = useProductStore();
-    const [page, setpage] = useState(1);
-
-    useEffect(() => {
-        fetchAllProduct(page);
-    }, [page]);
-    if (loading) {
-        <Loader />
-    }
-    if (products.length === 0) {
-        <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm">
-            <h1 className="text-2xl font-bold text-gray-800 mb-2">
-                Start Managing Your Product Activities!
-            </h1>
-            <p className="text-gray-600 mb-1">
-                Create, customize, and manage your products effectively.
-            </p>
-            <p className="text-gray-600 mb-4">
-                Click the button below to add your first product.
-            </p>
-            <button className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition">
-                Add Product
-            </button>
-        </div>
-    }
+const DisplayProductTable = ({ page, setpage }) => {
+    const { products, error, totalProducts, totalPages } = useProductStore();
+  
     return (
         <div>
             {error && <p>Error: {error}</p>}
@@ -70,6 +47,11 @@ const DisplayProductTable = () => {
                 >
                     Previous
                 </button>
+
+                <span className="text-sm font-medium">
+                    Page {page} of {totalPages}
+                </span>
+
                 <button
                     onClick={() => setpage((prev) => prev + 1)}
                     className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"

@@ -1,10 +1,11 @@
  import React, { useEffect } from 'react'
 import DisplayCustomerTable from './displaycustomertable'
 import useCustomerStore from '@/store/getCustomers'
-import { Loader } from 'lucide-react'
+
 import NotCreatedYet from '@/sharedComponent/notcreatedyet'
 import CreateCustomerButton from './createcustomerButton'
 import PdfDownloadButton from '@/admin/users/pdfdownloadbutton'
+import Loader from '@/sharedComponent/loader'
 
 const CustomerPage = () => {
     const { fetchAllCustomer, customers, loading } = useCustomerStore()
