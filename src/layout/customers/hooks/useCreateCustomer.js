@@ -51,9 +51,7 @@ export const useCreateCustomer = () => {
     setisLoading(true);
     try {
       console.log("ilsoajdjd");
-      const res = await apiClient.post("/customer/createcustomer", formData, {
-        withCredentials: true,
-      });
+      const res = await apiClient.post("/customer/createcustomer", formData);
 
       if (res.data) {
         toast.success("customer created successfullly");

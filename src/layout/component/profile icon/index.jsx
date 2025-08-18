@@ -2,7 +2,6 @@ import { useLogout } from '@/layout/hooks/useLogout';
 import React from 'react'
 import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 const ProfileIcon = ({user, open, setopen}) => {
-
   const {handleLogout} = useLogout()
   return (
     <>

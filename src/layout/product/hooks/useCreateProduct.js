@@ -57,8 +57,6 @@ export const useCreateProduct = () => {
     try {
       setisLoading(true);
       const response = await apiClient.post("/product/createproduct", data, {
-        withCredentials: true,
-      }, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       const result = await response.data;

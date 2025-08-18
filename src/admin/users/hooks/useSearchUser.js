@@ -12,9 +12,7 @@ export const useSearchUser = () => {
     }
     console.log(searchTerm)
     try {
-      const response = await apiClient.get(`/user/search?query=${searchTerm}`, {
-        withCredentials: true,
-      });
+      const response = await apiClient.get(`/user/search?query=${searchTerm}`);
       if (response.data) {
         setResults(response.data.user);
       }
