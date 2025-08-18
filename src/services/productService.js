@@ -1,6 +1,7 @@
 import { apiClient } from "@/lib/client";
 
 export const fetchallProduct = async(page)=>{
+    console.log(page)
   try {
     const response = await apiClient(`/product/getallproduct?page=${page}&limit=10`);
     if (!response.ok) { 
