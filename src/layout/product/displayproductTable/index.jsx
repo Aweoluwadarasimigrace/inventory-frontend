@@ -1,5 +1,5 @@
 import useProductStore from '@/store/getproduct'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const DisplayProductTable = () => {
     const { products, loading, error, fetchAllProduct , totalProducts } = useProductStore();
