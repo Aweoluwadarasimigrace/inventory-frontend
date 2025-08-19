@@ -1,5 +1,8 @@
 import { apiClient } from "@/lib/client";
+import useProductStore from "@/store/getproduct";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { toast } from "sonner";
 
 export const useCreateProduct = () => {
   const [formData, setformData] = useState({
@@ -11,6 +14,8 @@ export const useCreateProduct = () => {
     sku: "",
   });
   const [image, setimage] = useState(null);
+  const navigate = useNavigate()
+  const {fetchAllProduct} = useProductStore()
   const [isLoading, setisLoading] = useState(false);
 const [errors, seterrors] = useState({});
   const changeFormDetails = (e) => {
@@ -59,8 +64,13 @@ const [errors, seterrors] = useState({});
       const response = await apiClient.post("/product/createproduct", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      const result = await response.data;
-      console.log("Product created:", result);
+   if(response.data){
+    toast.success("Product created successfully");
+    setformData({});
+    setimage(null);
+    fetchAllProduct();
+    navigate("/dashboard/product");
+   }
     } catch (error) {
       console.error("Error creating product:", error);
     } finally {
