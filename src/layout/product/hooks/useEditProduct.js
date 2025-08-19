@@ -12,7 +12,7 @@ export const useEditProduct = () => {
     quantity: 0,
     sku: "",
   });
-  const [image, setimage] = useState(null);
+  const [image, setimage] = useState("");
   const [isLoading, setisLoading] = useState(false);
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
