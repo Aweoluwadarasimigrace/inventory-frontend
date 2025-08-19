@@ -2,7 +2,7 @@ import React from 'react'
 import { useCreateProduct } from '../hooks/useCreateProduct';
 
 const CreateProductForm = () => {
-    const { changeFormDetails, submitForm, isLoading, handleFileChange } = useCreateProduct();
+    const { changeFormDetails, submitForm, isLoading, handleFileChange, formData } = useCreateProduct();
     return (
         <div>
             <div>

@@ -72,6 +72,7 @@ export const useCreateProduct = () => {
     changeFormDetails, 
     submitForm,
     isLoading,
+    formData,
     handleFileChange
   };
 };
