@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCustomerPdfButton } from '../hooks/useCustomerPdfButton'
 
-const UserPdfButton = () => {
+const CustomerPdfButton = () => {
 
     const { downloadUserPdf } = useCustomerPdfButton()
     return (
@@ -18,4 +18,4 @@ const UserPdfButton = () => {
     )
 }
 
-export default UserPdfButton
+export default CustomerPdfButton

@@ -4,10 +4,11 @@ import useCustomerStore from '@/store/getCustomers'
 import CreateCustomerButton from './createcustomerButton'
 import Loader from '@/sharedComponent/loader'
 import { Link } from 'react-router'
+import CustomerPdfButton from './pdfdowlaodbutton'
 
 const CustomerPage = () => {
     const { fetchAllCustomer, customers, loading } = useCustomerStore()
-
+    console.log(customers, "vite customer")
     useEffect(() => {
         fetchAllCustomer()
     }, [])
@@ -17,7 +18,7 @@ const CustomerPage = () => {
             <Loader />
         )
     }
-    if (customers?.length === 0) {
+    if (customers.length === 0) {
         return (
             <>
                 <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">
@@ -55,6 +56,7 @@ const CustomerPage = () => {
 
                     <div className="flex gap-x-2">
                         <CreateCustomerButton />
+                        <CustomerPdfButton />
                         {/* <PdfDownloadButton /> */}
                         {/* <CreateUserButton /> */}
                     </div>
