@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { FiMoreVertical } from 'react-icons/fi'
 
 const DeleteAndEditDropdown = ({ productId }) => {
+    console.log(productId, "productId in DeleteAndEditDropdown");
      const [open, setOpen] = useState(false)
      const { removeProduct } = useProductStore();
   return (

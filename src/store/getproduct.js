@@ -20,14 +20,12 @@ const useProductStore = create((set, get)=>({
     }
  },
     removeProduct: async (productId) => {
+        console.log(productId, "productId in removeProduct");
         set({ loading: true, error: null });
         try {
             await deleteProduct(productId);
-            set((state) => ({
-                products: state.products.filter((product) => product.id !== productId),
-                totalProducts: state.totalProducts - 1,
-                loading: false
-            }));
+            const updatedProducts = get().products.filter(product => product._id !== productId);
+            set({ products: updatedProducts, loading: false });
         } catch (error) {
             set({ error: error.message, loading: false });
         }
