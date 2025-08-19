@@ -11,8 +11,6 @@ const NotificationBell = () => {
         const pusher = new Pusher(import.meta.env.VITE_PUSHER_KEY, {
             cluster: import.meta.env.VITE_PUSHER_CLUSTER,
         });
-        console.log("Key:", import.meta.env.VITE_PUSHER_KEY);
-console.log("Cluster:", import.meta.env.VITE_PUSHER_CLUSTER)
         const channel = pusher.subscribe("notifications")
 
         channel.bind("new-notification", (data) => {

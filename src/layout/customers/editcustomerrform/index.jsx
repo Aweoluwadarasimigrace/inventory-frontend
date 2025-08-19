@@ -39,7 +39,7 @@ const EditCustomerForm = ({ onclose, open, customerId }) => {
 
   return (
     <Dialog open={open} onOpenChange={onclose}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto bg-white">
+      <DialogContent className="max-h-[90vh] overflow-y-auto bg-white w-100">
         <DialogHeader>
           <DialogTitle>Edit Customer</DialogTitle>
         </DialogHeader>

@@ -1,19 +1,19 @@
 import useProductStore from '@/store/getproduct';
 import React, { useState } from 'react'
 import { FiMoreVertical } from 'react-icons/fi'
+import EditProductButton from '../editproductbutton';
 
 const DeleteAndEditDropdown = ({ productId }) => {
-    console.log(productId, "productId in DeleteAndEditDropdown");
      const [open, setOpen] = useState(false)
      const { removeProduct } = useProductStore();
   return (
-    <div>
-         <div>
+    <>
+         <div className="relative inline-block text-left">
             <div className="relative text-left block">
                 {/* Toggle Button */}
                 <button
                     onClick={() => setOpen((prev) => !prev)}
-                    className="text-[25px] text-purple-600 hover:text-black"
+                    className="text-[20px] text-purple-600 hover:text-black"
                 >
                     <FiMoreVertical />
                 </button>
@@ -24,8 +24,7 @@ const DeleteAndEditDropdown = ({ productId }) => {
                         }`}
                 >
                     <div className="flex flex-col">
-                        {/* <EditCustomerButton customerId={customerId} /> */}
-                        {/* <EditAdminUser userId = {userId}/> */}
+                       <EditProductButton productId={productId} />
                         <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2" onClick={() => removeProduct(productId)}>
                             Delete
                         </button>
@@ -33,7 +32,7 @@ const DeleteAndEditDropdown = ({ productId }) => {
                 </div>
             </div>
         </div>
-    </div>
+    </>
   )
 }
 

@@ -24,10 +24,12 @@ const DisplayProductTable = ({ page, setpage }) => {
                             alt={product.name}
                             className="w-full h-40 object-cover rounded-lg mb-4"
                         />
-                        <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                        <div className='flex justify-between items-center'>
+                            <h2 className="text-lg font-semibold text-gray-800 mb-2">
                             {product.name}
-                            <DeleteAndEditDropdown productId={product._id} />
                         </h2>
+                         <DeleteAndEditDropdown productId={product._id} />
+                        </div>
                         <p className="text-sm text-gray-600 mb-2 line-clamp-2">
                             {product.description}
                         </p>

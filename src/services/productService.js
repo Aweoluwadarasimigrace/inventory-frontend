@@ -1,7 +1,6 @@
 import { apiClient } from "@/lib/client";
 
 export const fetchallProduct = async(page)=>{
-    console.log(page)
   try {
     const response = await apiClient.get(`/product/getallproduct?page=${page}&limit=10`);
     console.log(response, "response from product service")
@@ -12,7 +11,6 @@ export const fetchallProduct = async(page)=>{
 }
 
 export const deleteProduct = async (productId) => {
-  console.log(productId, "productId in deleteProduct");
   try {
     const response = await apiClient.delete(`/product/deleteproduct/${productId}`);
     return response.data;

@@ -1,6 +1,6 @@
 
 
-import { deleteProduct, fetchallProduct } from "@/services/productService";
+import { deleteProduct, editProduct, fetchallProduct } from "@/services/productService";
 import { create } from "zustand";
 
 const useProductStore = create((set, get)=>({
@@ -19,8 +19,21 @@ const useProductStore = create((set, get)=>({
         set({error: error.message, loading: false});
     }
  },
+
+ updateProduct: async (productId, payload) => {
+    set({ loading: true, error: null });
+    try {
+        await editProduct(productId, payload);
+        const updatedProducts = get().products.map(product =>
+            product._id === productId ? { ...product, ...payload } : product
+        );
+        set({ products: updatedProducts, loading: false });
+    } catch (error) {
+        set({ error: error.message, loading: false });
+    }
+ },
+
     removeProduct: async (productId) => {
-        console.log(productId, "productId in removeProduct");
         set({ loading: true, error: null });
         try {
             await deleteProduct(productId);
@@ -30,6 +43,7 @@ const useProductStore = create((set, get)=>({
             set({ error: error.message, loading: false });
         }
     }
+
 
 }))
 
