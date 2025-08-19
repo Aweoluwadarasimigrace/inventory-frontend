@@ -12,6 +12,7 @@ export const fetchallProduct = async(page)=>{
 }
 
 export const deleteProduct = async (productId) => {
+  console.log(productId, "productId in deleteProduct");
   try {
     const response = await apiClient.delete(`/product/deleteproduct/${productId}`);
     return response.data;
