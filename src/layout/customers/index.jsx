@@ -18,7 +18,7 @@ const CustomerPage = () => {
             <Loader />
         )
     }
-    if (customers.length === 0) {
+    if (customers?.length === 0) {
         return (
             <>
                 <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">

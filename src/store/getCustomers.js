@@ -17,6 +17,7 @@ const useCustomerStore = create((set, get) => ({
       set({ customers: customer, loading: false });
     } catch (error) {
       set({
+        customers: [],
         error: error?.response?.data?.message || "failed to fetch user",
         loading: false,
       });
