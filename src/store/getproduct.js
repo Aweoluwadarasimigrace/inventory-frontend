@@ -25,7 +25,7 @@ const useProductStore = create((set, get)=>({
         try {
             await deleteProduct(productId);
             const updatedProducts = get().products.filter(product => product._id !== productId);
-            set({ products: updatedProducts, loading: false });
+            set({ products: updatedProducts, loading: false, totalProducts: get().totalProducts - 1 });
         } catch (error) {
             set({ error: error.message, loading: false });
         }
