@@ -10,3 +10,23 @@ export const fetchallProduct = async(page)=>{
     console.error(error);
   }
 }
+
+export const deleteProduct = async (productId) => {
+  try {
+    const response = await apiClient.delete(`/product/deleteproduct/${productId}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const editProduct = async (productId, payload) => {
+  try {
+    const response = await apiClient.patch(`/product/updateproduct/${productId}`, payload, {
+        headers: { "Content-Type": "multipart/form-data" }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};

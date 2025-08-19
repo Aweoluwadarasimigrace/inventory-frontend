@@ -18,7 +18,21 @@ const useProductStore = create((set, get)=>({
     } catch (error) {
         set({error: error.message, loading: false});
     }
- }
+ },
+    removeProduct: async (productId) => {
+        set({ loading: true, error: null });
+        try {
+            await deleteProduct(productId);
+            set((state) => ({
+                products: state.products.filter((product) => product.id !== productId),
+                totalProducts: state.totalProducts - 1,
+                loading: false
+            }));
+        } catch (error) {
+            set({ error: error.message, loading: false });
+        }
+    }
+
 }))
 
 export default useProductStore;

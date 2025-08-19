@@ -1,6 +1,7 @@
 
 import useProductStore from '@/store/getproduct'
 import React, { useEffect, useState } from 'react'
+import DeleteAndEditDropdown from '../deletandeditdropdown';
 
 const DisplayProductTable = ({ page, setpage }) => {
     const { products, error, totalProducts, totalPages } = useProductStore();
@@ -25,6 +26,7 @@ const DisplayProductTable = ({ page, setpage }) => {
                         />
                         <h2 className="text-lg font-semibold text-gray-800 mb-2">
                             {product.name}
+                            <DeleteAndEditDropdown productId={product._id} />
                         </h2>
                         <p className="text-sm text-gray-600 mb-2 line-clamp-2">
                             {product.description}
