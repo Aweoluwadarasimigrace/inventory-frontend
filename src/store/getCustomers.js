@@ -10,6 +10,7 @@ const useCustomerStore = create((set, get) => ({
   customers: [],
   loading: false,
   error: null,
+
   fetchAllCustomer: async () => {
     set({ loading: true, error: null });
     try {
@@ -18,41 +19,50 @@ const useCustomerStore = create((set, get) => ({
     } catch (error) {
       set({
         customers: [],
-        error: error?.response?.data?.message || "failed to fetch user",
+        error: error?.response?.data?.message || "Failed to fetch customers",
         loading: false,
       });
+      toast.error(error?.response?.data?.message || "Failed to fetch customers");
     }
   },
+
   updateCustomer: async (customerId, payload) => {
     set({ loading: true, error: null });
-    console.log(payload, "ki");
-    console.log(customerId, "id tru")
     try {
       const updatedUser = await editCustomer(customerId, payload);
 
       const updatedList = get().customers.map((customer) =>
-        customer._id === customerId ? updatedUser : customer
+        customer._id === customerId ? { ...customer, ...updatedUser } : customer
       );
+
       set({ customers: updatedList, loading: false });
+      toast.success("Customer updated successfully");
     } catch (error) {
-      set({ error: "failed to update customer", loading: false });
-      toast.error("failed to updated customer");
+      set({
+        error: error?.response?.data?.message || "Failed to update customer",
+        loading: false,
+      });
+      toast.error(error?.response?.data?.message || "Failed to update customer");
       console.log(error);
     }
   },
 
   removeCustomer: async (customerId) => {
+    set({ loading: true, error: null });
     try {
-      const deletecustomer = await deleteCustomer(customerId);
-      toast.success(`${deletecustomer.message}`);
+      const deleted = await deleteCustomer(customerId);
+      toast.success(deleted?.message || "Customer deleted successfully");
 
       const updateUi = get().customers.filter(
         (customer) => customer._id !== customerId
       );
-      set({ customers: updateUi });
+      set({ customers: updateUi, loading: false });
     } catch (error) {
-      set({ error: "failed to delete customer" });
-      toast.error("failed to delete customer, try again later");
+      set({
+        error: error?.response?.data?.message || "Failed to delete customer",
+        loading: false,
+      });
+      toast.error(error?.response?.data?.message || "Failed to delete customer");
       console.log(error);
     }
   },
