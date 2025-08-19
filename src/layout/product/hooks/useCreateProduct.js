@@ -12,7 +12,7 @@ export const useCreateProduct = () => {
   });
   const [image, setimage] = useState(null);
   const [isLoading, setisLoading] = useState(false);
-
+const [errors, seterrors] = useState({});
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
     setformData({ ...formData, [name]: value });
@@ -73,6 +73,7 @@ export const useCreateProduct = () => {
     submitForm,
     isLoading,
     formData,
+    errors,
     handleFileChange
   };
 };
