@@ -5,7 +5,7 @@ import CreateUserButton from './createusers/createuserbutton'
 import useAdminUserStore from '@/store/getUserCreatedByAdmin'
 import Loader from '@/sharedComponent/loader'
 import PdfDownloadButton from './pdfdownloadbutton'
-import NotCreatedYet from '@/sharedComponent/notcreatedyet'
+import { Link } from 'react-router'
 
 const AdminUsersPage = () => {
   const { adminUser, loading, fetchAdminUser } = useAdminUserStore()
