@@ -4,6 +4,7 @@ import useProductStore from '@/store/getproduct'
 import Loader from '@/sharedComponent/loader';
 import CreateProductButton from './createproduct/createproductButton';
 import { Link } from 'react-router';
+import ProductPdfButton from './pdfbutton';
 
 const ProductPage = () => {
   const { fetchAllProduct, products, loading } = useProductStore();
@@ -25,7 +26,7 @@ const ProductPage = () => {
     return (
       <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">
-          Start Managing Your Product Activities!1
+          Start Managing Your Product Activities!
         </h1>
         <p className="text-gray-600 mb-1">
           Create, customize, and manage your products effectively.
@@ -34,7 +35,7 @@ const ProductPage = () => {
           Click the button below to add your first product.
         </p>
        <Link to="/dashboard/createproduct">
-         <button className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition">
+         <button className="px-6 py-2 bg-purple-500 text-white font-medium rounded-lg shadow hover:bg-purple-600 transition">
            Add Product
          </button>
        </Link>
@@ -60,8 +61,7 @@ const ProductPage = () => {
 
                     <div className="flex gap-x-2">
                         <CreateProductButton />
-                        {/* <PdfDownloadButton /> */}
-                        {/* <CreateUserButton /> */}
+                        <ProductPdfButton/>
                     </div>
                 </div>
 

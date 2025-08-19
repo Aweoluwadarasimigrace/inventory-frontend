@@ -21,8 +21,22 @@ const AdminUsersPage = () => {
   }
   if (adminUser?.length === 0) {
     return (
-
-      <NotCreatedYet name={"users"} />
+      <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">
+          Start Managing Your User Activities!
+        </h1>
+        <p className="text-gray-600 mb-1">
+          Create, customize, and manage your users effectively.
+        </p>
+        <p className="text-gray-600 mb-4">
+          Click the button below to add your first user.
+        </p>
+        <Link to="/dashboard/createuser">
+          <button className="px-6 py-2 bg-purple-500 text-white font-medium rounded-lg shadow hover:bg-purple-600 transition">
+            Add User
+          </button>
+        </Link>
+      </div>
     );
   }
   return (

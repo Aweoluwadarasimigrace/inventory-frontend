@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaCog, FaSignOutAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
 import { FiMoreVertical } from "react-icons/fi";
+import { Link } from "react-router";
 
 export default function SimpleDropdown() {
     const [open, setOpen] = useState(false);
@@ -23,9 +24,11 @@ export default function SimpleDropdown() {
                     }`}
             >
                 <div className="flex flex-col">
+                    <Link to={"/dashboard/profile"}>
                     <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2">
                         <FaUser className="text-purple-500" /> Profile
                     </button>
+                    </Link>
                     <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2">
                         <FaCog className="text-purple-500" /> Settings
                     </button>

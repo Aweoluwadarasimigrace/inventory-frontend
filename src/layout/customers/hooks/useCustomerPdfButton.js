@@ -1,23 +1,22 @@
-import { apiClient } from "@/lib/client";
-import { toast } from "sonner";
-
-export const useDownloadPdf = () => {
-  const downloadPdf = async () => {
+export const useCustomerPdfButton = () => {
+  const downloadUserPdf = async () => {
     try {
-      const res = await apiClient.get("/pdf/pdfdocument", {
+      const res = await apiClient.get("/customer/getpdfdownload", {
         responseType: "blob",
       });
+
       const url = window.URL.createObjectURL(res.data);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "users.pdf"; // Specify the file name
+      a.download = "customer.pdf";
       a.click();
     } catch (error) {
       toast.error("Failed to download PDF");
       console.error("Error downloading PDF:", error);
     }
   };
+
   return {
-    downloadPdf,
+    downloadUserPdf,
   };
 };
