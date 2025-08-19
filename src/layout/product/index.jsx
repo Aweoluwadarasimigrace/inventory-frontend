@@ -3,8 +3,8 @@ import DisplayProductTable from './displayproductTable'
 import useProductStore from '@/store/getproduct'
 import Loader from '@/sharedComponent/loader';
 import CreateProductButton from './createproduct/createproductButton';
-import { Link } from 'react-router';
 import ProductPdfButton from './pdfbutton';
+import { Link } from 'react-router';
 
 const ProductPage = () => {
   const { fetchAllProduct, products, loading } = useProductStore();

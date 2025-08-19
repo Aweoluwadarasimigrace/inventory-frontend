@@ -31,7 +31,7 @@ const AdminUsersPage = () => {
         <p className="text-gray-600 mb-4">
           Click the button below to add your first user.
         </p>
-        <Link to="/dashboard/createuser">
+        <Link to={"/dashboard/createuser"}>
           <button className="px-6 py-2 bg-purple-500 text-white font-medium rounded-lg shadow hover:bg-purple-600 transition">
             Add User
           </button>
