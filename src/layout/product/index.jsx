@@ -3,6 +3,7 @@ import DisplayProductTable from './displayproductTable'
 import useProductStore from '@/store/getproduct'
 import Loader from '@/sharedComponent/loader';
 import CreateProductButton from './createproduct/createproductButton';
+import { Link } from 'react-router';
 
 const ProductPage = () => {
   const { fetchAllProduct, products, loading } = useProductStore();
@@ -22,7 +23,7 @@ const ProductPage = () => {
 
   if (products.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm">
+      <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">
           Start Managing Your Product Activities!1
         </h1>
@@ -32,9 +33,11 @@ const ProductPage = () => {
         <p className="text-gray-600 mb-4">
           Click the button below to add your first product.
         </p>
-        <button className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition">
-          Add Product
-        </button>
+       <Link to="/dashboard/createproduct">
+         <button className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition">
+           Add Product
+         </button>
+       </Link>
       </div>
     )
   }
