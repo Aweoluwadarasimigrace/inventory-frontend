@@ -1,4 +1,4 @@
-import Loader from '@/sharedComponent/loader';
+
 import useProductStore from '@/store/getproduct'
 import React, { useEffect, useState } from 'react'
 
