@@ -6,7 +6,7 @@ import { useParams } from 'react-router';
 const EditProductForm = () => {
     const { formData, changeFormDetails, handleFileChange, submitForm, isLoading, setformData, setimage, image } = useEditProduct();
     const { products } = useProductStore();
-    const productId = useParams().productId;
+    const productId = useParams().id;
     useEffect(() => {
         console.log(productId, "from params")
 
