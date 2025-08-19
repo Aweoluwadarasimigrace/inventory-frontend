@@ -13,6 +13,7 @@ const EditProductForm = () => {
         if (!productId || !products.length) return;
 
         const productToUpdate = products.find((product) => product._id === productId);
+        console.log(productToUpdate, "product to update")
         if (productToUpdate) {
             setformData({
                 name: productToUpdate.name || "",
