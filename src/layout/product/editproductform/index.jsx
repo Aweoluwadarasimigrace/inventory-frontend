@@ -23,7 +23,7 @@ const EditProductForm = () => {
                 quantity: productToUpdate.quantity || 0,
                 sku: productToUpdate.sku || "",
             });
-            setimage({ image: productToUpdate.image || null });
+            setimage({ image: productToUpdate.image || "" });
         }
 
     }, [productId, products])
