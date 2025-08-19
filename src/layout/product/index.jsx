@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DisplayProductTable from './displayproductTable'
 import useProductStore from '@/store/getproduct'
 import Loader from '@/sharedComponent/loader';
