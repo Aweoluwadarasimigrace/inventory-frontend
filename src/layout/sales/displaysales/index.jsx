@@ -2,34 +2,50 @@ import useSalesStore from '@/store/getsales'
 import React from 'react'
 
 const DisplaySales = ({ page, setpage }) => {
-    const { sales, totalPages, totalSales } = useSalesStore()
+    const { sales, totalPages, totalsales } = useSalesStore()
 
     return (
         <div>
-            <h2>Total Sales: {totalSales}</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sales.map(sale => (
-                        <tr key={sale._id}>
-                            <td>{sale.sku}</td>
-                            <td>{sale.productName}</td>
-                            <td>{sale.quantity}</td>
-                            <td> {sale.customer} </td>
-                            <td>{sale.salesPrice}</td>
-                            <td> {sale.totalCost} </td>
-                            <td> {sale.date} </td>
-                            <td> {sale.fulfilled} </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <h2>Total Sales: {totalsales}</h2>
+           <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden shadow-md">
+  <thead className="bg-gray-100 text-gray-700">
+    <tr>
+      <th className="px-4 py-2 text-left text-sm font-semibold">SKU</th>
+      <th className="px-4 py-2 text-left text-sm font-semibold">Product</th>
+      <th className="px-4 py-2 text-left text-sm font-semibold">Quantity</th>
+      <th className="px-4 py-2 text-left text-sm font-semibold">Customer</th>
+      <th className="px-4 py-2 text-left text-sm font-semibold">Price</th>
+      <th className="px-4 py-2 text-left text-sm font-semibold">Total</th>
+      <th className="px-4 py-2 text-left text-sm font-semibold">Date</th>
+      <th className="px-4 py-2 text-left text-sm font-semibold">Status</th>
+    </tr>
+  </thead>
+  <tbody className="divide-y divide-gray-200 text-sm">
+    {sales.map((sale) => (
+      <tr key={sale._id} className="hover:bg-gray-50">
+        <td className="px-4 py-2">{sale.sku}</td>
+        <td className="px-4 py-2 font-medium">{sale.productName}</td>
+        <td className="px-4 py-2">{sale.quantity}</td>
+        <td className="px-4 py-2">{sale.customer}</td>
+        <td className="px-4 py-2">₦{sale.salesPrice}</td>
+        <td className="px-4 py-2">₦{sale.totalCost}</td>
+        <td className="px-4 py-2">{sale.date}</td>
+        <td className="px-4 py-2">
+          <span
+            className={`px-2 py-1 rounded-full text-xs font-semibold ${
+              sale.fulfilled
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+            }`}
+          >
+            {sale.fulfilled ? "Fulfilled" : "Pending"}
+          </span>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
 
             <div className="flex justify-center items-center gap-4 mt-6">
                 <button
