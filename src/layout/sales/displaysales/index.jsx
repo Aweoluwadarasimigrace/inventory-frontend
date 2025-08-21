@@ -1,32 +1,37 @@
 import useSalesStore from '@/store/getsales'
 import React from 'react'
 
-const DisplaySales = ({page, setpage}) => {
-    const {sales, totalPages, totalSales} = useSalesStore()
+const DisplaySales = ({ page, setpage }) => {
+    const { sales, totalPages, totalSales } = useSalesStore()
 
-  return (
-    <div>
-        <h2>Total Sales: {totalSales}</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {sales.map(sale => (
-                    <tr key={sale.id}>
-                        <td>{sale.product}</td>
-                        <td>{sale.quantity}</td>
-                        <td>{sale.price}</td>
+    return (
+        <div>
+            <h2>Total Sales: {totalSales}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {sales.map(sale => (
+                        <tr key={sale._id}>
+                            <td>{sale.sku}</td>
+                            <td>{sale.productName}</td>
+                            <td>{sale.quantity}</td>
+                            <td> {sale.customer} </td>
+                            <td>{sale.salesPrice}</td>
+                            <td> {sale.totalCost} </td>
+                            <td> {sale.date} </td>
+                            <td> {sale.fulfilled} </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
 
-         <div className="flex justify-center items-center gap-4 mt-6">
+            <div className="flex justify-center items-center gap-4 mt-6">
                 <button
                     onClick={() => setpage((prev) => Math.max(prev - 1, 1))}
                     className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
@@ -45,8 +50,8 @@ const DisplaySales = ({page, setpage}) => {
                     Next
                 </button>
             </div>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default DisplaySales
