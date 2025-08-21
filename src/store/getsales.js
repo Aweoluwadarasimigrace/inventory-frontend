@@ -1,4 +1,7 @@
-const { create } = require("zustand");
+// const { create } = require("zustand");
+
+import { fetchAllSales } from "@/services/salesService";
+import { create } from "zustand";
 
 
 const useSalesStore = create((set, get)=>({
