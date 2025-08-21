@@ -66,7 +66,7 @@ const CustomerPage = () => {
           <h1 className="text-2xl font-bold text-[#676e8a]">
             Customer Management
           </h1>
-          <p className="text-gray-600">Manage Your Users</p>
+          <p className="text-gray-600">Manage Your Customers</p>
           <p className="text-gray-500 text-sm">
             A dashboard provides you an overview of customers list with access
             to the most important data, functions and controls.

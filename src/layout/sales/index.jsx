@@ -25,13 +25,13 @@ const Sales = () => {
     return (
       <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">
-          Start Managing Your Product Activities!
+          Start Managing Your Sales Activities!
         </h1>
         <p className="text-gray-600 mb-1">
-          Create, customize, and manage your products effectively.
+          Create, customize, and manage your sales effectively.
         </p>
         <p className="text-gray-600 mb-4">
-          Click the button below to add your first product.
+          Click the button below to add your first sale.
         </p>
         <Link to={"/dashboard/createsales"}>
           <button className="px-6 py-2 bg-purple-500 text-white font-medium rounded-lg shadow hover:bg-purple-600 transition">
@@ -48,10 +48,10 @@ const Sales = () => {
                 {/* HEADER + BUTTON: Responsive Side by Side */}
                 <div className="max-w-9xl mx-auto px-4 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
                     <div>
-                        <h1 className="text-2xl font-bold text-[#676e8a]">Customer Management</h1>
-                        <p className="text-gray-600">Manage Your Users</p>
+                        <h1 className="text-2xl font-bold text-[#676e8a]">Sales Management</h1>
+                        <p className="text-gray-600">Manage Your Sales</p>
                         <p className="text-gray-500 text-sm">
-                            A dashboard provides you an overview of customers list with access to the most important data,
+                            A dashboard provides you an overview of sales list with access to the most important data,
                             functions and controls.
                         </p>
                     </div>

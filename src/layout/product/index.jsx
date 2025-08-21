@@ -51,10 +51,10 @@ const ProductPage = () => {
                 {/* HEADER + BUTTON: Responsive Side by Side */}
                 <div className="max-w-9xl mx-auto px-4 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
                     <div>
-                        <h1 className="text-2xl font-bold text-[#676e8a]">Customer Management</h1>
-                        <p className="text-gray-600">Manage Your Users</p>
+                        <h1 className="text-2xl font-bold text-[#676e8a]">Product Management</h1>
+                        <p className="text-gray-600">Manage Your Products</p>
                         <p className="text-gray-500 text-sm">
-                            A dashboard provides you an overview of customers list with access to the most important data,
+                            A dashboard provides you an overview of products list with access to the most important data,
                             functions and controls.
                         </p>
                     </div>

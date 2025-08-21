@@ -18,6 +18,7 @@ const useSalesStore = create((set, get)=>({
             const data = await fetchAllSales(page);
             console.log(data)
             set({sales: data.sales, totalPages: data.totalPages, totalsales: data.total, loading: false});
+            console.log(sales)
         } catch (error) {
             set({error: error.message, loading: false});
         }
