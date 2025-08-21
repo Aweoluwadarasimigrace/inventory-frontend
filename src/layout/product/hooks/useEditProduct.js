@@ -1,5 +1,6 @@
 import useProductStore from "@/store/getproduct";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 export const useEditProduct = () => {
@@ -13,6 +14,7 @@ export const useEditProduct = () => {
     sku: "",
   });
   const [image, setimage] = useState("");
+  const navigate = useNavigate();
   const [isLoading, setisLoading] = useState(false);
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
@@ -27,7 +29,6 @@ export const useEditProduct = () => {
 
   const submitForm = async (e, productId) => {
     e.preventDefault();
-    console.log(productId, "from params")
     const payload = new FormData();
 
     payload.append("name", formData.name);
@@ -42,6 +43,7 @@ export const useEditProduct = () => {
     try {
      await updateProduct(productId, payload);
      toast.success("Product updated successfully");
+     navigate("/dashboard/product")
     } catch (error) {
       toast.error("Failed to update product");
       console.error(error);

@@ -8,12 +8,10 @@ const EditProductForm = () => {
     const { products } = useProductStore();
     const productId = useParams().id;
     useEffect(() => {
-        console.log(productId, "from params")
 
         if (!productId || !products.length) return;
 
         const productToUpdate = products.find((product) => product._id === productId);
-        console.log(productToUpdate, "product to update")
         if (productToUpdate) {
             setformData({
                 name: productToUpdate.name || "",

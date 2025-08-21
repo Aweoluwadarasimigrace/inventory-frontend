@@ -2,10 +2,15 @@ import useCustomerStore from '@/store/getCustomers'
 import React from 'react'
 import DeleteAndEditDropdown from '../deletandeditdropdown'
 
-const DisplayCustomerTable = () => {
-  const { customers } = useCustomerStore()
+const DisplayCustomerTable = ({ page, setPage }) => {
+  const { customers, totalPages, totalCustomers } = useCustomerStore()
   return (
     <>
+      {totalCustomers > 0 && (
+        <p className="text-sm text-gray-600 mb-4">
+          Showing {customers.length} of {totalCustomers} customers
+        </p>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {customers?.map((customer) => (
           <div
@@ -40,6 +45,25 @@ const DisplayCustomerTable = () => {
 
           </div>
         ))}
+      </div>
+      <div className="flex justify-center items-center gap-4 mt-6">
+        <button
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+          className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+        >
+          Previous
+        </button>
+
+        <span className="text-sm font-medium">
+          Page {page} of {totalPages}
+        </span>
+
+        <button
+          onClick={() => setPage((prev) => prev + 1)}
+          className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+        >
+          Next
+        </button>
       </div>
     </>
 

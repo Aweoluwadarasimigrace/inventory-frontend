@@ -55,9 +55,9 @@ export const deleteAdminUser = async (userId) => {
   };
 
 
-export const fetchCustomer = async () => {
+export const fetchCustomer = async (page) => {
   try {
-    const apiRes = await apiClient.get("/customer/getallcustomer");
+    const apiRes = await apiClient.get(`/customer/getallcustomer?page=${page}&limit=10`);
     return apiRes.data;
   } catch (error) {
     console.error("Error fetching customers:", error);

@@ -9,13 +9,15 @@ import { create } from "zustand";
 const useCustomerStore = create((set, get) => ({
   customers: [],
   loading: false,
+  totalPages: 0,
+  totalCustomers: 0,
   error: null,
 
-  fetchAllCustomer: async () => {
+  fetchAllCustomer: async (page) => {
     set({ loading: true, error: null });
     try {
-      const customer = await fetchCustomer();
-      set({ customers: customer, loading: false });
+      const customer = await fetchCustomer(page);
+      set({ customers: customer.customers, totalPages: customer.totalPages, totalCustomers: customer.total, loading: false });
     } catch (error) {
       set({
         customers: [],

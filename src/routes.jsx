@@ -17,6 +17,8 @@ import CustomerPage from "./layout/customers";
 import CreateCustomerForm from "./layout/customers/createcustomerform";
 import CreateProductForm from "./layout/product/createproduct";
 import EditProductForm from "./layout/product/editproductform";
+import Sales from "./layout/sales";
+import CreateSalesForm from "./layout/sales/createsalesform";
 
 export const router = createBrowserRouter([
   {
@@ -50,7 +52,9 @@ export const router = createBrowserRouter([
           {path: "createcustomer", Component: CreateCustomerForm},
           {path: "product", Component: ProductPage},
           {path: "createproduct", Component: CreateProductForm},
-          {path: "editproduct/:id", Component: EditProductForm}
+          {path: "editproduct/:id", Component: EditProductForm},
+          {path: "sales", Component: Sales},
+          {path: "createsales", Component: CreateSalesForm}
         ]
       },
     ],
