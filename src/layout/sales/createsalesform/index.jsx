@@ -1,6 +1,6 @@
 import React from 'react'
 import { useCreateSales } from '../hooks/useCreateSales'
-
+import { AiOutlineCalendar } from "react-icons/ai";
 const CreateSalesForm = () => {
   const { changeFormDetails, errors, submitForm, loading , formData} = useCreateSales()
   return (
