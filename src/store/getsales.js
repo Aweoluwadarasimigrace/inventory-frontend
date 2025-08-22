@@ -35,7 +35,7 @@ const useSalesStore = create((set, get) => ({
       if (data?.error) {
         throw new Error(data.error);
       }
-
+alert("in sales")
       set({ sales: [...get().sales, data], loading: false });
     } catch (error) {
       console.log(error.response.data.error, "here");

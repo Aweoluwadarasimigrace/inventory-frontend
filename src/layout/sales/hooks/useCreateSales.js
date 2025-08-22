@@ -46,10 +46,7 @@ export const useCreateSales = () => {
     setLoading(true);
     console.log(formData);
     try {
-      const result = await createSale(formData);
-      if (result.error) {
-        return alert(result.error);
-      }
+      await createSale(formData);
       navigate("/dashboard/sales");
       //   navigate("/dashboard/sales");
     } catch (error) {
