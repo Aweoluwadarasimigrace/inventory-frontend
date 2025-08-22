@@ -48,5 +48,5 @@ export const useCreateSales = () => {
     }
   };
 
-  return { submitForm, loading, errors, changeFormDetails };
+  return { submitForm, loading, errors, changeFormDetails , formData};
 };

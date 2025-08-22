@@ -2,7 +2,7 @@ import React from 'react'
 import { useCreateSales } from '../hooks/useCreateSales'
 
 const CreateSalesForm = () => {
-  const { changeFormDetails, errors, submitForm, loading } = useCreateSales()
+  const { changeFormDetails, errors, submitForm, loading , formData} = useCreateSales()
   return (
     <>
       <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={submitForm}>
