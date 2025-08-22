@@ -11,6 +11,15 @@ export const fetchAllSales = async (page) => {
   }
 };
 
+export const createSales = async(formData)=>{
+  try {
+    const response = await apiClient.post('/sales/createsale', formData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating sales data:', error);
+  }
+}
+
 export const deleteSales = async (salesId) =>{
   try {
     const response = await apiClient.delete(`/sales/deletesale/${salesId}`);
