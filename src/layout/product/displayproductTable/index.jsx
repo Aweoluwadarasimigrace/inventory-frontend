@@ -13,35 +13,44 @@ const DisplayProductTable = ({ page, setpage }) => {
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {products
-                    .filter((product) => product.quantity > 0) // 👈 hide products with 0 qty
-                    .map((product) => (
-                        <div
-                            key={product._id}
-                            className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition flex flex-col"
-                        >
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-40 object-cover rounded-lg mb-4"
-                            />
-                            <div className='flex justify-between items-center'>
-                                <h2 className="text-lg font-semibold text-gray-800 mb-2">
-                                    {product.name}
-                                </h2>
-                                <DeleteAndEditDropdown productId={product._id} />
-                            </div>
-                            <p className="text-sm text-gray-600 mb-2 line-clamp-2">
-                                {product.description}
-                            </p>
-                            <p className="text-sm text-gray-500 mb-1">
-                                Category: <span className="font-medium">{product.category}</span>
-                            </p>
-                            <p className="text-sm text-gray-500 mb-1">Quantity: {product.quantity}</p>
-                            <p className="text-sm text-gray-500 mb-1">SKU: {product.sku}</p>
-                            <p className="text-base font-bold text-blue-600 mt-2">${product.price}</p>
+                {products.map((product) => (
+                    <div
+                        key={product._id}
+                        className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition flex flex-col"
+                    >
+                        <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-40 object-cover rounded-lg mb-4"
+                        />
+                        <div className='flex justify-between items-center'>
+                            <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                                {product.name}
+                            </h2>
+                            <DeleteAndEditDropdown productId={product._id} />
                         </div>
-                    ))}
+                        <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                            {product.description}
+                        </p>
+                        <p className="text-sm text-gray-500 mb-1">
+                            Category: <span className="font-medium">{product.category}</span>
+                        </p>
+                        {product.quantity === 0 ? (
+                            <p className="text-sm text-red-500 mb-1">Out of stock</p>
+                        ) : product.quantity < 5 ? (
+                            <p className="text-sm text-yellow-500 mb-1">
+                                Low stock: {product.quantity}
+                            </p>
+                        ) : (
+                            <p className="text-sm text-gray-500 mb-1">
+                                Quantity: {product.quantity}
+                            </p>
+                        )}
+
+                        <p className="text-sm text-gray-500 mb-1">SKU: {product.sku}</p>
+                        <p className="text-base font-bold text-blue-600 mt-2">${product.price}</p>
+                    </div>
+                ))}
             </div>
 
             {/* Pagination */}
@@ -65,7 +74,6 @@ const DisplayProductTable = ({ page, setpage }) => {
                 </button>
             </div>
         </div>
-
     )
 }
 

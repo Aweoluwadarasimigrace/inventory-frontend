@@ -33,17 +33,7 @@ const useSalesStore = create((set, get) => ({
       const data = await createSales(formData);
       set({ sales: [...get().sales, data], loading: false });
     } catch (error) {
-      let errorMsg = "Something went wrong";
-
-      if (error.response && error.response.data && error.response.data.error) {
-        // 🔥 Backend custom error
-        errorMsg = error.response.data.error;
-      } else if (error.message) {
-        // fallback (axios error)
-        errorMsg = error.message;
-      }
-      console.log(errorMsg, "error message from store");
-      set({ error: errorMsg, loading: false });
+      set({ error: error.response.data.error, loading: false });
     }
   },
 }));
