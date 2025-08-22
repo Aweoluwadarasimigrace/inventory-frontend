@@ -19,7 +19,7 @@ export const useCreateSales = () => {
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
 
-    const newValue = name === "fulfilled" ? value === "true" : value;
+    const newValue = name === "fulfilled" ? value === "true" : value === "false";
     setformData((prev) => ({ ...prev, [name]: newValue }));
   };
 
@@ -38,6 +38,7 @@ export const useCreateSales = () => {
       return;
     }
     setLoading(true);
+    console.log(formData)
     try {
       await createSale(formData);
       navigate("/dashboard/sales");
