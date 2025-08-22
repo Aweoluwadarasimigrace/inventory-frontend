@@ -1,9 +1,10 @@
 import useSalesStore from "@/store/getsales";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { n } from "react-router/dist/development/register-COAKzST_";
 
 export const useCreateSales = () => {
-  const { createSale } = useSalesStore();
+  const { createSale, error } = useSalesStore();
   const [loading, setLoading] = useState(false);
   const [errors, seterrors] = useState({});
   const [formData, setformData] = useState({
@@ -46,8 +47,12 @@ export const useCreateSales = () => {
     setLoading(true);
     console.log(formData);
     try {
-      await createSale(formData);
-    //   navigate("/dashboard/sales");
+      const result = await createSale(formData);
+      if (result.error) {
+        return alert(result.error);
+      }
+      navigate("/dashboard/sales");
+      //   navigate("/dashboard/sales");
     } catch (error) {
       console.log(error.message);
     } finally {

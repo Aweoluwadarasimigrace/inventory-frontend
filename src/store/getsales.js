@@ -44,7 +44,6 @@ const useSalesStore = create((set, get) => ({
       }
       console.log(errorMsg, "error message from store");
       set({ error: errorMsg, loading: false });
-      throw new Error(errorMsg);
     }
   },
 }));
