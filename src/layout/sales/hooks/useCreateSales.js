@@ -19,7 +19,13 @@ export const useCreateSales = () => {
   const changeFormDetails = (e) => {
     const { name, value } = e.target;
 
-    const newValue = name === "fulfilled" ? value === "true" : value === "false";
+    let newValue = value;
+
+    if (name === "fulfilled") {
+      // convert string "true"/"false" to boolean
+      newValue = value === "true";
+    }
+
     setformData((prev) => ({ ...prev, [name]: newValue }));
   };
 
@@ -38,10 +44,10 @@ export const useCreateSales = () => {
       return;
     }
     setLoading(true);
-    console.log(formData)
+    console.log(formData);
     try {
       await createSale(formData);
-      navigate("/dashboard/sales");
+    //   navigate("/dashboard/sales");
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -49,5 +55,5 @@ export const useCreateSales = () => {
     }
   };
 
-  return { submitForm, loading, errors, changeFormDetails , formData};
+  return { submitForm, loading, errors, changeFormDetails, formData };
 };
