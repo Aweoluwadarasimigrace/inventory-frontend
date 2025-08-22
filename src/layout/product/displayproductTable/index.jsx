@@ -1,11 +1,10 @@
-
 import useProductStore from '@/store/getproduct'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import DeleteAndEditDropdown from '../deletandeditdropdown';
 
 const DisplayProductTable = ({ page, setpage }) => {
     const { products, error, totalProducts, totalPages } = useProductStore();
-  
+
     return (
         <div>
             {error && <p>Error: {error}</p>}
@@ -14,33 +13,35 @@ const DisplayProductTable = ({ page, setpage }) => {
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {products.map((product) => (
-                    <div
-                        key={product._id}
-                        className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition flex flex-col"
-                    >
-                        <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-40 object-cover rounded-lg mb-4"
-                        />
-                        <div className='flex justify-between items-center'>
-                            <h2 className="text-lg font-semibold text-gray-800 mb-2">
-                            {product.name}
-                        </h2>
-                         <DeleteAndEditDropdown productId={product._id} />
+                {products
+                    .filter((product) => product.quantity > 0) // 👈 hide products with 0 qty
+                    .map((product) => (
+                        <div
+                            key={product._id}
+                            className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition flex flex-col"
+                        >
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-40 object-cover rounded-lg mb-4"
+                            />
+                            <div className='flex justify-between items-center'>
+                                <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                                    {product.name}
+                                </h2>
+                                <DeleteAndEditDropdown productId={product._id} />
+                            </div>
+                            <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                                {product.description}
+                            </p>
+                            <p className="text-sm text-gray-500 mb-1">
+                                Category: <span className="font-medium">{product.category}</span>
+                            </p>
+                            <p className="text-sm text-gray-500 mb-1">Quantity: {product.quantity}</p>
+                            <p className="text-sm text-gray-500 mb-1">SKU: {product.sku}</p>
+                            <p className="text-base font-bold text-blue-600 mt-2">${product.price}</p>
                         </div>
-                        <p className="text-sm text-gray-600 mb-2 line-clamp-2">
-                            {product.description}
-                        </p>
-                        <p className="text-sm text-gray-500 mb-1">
-                            Category: <span className="font-medium">{product.category}</span>
-                        </p>
-                        <p className="text-sm text-gray-500 mb-1">Quantity: {product.quantity}</p>
-                        <p className="text-sm text-gray-500 mb-1">SKU: {product.sku}</p>
-                        <p className="text-base font-bold text-blue-600 mt-2">${product.price}</p>
-                    </div>
-                ))}
+                    ))}
             </div>
 
             {/* Pagination */}
@@ -64,6 +65,7 @@ const DisplayProductTable = ({ page, setpage }) => {
                 </button>
             </div>
         </div>
+
     )
 }
 
