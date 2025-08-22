@@ -109,8 +109,8 @@ const CreateSalesForm = () => {
             <label className="block text-sm font-medium text-slate-700 mb-1">Delivery Status</label>
             <select name='fulfilled' onChange={changeFormDetails} value={formData.fulfilled || ""} className="w-full border border-slate-300 rounded-md px-4 py-2">
               <option value="">Select status</option>
-              <option value="true">delivered</option>
               <option value="false">not delivered</option>
+               <option value="true">delivered</option>
             </select>
             {errors.message && <small className="text-red-500">{errors.message}</small>}
           </div>
