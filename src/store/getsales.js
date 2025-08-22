@@ -44,6 +44,7 @@ const useSalesStore = create((set, get) => ({
       }
 
       set({ error: errorMsg, loading: false });
+       throw new Error(errorMsg);
     }
   },
 }));
