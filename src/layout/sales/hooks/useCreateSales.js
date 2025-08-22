@@ -1,7 +1,6 @@
 import useSalesStore from "@/store/getsales";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { n } from "react-router/dist/development/register-COAKzST_";
 
 export const useCreateSales = () => {
   const { createSale, error } = useSalesStore();
