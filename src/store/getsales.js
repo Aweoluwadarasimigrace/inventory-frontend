@@ -33,6 +33,7 @@ const useSalesStore = create((set, get) => ({
       const data = await createSales(formData);
       set({ sales: [...get().sales, data], loading: false });
     } catch (error) {
+      console.log(error.response.data.error, "here");
       set({ error: error.response.data.error, loading: false });
     }
   },
