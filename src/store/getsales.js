@@ -42,9 +42,9 @@ const useSalesStore = create((set, get) => ({
         // fallback (axios error)
         errorMsg = error.message;
       }
-
+      console.log(errorMsg, "error message from store");
       set({ error: errorMsg, loading: false });
-       throw new Error(errorMsg);
+      throw new Error(errorMsg);
     }
   },
 }));
