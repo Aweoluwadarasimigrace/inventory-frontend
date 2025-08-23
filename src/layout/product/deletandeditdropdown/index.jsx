@@ -1,7 +1,7 @@
 import useProductStore from '@/store/getproduct';
 import React, { useState } from 'react'
 import { FiMoreVertical } from 'react-icons/fi'
-import EditProductButton from '../editproductbutton';
+import EditProductButton from '../editproductform/editproductbutton';
 
 const DeleteAndEditDropdown = ({ productId }) => {
      const [open, setOpen] = useState(false)

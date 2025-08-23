@@ -7,7 +7,7 @@ const CreateSalesForm = () => {
     <>
       <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={submitForm}>
 
-        <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create New User</h2>
+        <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create New Sales</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 1. SKU */}
@@ -53,9 +53,9 @@ const CreateSalesForm = () => {
             {errors.message && <small className="text-red-500">{errors.message}</small>}
           </div>
 
-          {/* 4. customerName */}
+          {/* 4. Customer Name */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">customerName</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Customer Name</label>
             <input
               type="text"
               name='customer'
@@ -70,7 +70,7 @@ const CreateSalesForm = () => {
 
           {/* 5. salesPrice  */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">salesPrice</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">sales Price</label>
             <input
               type="number"
               name='salesPrice'
@@ -83,8 +83,9 @@ const CreateSalesForm = () => {
           </div>
 
 
-          {/* 4. category */}
+          {/* 6. date */}
           <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Date</label>
             <div className="relative w-full">
               <input
                 type="date"
@@ -99,11 +100,8 @@ const CreateSalesForm = () => {
             {errors.message && <small className="text-red-500">{errors.message}</small>}
           </div>
 
-          {/* quantity */}
-         
 
-
-          {/* sku */}
+          {/* Delivery Status */}
 
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Delivery Status</label>

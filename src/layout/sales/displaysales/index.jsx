@@ -1,5 +1,6 @@
 import useSalesStore from '@/store/getsales'
 import React from 'react'
+import DeleteAndEditDropdown from '../deleteandeditdropdown'
 
 const DisplaySales = ({ page, setpage }) => {
     const { sales, totalPages, totalsales } = useSalesStore()
@@ -14,7 +15,10 @@ const DisplaySales = ({ page, setpage }) => {
                         className="bg-white rounded-xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition"
                     >
                         <div className="flex justify-between items-center mb-2">
-                            <h2 className="font-semibold text-gray-800">{sale.productName}</h2>
+                          <div className='flex justify-between items-center'>
+                              <h2 className="font-semibold text-gray-800">{sale.productName}</h2>
+                              <DeleteAndEditDropdown salesId = {sale._id}/>
+                          </div>
                             <span
                                 className={`px-2 py-1 rounded-full text-xs font-semibold ${sale.fulfilled
                                         ? "bg-green-100 text-green-700"

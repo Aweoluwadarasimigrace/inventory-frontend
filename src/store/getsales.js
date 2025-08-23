@@ -1,6 +1,10 @@
 // const { create } = require("zustand");
 
-import { createSales, fetchAllSales } from "@/services/salesService";
+import {
+  createSales,
+  deleteSales,
+  fetchAllSales,
+} from "@/services/salesService";
 import { create } from "zustand";
 
 const useSalesStore = create((set, get) => ({
@@ -35,6 +39,39 @@ const useSalesStore = create((set, get) => ({
       set({ sales: [...get().sales, data], loading: false });
     } catch (error) {
       console.log(error.response.data.error, "here");
+      set({ error: error.response.data.error, loading: false });
+    }
+  },
+
+  updateSale: async (salesId, payload) => {
+    set({ loading: true, error: null });
+    try {
+      const data = await updateSales(salesId, payload);
+      console.log(data, "updated sales data");
+      const updatedSales = get().sales.map((sale) =>
+        sale._id === salesId ? { ...sale, ...data } : sale
+      );
+      set({
+        sales: updatedSales,
+        loading: false,
+      });
+    } catch (error) {
+      console.log(error.response.data.error, "here");
+      set({ error: error.response.data.error, loading: false });
+    }
+  },
+
+  removeSale: async (salesId) => {
+    set({ loading: true, error: null });
+    try {
+      await deleteSales(salesId);
+      const updatedSales = get().sales.filter((sale) => sale._id !== salesId);
+      set({
+        sales: updatedSales,
+        loading: false,
+        totalsales: get().totalsales - 1,
+      });
+    } catch (error) {
       set({ error: error.response.data.error, loading: false });
     }
   },

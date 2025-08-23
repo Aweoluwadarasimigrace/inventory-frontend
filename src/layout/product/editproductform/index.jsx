@@ -27,8 +27,6 @@ const EditProductForm = () => {
 
 
     return (
-        <div>
-            <div>
                 <div>
                     <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={(e) => submitForm(e, productId)}>
 
@@ -139,8 +137,6 @@ const EditProductForm = () => {
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
     )
 }
 

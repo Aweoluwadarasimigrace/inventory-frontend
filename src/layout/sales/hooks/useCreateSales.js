@@ -2,6 +2,7 @@ import useProductStore from "@/store/getproduct";
 import useSalesStore from "@/store/getsales";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "sonner";
 
 export const useCreateSales = () => {
   const { createSale } = useSalesStore();
@@ -53,20 +54,21 @@ export const useCreateSales = () => {
     const product = products.find((p) => p.sku === formData.sku);
     console.log(product, "sku product");
     if (!product) {
-      seterrors({ message: "Selected product not found" });
+      toast.error("Selected product not found, wrong SKU");
       return;
     }
 
     if (formData.quantity > product.quantity) {
-      seterrors({ message: "Insufficient stock available" });
+      toast.error("Insufficient stock available");
       return;
     }
 
     await createSale(formData);
+    toast.success("Sale created successfully");
     navigate("/dashboard/sales");
   } catch (error) {
     console.error(error);
-    seterrors({ message: error.message || "Failed to create sale" });
+    toast.error(error.message || "Failed to create sale");
   } finally {
     setLoading(false);
   }
