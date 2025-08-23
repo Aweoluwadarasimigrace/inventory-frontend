@@ -5,6 +5,7 @@ import {
   deleteSales,
   fetchAllSales,
 } from "@/services/salesService";
+import { toast } from "sonner";
 import { create } from "zustand";
 
 const useSalesStore = create((set, get) => ({
@@ -71,6 +72,7 @@ const useSalesStore = create((set, get) => ({
         loading: false,
         totalsales: get().totalsales - 1,
       });
+      toast.success("Sale deleted successfully");
     } catch (error) {
       set({ error: error.response.data.error, loading: false });
     }

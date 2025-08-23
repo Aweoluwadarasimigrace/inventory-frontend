@@ -19,6 +19,7 @@ import CreateProductForm from "./layout/product/createproduct";
 import EditProductForm from "./layout/product/editproductform";
 import Sales from "./layout/sales";
 import CreateSalesForm from "./layout/sales/createsalesform";
+import EditSalesForm from "./layout/sales/editsalesform";
 
 export const router = createBrowserRouter([
   {
