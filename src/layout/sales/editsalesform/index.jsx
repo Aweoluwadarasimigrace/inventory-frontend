@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 
 const EditSalesForm = () => {
 
-  const { salesId } = useParams();
+  const salesId  = useParams().salesId;
   const { formData, changeFormDetails, submitForm, isLoading, setFormData } = useEditSales();
   const { sales } = useSalesStore();
 

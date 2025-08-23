@@ -24,7 +24,7 @@ const DeleteAndEditDropdown = ({ salesId }) => {
                             }`}
                     >
                         <div className="flex flex-col">
-                           <EditSalesButton productId={salesId} />
+                           <EditSalesButton salesId={salesId} />
                             <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2" onClick={() => removeSale(salesId)}>
                                 Delete
                             </button>
