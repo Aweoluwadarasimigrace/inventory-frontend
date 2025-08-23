@@ -54,7 +54,8 @@ export const router = createBrowserRouter([
           {path: "createproduct", Component: CreateProductForm},
           {path: "editproduct/:id", Component: EditProductForm},
           {path: "sales", Component: Sales},
-          {path: "createsales", Component: CreateSalesForm}
+          {path: "createsales", Component: CreateSalesForm},
+          {path: "editsales/:salesId", Component: EditSalesForm}
         ]
       },
     ],
