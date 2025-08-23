@@ -31,11 +31,7 @@ const useSalesStore = create((set, get) => ({
     set({ loading: true, error: null });
     try {
       const data = await createSales(formData);
-
-      if (data?.error) {
-        throw new Error(data.error);
-      }
-alert("in sales")
+      console.log(data, "created sales data");
       set({ sales: [...get().sales, data], loading: false });
     } catch (error) {
       console.log(error.response.data.error, "here");

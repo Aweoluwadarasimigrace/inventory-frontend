@@ -1,9 +1,11 @@
+import useProductStore from "@/store/getproduct";
 import useSalesStore from "@/store/getsales";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
 export const useCreateSales = () => {
-  const { createSale, error } = useSalesStore();
+  const { createSale } = useSalesStore();
+  const { products } = useProductStore();
   const [loading, setLoading] = useState(false);
   const [errors, seterrors] = useState({});
   const [formData, setformData] = useState({
@@ -43,7 +45,15 @@ export const useCreateSales = () => {
       seterrors({ message: "All fields are required" });
       return;
     }
+
     setLoading(true);
+    if (
+      formData.quantity > products.find((p) => p.sku === formData.sku)?.quantity
+    ) {
+      alert("Insufficient stock");
+      setLoading(false);
+      return;
+    }
     console.log(formData);
     try {
       await createSale(formData);
