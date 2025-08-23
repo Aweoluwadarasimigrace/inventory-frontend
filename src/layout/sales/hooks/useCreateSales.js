@@ -51,7 +51,7 @@ export const useCreateSales = () => {
 
   try {
     const product = products.find((p) => p.sku === formData.sku);
-
+    console.log(product, "sku product");
     if (!product) {
       seterrors({ message: "Selected product not found" });
       return;
