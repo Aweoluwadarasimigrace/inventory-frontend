@@ -3,6 +3,7 @@
 import {
   createSales,
   deleteSales,
+  editSales,
   fetchAllSales,
 } from "@/services/salesService";
 import { toast } from "sonner";
@@ -47,7 +48,7 @@ const useSalesStore = create((set, get) => ({
   updateSale: async (salesId, payload) => {
     set({ loading: true, error: null });
     try {
-      const data = await updateSales(salesId, payload);
+      const data = await editSales(salesId, payload);
       console.log(data, "updated sales data");
       const updatedSales = get().sales.map((sale) =>
         sale._id === salesId ? { ...sale, ...data } : sale
