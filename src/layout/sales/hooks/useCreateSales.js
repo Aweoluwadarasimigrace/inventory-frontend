@@ -32,39 +32,45 @@ export const useCreateSales = () => {
   };
 
   const submitForm = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (
-      !formData.sku ||
-      !formData.productName ||
-      !formData.quantity ||
-      !formData.customer ||
-      !formData.salesPrice ||
-      !formData.date
-    ) {
-      seterrors({ message: "All fields are required" });
+  // Validate required fields
+  if (
+    !formData.sku ||
+    !formData.productName ||
+    !formData.quantity ||
+    !formData.customer ||
+    !formData.salesPrice ||
+    !formData.date
+  ) {
+    seterrors({ message: "All fields are required" });
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const product = products.find((p) => p.sku === formData.sku);
+
+    if (!product) {
+      seterrors({ message: "Selected product not found" });
       return;
     }
 
-    setLoading(true);
-    if (
-      formData.quantity > products.find((p) => p.sku === formData.sku)?.quantity
-    ) {
-      alert("Insufficient stock");
-      setLoading(false);
+    if (formData.quantity > product.quantity) {
+      seterrors({ message: "Insufficient stock available" });
       return;
     }
-    console.log(formData);
-    try {
-      await createSale(formData);
-      navigate("/dashboard/sales");
-      //   navigate("/dashboard/sales");
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+
+    await createSale(formData);
+    navigate("/dashboard/sales");
+  } catch (error) {
+    console.error(error);
+    seterrors({ message: error.message || "Failed to create sale" });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return { submitForm, loading, errors, changeFormDetails, formData };
 };
