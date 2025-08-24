@@ -7,7 +7,7 @@ import SalesReturnPdfButton from './salesreturnPdf';
 import CreateSalesReturnButton from './createsalesreturn/createsalesreturnbutton';
 
 const SalesReturn = () => {
-  const {fetchAllSalesReturns, SalesReturn, loading} = useSalesReturnStore();
+  const {fetchAllSalesReturns, salesReturn, loading} = useSalesReturnStore();
 
   const [page, setpage] = useState(1);
 
@@ -23,7 +23,7 @@ const SalesReturn = () => {
       }
 
 
-      if(SalesReturn.length === 0){
+      if(salesReturn?.length === 0){
          return (
       <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">
