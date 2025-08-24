@@ -29,6 +29,7 @@ const DisplaySales = ({ page, setpage }) => {
 
                         <p className="text-sm text-gray-500 mb-1">SKU: {sale.sku}</p>
                         <p className="text-sm text-gray-500 mb-1">Customer: {sale.customer}</p>
+                        <p className="text-sm text-gray-500 mb-1">Invoice No: {sale.invoiceNo}</p>
 
                         <div className="grid grid-cols-2 gap-2 mt-3">
                             <div className="bg-gray-50 rounded-lg p-2 text-center">
