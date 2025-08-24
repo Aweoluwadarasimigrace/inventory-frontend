@@ -2,7 +2,7 @@ import React from 'react'
 import { useCreateSalesReturn } from '../hooks/useCreateSalesReturn'
 
 const CreateSalesReturn = () => {
-  const {changeFormDetails, formData, submitForm, isLoading} = useCreateSalesReturn()
+  const {changeFormDetails, formData, submitForm, isLoading,error} = useCreateSalesReturn()
   return (
     <div>
 
@@ -23,7 +23,7 @@ const CreateSalesReturn = () => {
                     placeholder="Enter quantity returned"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
 
                 {/* 2. reason */}
@@ -36,7 +36,7 @@ const CreateSalesReturn = () => {
                     placeholder="Enter reason for return"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
 
 
@@ -51,7 +51,7 @@ const CreateSalesReturn = () => {
                     placeholder="Enter invoice number"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
 
     
@@ -66,7 +66,7 @@ const CreateSalesReturn = () => {
                     onChange={changeFormDetails}
                     className="flex-1 border border-slate-300 rounded-md px-4 py-2"
                   />
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
       
       
@@ -81,7 +81,7 @@ const CreateSalesReturn = () => {
                     onChange={changeFormDetails}
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
       
 
@@ -94,10 +94,10 @@ const CreateSalesReturn = () => {
                     name='customerName'
                     onChange={changeFormDetails}
                     value={formData.customerName || ""}
-                    placeholder="Enter customer name"
+                      placeholder="Enter customer name"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
       
       
@@ -112,7 +112,7 @@ const CreateSalesReturn = () => {
                     placeholder="Enter product salesPrice"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
       
       
@@ -128,9 +128,8 @@ const CreateSalesReturn = () => {
                       className="w-full border border-slate-300 rounded-md px-4 py-2 pl-10 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                     />
                     {/* Calendar icon */}
-                    <AiOutlineCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
                   </div>
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
       
       
@@ -143,7 +142,7 @@ const CreateSalesReturn = () => {
                     <option value="false">not returned Yet</option>
                      <option value="true">returned</option>
                   </select>
-                  {errors.message && <small className="text-red-500">{errors.message}</small>}
+                  {error.message && <small className="text-red-500">{error.message}</small>}
                 </div>
       
               </div>
