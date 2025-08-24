@@ -20,7 +20,7 @@ export const useCreateSalesReturn = () => {
   });
   const [isLoading, setisLoading] = useState(false);
   const [error, seterror] = useState({});
-console.log(sales)
+
   const navigate = useNavigate();
 
   const changeFormDetails = (e) => {
@@ -55,11 +55,11 @@ console.log(sales)
     setisLoading(true);
     try {
       console.log(sales)
-      const Sales = sales.find((sale) => sale.sku === formData.sku);
+      const Sales = sales.find((sale) => sale.invoiceNo === formData.invoiceNo);
       console.log(Sales);
 
       if (!Sales) {
-        toast.error("Selected SKU does not match any sales record.");
+        toast.error("Selected invoice number does not match any sales record.");
         return;
       }
 
