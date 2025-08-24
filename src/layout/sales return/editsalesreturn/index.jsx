@@ -9,13 +9,12 @@ const EditSalesReturn = () => {
   const { changeFormDetails, submitForm, setformData, isLoading, formData } = useEditSalesReturn();
 
   const {salesReturn} = useSalesReturnStore();
-  console.log(salesReturn, "salesReturn from store"); 
-  console.log(salesReturnId, "salesReturnId from params");
+  
 
   useEffect(() => {
    if(!salesReturnId || !salesReturn.length) return;
 
-   const salesReturnToEdit = salesReturn.find(item => item.id === salesReturnId);
+   const salesReturnToEdit = salesReturn.find(item => item._id === salesReturnId);
    if(salesReturnToEdit) {
      setformData({
        quantityReturned: salesReturnToEdit.quantityReturned,
