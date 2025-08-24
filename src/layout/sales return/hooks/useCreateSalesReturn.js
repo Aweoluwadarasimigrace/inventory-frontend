@@ -20,7 +20,7 @@ export const useCreateSalesReturn = () => {
   });
   const [isLoading, setisLoading] = useState(false);
   const [error, seterror] = useState({});
-
+console.log(sales)
   const navigate = useNavigate();
 
   const changeFormDetails = (e) => {
@@ -54,6 +54,7 @@ export const useCreateSalesReturn = () => {
     console.log(formData, "formData");
     setisLoading(true);
     try {
+      console.log(sales)
       const Sales = sales.find((sale) => sale.sku === formData.sku);
       console.log(Sales);
 
