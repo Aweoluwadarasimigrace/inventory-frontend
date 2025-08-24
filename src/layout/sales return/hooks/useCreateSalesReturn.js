@@ -51,6 +51,13 @@ export const useCreateSalesReturn = () => {
       seterror({ message: "Please fill in all fields." });
       return;
     }
+
+    const payload = {
+      ...formData,
+      quantityReturned: Number(formData.quantityReturned),
+      salesPrice: Number(formData.salesPrice),
+    }
+    console.log(payload, "payload to submit");
     setisLoading(true);
     try {
     
@@ -65,7 +72,7 @@ export const useCreateSalesReturn = () => {
         toast.error("Quantity returned exceeds the original sale quantity.");
         return;
       }
-      await createSalesReturn(formData);
+      await createSalesReturn(payload);
       toast.success("Sales return created successfully.");
       navigate("/dashboard/salesreturn");
     } catch (err) {

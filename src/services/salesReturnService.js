@@ -11,9 +11,9 @@ export const fetchSalesReturn = async (page) => {
   }
 };
 
-export const createsalesReturn = async (formData) => {
+export const createsalesReturn = async (payload) => {
   try {
-    const response = await apiClient.post(`/returns/createsalesreturn`, formData);
+    const response = await apiClient.post(`/returns/createsalesreturn`, payload);
     return response.data;
   } catch (error) {
     console.error(error);
