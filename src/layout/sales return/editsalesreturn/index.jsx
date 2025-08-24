@@ -34,7 +34,7 @@ const EditSalesReturn = () => {
   return (
     <div>
 
-       <form className="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={submitForm}>
+       <form className="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={(e)=>submitForm(e, salesReturnId)}>
 
               <h2 className="text-2xl font-semibold text-slate-800 mb-6">Update Sales Return</h2>
 
