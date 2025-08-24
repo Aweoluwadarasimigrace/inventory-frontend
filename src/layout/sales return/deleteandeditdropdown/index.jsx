@@ -5,6 +5,7 @@ import { FiMoreVertical } from 'react-icons/fi'
 const DeleteAndEditDropdown = ({salesReturnId}) => {
          const [open, setOpen] = useState(false)
          const {removeSalesReturn} = useSalesReturnStore()
+         console.log(salesReturnId, "salesReturnId")
   return (
     <>
 

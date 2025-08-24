@@ -51,13 +51,11 @@ export const useCreateSalesReturn = () => {
       seterror({ message: "Please fill in all fields." });
       return;
     }
-    console.log(formData, "formData");
     setisLoading(true);
     try {
-      console.log(sales)
+    
       const Sales = sales.find((sale) => sale.invoiceNo === formData.invoiceNo);
-      console.log(Sales);
-
+      
       if (!Sales) {
         toast.error("Selected invoice number does not match any sales record.");
         return;
