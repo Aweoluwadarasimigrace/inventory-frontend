@@ -4,11 +4,10 @@ import DeleteAndEditDropdown from '../deleteandeditdropdown'
 
 const DisplaySalesReturn = ({ page, setpage }) => {
 
-  const { totalSalesReturn, totalPages, salesReturn } = useSalesReturnStore()
+  const { totalSalesReturns, totalPages, salesReturn } = useSalesReturnStore()
   return (
     <div>
-      <h2 className='text-lg font-semibold text-gray-800'>Total Sales: {totalSalesReturn}</h2>
-
+      <h2 className='text-lg font-semibold text-gray-800'>Total Sales: {totalSalesReturns}</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         {salesReturn.map((item, index) => (

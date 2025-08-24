@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router'
 
 const EditSalesButton = ({salesId}) => {
-    console.log(salesId, "salesId in button");
   return (
     <div>
         <Link to={`/dashboard/editsales/${salesId}`} className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2">

@@ -13,7 +13,6 @@ const useSalesReturnStore = create((set, get) => ({
     set({ loading: true , error: null });
     try {
       const data = await fetchSalesReturn(page);
-      console.log(data, "fetched sales return data");
       set({
         salesReturn: data.salesReturns,
         totalPages: data.totalPages,
@@ -29,7 +28,6 @@ const useSalesReturnStore = create((set, get) => ({
 
   createSalesReturn: async (payload) => {
     set({ loading: true, error: null });
-    console.log(payload, "payload in store");
     try {
       const newSales = await createsalesReturn(payload);
         set({ salesReturn: [...get().salesReturn, newSales], loading: false });
@@ -58,8 +56,7 @@ const useSalesReturnStore = create((set, get) => ({
 
   removeSalesReturn: async (salesReturnId) => {
     set({ loading: true, error: null });
-    console.log(salesReturnId, "id to delete");
-    try { 
+    try {
       await deletesalesReturn(salesReturnId);
       const updatedSalesReturn = get().salesReturn.filter((item) => item._id !== salesReturnId);
       set({ salesReturn: updatedSalesReturn, loading: false, totalSalesReturns: get().totalSalesReturns - 1 });

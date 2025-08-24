@@ -8,7 +8,7 @@ const CreateSalesReturn = () => {
 
        <form className="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={submitForm}>
       
-              <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create New Sales Return</h2>
+              <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create Sales Return</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 

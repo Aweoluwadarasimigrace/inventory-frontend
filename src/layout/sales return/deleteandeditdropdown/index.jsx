@@ -1,11 +1,11 @@
 import useSalesReturnStore from '@/store/getsalesreturn'
 import React, { useState } from 'react'
 import { FiMoreVertical } from 'react-icons/fi'
+import EditSalesReturnButton from '../editsalesreturn/editsalesreturnbutton'
 
 const DeleteAndEditDropdown = ({salesReturnId}) => {
          const [open, setOpen] = useState(false)
          const {removeSalesReturn} = useSalesReturnStore()
-         console.log(salesReturnId, "salesReturnId")
   return (
     <>
 
@@ -25,7 +25,7 @@ const DeleteAndEditDropdown = ({salesReturnId}) => {
                             }`}
                     >
                         <div className="flex flex-col">
-                           {/* <EditSalesButton salesId={salesId} /> */}
+                            <EditSalesReturnButton salesReturnId={salesReturnId} />
                             <button className="w-full text-left px-4 py-2 hover:bg-purple-100 hover:text-purple-700 flex items-center gap-2" onClick={() => removeSalesReturn(salesReturnId)}>
                                 Delete
                             </button>
