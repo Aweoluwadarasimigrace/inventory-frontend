@@ -136,7 +136,7 @@ const CreateSalesReturn = () => {
                 {/* Delivery Status */}
       
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Delivery Status</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Returned Status</label>
                   <select name='processed' onChange={changeFormDetails} value={formData.processed} className="w-full border border-slate-300 rounded-md px-4 py-2">
                     <option value="">Select status</option>
                     <option value="false">not returned Yet</option>

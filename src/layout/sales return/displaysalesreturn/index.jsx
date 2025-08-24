@@ -24,19 +24,19 @@ const DisplaySalesReturn = ({ page, setpage }) => {
             {/* Invoice + SKU row */}
 
             <div className="mb-3">
-              <span className="text-gray-500 text-sm">Invoice No</span>
-              <span className="font-medium text-gray-900">{item.invoiceNo}</span>
+              <span className="text-gray-500 text-sm">Invoice No:</span>
+              <p className="font-medium text-gray-900">{item.invoiceNo}</p>
             </div>
             <div className="flex justify-between mb-3">
               <div className="flex flex-col">
-                <span className="text-gray-500 text-sm">Product Name</span>
+                <span className="text-gray-500 text-sm">Product Name:</span>
                 <p className="font-semibold text-gray-900">{item.productName}</p>
               </div>
 
 
               <div className="flex flex-col text-right">
                 <span className="text-gray-500 text-sm">SKU</span>
-                <span className="font-medium text-gray-900">{item.sku}</span>
+                <p className="font-medium text-gray-900">{item.sku}</p>
               </div>
             </div>
 

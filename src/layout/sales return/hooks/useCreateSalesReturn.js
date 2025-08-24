@@ -39,14 +39,22 @@ export const useCreateSalesReturn = () => {
   const submitForm = async (e) => {
     e.preventDefault();
 
-    if(!formData.sku || !formData.invoiceNo || !formData.customerName || !formData.quantityReturned || !formData.reason || !formData.salesPrice || !formData.returnDate){
+    if (
+      !formData.sku ||
+      !formData.invoiceNo ||
+      !formData.customerName ||
+      !formData.quantityReturned ||
+      !formData.reason ||
+      !formData.salesPrice ||
+      !formData.returnDate
+    ) {
       seterror({ message: "Please fill in all fields." });
       return;
     }
-
+    console.log(formData, "formData");
     setisLoading(true);
     try {
-      const Sales = await sales.find((sale) => sale.sku === formData.sku);
+      const Sales = sales.find((sale) => sale.sku === formData.sku);
       console.log(Sales);
 
       if (!Sales) {
@@ -54,7 +62,7 @@ export const useCreateSalesReturn = () => {
         return;
       }
 
-      if(formData.quantityReturned > Sales.quantity){
+      if (formData.quantityReturned > Sales.quantity) {
         toast.error("Quantity returned exceeds the original sale quantity.");
         return;
       }
