@@ -69,7 +69,7 @@ export const useCreateSalesReturn = () => {
       }
       await createSalesReturn(formData);
       toast.success("Sales return created successfully.");
-      navigate("/sales-returns");
+      navigate("/dashboard/salesreturn");
     } catch (err) {
       seterror(err);
       toast.error("Failed to create sales return.");
