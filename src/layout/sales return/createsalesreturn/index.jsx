@@ -122,8 +122,8 @@ const CreateSalesReturn = () => {
                   <div className="relative w-full">
                     <input
                       type="date"
-                      name="date"
-                      value={formData.date || ""}
+                      name="returnDate"
+                      value={formData.returnDate || ""}
                       onChange={changeFormDetails}
                       className="w-full border border-slate-300 rounded-md px-4 py-2 pl-10 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                     />
