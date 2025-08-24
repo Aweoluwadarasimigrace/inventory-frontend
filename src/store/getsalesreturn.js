@@ -13,6 +13,7 @@ const useSalesReturnStore = create((set, get) => ({
     set({ loading: true , error: null });
     try {
       const data = await fetchSalesReturn(page);
+      console.log(data, "fetched sales return data");
       set({
         salesReturn: data.salesReturns,
         totalPages: data.totalPages,
@@ -59,7 +60,7 @@ const useSalesReturnStore = create((set, get) => ({
     console.log(salesReturnId, "id to delete");
     try {
       await deletesalesReturn(salesReturnId);
-      const updatedSalesReturn = get().salesReturn.filter((item) => item.id !== salesReturnId);
+      const updatedSalesReturn = get().salesReturn.filter((item) => item._id !== salesReturnId);
       set({ salesReturn: updatedSalesReturn, loading: false, totalSalesReturns: get().totalSalesReturns - 1 });
       toast.success("Sales return deleted successfully.");
     } catch (error) {
