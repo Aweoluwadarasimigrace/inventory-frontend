@@ -118,7 +118,7 @@ const CreateSalesForm = () => {
         <div className="pt-4 flex gap-2 justify-end">
           <button
             type="submit" className="w-3xs cursor-pointer bg-purple-500 text-white py-3 rounded-md text-lg font-semibold">
-            {loading ? "loading" : "Create Product"}
+            {loading ? "loading" : "Create Sales"}
           </button>
 
         </div>

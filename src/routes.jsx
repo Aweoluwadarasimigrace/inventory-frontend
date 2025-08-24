@@ -20,6 +20,9 @@ import EditProductForm from "./layout/product/editproductform";
 import Sales from "./layout/sales";
 import CreateSalesForm from "./layout/sales/createsalesform";
 import EditSalesForm from "./layout/sales/editsalesform";
+import SalesReturn from "./layout/sales return";
+import CreateSalesReturn from "./layout/sales return/createsalesreturn";
+import EditSalesReturn from "./layout/sales return/editsalesreturn";
 
 export const router = createBrowserRouter([
   {
@@ -56,7 +59,10 @@ export const router = createBrowserRouter([
           {path: "editproduct/:id", Component: EditProductForm},
           {path: "sales", Component: Sales},
           {path: "createsales", Component: CreateSalesForm},
-          {path: "editsales/:salesId", Component: EditSalesForm}
+          {path: "editsales/:salesId", Component: EditSalesForm},
+          {path: "salesreturn", Component: SalesReturn},
+          {path: "createsalesreturn", Component: CreateSalesReturn},
+          {path: "editsalesreturn/:id", Component: EditSalesReturn}
         ]
       },
     ],

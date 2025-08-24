@@ -49,7 +49,6 @@ const useSalesStore = create((set, get) => ({
     set({ loading: true, error: null });
     try {
       const data = await editSales(salesId, payload);
-      console.log(data, "updated sales data");
       const updatedSales = get().sales.map((sale) =>
         sale._id === salesId ? { ...sale, ...data } : sale
       );

@@ -12,7 +12,7 @@ const CreateCustomerForm = () => {
             <div>
                 <form className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow space-y-6" onSubmit={createCustomer}>
 
-                    <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create New User</h2>
+                    <h2 className="text-2xl font-semibold text-slate-800 mb-6">Create New Customer</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -156,7 +156,7 @@ const CreateCustomerForm = () => {
                     <div className="pt-4 flex gap-2 justify-end">
                         <button
                             type="submit" className="w-3xs cursor-pointer bg-purple-500 text-white py-3 rounded-md text-lg font-semibold">
-                            {isLoading ? "loading" : "Create User"}
+                            {isLoading ? "loading" : "Create Customer"}
                         </button>
 
                     </div>

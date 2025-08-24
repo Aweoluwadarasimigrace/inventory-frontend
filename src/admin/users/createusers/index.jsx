@@ -137,7 +137,7 @@ const CreateuserForm = () => {
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Gender</label>
             <select name='gender' onChange={changeFormDetails} value={formData.gender || ""} className="w-full border border-slate-300 rounded-md px-4 py-2">
-              <option value="">Select role</option>
+              <option value="">Select Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>

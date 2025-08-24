@@ -4,7 +4,6 @@ import { apiClient } from "@/lib/client";
 export const fetchAllSales = async (page) => {
   try {
     const response = await apiClient.get(`/sales/getallsales?page=${page}&limit=10`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching sales data:', error);

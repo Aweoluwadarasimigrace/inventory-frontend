@@ -44,6 +44,7 @@ const EditSalesForm = () => {
             <input
               type="text"
               name='sku'
+              disabled
               value={formData.sku || ""}
               placeholder="Enter SKU"
               onChange={changeFormDetails}
@@ -57,6 +58,7 @@ const EditSalesForm = () => {
             <input
               type="text"
               name='productName'
+              disabled
               onChange={changeFormDetails}
               value={formData.productName || ""}
               placeholder="Enter product name"
@@ -70,6 +72,7 @@ const EditSalesForm = () => {
             <input
               type="number"
               name='quantity'
+              disabled
               onChange={changeFormDetails}
               value={formData.quantity || ""}
               placeholder="Enter product quantity"
@@ -97,6 +100,7 @@ const EditSalesForm = () => {
             <input
               type="number"
               name='salesPrice'
+              disabled
               value={formData.salesPrice || ""}
               onChange={changeFormDetails}
               placeholder="Enter sales price"

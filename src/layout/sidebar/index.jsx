@@ -29,6 +29,12 @@ const SideBarComponent = () => {
       { name: "List Sales", path: "/dashboard/sales" },
       { name: "Add Sales", path: "/dashboard/createsales" }
     ]},
+
+    { name: "Sales Return", icon: <FaBox />, subItems: [
+      { name: "List Sales Return", path: "/dashboard/salesreturn" },
+      { name: "Add Sales Return", path: "/dashboard/createsalesreturn" },
+    ]},
+
     { name: "Profile", icon: <FaUser />, path: "/dashboard/profile" },
     { name: "Settings", icon: <FaCog />, path: "/dashboard/settings" },
     { name: "Reports", icon: <FaChartBar />, path: "/dashboard/reports" },

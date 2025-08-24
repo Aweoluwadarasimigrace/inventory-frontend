@@ -7,7 +7,7 @@ const DisplaySales = ({ page, setpage }) => {
 
     return (
         <div>
-            <h2>Total Sales: {totalsales}</h2>
+            <h2 className='text-lg font-semibold text-gray-800'>Total Sales: {totalsales}</h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {sales.map((sale) => (
                     <div
@@ -15,10 +15,7 @@ const DisplaySales = ({ page, setpage }) => {
                         className="bg-white rounded-xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition"
                     >
                         <div className="flex justify-between items-center mb-2">
-                          <div className='flex justify-between items-center'>
                               <h2 className="font-semibold text-gray-800">{sale.productName}</h2>
-                              <DeleteAndEditDropdown salesId = {sale._id}/>
-                          </div>
                             <span
                                 className={`px-2 py-1 rounded-full text-xs font-semibold ${sale.fulfilled
                                         ? "bg-green-100 text-green-700"
@@ -27,6 +24,7 @@ const DisplaySales = ({ page, setpage }) => {
                             >
                                 {sale.fulfilled ? true : false}
                             </span>
+                             <DeleteAndEditDropdown salesId = {sale._id}/> 
                         </div>
 
                         <p className="text-sm text-gray-500 mb-1">SKU: {sale.sku}</p>
