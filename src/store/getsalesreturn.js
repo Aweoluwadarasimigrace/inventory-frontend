@@ -1,4 +1,5 @@
 import { createsalesReturn, deletesalesReturn, fetchSalesReturn, updateSalesReturn } from "@/services/salesReturnService";
+import { toast } from "sonner";
 import { create } from "zustand";
 
 const useSalesReturnStore = create((set, get) => ({
@@ -55,12 +56,15 @@ const useSalesReturnStore = create((set, get) => ({
 
   removeSalesReturn: async (salesReturnId) => {
     set({ loading: true, error: null });
+    console.log(salesReturnId, "id to delete");
     try {
       await deletesalesReturn(salesReturnId);
       const updatedSalesReturn = get().salesReturn.filter((item) => item.id !== salesReturnId);
       set({ salesReturn: updatedSalesReturn, loading: false, totalSalesReturns: get().totalSalesReturns - 1 });
+      toast.success("Sales return deleted successfully.");
     } catch (error) {
       console.log(error.response.data.error, "here");
+      toast.error("Failed to delete sales return.");
       set({ error: error.message });
     }
   }
