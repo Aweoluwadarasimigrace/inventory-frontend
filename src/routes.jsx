@@ -23,6 +23,7 @@ import EditSalesForm from "./layout/sales/editsalesform";
 import SalesReturn from "./layout/sales return";
 import CreateSalesReturn from "./layout/sales return/createsalesreturn";
 import EditSalesReturn from "./layout/sales return/editsalesreturn";
+import SalesReport from "./layout/sales Report";
 
 export const router = createBrowserRouter([
   {
@@ -62,7 +63,8 @@ export const router = createBrowserRouter([
           {path: "editsales/:salesId", Component: EditSalesForm},
           {path: "salesreturn", Component: SalesReturn},
           {path: "createsalesreturn", Component: CreateSalesReturn},
-          {path: "editsalesreturn/:id", Component: EditSalesReturn}
+          {path: "editsalesreturn/:id", Component: EditSalesReturn},
+          {path: "reports", Component: SalesReport}
         ]
       },
     ],
