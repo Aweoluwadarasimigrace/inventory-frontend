@@ -69,51 +69,56 @@ const SalesReport = () => {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-lg font-bold">Sales Report</h2>
+    <div className="p-6 overflow-x-hidden">
+  <h2 className="text-lg font-bold">Sales Report</h2>
 
-      {overview && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
-          <div className="rounded  p-4 bg-pink-500">
-            <h2 className="text-lg font-semibold text-white">Total Revenue</h2>
-            <p className="text-2xl">${overview.totalRevenue}</p>
-          </div>
-
-          <div className="rounded p-4 bg-blue-300">
-            <h2 className="text-lg font-semibold text-white">Total Quantity Sold</h2>
-            <p className="text-2xl">{overview.totalQuantity}</p>
-          </div>
-
-          <div className="rounded border p-4 bg-purple-300">
-            <h2 className="text-lg font-semibold text-white">Total Transaction</h2>
-            <p className="text-2xl">{overview.totalTransactions}</p>
-          </div>
-        </div>
-      )}
-
-      {/* Daily + Monthly side by side */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="rounded border p-4 bg-white shadow">
-          <h2 className="text-lg font-semibold mb-2">Daily Sales</h2>
-          <Bar data={dailyChartData} />
-        </div>
-
-        <div className="rounded border p-4 bg-white shadow">
-          <h2 className="text-lg font-semibold mb-2">Monthly Sales</h2>
-          <Bar data={monthlyChartData} />
-        </div>
+  {overview && (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+      <div className="rounded p-4 bg-pink-500">
+        <h2 className="text-lg font-semibold text-white">Total Revenue</h2>
+        <p className="text-2xl">${overview.totalRevenue}</p>
       </div>
 
-      {/* Yearly below */}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-  <div className="rounded border p-4 bg-white shadow">
-        <h2 className="text-lg font-semibold mb-2">Yearly Sales</h2>
-        <Bar data={yearlyChartData} />
+      <div className="rounded p-4 bg-blue-300">
+        <h2 className="text-lg font-semibold text-white">Total Quantity Sold</h2>
+        <p className="text-2xl">{overview.totalQuantity}</p>
       </div>
 
+      <div className="rounded border p-4 bg-purple-300">
+        <h2 className="text-lg font-semibold text-white">Total Transaction</h2>
+        <p className="text-2xl">{overview.totalTransactions}</p>
       </div>
     </div>
+  )}
+
+  {/* Daily + Monthly side by side */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div className="rounded border p-4 bg-white shadow">
+      <h2 className="text-lg font-semibold mb-2">Daily Sales</h2>
+      <div className="w-full h-[300px]">
+        <Bar data={dailyChartData} options={{ maintainAspectRatio: false }} />
+      </div>
+    </div>
+
+    <div className="rounded border p-4 bg-white shadow">
+      <h2 className="text-lg font-semibold mb-2">Monthly Sales</h2>
+      <div className="w-full h-[300px]">
+        <Bar data={monthlyChartData} options={{ maintainAspectRatio: false }} />
+      </div>
+    </div>
+  </div>
+
+  {/* Yearly below */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div className="rounded border p-4 bg-white shadow">
+      <h2 className="text-lg font-semibold mb-2">Yearly Sales</h2>
+      <div className="w-full h-[250px]"> {/* Smaller height so it doesn’t push page */}
+        <Bar data={yearlyChartData} options={{ maintainAspectRatio: false }} />
+      </div>
+    </div>
+  </div>
+</div>
+
   );
 };
 

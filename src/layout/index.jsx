@@ -27,7 +27,7 @@ const DashboardLayout = () => {
     <Header user={user} />
 
     {/* Main Content (you can remove this if not needed now) */}
-    <div className="flex-1 bg-gray-100 p-2 overflow-y-scroll h-100">
+    <div className="flex-1 bg-gray-100 p-2 h-full">
       <Outlet />
     </div>
   </div>
