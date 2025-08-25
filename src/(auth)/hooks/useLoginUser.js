@@ -27,7 +27,7 @@ export const useLoginUser = () => {
       })
       return
     }
-    
+
    seterrors({}); // clear previous errors
     setisLoading(true);
     console.log("is loading is laoding")
@@ -42,7 +42,7 @@ export const useLoginUser = () => {
         console.log("login failed, try again later")
       }
     } catch (error) {
-      toast.error("an error occured");
+      toast.error(error.data.message);
       console.log(error)
     } finally {
       setisLoading(false);
