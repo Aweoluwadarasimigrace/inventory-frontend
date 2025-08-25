@@ -27,6 +27,7 @@ export const useLoginUser = () => {
       })
       return
     }
+    
    seterrors({}); // clear previous errors
     setisLoading(true);
     console.log("is loading is laoding")
