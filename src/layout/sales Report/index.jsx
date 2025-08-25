@@ -14,76 +14,63 @@ ChartJS.register(
     Legend
 );
 
-import { Bar } from 'react-chartjs-2';
+import {  Bar } from 'react-chartjs-2';
 
 
 const SalesReport = () => {
   const { monthlySales, dailySales, yearlySales, overview } = useGetSalesReport();
 
-  // Daily chart with sales & quantity
+  // Format daily sales labels like "August 5"
   const dailyChartData = {
-    labels: dailySales.map(
-      (sale) => `${sale._id.day}/${sale._id.month}/${sale._id.year}`
-    ),
+    labels: dailySales.map(sale => {
+      const date = new Date(sale._id.year, sale._id.month - 1, sale._id.day); 
+      return date.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+    }),
     datasets: [
       {
-        label: "Daily Revenue",
-        data: dailySales.map((sale) => sale.totalSales),
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-      },
-      {
-        label: "Daily Quantity",
-        data: dailySales.map((sale) => sale.totalQuantity),
-        backgroundColor: "rgba(255, 99, 132, 0.6)",
-      },
-    ],
+        label: 'Daily Revenue',
+        data: dailySales.map(sale => sale.totalSales),
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }
+    ]
   };
 
-  // Monthly chart with sales & quantity
+  // Format monthly sales labels like "August"
   const monthlyChartData = {
-    labels: monthlySales.map((sale) => `${sale._id.month}/${sale._id.year}`),
+    labels: monthlySales.map(sale => {
+      const date = new Date(sale._id.year, sale._id.month - 1); 
+      return date.toLocaleDateString("en-US", { month: "long" });
+    }),
     datasets: [
       {
-        label: "Monthly Revenue",
-        data: monthlySales.map((sale) => sale.totalSales),
-        backgroundColor: "rgba(153, 102, 255, 0.6)",
-      },
-      {
-        label: "Monthly Quantity",
-        data: monthlySales.map((sale) => sale.totalQuantity),
-        backgroundColor: "rgba(255, 159, 64, 0.6)",
-      },
-    ],
+        label: 'Monthly Revenue',
+        data: monthlySales.map(sale => sale.totalSales),
+        backgroundColor: 'rgba(153, 102, 255, 0.6)',
+        borderColor: 'rgba(153, 102, 255, 1)',
+        borderWidth: 1
+      }
+    ]
   };
 
-  // Yearly chart with sales & quantity
+  // Format yearly sales labels like "2023", "2024"
   const yearlyChartData = {
-    labels: yearlySales.map((sale) => sale._id.year),
+    labels: yearlySales.map(sale => `${sale._id.year}`),
     datasets: [
       {
-        label: "Yearly Revenue",
-        data: yearlySales.map((sale) => sale.totalSales),
-        backgroundColor: "rgba(54, 162, 235, 0.6)",
-      },
-      {
-        label: "Yearly Quantity",
-        data: yearlySales.map((sale) => sale.totalQuantity),
-        backgroundColor: "rgba(255, 206, 86, 0.6)",
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: { position: "top" },
-      title: { display: false },
-    },
+        label: 'Yearly Revenue',
+        data: yearlySales.map(sale => sale.totalSales),
+        backgroundColor: 'rgba(255, 159, 64, 0.6)',
+        borderColor: 'rgba(255, 159, 64, 1)',
+        borderWidth: 1
+      }
+    ]
   };
 
   return (
     <div className="p-6">
-      <h2 className="text-lg font-bold mb-4">Sales Report</h2>
+      <h2 className="text-lg font-bold">Sales Report</h2>
 
       {overview && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
@@ -98,29 +85,29 @@ const SalesReport = () => {
           </div>
 
           <div className="rounded border p-4 bg-white shadow">
-            <h2 className="text-lg font-semibold">Total Transactions</h2>
+            <h2 className="text-lg font-semibold">Total Transaction</h2>
             <p className="text-2xl">{overview.totalTransactions}</p>
           </div>
         </div>
       )}
 
-      {/* Daily & Monthly side by side */}
+      {/* Daily + Monthly side by side */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className="rounded border p-4 bg-white shadow">
           <h2 className="text-lg font-semibold mb-2">Daily Sales</h2>
-          <Bar data={dailyChartData} options={options} />
+          <Bar data={dailyChartData} />
         </div>
 
         <div className="rounded border p-4 bg-white shadow">
           <h2 className="text-lg font-semibold mb-2">Monthly Sales</h2>
-          <Bar data={monthlyChartData} options={options} />
+          <Bar data={monthlyChartData} />
         </div>
       </div>
 
       {/* Yearly below */}
       <div className="rounded border p-4 bg-white shadow">
         <h2 className="text-lg font-semibold mb-2">Yearly Sales</h2>
-        <Bar data={yearlyChartData} options={options} />
+        <Bar data={yearlyChartData} />
       </div>
     </div>
   );
