@@ -13,7 +13,6 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-
 import {  Bar } from 'react-chartjs-2';
 import useSalesStore from '@/store/getsales';
 import Loader from '@/sharedComponent/loader';
