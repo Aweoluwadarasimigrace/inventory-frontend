@@ -17,7 +17,7 @@ const DashboardLayout = () => {
   return (
  <div className="flex h-100 w-full bg-gray">
   {/* Sidebar fixed on the left */}
-  <div className="h-full">
+  <div className="h-100">
     <SideBarComponent />
   </div>
 
