@@ -17,6 +17,7 @@ ChartJS.register(
 import {  Bar } from 'react-chartjs-2';
 import useSalesStore from '@/store/getsales';
 import Loader from '@/sharedComponent/loader';
+import { Link } from 'react-router';
 
 
 const SalesReport = () => {
