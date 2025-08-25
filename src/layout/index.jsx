@@ -15,23 +15,24 @@ const DashboardLayout = () => {
     return(<Loader/>)
   }
   return (
- <div className="flex h-100 w-full bg-gray-100">
+<div className="flex h-screen w-full bg-gray-100 overflow-hidden">
   {/* Sidebar fixed on the left */}
-  <div className="h-screen">
+  <div className="h-full">
     <SideBarComponent />
   </div>
 
   {/* Right side: Header + content */}
-  <div className="flex flex-col flex-1">
+  <div className="flex flex-col flex-1 overflow-hidden">
     {/* Header at the top */}
     <Header user={user} />
 
-    {/* Main Content (you can remove this if not needed now) */}
-    <div className="flex-1 bg-gray-100 p-2">
+    {/* Main Content */}
+    <div className="flex-1 bg-gray-100 p-4 overflow-y-auto">
       <Outlet />
     </div>
   </div>
 </div>
+
 
   )
 }
