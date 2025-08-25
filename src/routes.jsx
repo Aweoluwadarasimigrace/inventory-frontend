@@ -24,6 +24,9 @@ import SalesReturn from "./layout/sales return";
 import CreateSalesReturn from "./layout/sales return/createsalesreturn";
 import EditSalesReturn from "./layout/sales return/editsalesreturn";
 import SalesReport from "./layout/sales Report";
+import PurchaseLayout from "./layout/purchase";
+import CreatePurchaseForm from "./layout/purchase/createPurchaseform";
+import EditPurchaseForm from "./layout/purchase/edit purchase form";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +67,9 @@ export const router = createBrowserRouter([
           {path: "salesreturn", Component: SalesReturn},
           {path: "createsalesreturn", Component: CreateSalesReturn},
           {path: "editsalesreturn/:id", Component: EditSalesReturn},
+          {path: "purchase", Component: PurchaseLayout},
+          {path: "createpurchase", Component: CreatePurchaseForm},
+          {path: "editpurchase/:id", Component: EditPurchaseForm},
           {path: "reports", Component: SalesReport}
         ]
       },
