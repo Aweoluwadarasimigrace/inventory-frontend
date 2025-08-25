@@ -74,18 +74,18 @@ const SalesReport = () => {
 
       {overview && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
-          <div className="rounded border p-4 bg-white shadow">
-            <h2 className="text-lg font-semibold">Total Revenue</h2>
+          <div className="rounded  p-4 bg-pink-500">
+            <h2 className="text-lg font-semibold text-white">Total Revenue</h2>
             <p className="text-2xl">${overview.totalRevenue}</p>
           </div>
 
-          <div className="rounded border p-4 bg-white shadow">
-            <h2 className="text-lg font-semibold">Total Quantity Sold</h2>
+          <div className="rounded p-4 bg-blue-300">
+            <h2 className="text-lg font-semibold text-white">Total Quantity Sold</h2>
             <p className="text-2xl">{overview.totalQuantity}</p>
           </div>
 
-          <div className="rounded border p-4 bg-white shadow">
-            <h2 className="text-lg font-semibold">Total Transaction</h2>
+          <div className="rounded border p-4 bg-white">
+            <h2 className="text-lg font-semibold text-white">Total Transaction</h2>
             <p className="text-2xl">{overview.totalTransactions}</p>
           </div>
         </div>
@@ -105,7 +105,7 @@ const SalesReport = () => {
       </div>
 
       {/* Yearly below */}
-      <div className="rounded border p-4 bg-white shadow w-50">
+      <div className="rounded border p-4 bg-white shadow">
         <h2 className="text-lg font-semibold mb-2">Yearly Sales</h2>
         <Bar data={yearlyChartData} />
       </div>
