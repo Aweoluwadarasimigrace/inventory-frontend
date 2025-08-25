@@ -39,7 +39,6 @@ const useSalesReturnStore = create((set, get) => ({
 
   updatesalesreturn: async (salesReturnId, payload) => {
     set({ loading: true, error: null });
-    console.log(salesReturnId, payload, "updating sales return");
     try {
       const data = await updateSalesReturn(salesReturnId, payload);
       const updatedSalesReturn = get().salesReturn.map((item) =>

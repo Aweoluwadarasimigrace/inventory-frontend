@@ -32,7 +32,6 @@ export const deletesalesReturn = async (salesReturnId) => {
 
 
 export const updateSalesReturn = async (salesReturnId, payload) => {
-  console.log(salesReturnId, payload, "updating sales return");
   try {
     const response = await apiClient.patch(`/returns/updatesalesreturn/${salesReturnId}`, payload);
     return response.data;
