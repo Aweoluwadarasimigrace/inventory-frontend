@@ -84,7 +84,7 @@ const SalesReport = () => {
             <p className="text-2xl">{overview.totalQuantity}</p>
           </div>
 
-          <div className="rounded border p-4 bg-white">
+          <div className="rounded border p-4 bg-purple-300">
             <h2 className="text-lg font-semibold text-white">Total Transaction</h2>
             <p className="text-2xl">{overview.totalTransactions}</p>
           </div>

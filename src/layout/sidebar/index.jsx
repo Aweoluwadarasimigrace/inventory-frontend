@@ -68,7 +68,7 @@ const SideBarComponent = () => {
       {/* Sidebar */}
       <div
         className={`
-          h-100 bg-purple-700 text-white flex flex-col transition-all duration-300
+          h-screen bg-purple-700 text-white flex flex-col transition-all duration-300
           ${isOpen ? "w-64" : "w-16"}
           ${isOpen ? "left-0" : "-left-full"} 
           fixed top-0 z-50
