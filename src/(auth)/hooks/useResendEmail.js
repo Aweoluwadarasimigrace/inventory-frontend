@@ -30,7 +30,7 @@ export const useResendEmail = () => {
         toast.error("email doesn't exist trying signing up again");
         navigate("/auth");
       } else {
-        toast.error("error occured");
+        toast.error(error.data.message);
       }
     } finally {
       setisLoading(false);

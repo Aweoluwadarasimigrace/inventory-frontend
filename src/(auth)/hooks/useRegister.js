@@ -66,7 +66,7 @@ export const useRegister = () => {
         navigate("/auth/verify-message", { state: { email: formData.email } });
       }
     } catch (error) {
-      toast.success("not successful");
+      toast.error(error.data.message);
     } finally {
       setisLoading(false);
     }

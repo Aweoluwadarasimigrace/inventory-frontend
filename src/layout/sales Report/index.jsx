@@ -64,7 +64,7 @@ const SalesReport = () => {
         data: dailySales.map(sale => sale.totalSales),
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
         borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
+        borderWidth: 0.5
       }
     ]
   };
@@ -81,7 +81,7 @@ const SalesReport = () => {
         data: monthlySales.map(sale => sale.totalSales),
         backgroundColor: 'rgba(153, 102, 255, 0.6)',
         borderColor: 'rgba(153, 102, 255, 1)',
-        borderWidth: 1
+        borderWidth: 0.5
       }
     ]
   };
@@ -95,7 +95,7 @@ const SalesReport = () => {
         data: yearlySales.map(sale => sale.totalSales),
         backgroundColor: 'rgba(255, 159, 64, 0.6)',
         borderColor: 'rgba(255, 159, 64, 1)',
-        borderWidth: 1
+        borderWidth: 0.5
       }
     ]
   };
@@ -105,34 +105,34 @@ const SalesReport = () => {
   <h2 className="text-lg font-bold">Sales Report</h2>
 
   {overview && (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
       <div className="rounded p-4 bg-pink-500">
         <h2 className="text-lg font-semibold text-white">Total Revenue</h2>
-        <p className="text-2xl">${overview.totalRevenue}</p>
+        <p className="text-2xl text-white">${overview.totalRevenue}</p>
       </div>
 
       <div className="rounded p-4 bg-blue-300">
         <h2 className="text-lg font-semibold text-white">Total Quantity Sold</h2>
-        <p className="text-2xl">{overview.totalQuantity}</p>
+        <p className="text-2xl text-white">{overview.totalQuantity}</p>
       </div>
 
-      <div className="rounded border p-4 bg-purple-300">
+      <div className="rounded p-4 bg-purple-300">
         <h2 className="text-lg font-semibold text-white">Total Transaction</h2>
-        <p className="text-2xl">{overview.totalTransactions}</p>
+        <p className="text-2xl text-white">{overview.totalTransactions}</p>
       </div>
     </div>
   )}
 
   {/* Daily + Monthly side by side */}
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <div className="rounded border p-4 bg-white shadow">
+    <div className="rounded  p-4 bg-white shadow">
       <h2 className="text-lg font-semibold mb-2">Daily Sales</h2>
       <div className="w-full h-[300px]">
         <Bar data={dailyChartData} options={{ maintainAspectRatio: false }} />
       </div>
     </div>
 
-    <div className="rounded border p-4 bg-white shadow">
+    <div className="rounded p-4 bg-white shadow">
       <h2 className="text-lg font-semibold mb-2">Monthly Sales</h2>
       <div className="w-full h-[300px]">
         <Bar data={monthlyChartData} options={{ maintainAspectRatio: false }} />
@@ -142,7 +142,7 @@ const SalesReport = () => {
 
   {/* Yearly below */}
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <div className="rounded border p-4 bg-white shadow">
+    <div className="rounded p-4 bg-white shadow">
       <h2 className="text-lg font-semibold mb-2">Yearly Sales</h2>
       <div className="w-full h-[250px]"> {/* Smaller height so it doesn’t push page */}
         <Bar data={yearlyChartData} options={{ maintainAspectRatio: false }} />
