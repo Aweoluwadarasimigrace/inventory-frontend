@@ -105,9 +105,13 @@ const SalesReport = () => {
       </div>
 
       {/* Yearly below */}
-      <div className="rounded border p-4 bg-white shadow">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+  <div className="rounded border p-4 bg-white shadow">
         <h2 className="text-lg font-semibold mb-2">Yearly Sales</h2>
         <Bar data={yearlyChartData} />
+      </div>
+
       </div>
     </div>
   );
