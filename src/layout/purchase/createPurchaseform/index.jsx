@@ -95,7 +95,6 @@ const CreatePurchaseForm = () => {
                       className="w-full border border-slate-300 rounded-md px-4 py-2 pl-10 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                     />
                     {/* Calendar icon */}
-                    <AiOutlineCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
                   </div>
                   {errors.message && <small className="text-red-500">{errors.message}</small>}
                 </div>
