@@ -42,12 +42,10 @@ export const useCreatePurchase = () => {
 
     if (
       !formData.sku ||
-      !formData.invoiceNo ||
       !formData.productName ||
       !formData.quantity ||
       !formData.supplier ||
       !formData.purchasePrice ||
-      !formData.totalcost ||
       !formData.date ||
       !formData.paymentStatus ||
       !formData.paymentMethod
