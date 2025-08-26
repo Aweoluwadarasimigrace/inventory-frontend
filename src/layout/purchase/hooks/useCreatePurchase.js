@@ -57,7 +57,7 @@ export const useCreatePurchase = () => {
     try {
     await createPurchases(formData);
     toast.success("Purchase created successfully");
-    navigate("dashboard/purchase");
+    navigate("/dashboard/purchase");
     } catch (error) {
       setloading(false);
       toast.error("An error occurred while creating the purchase");
