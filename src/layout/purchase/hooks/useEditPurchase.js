@@ -27,6 +27,7 @@ export const useEditPurchase = () => {
   };
 
   const submitForm = async (e, purchaseId) => {
+    e.preventDefault();
     const payload = {
       productName: formData.productName,
       supplier: formData.supplier,
