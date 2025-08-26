@@ -6,100 +6,126 @@ const DisplayPurchase = ({ page, setpage }) => {
 
 
   return (
-    <div>
-      <h2 className='text-lg font-semibold text-gray-800'>total {totalpurchases} of purchases</h2>
+   <div className="p-6">
+  {/* Header */}
+  <h2 className="text-xl font-bold text-gray-900 mb-6">
+    Total {totalpurchases} Purchases
+  </h2>
 
-<div>
-  {
-  purchases?.map((purchase) => (
-<div key={purchase._id} className="bg-white rounded-xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition">
-<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <p className="text-sm text-gray-500">SKU</p>
-          <p className="font-medium">{purchase.sku}</p>
-        </div>
+  {/* Purchases Grid */}
+  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {purchases?.map((purchase) => (
+      <div
+        key={purchase._id}
+        className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5 hover:shadow-md transition"
+      >
+        <div className="space-y-3">
+          {/* Product Name */}
+          <div>
+            <p className="text-xs uppercase text-gray-400">Product</p>
+            <p className="font-semibold text-gray-800">{purchase.productName}</p>
+          </div>
 
-        <div>
-          <p className="text-sm text-gray-500">Invoice No</p>
-          <p className="font-medium">{purchase.invoiceNo}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Product Name</p>
-          <p className="font-medium">{purchase.productName}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Quantity</p>
-          <p className="font-medium">{purchase.quantity}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Supplier</p>
-          <p className="font-medium">{purchase.supplier}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Purchase Price</p>
-          <p className="font-medium">₦{purchase.purchasePrice}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Total Cost</p>
-          <p className="font-medium text-green-600">₦{purchase.totalcost}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Date</p>
-          <p className="font-medium">{purchase.date}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Received</p>
-          <p className="font-medium">{purchase.received ? "Yes" : "No"}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Payment Status</p>
-          <p
-            className={`font-medium ${
-              purchase.paymentStatus === "Paid"
-                ? "text-green-600"
-                : "text-red-500"
-            }`}
-          >
-            {purchase.paymentStatus}
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-500">Payment Method</p>
-          <p className="font-medium">{purchase.paymentMethod}</p>
-        </div>
-</div>
-  ))
-
-}</div>
-
-       <div className="flex justify-center items-center gap-4 mt-6">
-                <button
-                    onClick={() => setpage((prev) => Math.max(prev - 1, 1))}
-                    className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
-                >
-                    Previous
-                </button>
-
-                <span className="text-sm font-medium">
-                    Page {page} of {totalPages}
-                </span>
-
-                <button
-                    onClick={() => setpage((prev) => prev + 1)}
-                    className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
-                >
-                    Next
-                </button>
+          {/* SKU & Invoice */}
+          <div className="flex justify-between text-sm">
+            <div>
+              <p className="text-xs text-gray-400">SKU</p>
+              <p className="font-medium">{purchase.sku}</p>
             </div>
-    </div>
+            <div>
+              <p className="text-xs text-gray-400">Invoice</p>
+              <p className="font-medium">{purchase.invoiceNo}</p>
+            </div>
+          </div>
+
+          {/* Quantity & Supplier */}
+          <div className="flex justify-between text-sm">
+            <div>
+              <p className="text-xs text-gray-400">Quantity</p>
+              <p className="font-medium">{purchase.quantity}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Supplier</p>
+              <p className="font-medium">{purchase.supplier}</p>
+            </div>
+          </div>
+
+          {/* Prices */}
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <p className="text-xs text-gray-400">Purchase Price</p>
+              <p className="font-medium">₦{purchase.purchasePrice}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Total Cost</p>
+              <p className="font-semibold text-green-600">₦{purchase.totalcost}</p>
+            </div>
+          </div>
+
+          {/* Payment */}
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <p className="text-xs text-gray-400">Payment</p>
+              <p
+                className={`font-semibold ${
+                  purchase.paymentStatus === "Paid"
+                    ? "text-green-600"
+                    : "text-red-500"
+                }`}
+              >
+                {purchase.paymentStatus}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Method</p>
+              <p className="font-medium">{purchase.paymentMethod}</p>
+            </div>
+          </div>
+
+          {/* Date & Received */}
+          <div className="flex justify-between text-sm">
+            <div>
+              <p className="text-xs text-gray-400">Date</p>
+              <p className="font-medium">{purchase.date}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Received</p>
+              <p className="font-medium">
+                {purchase.received ? (
+                  <span className="text-green-600">Yes</span>
+                ) : (
+                  <span className="text-red-500">No</span>
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Pagination */}
+  <div className="flex justify-center items-center gap-3 mt-8">
+    <button
+      onClick={() => setpage((prev) => Math.max(prev - 1, 1))}
+      className="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition text-sm font-medium"
+    >
+      Previous
+    </button>
+
+    <span className="text-sm font-medium text-gray-700">
+      Page {page} of {totalPages}
+    </span>
+
+    <button
+      onClick={() => setpage((prev) => prev + 1)}
+      className="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition text-sm font-medium"
+    >
+      Next
+    </button>
+  </div>
+</div>
+
   )
 }
 
