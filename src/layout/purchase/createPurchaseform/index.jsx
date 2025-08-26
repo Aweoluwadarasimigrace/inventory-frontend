@@ -45,7 +45,6 @@ const CreatePurchaseForm = () => {
                   <input
                     type="number"
                     name='quantity'
-                    value={formData.quantity || ""}
                     onChange={changeFormDetails}
                     placeholder="Enter product quantity"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -75,8 +74,7 @@ const CreatePurchaseForm = () => {
                     type="number"
                     name='purchasePrice'
                     onChange={changeFormDetails}
-                    value={formData.purchasePrice || ""}
-                    placeholder="Enter product purchasePrice"
+                    placeholder="Enter purchasePrice"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
                   {errors.message && <small className="text-red-500">{errors.message}</small>}

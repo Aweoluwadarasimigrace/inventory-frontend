@@ -45,7 +45,6 @@ const CreateSalesForm = () => {
             <input
               type="number"
               name='quantity'
-              value={formData.quantity || ""}
               onChange={changeFormDetails}
               placeholder="Enter product quantity"
               className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -75,7 +74,6 @@ const CreateSalesForm = () => {
               type="number"
               name='salesPrice'
               onChange={changeFormDetails}
-              value={formData.salesPrice || ""}
               placeholder="Enter product salesPrice"
               className="w-full border border-slate-300 rounded-md px-4 py-2"
             />

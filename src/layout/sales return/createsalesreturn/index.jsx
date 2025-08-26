@@ -18,7 +18,7 @@ const CreateSalesReturn = () => {
                   <input
                     type="number"
                     name='quantityReturned'
-                    value={formData.quantityReturned || ""}
+                    value={formData.quantityReturned || 0}
                     onChange={changeFormDetails}
                     placeholder="Enter quantity returned"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
@@ -108,7 +108,7 @@ const CreateSalesReturn = () => {
                     type="number"
                     name='salesPrice'
                     onChange={changeFormDetails}
-                    value={formData.salesPrice || ""}
+                    value={formData.salesPrice || 0}
                     placeholder="Enter product salesPrice"
                     className="w-full border border-slate-300 rounded-md px-4 py-2"
                   />
