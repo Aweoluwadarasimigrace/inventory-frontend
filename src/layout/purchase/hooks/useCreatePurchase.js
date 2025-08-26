@@ -1,7 +1,6 @@
 import usePurchaseStore from "@/store/getPurchase";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { n } from "react-router/dist/development/register-COAKzST_";
 import { toast } from "sonner";
 
 export const useCreatePurchase = () => {
