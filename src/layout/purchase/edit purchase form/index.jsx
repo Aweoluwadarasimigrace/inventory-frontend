@@ -13,7 +13,7 @@ const EditPurchaseForm = () => {
 
     if(!purchaseId || !purchases.length) return;
 
-    const purchasetoUpdate = purchases.find((p) => p.id === purchaseId);
+    const purchasetoUpdate = purchases.find((p) => p._id === purchaseId);
     if (purchasetoUpdate) {
       setFormData({
         sku: purchasetoUpdate.sku,
