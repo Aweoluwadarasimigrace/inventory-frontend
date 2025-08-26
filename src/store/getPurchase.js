@@ -15,7 +15,7 @@ const usePurchaseStore = create((set, get) => ({
     set({
       purchases: data.purchases,
       totalPages: data.totalPages,
-      totalSales: data.total,
+      totalpurchases: data.total,
       loading: false,
     });
     } catch (error) {
@@ -27,6 +27,7 @@ const usePurchaseStore = create((set, get) => ({
     set({ loading: true });
     try {
       const data = await createPurchase(formData);
+      console.log(data)
       set({
         purchases: [...get().purchases, data],
         loading: false,

@@ -38,8 +38,7 @@ export const useCreatePurchase = () => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    setloading(true);
-
+   
     if (
       !formData.sku ||
       !formData.productName ||
@@ -53,6 +52,8 @@ export const useCreatePurchase = () => {
       seterrors({ message: "All fields are required" });
       return;
     }
+    console.log(formData, "formData");
+    setloading(true);
 
     try {
     await createPurchases(formData);
@@ -61,6 +62,8 @@ export const useCreatePurchase = () => {
     } catch (error) {
       setloading(false);
       toast.error("An error occurred while creating the purchase");
+    }finally {
+      setloading(false);
     }
   };
 

@@ -11,7 +11,7 @@ const DisplayPurchase = ({ page, setpage }) => {
 
 <div>
   {
-  purchases.map((purchase) => (
+  purchases?.map((purchase) => (
 <div key={purchase._id} className="bg-white rounded-xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition">
 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <p className="text-sm text-gray-500">SKU</p>
