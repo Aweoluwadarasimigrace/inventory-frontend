@@ -1,6 +1,7 @@
 
 
 import { deleteProduct, editProduct, fetchallProduct } from "@/services/productService";
+import { toast } from "sonner";
 import { create } from "zustand";
 
 const useProductStore = create((set, get)=>({
@@ -39,6 +40,7 @@ const useProductStore = create((set, get)=>({
             await deleteProduct(productId);
             const updatedProducts = get().products.filter(product => product._id !== productId);
             set({ products: updatedProducts, loading: false, totalProducts: get().totalProducts - 1 });
+            toast.success("Product deleted successfully");
         } catch (error) {
             set({ error: error.message, loading: false });
         }

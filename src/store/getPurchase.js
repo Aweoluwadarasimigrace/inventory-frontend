@@ -1,4 +1,5 @@
 import { createPurchase, deletePurchase, getPurchase, updatePurchase } from "@/services/purchaseService";
+import { toast } from "sonner";
 import { create } from "zustand";
 
 const usePurchaseStore = create((set, get) => ({
@@ -60,6 +61,7 @@ const usePurchaseStore = create((set, get) => ({
         purchases: get().purchases.filter((purchase) => purchase._id !== purchaseId),
         loading: false,
       });
+      toast.success("Purchase deleted successfully");
     } catch (error) {
       set({ error: error.message, loading: false });
     }
