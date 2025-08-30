@@ -1,7 +1,7 @@
 import Loader from '@/sharedComponent/loader';
 import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect } from 'react'
-// import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Dashboard = () => {
   const { fetchDashboardStats,salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
@@ -62,7 +62,7 @@ const sales = salesData?.map((s) => ({
       <div className="bg-white p-6 rounded-xl shadow">
         <h3 className="text-lg font-bold mb-4">Sales Over Time</h3>
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={salesData}>
+          <BarChart data={sales}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis />
@@ -75,7 +75,7 @@ const sales = salesData?.map((s) => ({
       <div className="bg-white p-6 rounded-xl shadow">
         <h3 className="text-lg font-bold mb-4">Purchases Over Time</h3>
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={purchaseData}>
+          <BarChart data={purchases}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis />
