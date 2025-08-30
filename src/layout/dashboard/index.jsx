@@ -9,7 +9,7 @@ const Dashboard = () => {
   useEffect(() => {
     // Fetch dashboard stats when the component mounts
     fetchDashboardStats();
-  }, []);
+  }, [fetchDashboardStats]);
 
 
   if(loading){
