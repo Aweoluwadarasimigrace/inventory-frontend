@@ -18,13 +18,13 @@ const Dashboard = () => {
     )
   }
 
-const salesData = data.salesOvertime.map((s) => ({
+const salesData = data.salesOvertime?.map((s) => ({
     date: s._id,
     sales: s.sales,
   }));
 
   // Format purchases data
-  const purchaseData = data.purchaseOvertime.map((p) => ({
+  const purchaseData = data.purchaseOvertime?.map((p) => ({
     date: p._id,
     purchases: p.purchases,
   }));
