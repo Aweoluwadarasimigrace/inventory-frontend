@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 // import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Dashboard = () => {
-  const { fetchDashboardStats, data, loading  } = useDashboardStore();
+  const { fetchDashboardStats,salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
 
   useEffect(() => {
     // Fetch dashboard stats when the component mounts
@@ -18,43 +18,43 @@ const Dashboard = () => {
     )
   }
 
-// const salesData = data.salesOvertime?.map((s) => ({
-//     date: s._id,
-//     sales: s.sales,
-//   }));
+const sales = salesData?.map((s) => ({
+    date: s._id,
+    sales: s.sales,
+  }));
 
 //   // Format purchases data
-//   const purchaseData = data.purchaseOvertime?.map((p) => ({
-//     date: p._id,
-//     purchases: p.purchases,
-//   }));
+  const purchases = purchaseData?.map((p) => ({
+    date: p._id,
+    purchases: p.purchases,
+  }));
 
 //   // Revenue vs cost data
-//   const revenueData = [
-//     {
-//       name: "Total",
-//       sales: data.totalSales.totalSales || 0,
-//       purchases: data.totalPurchases.totalPurchases || 0,
-//       revenue: data.revenue || 0,
-//     },
-//   ];
+  const revenueData = [
+    {
+      name: "Total",
+      sales: totalSales.totalSales || 0,
+      purchases: totalPurchases.totalPurchases || 0,
+      revenue: revenue || 0,
+    },
+  ];
   return (
     <>
 
 
- {/* <div className="p-6 space-y-10">
+ <div className="p-6 space-y-10">
       <div className="grid grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-xl shadow">
           <h2 className="text-lg font-bold">Total Sales</h2>
-          <p className="text-2xl">${data.totalSales.totalSales || 0}</p>
+          <p className="text-2xl">${totalSales.totalSales || 0}</p>
         </div>
         <div className="bg-white p-4 rounded-xl shadow">
           <h2 className="text-lg font-bold">Total Purchases</h2>
-          <p className="text-2xl">${data.totalPurchases.totalPurchases || 0}</p>
+          <p className="text-2xl">${totalPurchases.totalPurchases || 0}</p>
         </div>
         <div className="bg-white p-4 rounded-xl shadow">
           <h2 className="text-lg font-bold">Revenue</h2>
-          <p className="text-2xl">${data.revenue || 0}</p>
+          <p className="text-2xl">${revenue || 0}</p>
         </div>
       </div>
 
@@ -101,8 +101,8 @@ const Dashboard = () => {
       </div>
     </div>
 
-    </> */}
     </>
+    
   )
 }
 
