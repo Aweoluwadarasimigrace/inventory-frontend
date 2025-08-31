@@ -1,7 +1,7 @@
 import Loader from '@/sharedComponent/loader';
 import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
-import { Bar, BarChart, CartesianGrid, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
