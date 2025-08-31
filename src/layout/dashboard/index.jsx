@@ -49,6 +49,36 @@ const Dashboard = () => {
   },[])
 
 
+  
+  const last7DaysSales = useMemo(() => {
+    const days = [];
+
+    [...Array(7)].forEach((_, i) => {
+      const d = new Date()
+      d.setDate(d.getDate() - (6 - i))
+      const dateStr = d.toISOString().split("T")[0];
+      days.push({
+        fullDate: dateStr,          // keep full date for matching
+        day: d.getDate(),           // 26
+        month: d.toLocaleString("default", { month: "long", year: "numeric" }),
+        sales: 0
+      });
+
+    })
+    return days
+  },[])
+
+
+  const chartSalesData = last7DaysSales.map((day) => {
+  const found = sales.find((s) => s.date === day.fullDate);
+  return {
+    ...day,
+    sales: found ? found.sales : 0,
+  };
+});
+
+
+
   const chartData = last7Days.map((day) => {
   const found = purchases.find((p) => p.date === day.fullDate);
   return {
@@ -60,6 +90,7 @@ const Dashboard = () => {
 
 
 const monthYears = [...new Set(last7Days.map((d) => d.month))].join(" / ");
+const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" / ");
 
   //   // Revenue vs cost data
   const revenueData = [
@@ -91,40 +122,45 @@ const monthYears = [...new Set(last7Days.map((d) => d.month))].join(" / ");
         </div>
 
 
-        <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="text-lg font-bold mb-4">Sales Over Time</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={sales}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="sales" fill="#4CAF50" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {/* Sales Chart */}
+  <div className="bg-white p-6 rounded-xl shadow">
+    <h3 className="text-lg font-bold mb-4">Sales Over Time</h3>
+    <h2> {monthYearsSales}</h2>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={chartSalesData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="day" />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="sales" fill="#8200db" barSize={25} radius={[6, 6, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
 
-       
-        <div style={{ width: "100%", height: 350 }}>
-  <h2>{monthYears}</h2>  {/* Month name on top */}
-   <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={chartData}
-          margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="day" />
-          <YAxis />
-          <Tooltip />
-          <Bar
-            dataKey="purchases"
-            fill="#8884d8"
-            barSize={25}
-            radius={[6, 6, 0, 0]}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+  {/* Purchases Chart */}
+  <div className="bg-white p-6 rounded-xl shadow">
+    <h3 className="text-lg font-bold mb-2 text-center">{monthYears}</h3>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart
+        data={chartData}
+        margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="day" />
+        <YAxis />
+        <Tooltip />
+        <Bar
+          dataKey="purchases"
+          fill="#8200db"
+          barSize={20}
+          radius={[6, 0, 0, 0]}
+        />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
 </div>
+
 
 
         <div className="bg-white p-6 rounded-xl shadow">
