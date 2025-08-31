@@ -40,7 +40,7 @@ const Dashboard = () => {
       days.push({
         fullDate: dateStr,          // keep full date for matching
         day: d.getDate(),           // 26
-        month: d.toLocaleString("default", { month: "long" }),
+        month: d.toLocaleString("default", { month: "long", year: "numeric" }),
         purchases: 0
       });
 
@@ -57,7 +57,10 @@ const Dashboard = () => {
   };
 });
 
-const chartMonth = last7Days[0].month;
+
+
+const monthYears = [...new Set(last7Days.map((d) => d.month))].join(" / ");
+
   //   // Revenue vs cost data
   const revenueData = [
     {
@@ -102,16 +105,25 @@ const chartMonth = last7Days[0].month;
         </div>
 
        
-        <div>
-  <h2>{chartMonth}</h2>  {/* Month name on top */}
-  <ResponsiveContainer width="100%" height={300}>
-    <LineChart data={chartData}>
-      <XAxis dataKey="day" />  {/* only shows 26, 27, ... */}
-      <YAxis />
-      <Tooltip />
-      <Line type="monotone" dataKey="purchases" stroke="#8884d8" />
-    </LineChart>
-  </ResponsiveContainer>
+        <div style={{ width: "100%", height: 350 }}>
+  <h2>{monthYears}</h2>  {/* Month name on top */}
+   <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={chartData}
+          margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="day" />
+          <YAxis />
+          <Tooltip />
+          <Bar
+            dataKey="purchases"
+            fill="#8884d8"
+            barSize={25}
+            radius={[6, 6, 0, 0]}
+          />
+        </BarChart>
+      </ResponsiveContainer>
 </div>
 
 
