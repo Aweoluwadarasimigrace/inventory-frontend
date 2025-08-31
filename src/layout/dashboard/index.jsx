@@ -133,7 +133,7 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
         <XAxis dataKey="day" />
         <YAxis />
         <Tooltip />
-      <Bar dataKey="sales" fill="#8200db" barSize={35} radius={[6, 6, 0, 0]} />
+      <Bar dataKey="sales" fill="#8200db" barSize={35}/>
       </BarChart>
     </ResponsiveContainer>
   </div>
