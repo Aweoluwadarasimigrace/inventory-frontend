@@ -34,7 +34,7 @@ const ProfileIcon = ({ user, open, setopen }) => {
             />
             <div className="flex flex-col">
               <span className="mt-1 text-sm font-bold text-gray-800">
-                {user.companyName}
+                {user.companyName || user.firstName}
               </span>
               <span className="text-sm font-medium text-gray-500">
                 {user.role}

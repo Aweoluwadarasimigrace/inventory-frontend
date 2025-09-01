@@ -1,11 +1,12 @@
 import Loader from '@/sharedComponent/loader';
 import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
+import { useOutletContext } from 'react-router';
 import { Bar, BarChart, CartesianGrid, Cell, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
-
+const {user} = useOutletContext()
   useEffect(() => {
     // Fetch dashboard stats when the component mounts
     fetchDashboardStats();
@@ -119,7 +120,7 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
   {/* Top Welcome Box with Details */}
   <div className="bg-white p-6 rounded-xl shadow">
     <h1 className="text-2xl font-bold mb-2">
-      Welcome back, <span className="text-purple-600">{user}</span> 👋
+      Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
     </h1>
     <p className="text-gray-500 text-sm mb-4">
       Here’s an overview of your inventory performance

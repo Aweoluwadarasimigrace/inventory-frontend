@@ -28,7 +28,7 @@ const DashboardLayout = () => {
 
     {/* Main Content */}
     <div className="flex-1 bg-gray-100 p-4 overflow-y-auto">
-      <Outlet />
+      <Outlet context={{ user }} />
     </div>
   </div>
 </div>
