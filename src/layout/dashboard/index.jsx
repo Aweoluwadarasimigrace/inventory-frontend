@@ -1,7 +1,7 @@
 import Loader from '@/sharedComponent/loader';
 import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
-import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Cell, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
@@ -77,8 +77,6 @@ const Dashboard = () => {
   };
 });
 
-
-
   const chartData = last7Days.map((day) => {
   const found = purchases.find((p) => p.date === day.fullDate);
   return {
@@ -119,12 +117,12 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
       <div className="p-6 space-y-10">
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded-xl shadow">
-            <h2 className="text-lg font-bold">Total Sales</h2>
-            <p className="text-2xl">${totalSales.totalSales || 0}</p>
+            <h2 className="text-lg font-bold">Total Goods Sold</h2>
+            <p className="text-2xl">${totalSales.totalQuantity || 0}</p>
           </div>
           <div className="bg-white p-4 rounded-xl shadow">
-            <h2 className="text-lg font-bold">Total Purchases</h2>
-            <p className="text-2xl">${totalPurchases.totalPurchases || 0}</p>
+            <h2 className="text-lg font-bold">Total Goods Purchased</h2>
+            <p className="text-2xl">${totalPurchases.totalQuantity || 0}</p>
           </div>
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-lg font-bold">Revenue</h2>
