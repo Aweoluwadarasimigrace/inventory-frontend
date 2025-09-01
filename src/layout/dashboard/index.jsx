@@ -2,7 +2,8 @@ import Loader from '@/sharedComponent/loader';
 import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
 import { useOutletContext } from 'react-router';
-import { Bar, BarChart, CartesianGrid, Cell, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Cell,  ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Package, ShoppingCart, DollarSign } from "lucide-react";
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
@@ -131,23 +132,37 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
     </p>
   </div>
 
-  {/* Stat Boxes */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div className="bg-pink-200 p-4 rounded-xl shadow">
-      <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
-      <p className="text-2xl text-white">{totalSales.totalQuantity || 0}</p>
-    </div>
 
-    <div className="bg-purple-200 p-4 rounded-xl h-50">
-      <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
-      <p className="text-2xl text-white">{totalPurchases.totalQuantity || 0}</p>
-    </div>
-
-    <div className="bg-green-200 p-4 rounded-xl shadow">
-      <h2 className="text-lg font-bold text-white">Revenue</h2>
-      <p className="text-2xl text-white">${revenue || 0}</p>
-    </div>
+{/* Stat Boxes */}
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+  {/* Total Goods Sold */}
+  <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+    <Package size={40} className="text-white mb-3" />
+    <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
+    <p className="text-3xl font-extrabold text-white mt-2">
+      {totalSales.totalQuantity || 0}
+    </p>
   </div>
+
+  {/* Total Goods Purchased */}
+  <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+    <ShoppingCart size={40} className="text-white mb-3" />
+    <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
+    <p className="text-3xl font-extrabold text-white mt-2">
+      {totalPurchases.totalQuantity || 0}
+    </p>
+  </div>
+
+  {/* Revenue */}
+  <div className="bg-green-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+    <DollarSign size={40} className="text-white mb-3" />
+    <h2 className="text-lg font-bold text-white">Revenue</h2>
+    <p className="text-3xl font-extrabold text-white mt-2">
+      ${revenue || 0}
+    </p>
+  </div>
+</div>
+
 </div>
 
 
