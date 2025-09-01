@@ -118,15 +118,13 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
       <div className="p-6 space-y-10">
         <div className="space-y-6">
   {/* Top Welcome Box with Details */}
-  <div className="bg-white p-6 rounded-xl shadow">
+  <div className="bg-white p-6 rounded-md">
     <h1 className="text-2xl font-bold mb-2">
       Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
     </h1>
     <p className="text-gray-500 text-sm mb-4">
       Here’s an overview of your inventory performance
     </p>
-
-    <h3 className="text-lg font-bold mb-2">Details</h3>
     <p className="text-gray-600">
       Keep track of your daily sales and purchases to monitor business growth.  
       Analyze your revenue trends and make informed inventory decisions.  
@@ -136,18 +134,18 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
   {/* Stat Boxes */}
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div className="bg-pink-200 p-4 rounded-xl shadow">
-      <h2 className="text-lg font-bold">Total Goods Sold</h2>
-      <p className="text-2xl">{totalSales.totalQuantity || 0}</p>
+      <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
+      <p className="text-2xl text-white">{totalSales.totalQuantity || 0}</p>
     </div>
 
-    <div className="bg-purple-200 p-4 rounded-xl shadow">
-      <h2 className="text-lg font-bold">Total Goods Purchased</h2>
-      <p className="text-2xl">{totalPurchases.totalQuantity || 0}</p>
+    <div className="bg-purple-200 p-4 rounded-xl h-50">
+      <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
+      <p className="text-2xl text-white">{totalPurchases.totalQuantity || 0}</p>
     </div>
 
     <div className="bg-green-200 p-4 rounded-xl shadow">
-      <h2 className="text-lg font-bold">Revenue</h2>
-      <p className="text-2xl">${revenue || 0}</p>
+      <h2 className="text-lg font-bold text-white">Revenue</h2>
+      <p className="text-2xl text-white">${revenue || 0}</p>
     </div>
   </div>
 </div>
