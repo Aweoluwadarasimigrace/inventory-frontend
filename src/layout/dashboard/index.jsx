@@ -87,8 +87,6 @@ const Dashboard = () => {
   };
 });
 
-
-
 const monthYears = [...new Set(last7Days.map((d) => d.month))].join(" / ");
 const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" / ");
 
@@ -101,6 +99,19 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
       revenue: revenue || 0,
     },
   ];
+
+
+  const colors = [
+  "#4CAF50", // Monday = green
+  "#FF9800", // Tuesday = orange
+  "#2196F3", // Wednesday = blue
+  "#9C27B0", // Thursday = purple
+  "#F44336", // Friday = red
+  "#00BCD4", // Saturday = cyan
+  "#FFC107", // Sunday = amber
+];
+
+
   return (
     <>
 
@@ -133,7 +144,13 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
         <XAxis dataKey="day" />
         <YAxis />
         <Tooltip />
-      <Bar dataKey="sales" fill="#8200db" barSize={35}/>
+      <Bar dataKey="sales" barSize={35}>
+
+
+        {chartSalesData.map((entry, index) => (
+          <Cell key={index} fill={colors[index % colors.length]} />
+        ))}
+      </Bar>
       </BarChart>
     </ResponsiveContainer>
   </div>
@@ -150,12 +167,11 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
         <XAxis dataKey="day" />
         <YAxis />
         <Tooltip />
-        <Bar
-          dataKey="purchases"
-          fill="#8200db"
-          barSize={20}
-          radius={[6, 0, 0, 0]}
-        />
+        <Bar dataKey="purchases" barSize={35}>
+          {chartData.map((entry, index) => (
+            <Cell key={index} fill={colors[index % colors.length]} />
+          ))}
+        </Bar>
       </BarChart>
     </ResponsiveContainer>
   </div>
