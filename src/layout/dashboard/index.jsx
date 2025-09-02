@@ -155,22 +155,22 @@ const Dashboard = () => {
       <div className="p-6 space-y-10">
         <div className="space-y-6">
           {/* Top Welcome Box with Details */}
-          
+
           {/* Stat Boxes */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
 
             <div className="bg-white p-6 rounded-md">
-            <h1 className="text-2xl font-bold mb-2">
-              Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
-            </h1>
-            <p className="text-gray-500 text-sm mb-4">
-              Here’s an overview of your inventory performance
-            </p>
-            <p className="text-gray-600">
-              Keep track of your daily sales and purchases to monitor business growth.
-              Analyze your revenue trends and make informed inventory decisions.
-            </p>
-          </div>
+              <h1 className="text-2xl font-bold mb-2">
+                Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
+              </h1>
+              <p className="text-gray-500 text-sm mb-4">
+                Here’s an overview of your inventory performance
+              </p>
+              <p className="text-gray-600">
+                Keep track of your daily sales and purchases to monitor business growth.
+                Analyze your revenue trends and make informed inventory decisions.
+              </p>
+            </div>
 
 
             {/* Total Goods Sold */}
@@ -199,11 +199,11 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Sales Chart */}
           <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-lg font-bold mb-4">Sales Over Time</h3>
-            <h2> {monthYearsSales}</h2>
+             <h3 className="text-lg font-bold mb-2 text-center">
+              {monthYears}
+            </h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={chartSalesData}>
-                <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="day" />
                 <YAxis />
                 <Tooltip />
@@ -220,7 +220,9 @@ const Dashboard = () => {
 
           {/* Purchases Chart */}
           <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-lg font-bold mb-2 text-center">{monthYears}</h3>
+            <h3 className="text-lg font-bold mb-2 text-center">
+              {monthYears}
+            </h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart
                 data={chartData}
@@ -241,26 +243,35 @@ const Dashboard = () => {
         </div>
 
 
+        <div className="w-full p-4">
+          {/* Header */}
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
+            Sales & Purchases Overview
+          </h2>
 
-        <div style={{ width: "100%", height: 400 }}>
-          <ResponsiveContainer>
-            <BarChart
-              data={revenueData}
-              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              {/* Bars with smaller width */}
-              <Bar dataKey="sales" fill="#8884d8" barSize={30} />
-              <Bar dataKey="purchases" fill="#82ca9d" barSize={30} />
-              <Bar dataKey="revenue" fill="#ffc658" barSize={30} />
-            </BarChart>
-          </ResponsiveContainer>
+          {/* Chart container */}
+          <div
+            className="bg-white shadow-md rounded-xl p-4"
+            style={{ width: "100%", height: 400 }}
+          >
+            <ResponsiveContainer>
+              <BarChart
+                data={revenueData}
+                margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="month" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                {/* Bars with smaller width */}
+                <Bar dataKey="sales" fill="#8884d8" barSize={25} />
+                <Bar dataKey="purchases" fill="#82ca9d" barSize={25} />
+                <Bar dataKey="revenue" fill="#ffc658" barSize={25} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-
       </div>
 
     </>
