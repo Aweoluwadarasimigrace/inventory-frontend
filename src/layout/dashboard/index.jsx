@@ -2,7 +2,7 @@ import Loader from '@/sharedComponent/loader';
 import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
 import { useOutletContext } from 'react-router';
-import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Package, ShoppingCart, DollarSign } from "lucide-react";
 
 const Dashboard = () => {
