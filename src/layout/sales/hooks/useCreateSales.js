@@ -58,7 +58,7 @@ export const useCreateSales = () => {
    }
   } catch (error) {
     console.error(error);
-    toast.error(error.message || "Failed to create sale");
+    toast.error(error.response.data.message || "Failed to create sale");
   } finally {
     setLoading(false);
   }
