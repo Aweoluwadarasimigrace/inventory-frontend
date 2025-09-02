@@ -1,12 +1,9 @@
-import useProductStore from "@/store/getproduct";
-import useSalesStore from "@/store/getsales";
+import { apiClient } from "@/lib/client";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 export const useCreateSales = () => {
-  const { createSale } = useSalesStore();
-  const { products } = useProductStore();
   const [loading, setLoading] = useState(false);
   const [errors, seterrors] = useState({});
   const [formData, setformData] = useState({
@@ -51,17 +48,14 @@ export const useCreateSales = () => {
   setLoading(true);
 
   try {
-    // console.log(products, "all products");
-    // const product = products.find((p) => p.sku === formData.sku);
-    // console.log(formData.sku);
-    // console.log(product, "sku product");
-    // if (!product) {
-    //   toast.error("Selected product not found, wrong SKU");
-    //   return;
-    // }
-    await createSale(formData);
-    toast.success("Sale created successfully");
+   const res = await apiClient.post("/sales/createsale", formData);
+   console.log(res)
+   if(res.data){
+ toast.success("Sale created successfully");
     navigate("/dashboard/sales");
+   }else{
+    toast.error("Failed to create sale");
+   }
   } catch (error) {
     console.error(error);
     toast.error(error.message || "Failed to create sale");

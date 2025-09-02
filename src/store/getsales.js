@@ -31,17 +31,6 @@ const useSalesStore = create((set, get) => ({
     }
   },
 
-  createSale: async (formData) => {
-    set({ loading: true, error: null });
-    try {
-      const data = await createSales(formData);
-      set({ sales: [...get().sales, data], loading: false });
-    } catch (error) {
-      console.log(error.response.data.error, "here");
-      set({ error: error.response.data.error, loading: false });
-      throw error;
-    }
-  },
 
   updateSale: async (salesId, payload) => {
     set({ loading: true, error: null });
