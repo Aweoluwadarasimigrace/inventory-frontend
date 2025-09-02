@@ -166,7 +166,7 @@ const revenueData = Object.values(map).map((item) => ({
               <Package size={40} className="text-white mb-3" />
               <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
               <p className="text-3xl font-extrabold text-white mt-2">
-                {totalquantitysold.totalQuantity || 0}
+                {totalquantitysold || 0}
               </p>
             </div>
 
@@ -175,7 +175,7 @@ const revenueData = Object.values(map).map((item) => ({
               <ShoppingCart size={40} className="text-white mb-3" />
               <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
               <p className="text-3xl font-extrabold text-white mt-2">
-                {totalquantityPurchased.totalQuantity || 0}
+                {totalquantityPurchased || 0}
               </p>
             </div>
           </div>
