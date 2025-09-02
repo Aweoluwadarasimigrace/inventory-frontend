@@ -51,20 +51,14 @@ export const useCreateSales = () => {
   setLoading(true);
 
   try {
-    console.log(products, "all products");
-    const product = products.find((p) => p.sku === formData.sku);
-    console.log(formData.sku);
-    console.log(product, "sku product");
-    if (!product) {
-      toast.error("Selected product not found, wrong SKU");
-      return;
-    }
-
-    if (formData.quantity > product.quantity) {
-      toast.error("Insufficient stock available");
-      return;
-    }
-
+    // console.log(products, "all products");
+    // const product = products.find((p) => p.sku === formData.sku);
+    // console.log(formData.sku);
+    // console.log(product, "sku product");
+    // if (!product) {
+    //   toast.error("Selected product not found, wrong SKU");
+    //   return;
+    // }
     await createSale(formData);
     toast.success("Sale created successfully");
     navigate("/dashboard/sales");
