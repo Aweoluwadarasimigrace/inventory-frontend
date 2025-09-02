@@ -6,7 +6,7 @@ import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis
 import { Package, ShoppingCart, DollarSign } from "lucide-react";
 
 const Dashboard = () => {
-  const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
+  const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, totalquantitysold, totalquantityPurchased } = useDashboardStore();
   const { user } = useOutletContext()
   useEffect(() => {
     // Fetch dashboard stats when the component mounts
@@ -100,12 +100,12 @@ const Dashboard = () => {
 
   const map ={}
 
-  totalSales.map((s)=>{
+  totalSales.forEach((s)=>{
    if(!map[s._id]){
      map[s._id] = {
        month: formatMonth(s._id),
        sales: s.totalRevenue,
-       purchase: 0
+       purchases: 0
      };
    }
  });
@@ -166,7 +166,7 @@ const revenueData = Object.values(map).map((item) => ({
               <Package size={40} className="text-white mb-3" />
               <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
               <p className="text-3xl font-extrabold text-white mt-2">
-                {totalSales.totalQuantity || 0}
+                {totalquantitysold.totalQuantity || 0}
               </p>
             </div>
 
@@ -175,16 +175,7 @@ const revenueData = Object.values(map).map((item) => ({
               <ShoppingCart size={40} className="text-white mb-3" />
               <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
               <p className="text-3xl font-extrabold text-white mt-2">
-                {totalPurchases.totalQuantity || 0}
-              </p>
-            </div>
-
-            {/* Revenue */}
-            <div className="bg-green-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-              <DollarSign size={40} className="text-white mb-3" />
-              <h2 className="text-lg font-bold text-white">Revenue</h2>
-              <p className="text-3xl font-extrabold text-white mt-2">
-                ${revenue || 0}
+                {totalquantityPurchased.totalQuantity || 0}
               </p>
             </div>
           </div>

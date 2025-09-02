@@ -6,8 +6,8 @@ import { create } from "zustand";
 const useDashboardStore = create((set) => ({
   salesData: [],
   purchaseData: [],
-  totalSales: { totalSales: 0, totalQuantity: 0 }, // default object
-  totalPurchases: { totalPurchases: 0, totalQuantity: 0 }, // default object
+  totalSales: [], // default object
+  totalPurchases: [], // default object
   revenue: 0,
   isLoading: false,
   error: null,
@@ -18,12 +18,10 @@ const useDashboardStore = create((set) => ({
       set({
         salesData: dataStats.salesOvertime,
         purchaseData: dataStats.purchaseOvertime,
-        totalSales: dataStats.totalSales || { totalSales: 0, totalQuantity: 0 },
-        totalPurchases: dataStats.totalPurchases || {
-          totalPurchases: 0,
-          totalQuantity: 0,
-        },
-        revenue: dataStats.revenue || 0,
+        totalSales: dataStats.totalSales || [],
+        totalPurchases: dataStats.totalPurchases || [],
+        totalquantitysold: dataStats.totalQuantitySold || 0,
+        totalquantityPurchased: dataStats.totalQuantityPurchased || 0,
         isLoading: false,
       });
     } catch (error) {
