@@ -39,6 +39,7 @@ const useSalesStore = create((set, get) => ({
     } catch (error) {
       console.log(error.response.data.error, "here");
       set({ error: error.response.data.error, loading: false });
+      throw error;
     }
   },
 
