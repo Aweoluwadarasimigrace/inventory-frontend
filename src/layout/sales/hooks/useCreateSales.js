@@ -51,7 +51,9 @@ export const useCreateSales = () => {
   setLoading(true);
 
   try {
+    console.log(products, "all products");
     const product = products.find((p) => p.sku === formData.sku);
+    console.log(formData.sku);
     console.log(product, "sku product");
     if (!product) {
       toast.error("Selected product not found, wrong SKU");
