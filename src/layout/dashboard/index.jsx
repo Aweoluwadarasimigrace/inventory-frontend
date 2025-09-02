@@ -91,41 +91,53 @@ const Dashboard = () => {
   const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" / ");
 
 
-  function formatMonth(ym) {
-    const [year, month] = ym.split("-"); // "2025", "08"
-    const date = new Date(year, month - 1); // JS counts months from 0
-    return date.toLocaleString("default", { month: "short" }); // "Aug"
-  }
+
+  const months = useMemo(() => {
+    const year = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    return Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(year, currentMonth + i);
+      return {
+        id: `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`,
+        name: date.toLocaleString("default", { month: "short" })
+      };
+    });
+  }, []);
+  const map = {}
+
+  totalSales.forEach((s) => {
+    if (!map[s._id]) {
+      map[s._id] = {
+        sales: s.totalRevenue,
+        purchases: 0
+      };
+    }
+  });
+
+  totalPurchases.forEach((p) => {
+    if (map[p._id]) {
+      map[p._id].purchases = p.totalCost;
+    } else {
+      map[p._id] = {
+        sales: 0,
+        purchases: p.totalCost
+      };
+    }
+  });
 
 
-  const map ={}
 
-  totalSales.forEach((s)=>{
-   if(!map[s._id]){
-     map[s._id] = {
-       month: formatMonth(s._id),
-       sales: s.totalRevenue,
-       purchases: 0
-     };
-   }
- });
-
- totalPurchases.forEach((p) => {
-  if (map[p._id]) {
-    map[p._id].purchases = p.totalCost;
-  } else {
-    map[p._id] = {
-      month: formatMonth(p._id),
-      sales: 0,
-      purchases: p.totalCost
+  // 4. Build revenueData including months with 0 values
+  const revenueData = months.map((m) => {
+    const item = map[m.id] || { sales: 0, purchases: 0 };
+    return {
+      month: m.name,
+      sales: item.sales,
+      purchases: item.purchases,
+      revenue: item.sales - item.purchases
     };
-  }
-});
+  });
 
-const revenueData = Object.values(map).map((item) => ({
-  ...item,
-  revenue: item.sales - item.purchases
-}));
 
   const colors = [
     "#4CAF50", // Monday = green
@@ -140,12 +152,14 @@ const revenueData = Object.values(map).map((item) => ({
 
   return (
     <>
-
-
       <div className="p-6 space-y-10">
         <div className="space-y-6">
           {/* Top Welcome Box with Details */}
-          <div className="bg-white p-6 rounded-md">
+          
+          {/* Stat Boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+
+            <div className="bg-white p-6 rounded-md">
             <h1 className="text-2xl font-bold mb-2">
               Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
             </h1>
@@ -159,8 +173,6 @@ const revenueData = Object.values(map).map((item) => ({
           </div>
 
 
-          {/* Stat Boxes */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             {/* Total Goods Sold */}
             <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
               <Package size={40} className="text-white mb-3" />
@@ -230,20 +242,24 @@ const revenueData = Object.values(map).map((item) => ({
 
 
 
-        <div className="bg-white p-6 rounded-xl shadow">
-  <h3 className="text-lg font-bold mb-4">Revenue vs Cost</h3>
-  <ResponsiveContainer width="100%" height={300}>
-    <BarChart data={revenueData}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="month" /> {/* Now shows Aug, Sep, etc. */}
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="sales" fill="#4CAF50" name="Sales" />
-      <Bar dataKey="purchases" fill="#FF9800" name="Purchases" />
-      <Bar dataKey="revenue" fill="#2196F3" name="Profit" />
-    </BarChart>
-  </ResponsiveContainer>
-</div>
+        <div style={{ width: "100%", height: 400 }}>
+          <ResponsiveContainer>
+            <BarChart
+              data={revenueData}
+              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              {/* Bars with smaller width */}
+              <Bar dataKey="sales" fill="#8884d8" barSize={30} />
+              <Bar dataKey="purchases" fill="#82ca9d" barSize={30} />
+              <Bar dataKey="revenue" fill="#ffc658" barSize={30} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
 
       </div>
 
