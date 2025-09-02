@@ -2,12 +2,12 @@ import Loader from '@/sharedComponent/loader';
 import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
 import { useOutletContext } from 'react-router';
-import { Bar, BarChart, CartesianGrid, Cell,  ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Package, ShoppingCart, DollarSign } from "lucide-react";
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, revenue } = useDashboardStore();
-const {user} = useOutletContext()
+  const { user } = useOutletContext()
   useEffect(() => {
     // Fetch dashboard stats when the component mounts
     fetchDashboardStats();
@@ -48,10 +48,10 @@ const {user} = useOutletContext()
 
     })
     return days
-  },[])
+  }, [])
 
 
-  
+
   const last7DaysSales = useMemo(() => {
     const days = [];
 
@@ -68,48 +68,74 @@ const {user} = useOutletContext()
 
     })
     return days
-  },[])
+  }, [])
 
 
   const chartSalesData = last7DaysSales.map((day) => {
-  const found = sales.find((s) => s.date === day.fullDate);
-  return {
-    ...day,
-    sales: found ? found.sales : 0,
-  };
-});
+    const found = sales.find((s) => s.date === day.fullDate);
+    return {
+      ...day,
+      sales: found ? found.sales : 0,
+    };
+  });
 
   const chartData = last7Days.map((day) => {
-  const found = purchases.find((p) => p.date === day.fullDate);
-  return {
-    ...day,
-    purchases: found ? found.purchases : 0,
-  };
+    const found = purchases.find((p) => p.date === day.fullDate);
+    return {
+      ...day,
+      purchases: found ? found.purchases : 0,
+    };
+  });
+
+  const monthYears = [...new Set(last7Days.map((d) => d.month))].join(" / ");
+  const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" / ");
+
+
+  function formatMonth(ym) {
+    const [year, month] = ym.split("-"); // "2025", "08"
+    const date = new Date(year, month - 1); // JS counts months from 0
+    return date.toLocaleString("default", { month: "short" }); // "Aug"
+  }
+
+
+  const map ={}
+
+  totalSales.map((s)=>{
+   if(!map[s._id]){
+     map[s._id] = {
+       month: formatMonth(s._id),
+       sales: s.totalRevenue,
+       purchase: 0
+     };
+   }
+ });
+
+ totalPurchases.forEach((p) => {
+  if (map[p._id]) {
+    map[p._id].purchases = p.totalCost;
+  } else {
+    map[p._id] = {
+      month: formatMonth(p._id),
+      sales: 0,
+      purchases: p.totalCost
+    };
+  }
 });
 
-const monthYears = [...new Set(last7Days.map((d) => d.month))].join(" / ");
-const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" / ");
-
-  //   // Revenue vs cost data
-  const revenueData = [
-    {
-      name: "Total",
-      sales: totalSales.totalSales || 0,
-      purchases: totalPurchases.totalPurchases || 0,
-      revenue: revenue || 0,
-    },
-  ];
-
+const revenueData = Object.values(map).map((item) => ({
+  ...item,
+  revenue: item.sales - item.purchases
+}));
 
   const colors = [
-  "#4CAF50", // Monday = green
-  "#FF9800", // Tuesday = orange
-  "#2196F3", // Wednesday = blue
-  "#9C27B0", // Thursday = purple
-  "#F44336", // Friday = red
-  "#00BCD4", // Saturday = cyan
-  "#FFC107", // Sunday = amber
-];
+    "#4CAF50", // Monday = green
+    "#FF9800", // Tuesday = orange
+    "#2196F3", // Wednesday = blue
+    "#9C27B0", // Thursday = purple
+    "#F44336", // Friday = red
+    "#00BCD4", // Saturday = cyan
+    "#FFC107", // Sunday = amber
+  ];
 
 
   return (
@@ -118,115 +144,116 @@ const monthYearsSales = [...new Set(last7DaysSales.map((d) => d.month))].join(" 
 
       <div className="p-6 space-y-10">
         <div className="space-y-6">
-  {/* Top Welcome Box with Details */}
-  <div className="bg-white p-6 rounded-md">
-    <h1 className="text-2xl font-bold mb-2">
-      Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
-    </h1>
-    <p className="text-gray-500 text-sm mb-4">
-      Here’s an overview of your inventory performance
-    </p>
-    <p className="text-gray-600">
-      Keep track of your daily sales and purchases to monitor business growth.  
-      Analyze your revenue trends and make informed inventory decisions.  
-    </p>
-  </div>
+          {/* Top Welcome Box with Details */}
+          <div className="bg-white p-6 rounded-md">
+            <h1 className="text-2xl font-bold mb-2">
+              Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
+            </h1>
+            <p className="text-gray-500 text-sm mb-4">
+              Here’s an overview of your inventory performance
+            </p>
+            <p className="text-gray-600">
+              Keep track of your daily sales and purchases to monitor business growth.
+              Analyze your revenue trends and make informed inventory decisions.
+            </p>
+          </div>
 
 
-{/* Stat Boxes */}
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-  {/* Total Goods Sold */}
-  <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-    <Package size={40} className="text-white mb-3" />
-    <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
-    <p className="text-3xl font-extrabold text-white mt-2">
-      {totalSales.totalQuantity || 0}
-    </p>
-  </div>
+          {/* Stat Boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            {/* Total Goods Sold */}
+            <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+              <Package size={40} className="text-white mb-3" />
+              <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
+              <p className="text-3xl font-extrabold text-white mt-2">
+                {totalSales.totalQuantity || 0}
+              </p>
+            </div>
 
-  {/* Total Goods Purchased */}
-  <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-    <ShoppingCart size={40} className="text-white mb-3" />
-    <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
-    <p className="text-3xl font-extrabold text-white mt-2">
-      {totalPurchases.totalQuantity || 0}
-    </p>
-  </div>
+            {/* Total Goods Purchased */}
+            <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+              <ShoppingCart size={40} className="text-white mb-3" />
+              <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
+              <p className="text-3xl font-extrabold text-white mt-2">
+                {totalPurchases.totalQuantity || 0}
+              </p>
+            </div>
 
-  {/* Revenue */}
-  <div className="bg-green-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-    <DollarSign size={40} className="text-white mb-3" />
-    <h2 className="text-lg font-bold text-white">Revenue</h2>
-    <p className="text-3xl font-extrabold text-white mt-2">
-      ${revenue || 0}
-    </p>
-  </div>
-</div>
+            {/* Revenue */}
+            <div className="bg-green-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+              <DollarSign size={40} className="text-white mb-3" />
+              <h2 className="text-lg font-bold text-white">Revenue</h2>
+              <p className="text-3xl font-extrabold text-white mt-2">
+                ${revenue || 0}
+              </p>
+            </div>
+          </div>
 
-</div>
-
-
-
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-  {/* Sales Chart */}
-  <div className="bg-white p-6 rounded-xl shadow">
-    <h3 className="text-lg font-bold mb-4">Sales Over Time</h3>
-    <h2> {monthYearsSales}</h2>
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={chartSalesData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-      <Bar dataKey="sales" barSize={35}>
+        </div>
 
 
-        {chartSalesData.map((entry, index) => (
-          <Cell key={index} fill={colors[index % colors.length]} />
-        ))}
-      </Bar>
-      </BarChart>
-    </ResponsiveContainer>
-  </div>
 
-  {/* Purchases Chart */}
-  <div className="bg-white p-6 rounded-xl shadow">
-    <h3 className="text-lg font-bold mb-2 text-center">{monthYears}</h3>
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart
-        data={chartData}
-        margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey="purchases" barSize={35}>
-          {chartData.map((entry, index) => (
-            <Cell key={index} fill={colors[index % colors.length]} />
-          ))}
-        </Bar>
-      </BarChart>
-    </ResponsiveContainer>
-  </div>
-</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Sales Chart */}
+          <div className="bg-white p-6 rounded-xl shadow">
+            <h3 className="text-lg font-bold mb-4">Sales Over Time</h3>
+            <h2> {monthYearsSales}</h2>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={chartSalesData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="day" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="sales" barSize={35}>
+
+
+                  {chartSalesData.map((entry, index) => (
+                    <Cell key={index} fill={colors[index % colors.length]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Purchases Chart */}
+          <div className="bg-white p-6 rounded-xl shadow">
+            <h3 className="text-lg font-bold mb-2 text-center">{monthYears}</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart
+                data={chartData}
+                margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="day" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="purchases" barSize={35}>
+                  {chartData.map((entry, index) => (
+                    <Cell key={index} fill={colors[index % colors.length]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
 
 
 
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="text-lg font-bold mb-4">Revenue vs Cost</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={revenueData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="sales" fill="#4CAF50" name="Sales" />
-              <Bar dataKey="purchases" fill="#FF9800" name="Purchases" />
-              <Bar dataKey="revenue" fill="#2196F3" name="Revenue" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+  <h3 className="text-lg font-bold mb-4">Revenue vs Cost</h3>
+  <ResponsiveContainer width="100%" height={300}>
+    <BarChart data={revenueData}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="month" /> {/* Now shows Aug, Sep, etc. */}
+      <YAxis />
+      <Tooltip />
+      <Bar dataKey="sales" fill="#4CAF50" name="Sales" />
+      <Bar dataKey="purchases" fill="#FF9800" name="Purchases" />
+      <Bar dataKey="revenue" fill="#2196F3" name="Profit" />
+    </BarChart>
+  </ResponsiveContainer>
+</div>
+
       </div>
 
     </>
