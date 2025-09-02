@@ -18,10 +18,10 @@ const useDashboardStore = create((set) => ({
       set({
         salesData: dataStats.salesOvertime,
         purchaseData: dataStats.purchaseOvertime,
-        totalSales: dataStats.totalSales || [],
-        totalPurchases: dataStats.totalPurchases || [],
+        totalSales: dataStats.totalSales,
+        totalPurchases: dataStats.totalPurchases ,
         totalquantitysold: dataStats.totalQuantitySold || 0,
-        totalquantityPurchased: dataStats.totalQuantityPurchased || 0,
+        totalquantityPurchased: dataStats.totalQuantityPurchased ,
         isLoading: false,
       });
     } catch (error) {
