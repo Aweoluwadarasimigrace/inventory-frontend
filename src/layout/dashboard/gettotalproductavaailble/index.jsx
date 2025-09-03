@@ -1,9 +1,15 @@
 import useDashboardStore from '@/store/getDashboardStats';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
 const DisplayTotalProductAvailable = () => {
-  const { totalProductAvailable } = useDashboardStore();
+  const { totalProductAvailable , fetchtotalProductAvailable} = useDashboardStore();
+
+
+useEffect(() => {
+  fetchtotalProductAvailable();
+}, [fetchtotalProductAvailable]);
+
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#F1948A"];
   return (
     <>

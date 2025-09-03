@@ -17,6 +17,6 @@ export const fetchTotalProductAvailable = async()=>{
     console.log(response.data, "Fetched total product available");
     return response.data;
   } catch (error) {
-    
+    console.log(error, "Error fetching total product available");
   }
 }
