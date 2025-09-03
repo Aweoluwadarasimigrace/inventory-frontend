@@ -4,6 +4,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useOutletContext } from 'react-router';
 import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Package, ShoppingCart, DollarSign } from "lucide-react";
+import DisplayTotalProductAvailable from './gettotalproductavaailble';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, totalquantitysold, totalquantityPurchased } = useDashboardStore();
@@ -201,7 +202,7 @@ const Dashboard = () => {
           <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-2xl shadow-md border border-gray-200">
   {/* Header */}
   <h3 className="text-xl font-semibold mb-4 text-center text-gray-800 tracking-wide">
-    {monthYears} – Sales Overview
+    {monthYearsSales} – Sales Overview
   </h3>
 
   {/* Chart */}
@@ -280,6 +281,9 @@ const Dashboard = () => {
             </ResponsiveContainer>
           </div>
         </div>
+
+
+        <DisplayTotalProductAvailable />
       </div>
 
     </>
