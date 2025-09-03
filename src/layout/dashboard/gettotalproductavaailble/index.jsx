@@ -16,11 +16,11 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#F1948A"
     
       <div className="flex flex-col lg:flex-row gap-6">
       {/* Table Section */}
-      <div className="w-full lg:w-1/2 bg-white shadow rounded p-4">
+      <div className="w-full lg:w-1/2 p-4">
         <h2 className="text-lg font-bold mb-4 text-center">📦 Products Available in Stock (Table)</h2>
         <table className="border-collapse border w-full">
           <thead>
-            <tr className="bg-blue-200 text-gray-800">
+            <tr className="bg-purple-200 text-gray-800">
               <th className="border px-4 py-2">SKU</th>
               <th className="border px-4 py-2">Product</th>
               <th className="border px-4 py-2">Available Quantity</th>
@@ -44,7 +44,7 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#F1948A"
       </div>
 
       {/* Pie Chart Section */}
-      <div className="w-full lg:w-1/2 bg-white shadow rounded p-4">
+      <div className="w-full lg:w-1/2 p-4">
         <h2 className="text-lg font-bold mb-4 text-center">📊 Products Available in Stock (Chart)</h2>
         <ResponsiveContainer width="100%" height={350}>
           <PieChart>
