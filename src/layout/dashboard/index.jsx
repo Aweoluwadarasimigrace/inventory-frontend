@@ -252,15 +252,15 @@ const Dashboard = () => {
         </div>
 
 
-        <div className="w-full p-4">
+        <div className="w-full p-2">
           {/* Header */}
           <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
-            Sales & Purchases Overview
+            Monthly Revenue Overview
           </h2>
 
           {/* Chart container */}
           <div
-            className="bg-white shadow-md rounded-xl p-4"
+            className="bg-white shadow-md rounded-xl p-1"
             style={{ width: "100%", height: 400 }}
           >
             <ResponsiveContainer>
@@ -274,9 +274,9 @@ const Dashboard = () => {
                 <Tooltip />
                 <Legend />
                 {/* Bars with smaller width */}
-                <Bar dataKey="sales" fill="#8884d8" barSize={25} />
-                <Bar dataKey="purchases" fill="#82ca9d" barSize={25} />
-                <Bar dataKey="revenue" fill="#ffc658" barSize={25} />
+                <Bar dataKey="sales" fill="#8884d8" barSize={30} />
+                <Bar dataKey="purchases" fill="#82ca9d" barSize={30} />
+                <Bar dataKey="revenue" fill="#ffc658" barSize={30} />
               </BarChart>
             </ResponsiveContainer>
           </div>
