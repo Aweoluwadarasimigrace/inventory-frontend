@@ -1,6 +1,6 @@
 // const { create } = require("zustand");
 
-import { fetchDashboardStats, fetchTotalProductAvailable } from "@/services/dashboardService";
+import { fetchDashboardStats, fetchOutOfStockProducts, fetchTotalProductAvailable } from "@/services/dashboardService";
 import { create } from "zustand";
 
 const useDashboardStore = create((set) => ({
@@ -10,6 +10,8 @@ const useDashboardStore = create((set) => ({
   totalPurchases: [], // default object
   revenue: 0,
   totalProductAvailable: [],
+  outOfStockProducts: [],
+  count: 0,
   isLoading: false,
   error: null,
   fetchDashboardStats: async () => {
@@ -36,6 +38,16 @@ const useDashboardStore = create((set) => ({
       const data = await fetchTotalProductAvailable();
       console.log(data, "Data in store");
       set({ totalProductAvailable: data.totalProductsInStock, isLoading: false });
+    } catch (error) {
+      set({ error, isLoading: false });
+    }
+  },
+
+  fetchOutOfStockProduct: async () => {
+    set({ isLoading: true });
+    try {
+      const data = await fetchOutOfStockProducts();
+      set({ outOfStockProducts: data.items, count: data.count, isLoading: false });
     } catch (error) {
       set({ error, isLoading: false });
     }

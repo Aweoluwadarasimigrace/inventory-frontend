@@ -48,7 +48,7 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#F1948A"
   {/* Table below */}
   <table className="border-collapse border w-full">
     <thead>
-      <tr className="bg-gray-100 text-left">
+      <tr className="bg-purple-300 text-left">
         <th className="border px-4 py-2">SKU</th>
         <th className="border px-4 py-2">Product</th>
         <th className="border px-4 py-2">Available Quantity</th>
