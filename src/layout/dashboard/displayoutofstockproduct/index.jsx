@@ -10,13 +10,8 @@ const DisplayOutofStockProduct = () => {
 
   return (
     <div>
-
         <div className="bg-white p-6 rounded-xl shadow">
-  {/* <h2 className="text-xl font-bold mb-6 text-center text-red-600">
-    ❌ Out of Stock Products ({count})
-  </h2> */}
 
-  
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {outOfStockProducts.map((p) => (
         <div
