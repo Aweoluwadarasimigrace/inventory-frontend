@@ -11,22 +11,22 @@ const DisplayTotalCustomer = () => {
     }, [fetchOutOfStockProduct, fetchTotalCustomerAvailable])
 
     return (
-        <div>
+      <div className="flex gap-6">
+  <div className="bg-white rounded-xl shadow p-6 text-center flex-1">
+    <h2 className="text-lg font-semibold text-gray-600">👥 Total Customers</h2>
+    <p className="text-4xl font-bold text-blue-600 mt-3">
+      {customerCount}
+    </p>
+  </div>
 
-            <div className="bg-white rounded-xl shadow p-6 text-center">
-                <h2 className="text-lg font-semibold text-gray-600">👥 Total Customers</h2>
-                <p className="text-4xl font-bold text-blue-600 mt-3">
-                    {customerCount}
-                </p>
-            </div>
+  <div className="bg-white rounded-xl shadow p-6 text-center flex-1">
+    <h2 className="text-lg font-semibold text-gray-600">⚠️ Out of Stock Products</h2>
+    <p className="text-4xl font-bold text-blue-600 mt-3">
+      {count}
+    </p>
+  </div>
+</div>
 
-            <div className="bg-white rounded-xl shadow p-6 text-center">
-                <h2 className="text-lg font-semibold text-gray-600">Out of Stock Products</h2>
-                <p className="text-4xl font-bold text-blue-600 mt-3">
-                    {count}
-                </p>
-            </div>
-        </div>
     )
 }
 
