@@ -1,0 +1,33 @@
+import useDashboardStore from '@/store/getDashboardStats'
+import React, { useEffect } from 'react'
+
+const DisplayTotalCustomer = () => {
+    const { fetchTotalCustomerAvailable, customerCount, count, fetchOutOfStockProduct } = useDashboardStore();
+
+    useEffect(() => {
+        fetchTotalCustomerAvailable()
+        fetchOutOfStockProduct()
+
+    }, [fetchOutOfStockProduct, fetchTotalCustomerAvailable])
+
+    return (
+        <div>
+
+            <div className="bg-white rounded-xl shadow p-6 text-center">
+                <h2 className="text-lg font-semibold text-gray-600">👥 Total Customers</h2>
+                <p className="text-4xl font-bold text-blue-600 mt-3">
+                    {customerCount}
+                </p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow p-6 text-center">
+                <h2 className="text-lg font-semibold text-gray-600">Out of Stock Products</h2>
+                <p className="text-4xl font-bold text-blue-600 mt-3">
+                    {count}
+                </p>
+            </div>
+        </div>
+    )
+}
+
+export default DisplayTotalCustomer

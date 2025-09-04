@@ -6,6 +6,7 @@ import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Toolti
 import { Package, ShoppingCart, DollarSign } from "lucide-react";
 import DisplayTotalProductAvailable from './gettotalproductavaailble';
 import DisplayOutofStockProduct from './displayoutofstockproduct';
+import DisplayTotalCustomer from './displaytotalcustomer';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, totalquantitysold, totalquantityPurchased } = useDashboardStore();
@@ -194,6 +195,8 @@ const Dashboard = () => {
             </div>
           </div>
 
+
+          <DisplayTotalCustomer />
         </div>
 
 
@@ -201,32 +204,32 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Sales Chart */}
           <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-3 rounded-2xl shadow-md border border-gray-200">
-  {/* Header */}
-  <h3 className="text-xl font-semibold mb-4 text-center text-gray-800 tracking-wide">
-    {monthYearsSales} – Sales Overview
-  </h3>
+            {/* Header */}
+            <h3 className="text-xl font-semibold mb-4 text-center text-gray-800 tracking-wide">
+              {monthYearsSales} – Sales Overview
+            </h3>
 
-  {/* Chart */}
-  <ResponsiveContainer width="100%" height={300}>
-    <BarChart data={chartSalesData}>
-      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-      <XAxis dataKey="day" stroke="#6b7280" />
-      <YAxis stroke="#6b7280" />
-      <Tooltip
-        contentStyle={{
-          backgroundColor: "#fff",
-          borderRadius: "8px",
-          border: "1px solid #e5e7eb",
-        }}
-      />
-      <Bar dataKey="sales" barSize={35} radius={[6, 6, 0, 0]}>
-        {chartSalesData.map((entry, index) => (
-          <Cell key={index} fill={colors[index % colors.length]} />
-        ))}
-      </Bar>
-    </BarChart>
-  </ResponsiveContainer>
-</div>
+            {/* Chart */}
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={chartSalesData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="day" stroke="#6b7280" />
+                <YAxis stroke="#6b7280" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    borderRadius: "8px",
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+                <Bar dataKey="sales" barSize={35} radius={[6, 6, 0, 0]}>
+                  {chartSalesData.map((entry, index) => (
+                    <Cell key={index} fill={colors[index % colors.length]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
           {/* Purchases Chart */}
           <div className="bg-white p-6 rounded-xl shadow">
