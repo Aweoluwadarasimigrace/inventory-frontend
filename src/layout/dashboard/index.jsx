@@ -5,6 +5,7 @@ import { useOutletContext } from 'react-router';
 import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Package, ShoppingCart, DollarSign } from "lucide-react";
 import DisplayTotalProductAvailable from './gettotalproductavaailble';
+import DisplayOutofStockProduct from './displayoutofstockproduct';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, totalquantitysold, totalquantityPurchased } = useDashboardStore();
@@ -284,6 +285,7 @@ const Dashboard = () => {
 
 
         <DisplayTotalProductAvailable />
+        <DisplayOutofStockProduct />
       </div>
 
     </>
