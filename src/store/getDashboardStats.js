@@ -1,6 +1,12 @@
 // const { create } = require("zustand");
 
-import { fetchDashboardStats, fetchOutOfStockProducts, fetchTotalCustomer, fetchTotalProductAvailable } from "@/services/dashboardService";
+import {
+  fetchDashboardStats,
+  fetchOutOfStockProducts,
+  fetchTotalCustomer,
+  fetchTotalProductAvailable,
+  getTotalProductAvailable,
+} from "@/services/dashboardService";
 import { create } from "zustand";
 
 const useDashboardStore = create((set) => ({
@@ -12,6 +18,7 @@ const useDashboardStore = create((set) => ({
   totalProductAvailable: [],
   outOfStockProducts: [],
   customerCount: 0,
+  productCount: 0,
   count: 0,
   isLoading: false,
   error: null,
@@ -23,9 +30,9 @@ const useDashboardStore = create((set) => ({
         salesData: dataStats.salesOvertime,
         purchaseData: dataStats.purchaseOvertime,
         totalSales: dataStats.totalSales,
-        totalPurchases: dataStats.totalPurchases ,
+        totalPurchases: dataStats.totalPurchases,
         totalquantitysold: dataStats.totalQuantitySold || 0,
-        totalquantityPurchased: dataStats.totalQuantityPurchased ,
+        totalquantityPurchased: dataStats.totalQuantityPurchased,
         isLoading: false,
       });
     } catch (error) {
@@ -38,7 +45,10 @@ const useDashboardStore = create((set) => ({
     try {
       const data = await fetchTotalProductAvailable();
       console.log(data, "Data in store");
-      set({ totalProductAvailable: data.totalProductsInStock, isLoading: false });
+      set({
+        totalProductAvailable: data.totalProductsInStock,
+        isLoading: false,
+      });
     } catch (error) {
       set({ error, isLoading: false });
     }
@@ -48,20 +58,34 @@ const useDashboardStore = create((set) => ({
     set({ isLoading: true });
     try {
       const data = await fetchOutOfStockProducts();
-      set({ outOfStockProducts: data.items, count: data.count, isLoading: false });
+      set({
+        outOfStockProducts: data.items,
+        count: data.count,
+        isLoading: false,
+      });
     } catch (error) {
       set({ error, isLoading: false });
     }
   },
-  fetchTotalCustomerAvailable: async()=>{
-    set({isLoading:true})
+  fetchTotalCustomerAvailable: async () => {
+    set({ isLoading: true });
     try {
-      const data = await fetchTotalCustomer()
-      set({customerCount: data.count, isLoading: false})
+      const data = await fetchTotalCustomer();
+      set({ customerCount: data.count, isLoading: false });
     } catch (error) {
       set({ error, isLoading: false });
     }
-  }
+  },
+  fetchTotalProduct: async () => {
+    set({ isLoading: true });
+
+    try {
+      const data = await getTotalProductAvailable();
+      set({ productCount: data.count, isLoading: false });
+    } catch (error) {
+      set({ error, isLoading: false });
+    }
+  },
 }));
 
 export default useDashboardStore;

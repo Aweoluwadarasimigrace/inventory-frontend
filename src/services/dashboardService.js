@@ -35,3 +35,13 @@ export const fetchTotalCustomer = async () => {
     console.error("Error fetching total customer", error);
   }
 };
+
+
+export const getTotalProductAvailable = async ()=>{
+  try {
+    const res = await apiClient.get("/dashboard/gettotalproducts");
+    return res.data
+  } catch (error) {
+     console.error("Error fetching total products", error);
+  }
+}
