@@ -7,6 +7,7 @@ import { Package, ShoppingCart, DollarSign } from "lucide-react";
 import DisplayTotalProductAvailable from './gettotalproductavaailble';
 import DisplayOutofStockProduct from './displayoutofstockproduct';
 import DisplayTotalCustomer from './displaytotalcustomer';
+import SalesPerMonth from './salespermonth';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, totalquantitysold, totalquantityPurchased } = useDashboardStore();
@@ -197,6 +198,7 @@ const Dashboard = () => {
 
 
           <DisplayTotalCustomer />
+          <SalesPerMonth />
         </div>
 
 

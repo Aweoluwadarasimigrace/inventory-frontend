@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 const SalesPerMonth = () => {
 
-    const {fetchtotalSalesPerMonth, totalSales, totalSalesQuantity } = useDashboardStore()
+    const {fetchtotalSalesPerMonth, totalsales, totalSalesQuantity } = useDashboardStore()
 
     useEffect(() => {
      fetchtotalSalesPerMonth()
@@ -16,7 +16,7 @@ const SalesPerMonth = () => {
   <div className="bg-white rounded-xl shadow p-6 text-center flex-1">
     <h2 className="text-lg font-semibold text-gray-600">💰 Total Sales (This Month)</h2>
     <p className="text-4xl font-bold text-green-600 mt-3">
-      ₦{totalSales?.toLocaleString() || 0}
+      ₦{totalsales?.toLocaleString() || 0}
     </p>
   </div>
 
