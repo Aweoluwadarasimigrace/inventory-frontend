@@ -170,26 +170,8 @@ const Dashboard = () => {
               </div>
 
           <div>
-            {/* Total Goods Sold */}
-            {/* <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-              <Package size={40} className="text-white mb-3" />
-              <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
-              <p className="text-3xl font-extrabold text-white mt-2">
-                {totalquantitysold?.totalQuantity || 0}
-              </p>
-            </div> */}
-
-            {/* Total Goods Purchased */}
-             {/* <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-              <ShoppingCart size={40} className="text-white mb-3" />
-              <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
-              <p className="text-3xl font-extrabold text-white mt-2">
-                {totalquantityPurchased?.totalQuantity || 0}
-              </p>
-            </div> */}
              <DisplayTotalCustomer />
           </div>
-          <SalesPerMonth />
         </div>
 
 
