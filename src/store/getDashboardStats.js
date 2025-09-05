@@ -1,5 +1,4 @@
 // const { create } = require("zustand");
-
 import {
   fetchDashboardStats,
   fetchOutOfStockProducts,
@@ -8,7 +7,6 @@ import {
   getSalesPerMonth,
   getTotalProductAvailable,
 } from "@/services/dashboardService";
-import { o } from "react-router/dist/development/index-react-server-client-BKpa2trA";
 import { create } from "zustand";
 
 const useDashboardStore = create((set) => ({
