@@ -22,7 +22,7 @@ const DisplayTotalCustomer = () => {
   return (
     <div className="flex gap-6">
 
-      {/* <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-2xl shadow-lg p-6 border border-gray-200">
+      <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-2xl shadow-lg p-6 border border-gray-200">
       <h2 className="text-lg font-semibold text-gray-700">
         💰 Total Sales (This Month)
       </h2>
@@ -48,60 +48,7 @@ const DisplayTotalCustomer = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </div> */}
-
-    <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-2xl shadow-lg p-6 border border-gray-200">
-  <h2 className="text-lg font-semibold text-gray-700">
-    💰 Total Sales (This Month)
-  </h2>
-
-  <p className="text-4xl font-extrabold text-green-600 mt-3">
-    ₦{totalsales?.toLocaleString() || 0}
-  </p>
-
-  {/* Zig-zag line with arrow */}
-  <div className="mt-4 h-32">
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={fakeData}>
-        <XAxis dataKey="step" hide />
-        <Tooltip />
-
-        {/* Zig-zag line */}
-        <Line
-          type="linear" // keeps the zig-zag instead of smoothing
-          dataKey="value"
-          stroke="#22c55e"
-          strokeWidth={3}
-          dot={false}
-          isAnimationActive={true}
-        />
-
-        {/* Arrow marker at the end */}
-        <Line
-          type="linear"
-          dataKey="value"
-          stroke="transparent" // hide second line
-          dot={({ cx, cy, index }) => {
-            if (index === fakeData.length - 1) {
-              return (
-                <text
-                  x={cx + 5}
-                  y={cy}
-                  fontSize={20}
-                  fill="#22c55e"
-                  fontWeight="bold"
-                >
-                  ↑
-                </text>
-              );
-            }
-            return null;
-          }}
-        />
-      </LineChart>
-    </ResponsiveContainer>
-  </div>
-</div>
+    </div> 
 
       {/* Other Boxes in Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -158,7 +158,7 @@ const Dashboard = () => {
       <div className="p-3 space-y-10">
         <div className="space-y-6">
 
-          <div className="bg-white p-6 rounded-md">
+          <div>
               <h1 className="text-2xl font-bold mb-2">
                 Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
               </h1>
@@ -206,7 +206,7 @@ const Dashboard = () => {
           {/* Purchases Chart */}
           <div className="bg-white p-6 rounded-xl shadow">
             <h3 className="text-lg font-bold mb-2 text-center">
-              {monthYears}
+              {monthYears} - Purchase Overview
             </h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart
