@@ -3,7 +3,7 @@ import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
 import { useOutletContext } from 'react-router';
 import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { Package, ShoppingCart, DollarSign, Users, AlertTriangle } from "lucide-react";
+import { Package, ShoppingCart, DollarSign } from "lucide-react";
 import DisplayTotalProductAvailable from './gettotalproductavaailble';
 import DisplayOutofStockProduct from './displayoutofstockproduct';
 import DisplayTotalCustomer from './displaytotalcustomer';
@@ -159,169 +159,127 @@ const Dashboard = () => {
     <>
       <div className="p-3 space-y-10">
         <div className="space-y-6">
-          {/* Top Welcome Box with Details */}
 
-          {/* Stat Boxes */}
-          <div className="space-y-6">
-            {/* Welcome Card */}
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-              <h1 className="text-2xl font-bold mb-2">
-                Welcome back,{" "}
-                <span className="text-purple-600">
-                  {user.companyName || user.firstName}
-                </span>{" "}
-                👋
-              </h1>
-              <p className="text-gray-500 text-sm mb-4">
-                Here’s an overview of your inventory performance
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Keep track of your daily sales and purchases to monitor business growth.
-                Analyze your revenue trends and make informed inventory decisions.
-              </p>
-            </div>
-
-            {/* Big Highlight Card */}
-            <div className="bg-gradient-to-r from-pink-500 to-red-400 p-8 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-              <Package size={48} className="text-white mb-4" />
-              <h2 className="text-xl font-bold text-white">Total Goods Sold</h2>
-              <p className="text-4xl font-extrabold text-white mt-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            {/* Total Goods Sold */}
+            <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+              <Package size={40} className="text-white mb-3" />
+              <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
+              <p className="text-3xl font-extrabold text-white mt-2">
                 {totalquantitysold?.totalQuantity || 0}
               </p>
             </div>
 
-            {/* Grid of Stat Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Goods Purchased */}
-              <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-                <ShoppingCart size={40} className="text-white mb-3" />
-                <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
-                <p className="text-3xl font-extrabold text-white mt-2">
-                  {totalquantityPurchased?.totalQuantity || 0}
-                </p>
-              </div>
+            {/* Total Goods Purchased */}
+           <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
 
-              {/* Total Customers */}
-              <div className="bg-blue-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
-                <Users size={40} className="text-white mb-3" />
-                <h2 className="text-lg font-bold text-white">Total Customers</h2>
-                <p className="text-3xl font-extrabold text-white mt-2">
-                  3
-                </p>
-              </div>
-
-              {/* Out of Stock - full width */}
-              <div className="bg-yellow-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform md:col-span-2">
-                <AlertTriangle size={40} className="text-white mb-3" />
-                <h2 className="text-lg font-bold text-white">Out of Stock Products</h2>
-                <p className="text-3xl font-extrabold text-white mt-2">0</p>
-              </div>
+             <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+              <ShoppingCart size={40} className="text-white mb-3" />
+              <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
+              <p className="text-3xl font-extrabold text-white mt-2">
+                {totalquantityPurchased?.totalQuantity || 0}
+              </p>
             </div>
-
-            {/* Other Components */}
-            <div className="mt-8">
-              <DisplayTotalCustomer />
-            </div>
-            <div className="mt-8">
-              <SalesPerMonth />
-            </div>
+             <DisplayTotalCustomer />
+           </div>
           </div>
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Sales Chart */}
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-3 rounded-2xl shadow-md border border-gray-200">
-              {/* Header */}
-              <h3 className="text-xl font-semibold mb-4 text-center text-gray-800 tracking-wide">
-                {monthYearsSales} – Sales Overview
-              </h3>
-
-              {/* Chart */}
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={chartSalesData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="day" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "#fff",
-                      borderRadius: "8px",
-                      border: "1px solid #e5e7eb",
-                    }}
-                  />
-                  <Bar dataKey="sales" barSize={35} radius={[6, 6, 0, 0]}>
-                    {chartSalesData.map((entry, index) => (
-                      <Cell key={index} fill={colors[index % colors.length]} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-
-            {/* Purchases Chart */}
-            <div className="bg-white p-6 rounded-xl shadow">
-              <h3 className="text-lg font-bold mb-2 text-center">
-                {monthYears}
-              </h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart
-                  data={chartData}
-                  margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="purchases" barSize={35}>
-                    {chartData.map((entry, index) => (
-                      <Cell key={index} fill={colors[index % colors.length]} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-
-          <div className="w-full p-2">
-            {/* Header */}
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
-              Monthly Revenue Overview
-            </h2>
-
-            {/* Chart container */}
-            <div
-              className="bg-white shadow-md rounded-xl p-1"
-              style={{ width: "100%", height: 400 }}
-            >
-              <ResponsiveContainer>
-                <BarChart
-                  data={revenueData}
-                  margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  {/* Bars with smaller width */}
-                  <Bar dataKey="sales" fill="#8884d8" barSize={30} />
-                  <Bar dataKey="purchases" fill="#82ca9d" barSize={30} />
-                  <Bar dataKey="revenue" fill="#ffc658" barSize={30} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <TopSellingProduct />
-          <DisplayTotalProductAvailable />
-          <DisplayOutofStockProduct />
+          <SalesPerMonth />
         </div>
-</div>
-      </>
 
-      )
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Sales Chart */}
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-3 rounded-2xl shadow-md border border-gray-200">
+            {/* Header */}
+            <h3 className="text-xl font-semibold mb-4 text-center text-gray-800 tracking-wide">
+              {monthYearsSales} – Sales Overview
+            </h3>
+
+            {/* Chart */}
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={chartSalesData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="day" stroke="#6b7280" />
+                <YAxis stroke="#6b7280" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    borderRadius: "8px",
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+                <Bar dataKey="sales" barSize={35} radius={[6, 6, 0, 0]}>
+                  {chartSalesData.map((entry, index) => (
+                    <Cell key={index} fill={colors[index % colors.length]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Purchases Chart */}
+          <div className="bg-white p-6 rounded-xl shadow">
+            <h3 className="text-lg font-bold mb-2 text-center">
+              {monthYears}
+            </h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart
+                data={chartData}
+                margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="day" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="purchases" barSize={35}>
+                  {chartData.map((entry, index) => (
+                    <Cell key={index} fill={colors[index % colors.length]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+
+        <div className="w-full p-2">
+          {/* Header */}
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
+            Monthly Revenue Overview
+          </h2>
+
+          {/* Chart container */}
+          <div
+            className="bg-white shadow-md rounded-xl p-1"
+            style={{ width: "100%", height: 400 }}
+          >
+            <ResponsiveContainer>
+              <BarChart
+                data={revenueData}
+                margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="month" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                {/* Bars with smaller width */}
+                <Bar dataKey="sales" fill="#8884d8" barSize={30} />
+                <Bar dataKey="purchases" fill="#82ca9d" barSize={30} />
+                <Bar dataKey="revenue" fill="#ffc658" barSize={30} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <TopSellingProduct />
+        <DisplayTotalProductAvailable />
+        <DisplayOutofStockProduct />
+      </div>
+
+    </>
+
+  )
 }
 
-      export default Dashboard
+export default Dashboard
