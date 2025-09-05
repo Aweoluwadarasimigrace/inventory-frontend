@@ -5,6 +5,7 @@ import {
   fetchTotalCustomer,
   fetchTotalProductAvailable,
   getSalesPerMonth,
+  getTopsellingProduct,
   getTotalProductAvailable,
 } from "@/services/dashboardService";
 import { create } from "zustand";
@@ -19,6 +20,7 @@ const useDashboardStore = create((set) => ({
   outOfStockProducts: [],
   totalsales: 0,
   totalSalesQuantity: 0,
+  topSellingProduct: [],
   customerCount: 0,
   productCount: 0,
   count: 0,
@@ -90,15 +92,28 @@ const useDashboardStore = create((set) => ({
   },
 
   fetchtotalSalesPerMonth: async () => {
-  set({ isLoading: true });
-  try {
-    const data = await getSalesPerMonth()
-    set({ totalsales: data.total, totalSalesQuantity: data.totalQuantity, isLoading: false });
-  } catch (error) {
-    set({ error, isLoading: false });
-  }
-},
+    set({ isLoading: true });
+    try {
+      const data = await getSalesPerMonth();
+      set({
+        totalsales: data.total,
+        totalSalesQuantity: data.totalQuantity,
+        isLoading: false,
+      });
+    } catch (error) {
+      set({ error, isLoading: false });
+    }
+  },
 
+  fetchTopsellingProduct: async () => {
+    set({ isLoading: true });
+    try {
+      const data = await getTopsellingProduct();
+      set({ topSellingProduct: data, isLoading: false });
+    } catch (error) {
+      set({ error, isLoading: false });
+    }
+  },
 }));
 
 export default useDashboardStore;

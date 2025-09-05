@@ -54,3 +54,12 @@ export const getSalesPerMonth = async ()=>{
      console.error("Error fetching total sales per month", error);
   }
 }
+
+export const getTopsellingProduct = async ()=>{
+  try {
+    const res = await apiClient.get("/dashboard/gettopsellingproduct");
+    return res.data
+  } catch (error) {
+     console.error("Error fetching total sales per month", error);
+  }
+}
