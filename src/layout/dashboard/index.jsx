@@ -3,11 +3,9 @@ import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect, useMemo } from 'react'
 import { useOutletContext } from 'react-router';
 import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { Package, ShoppingCart, DollarSign } from "lucide-react";
 import DisplayTotalProductAvailable from './gettotalproductavaailble';
 import DisplayOutofStockProduct from './displayoutofstockproduct';
 import DisplayTotalCustomer from './displaytotalcustomer';
-import SalesPerMonth from './salespermonth';
 import TopSellingProduct from './topsellingproduct';
 
 const Dashboard = () => {
