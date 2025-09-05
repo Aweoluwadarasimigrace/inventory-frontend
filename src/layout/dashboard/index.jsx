@@ -171,8 +171,6 @@ const Dashboard = () => {
             </div>
 
             {/* Total Goods Purchased */}
-           <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
-
              <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
               <ShoppingCart size={40} className="text-white mb-3" />
               <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
@@ -181,7 +179,6 @@ const Dashboard = () => {
               </p>
             </div>
              <DisplayTotalCustomer />
-           </div>
           </div>
           <SalesPerMonth />
         </div>
