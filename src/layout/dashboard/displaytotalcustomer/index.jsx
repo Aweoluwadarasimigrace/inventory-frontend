@@ -11,7 +11,7 @@ const DisplayTotalCustomer = () => {
   }, [fetchOutOfStockProduct, fetchTotalCustomerAvailable, fetchTotalProduct])
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div>
       {/* Total Customers */}
       <div className="bg-white rounded-xl shadow p-6 flex items-center justify-between">
         <div>
