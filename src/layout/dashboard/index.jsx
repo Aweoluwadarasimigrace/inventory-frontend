@@ -11,7 +11,7 @@ import SalesPerMonth from './salespermonth';
 import TopSellingProduct from './topsellingproduct';
 
 const Dashboard = () => {
-  const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, totalquantitysold, totalquantityPurchased } = useDashboardStore();
+  const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases} = useDashboardStore();
   const { user } = useOutletContext()
   useEffect(() => {
     // Fetch dashboard stats when the component mounts
@@ -160,24 +160,33 @@ const Dashboard = () => {
       <div className="p-3 space-y-10">
         <div className="space-y-6">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div className="bg-white p-6 rounded-md">
+              <h1 className="text-2xl font-bold mb-2">
+                Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
+              </h1>
+              <p className="text-gray-500 text-sm mb-4">
+                Here’s an overview of your inventory performance
+              </p>
+              </div>
+
+          <div>
             {/* Total Goods Sold */}
-            <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+            {/* <div className="bg-pink-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
               <Package size={40} className="text-white mb-3" />
               <h2 className="text-lg font-bold text-white">Total Goods Sold</h2>
               <p className="text-3xl font-extrabold text-white mt-2">
                 {totalquantitysold?.totalQuantity || 0}
               </p>
-            </div>
+            </div> */}
 
             {/* Total Goods Purchased */}
-             <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
+             {/* <div className="bg-purple-500 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
               <ShoppingCart size={40} className="text-white mb-3" />
               <h2 className="text-lg font-bold text-white">Total Goods Purchased</h2>
               <p className="text-3xl font-extrabold text-white mt-2">
                 {totalquantityPurchased?.totalQuantity || 0}
               </p>
-            </div>
+            </div> */}
              <DisplayTotalCustomer />
           </div>
           <SalesPerMonth />
