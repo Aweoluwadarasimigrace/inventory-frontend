@@ -5,8 +5,10 @@ import {
   fetchOutOfStockProducts,
   fetchTotalCustomer,
   fetchTotalProductAvailable,
+  getSalesPerMonth,
   getTotalProductAvailable,
 } from "@/services/dashboardService";
+import { o } from "react-router/dist/development/index-react-server-client-BKpa2trA";
 import { create } from "zustand";
 
 const useDashboardStore = create((set) => ({
@@ -17,6 +19,8 @@ const useDashboardStore = create((set) => ({
   revenue: 0,
   totalProductAvailable: [],
   outOfStockProducts: [],
+  totalSales: 0,
+  totalSalesQuantity: 0,
   customerCount: 0,
   productCount: 0,
   count: 0,
@@ -86,6 +90,17 @@ const useDashboardStore = create((set) => ({
       set({ error, isLoading: false });
     }
   },
+
+  fetchtotalSalesPerMonth: async () => {
+  set({ isLoading: true });
+  try {
+    const data = await getSalesPerMonth()
+    set({ totalSales: data.total, totalSalesQuantity: data.totalQuantity, isLoading: false });
+  } catch (error) {
+    set({ error, isLoading: false });
+  }
+},
+
 }));
 
 export default useDashboardStore;
