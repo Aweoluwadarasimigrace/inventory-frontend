@@ -2,12 +2,17 @@ import useDashboardStore from '@/store/getDashboardStats';
 import React, { useEffect } from 'react'
 
 const DisplayOutofStockProduct = () => {
-    const { outOfStockProducts, fetchOutOfStockProduct, count } = useDashboardStore();
+    const { outOfStockProducts, fetchOutOfStockProduct } = useDashboardStore();
 
     useEffect(() => {
       fetchOutOfStockProduct();
     }, [fetchOutOfStockProduct]);
 
+
+
+    if(!outOfStockProducts){
+      return
+    }
   return (
     <div>
         <div className="bg-white p-6 rounded-xl shadow">
