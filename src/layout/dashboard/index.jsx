@@ -8,6 +8,7 @@ import DisplayTotalProductAvailable from './gettotalproductavaailble';
 import DisplayOutofStockProduct from './displayoutofstockproduct';
 import DisplayTotalCustomer from './displaytotalcustomer';
 import SalesPerMonth from './salespermonth';
+import TopSellingProduct from './topsellingproduct';
 
 const Dashboard = () => {
   const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases, totalquantitysold, totalquantityPurchased } = useDashboardStore();
@@ -288,7 +289,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-
+<TopSellingProduct/>
         <DisplayTotalProductAvailable />
         <DisplayOutofStockProduct />
       </div>
