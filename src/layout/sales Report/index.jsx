@@ -14,44 +14,17 @@ ChartJS.register(
     Legend
 );
 import {  Bar } from 'react-chartjs-2';
-import useSalesStore from '@/store/getsales';
 import Loader from '@/sharedComponent/loader';
-import { Link } from 'react-router';
 
 
 const SalesReport = () => {
   const { monthlySales, dailySales, yearlySales, overview } = useGetSalesReport();
-  const {sales} = useSalesStore();
-
-
-
+  
   if (!monthlySales || !dailySales || !yearlySales) {
     return (<Loader />);
   }
 
-  if(!sales.length){
-    return (
-        <><p className="p-4">No sales data available to generate reports.</p>
-        
-        <div className="flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-lg shadow-sm h-screen">
-            <h1 className="text-2xl font-bold text-gray-800 mb-2">
-                Start Managing Your Sales  Activities!
-            </h1>
-            <p className="text-gray-600 mb-1">
-                Create, customize, and manage your sales  effectively.
-            </p>
-            <p className="text-gray-600 mb-4">
-                Click the button below to add your first sales.
-            </p>
-            <Link to={"/dashboard/createsales"}>
-                <button className="px-6 py-2 bg-purple-500 text-white font-medium rounded-lg shadow hover:bg-purple-600 transition">
-                    Add Sales
-                </button>
-            </Link>
-        </div></>
 
-    )
-  }
   // Format daily sales labels like "August 5"
   const dailyChartData = {
     labels: dailySales.map(sale => {
