@@ -14,11 +14,11 @@ const TopSellingProduct = () => {
         <div>
             {topSellingProduct.length > 0 && (
 
-                <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-gray-200 mt-8">
+                <div className=" p-4 mt-8">
                     {/* Section Header */}
                     <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-bold text-gray-700">
-                            🏆 Top Selling Products
+                        <h2 className="text-md md:text-xl font-bold text-gray-700">
+                          Top Selling Products
                         </h2>
                         <span className="text-sm text-gray-500">This Month</span>
                     </div>
