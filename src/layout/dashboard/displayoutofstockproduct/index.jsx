@@ -15,7 +15,7 @@ const DisplayOutofStockProduct = () => {
           {outOfStockProducts.map((p) => (
             <div
               key={p._id}
-              className="p-4 border rounded-xl bg-red-50 shadow-sm flex flex-col"
+              className="p-4 rounded-xl bg-red-50  flex flex-col"
             >
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-gray-500">SKU: {p.sku}</span>

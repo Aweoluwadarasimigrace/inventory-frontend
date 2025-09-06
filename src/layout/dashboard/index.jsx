@@ -9,7 +9,7 @@ import DisplayTotalCustomer from './displaytotalcustomer';
 import TopSellingProduct from './topsellingproduct';
 
 const Dashboard = () => {
-  const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases} = useDashboardStore();
+  const { fetchDashboardStats, salesData, loading, purchaseData, totalSales, totalPurchases } = useDashboardStore();
   const { user } = useOutletContext()
   useEffect(() => {
     // Fetch dashboard stats when the component mounts
@@ -159,16 +159,16 @@ const Dashboard = () => {
         <div className="space-y-6">
 
           <div>
-              <h1 className="text-2xl font-bold mb-2">
-                Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
-              </h1>
-              <p className="text-gray-500 text-sm mb-4">
-                Here’s an overview of your inventory performance
-              </p>
-              </div>
+            <h1 className="text-2xl font-bold mb-2">
+              Welcome back, <span className="text-purple-600">{user.companyName || user.firstName}</span> 👋
+            </h1>
+            <p className="text-gray-500 text-sm mb-4">
+              Here’s an overview of your inventory performance
+            </p>
+          </div>
 
           <div>
-             <DisplayTotalCustomer />
+            <DisplayTotalCustomer />
           </div>
         </div>
 
@@ -228,35 +228,34 @@ const Dashboard = () => {
         </div>
 
 
-        <div className="w-full p-2">
+        <div className="w-full">
           {/* Header */}
-          <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
-            Monthly Revenue Overview
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center text-gray-700">
+            📊 Monthly Revenue Overview
           </h2>
 
           {/* Chart container */}
-          <div
-            className="bg-white shadow-md rounded-xl p-1"
-            style={{ width: "100%", height: 400 }}
-          >
-            <ResponsiveContainer>
-              <BarChart
-                data={revenueData}
-                margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                {/* Bars with smaller width */}
-                <Bar dataKey="sales" fill="#8884d8" barSize={30} />
-                <Bar dataKey="purchases" fill="#82ca9d" barSize={30} />
-                <Bar dataKey="revenue" fill="#ffc658" barSize={30} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+          <div className="bg-white shadow-md rounded-xl">
+            <div className="w-full h-[300px] sm:h-[350px] md:h-[400px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={revenueData}
+                  margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="sales" fill="#8884d8" barSize={25} />
+                  <Bar dataKey="purchases" fill="#82ca9d" barSize={25} />
+                  <Bar dataKey="revenue" fill="#ffc658" barSize={25} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>  
         </div>
+
 
         <TopSellingProduct />
         <DisplayTotalProductAvailable />
