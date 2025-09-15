@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,14 +10,13 @@ const Header = () => {
         {/* Company Logo/Image */}
         <div className="flex items-center">
           {/* Replace this div with an actual <img> tag for your logo */}
-          <div className="h-8 w-8 bg-blue-500 rounded-full mr-2"></div>
-          <a href="/" className="text-xl font-bold">Track Stack</a>
+          <img src="/frontend-removebg-preview (1).png" alt=""  width={"130px"}/>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <button className="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300">
-            Log In
+        <nav className="flex items-center space-x-8">
+          <button className="bg-purple-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-purple-700 transition duration-300">
+           <Link to={"/auth/login"}>Login</Link>
           </button>
         </nav>
 

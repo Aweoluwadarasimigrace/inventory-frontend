@@ -2,6 +2,7 @@
 import React from 'react'
 import HeroSection from '../hero-section'
 import Header from '../header'
+import AboutUs from '../about-page'
 
 const HomePage = () => {
  
@@ -9,6 +10,7 @@ const HomePage = () => {
    <>
    <Header />
     <HeroSection />
+    <AboutUs />
    </>
   )
 }

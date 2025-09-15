@@ -1,7 +1,6 @@
 // const { create } = require("zustand");
 
 import {
-  createSales,
   deleteSales,
   editSales,
   fetchAllSales,
