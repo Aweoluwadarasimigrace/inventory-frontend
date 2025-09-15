@@ -26,14 +26,14 @@ const AdminUsersPage = () => {
           Start Managing Your User Activities!
         </h1>
         <p className="text-gray-600 mb-1">
-          Create, customize, and manage your users effectively.
+          Create, customize, and manage your Employee effectively.
         </p>
         <p className="text-gray-600 mb-4">
-          Click the button below to add your first user.
+          Click the button below to add your first Employee
         </p>
         <Link to={"/dashboard/createuser"}>
           <button className="px-6 py-2 bg-purple-500 text-white font-medium rounded-lg shadow hover:bg-purple-600 transition">
-            Add User
+            Add Employee
           </button>
         </Link>
       </div>
@@ -44,10 +44,10 @@ const AdminUsersPage = () => {
       {/* HEADER + BUTTON: Responsive Side by Side */}
       <div className="max-w-9xl mx-auto px-4 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#676e8a]">User Management</h1>
-          <p className="text-gray-600">Manage Your Users</p>
+          <h1 className="text-2xl font-bold text-[#676e8a]">Employee Management</h1>
+          <p className="text-gray-600">Manage Your Employee</p>
           <p className="text-gray-500 text-sm">
-            A dashboard provides you an overview of user list with access to the most important data,
+            A dashboard provides you an overview of Employee list with access to the most important data,
             functions and controls.
           </p>
         </div>

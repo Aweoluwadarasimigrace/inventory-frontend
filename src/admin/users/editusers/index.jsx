@@ -9,7 +9,7 @@ const EditAdminUser = ({userId}) => {
   return (
     <div>
       <button onClick={handleEditClick}>
-        Edit User
+        Edit Employee
       </button>
 
       <EditUserForm open={modal} onClose={() => setmodal(false)} userId = {userId} />

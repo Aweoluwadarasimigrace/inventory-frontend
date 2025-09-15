@@ -38,7 +38,7 @@ const EditUserForm = ({ onClose, open, userId }) => {
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
-          <DialogTitle>Edit User</DialogTitle>
+          <DialogTitle>Edit Employee</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={(e) => submitForm(e, userId)} className="space-y-4 mt-2">
