@@ -23,7 +23,7 @@ const useCustomerStore = create((set, get) => ({
         customers: [],
         error: error?.response?.data?.message || "Failed to fetch customers",
         loading: false,
-      });
+      }); 
       toast.error(error?.response?.data?.message || "Failed to fetch customers");
     }
   },
