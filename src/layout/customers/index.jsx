@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import useCustomerStore from "@/store/getCustomers";
 import DisplayCustomerTable from "./displaycustomertable";
