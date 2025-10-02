@@ -62,9 +62,8 @@ export const useRegister = () => {
     try {
       const res = await apiClient.post("/auth/register", formData);
       if (res.data) {
-        alert("registration successful");
         toast.success("registration successful");
-        navigate("/auth/verify-message", { state: { email: formData.email } });
+        navigate("/auth/login");
       }
     } catch (error) {
       toast.error(error.data.message);

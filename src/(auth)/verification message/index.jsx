@@ -1,5 +1,4 @@
 import React from 'react'
-import { useRegister } from '../hooks/useRegister'
 import { Link, useLocation } from 'react-router'
 
 const VerficationMessage = () => {
