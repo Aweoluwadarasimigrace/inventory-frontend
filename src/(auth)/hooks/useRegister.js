@@ -62,6 +62,7 @@ export const useRegister = () => {
     try {
       const res = await apiClient.post("/auth/register", formData);
       if (res.data) {
+        sessionStorage.setItem("token", res?.data?.token);
         toast.success("registration successful");
         navigate("/auth/login");
       }
